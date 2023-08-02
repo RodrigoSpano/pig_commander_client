@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-          {(path.includes('/auth') || path === '/landing') ? null : <SideBarComponent />}
+          {(path.includes('/auth') || path === '/landing') ? null : <SideBarComponent/>}
           {children}
         </ReduxProvider>
       </body>
