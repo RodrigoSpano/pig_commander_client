@@ -1,8 +1,10 @@
+import React from "react"
+import LandingPageComponent from "../components/Landing/LandingPageComponent"
 
 export default function Home() {
   return (
     <main>
-      <h1>landing proooooooooo</h1>
+       <LandingPageComponent/>
     </main >
   )
 }
