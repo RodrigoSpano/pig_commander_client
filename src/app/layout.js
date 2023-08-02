@@ -14,8 +14,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-          {path === '/login' || path === '/signup' || path === '/' ? null : <SideBar />}
-          {children}
+          <div className='flex'>
+            {path === '/login' || path === '/signup' || path === '/' ? null : <SideBar />}
+            <div className='w-screen'>
+              {children}
+            </div>
+          </div>
         </ReduxProvider>
       </body>
     </html>

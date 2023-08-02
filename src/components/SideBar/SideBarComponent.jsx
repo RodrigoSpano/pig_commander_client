@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 export default function SideBar() {
   return (
-    <div className="bg-white w-72 h-screen text-boldGray p-4 rounded-r-2xl">
+    <div className="bg-white w-80 h-screen text-boldGray p-4 rounded-r-3xl">
       <span className="flex text-2xl align-center justify-between">
         <Image src={Logo} width={90} height={0} alt="Logo" />
       <p className="text-xl font-extrabold my-10">PigCommander</p>
