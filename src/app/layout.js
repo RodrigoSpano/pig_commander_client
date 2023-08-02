@@ -1,14 +1,14 @@
 'use client'
-import ReduxProvider from '@/redux/reduxProvider'
+import ReduxProvider from '../redux/ReduxProvider'
 import './globals.css'
-import { Inter } from 'next/font/google'
-import SideBar from '@/components/SideBar/SideBarComponent'
-import LandingPage from '@/app/landing/page'
+import { Inter } from 'next/font/google';
+import SideBar from '../components/SideBar/SideBarComponent';
+import LandingPage from '../components/Landing/LandingPageComponent';
 import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+const metadata = {
   title: 'Pig Commander App',
   description: 'Your finance app'
 }
