@@ -7,7 +7,7 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
-
+/src/server/node_modules/
 /node_modules
 /.pnp
 .pnp.js
