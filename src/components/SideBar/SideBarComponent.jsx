@@ -10,13 +10,13 @@ import Image from 'next/image';
 
 export default function SideBar() {
   return (
-    <div className="bg-white w-72 h-screen text-black p-4 rounded-r-3xl ">
+    <div className="bg-white w-72 h-screen text-boldGray p-4 rounded-r-2xl">
       <span className="flex text-2xl align-center justify-between">
         <Image src={Logo} width={90} height={0} alt="Logo" />
       <p className="text-xl font-extrabold my-10">PigCommander</p>
       </span>
             <div className="mb-4">
-        <p className="flex ml-5 my-10 font-semibold cursor-pointer hover:text-pink-600 hover:bg-pink-100 hover:rounded-md ">
+        <p className="flex ml-5 my-10 font-semibold cursor-pointer hover:boldPink hover:bg-pink-100 hover:rounded-sm ">
           <span className="text-2xl mr-2">
             <BiSolidDashboard />
           </span>

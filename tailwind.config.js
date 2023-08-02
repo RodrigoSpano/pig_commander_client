@@ -1,16 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     transparent: "transparent",
     current: "currentColor",
+    fontFamily: {
+      Poppins: ["Poppins", "sans-serif"],
+    },
     extend: {
+      screens: {
+        sm: "480px",
+        md: "768px",
+        lg: "976px",
+        xl: "1440px",
+      },
       colors: {
+                  
+        boldPink: '#BA1578',
+        regularPink: '#ED4998',
+        lightPink: '#FF8AC8',
+        boldGray: '#454545',
+        regularGray: '#D9D9D9',
+        lightGray: '#EEEEEE',
+
         // light mode
         tremor: {
           brand: {
@@ -72,7 +89,26 @@ module.exports = {
           },
         },
       },
+      borderRadius: {
+        sm: "0.38rem",
+        md: "1rem",
+        xl: "1.25rem",
+      },
+      fonts: {
+        poppinsLight: {
+          family: "Poppins",
+          weight: "300",
+        },
+        poppinsRegular: {
+          family: "Poppins",
+          weight: "400",
+        },
+        poppinsBold: {
+          family: "Poppins",
+          weight: "700",
+        },
+      },
     },
-    plugins: [],
-  }
-}
+  },
+  plugins: [],
+};
