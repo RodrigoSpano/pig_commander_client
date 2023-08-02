@@ -1,10 +1,10 @@
 import React from "react";
-import SignUp from "../../components/SignUp/SignUp";
+import SignUpComponent from "../../components/SignUp/SignUp";
 
 export default function SignUp () {
     return (
         <div>
-            <SignUp/>
+            <SignUpComponent/>
         </div>
     )
 };
