@@ -9,6 +9,8 @@
     grid-template-columns: repeat(12, 1fr);
     background-color: #f0f0f0;
     padding: 10px;
+    margin-top: 0;
+    height: 30vh;
 }
 
 .grid_2x3 {
@@ -17,6 +19,15 @@
     gap: 10px;
     background-color: #f0f0f0;
     padding: 10px;
+    height: 70vh;
+}
+
+.shadow_background {
+  border: 1px black;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 10px 5px 1px rgba(0,0,0,0.75);
+  margin: 10px;
 }
 
 .welcome {
@@ -27,10 +38,37 @@
   grid-column: span 4;
 }
 
-.item14 {
-  grid-column: span 1;
-}
-
 .myGraph {
   grid-column: span 1;
+  grid-row: span 2;
+}
+
+.profile {
+  grid-row: span 3;
+  grid-column: span 3;
+}
+
+.myExpenses {
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+.myIncome {
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+.mySavings {
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+.myJournal {
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+.mySpendings {
+  grid-row: span 2;
+  grid-column: span 2;
 }
