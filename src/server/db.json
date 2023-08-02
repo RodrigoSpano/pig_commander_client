@@ -1,0 +1,88 @@
+{
+    "profile": [
+      {
+        "id": 1,
+        "name": "Laurencio Paez",
+        "username": "laurenciopaez",
+        "email": "",
+        "password": "123456",
+        "image": "url",
+        "balances": {
+          "mybalance": 5000,
+          "income": 5000
+        },
+        "transactions": [
+          {
+            "category": "food",
+            "name": "mcdonalds",
+            "date": "10/20/2022",
+            "amount": 500
+          },
+          {
+            "category": "expenses",
+            "name": "adove",
+            "date": "10/20/2022",
+            "amount": 600
+          },
+          {
+            "category": "shooping",
+            "name": "levis",
+            "date": "10/20/2022",
+            "amount": 700
+          }
+        ]
+      },
+      {
+  
+        "id": 2,
+        "username": "Laurencio Paez",
+        "image": "url",
+        "transactions": [
+          {
+            "category": "food",
+            "name": "mcdonalds",
+            "date": "10/20/2022",
+            "amount": 500
+          },
+          {
+            "category": "expenses",
+            "name": "adove",
+            "date": "10/20/2022",
+            "amount": 600
+          },
+          {
+            "category": "shooping",
+            "name": "levis",
+            "date": "10/20/2022",
+            "amount": 700
+          }
+        ]
+      },
+      {
+  
+        "id": 3,
+        "username": "Laurencio Paez",
+        "image": "url",
+        "transactions": [
+          {
+            "category": "food",
+            "name": "mcdonalds",
+            "date": "10/20/2022",
+            "amount": 500
+          },
+          {
+            "category": "expenses",
+            "name": "adove",
+            "date": "10/20/2022",
+            "amount": 600
+          },
+          {
+            "category": "shooping",
+            "name": "levis",
+            "date": "10/20/2022",
+            "amount": 700
+          }
+        ]
+      }
+    ]
+  }
