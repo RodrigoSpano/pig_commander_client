@@ -6,7 +6,7 @@ import { IoMdSettings } from 'react-icons/io';
 import { BiSolidDashboard, BiSolidHelpCircle } from 'react-icons/bi';
 import { ImExit } from 'react-icons/im';
 
-export default function SideBarContainer() {
+export default function SideBarComponent() {
   return (
     <div className="bg-white w-48 h-screen text-black p-4 rounded- ">
       <div className="text-xl font-extrabold my-10">PigCommander</div>

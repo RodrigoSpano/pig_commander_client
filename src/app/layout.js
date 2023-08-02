@@ -2,7 +2,7 @@
 import ReduxProvider from '@/redux/reduxProvider'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import SideBarContainer from '@/components/SideBar/SideBarContainer'
+import SideBarComponent from '@/components/SideBar/SideBarComponent'
 import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-          {(path.includes('/auth') || path === '/landing') ? null : <SideBarContainer />}
+          {(path.includes('/auth') || path === '/landing') ? null : <SideBarComponent />}
           {children}
         </ReduxProvider>
       </body>
