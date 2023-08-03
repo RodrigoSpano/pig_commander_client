@@ -21,7 +21,7 @@ const NavBar = () => {
             </p>
           </Link>
 
-          <Link href="/AboutUs">
+          <Link href="/About">
             <p className='mr-10 hover:font-semibold hover:text-regularPink cursor-pointer'>
               About Us
             </p>
