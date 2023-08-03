@@ -1,8 +1,12 @@
+'use client'
 import React from "react";
 import styles from "./dashboard.module.css";
-import { Flex } from "@tremor/react";
+import usePagination from "@/customHooks/usePagination";
+import TransactionsComponent from "../Transactions/TransactionsComponent";
+import PaginationComponent from "../Pagination/PaginationComponent";
 
 export default function DashboardComponent() {
+  
   return (
     <>
       <div>
@@ -17,9 +21,9 @@ export default function DashboardComponent() {
           </div>
 
           <div className={styles.grid_2x3}>
-            <div className={`${styles.myJournal}  ${styles.shadow_background}`}>myJournal</div>
-            <div className={`${styles.mySpendings}  ${styles.shadow_background}`}>mySpendings</div>
-            <div className={`${styles.myGraph}  ${styles.shadow_background}`}>myGraph</div>
+            <div className={`${styles.myJournal}  ${styles.shadow_background} h-[337px]`}>myJournal</div>
+              <TransactionsComponent/>
+            <div className={`${styles.myGraph}  ${styles.shadow_background} w-[388px] h-[378px]`}>myGraph</div>
           </div>
         </div>
       </div>
