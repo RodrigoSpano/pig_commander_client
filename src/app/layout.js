@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
-axios.defaults.baseURL = `${process.env.API_URI}`
+// axios.defaults.baseURL = `${process.env.API_URI}`
+axios.defaults.baseURL = 'http://localhost:8080/api'
 
 export default function RootLayout({ children }) {
   const path = usePathname();
@@ -17,12 +18,12 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <div className="flex">
             {path === "/login" ||
-            path === "/signup" ||
-            path === "/About" ||
-            path === "/Pricing" ||
-            path === "/Features" ||
-            path === "/" ? null : (
-            <SideBar />
+              path === "/signup" ||
+              path === "/About" ||
+              path === "/Pricing" ||
+              path === "/Features" ||
+              path === "/" ? null : (
+              <SideBar />
             )}
             <div className="w-screen">{children}</div>
           </div>

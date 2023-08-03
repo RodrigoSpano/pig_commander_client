@@ -1,10 +1,10 @@
-import { authorizeUser, loginUser } from "@/redux/actions/userActions";
-import React, { useState } from "react";
+import {  loginUser } from "@/redux/actions/userActions";
+import  { useState } from "react";
 import { useDispatch } from "react-redux";
-import { redirect } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
 export default function () {
-
+    const router = useRouter()
     const dispatch = useDispatch(); 
 
     const [userLogin, setUserLogin] = useState({
@@ -32,20 +32,10 @@ export default function () {
 
     //loginUser = action
         dispatch(loginUser(userLogin))
-        .then(resp=>{
-            if(resp.success){
-                dispatch(authorizeUser(resp.token))
-                .then(res => {
-                    if(res.logged){
-                        redirect("/home/dashboard"); 
-                    }
-                })
-            }
-        
-        })
-        .cath((error) => {
-            alert("Invalid credential")
-        })
+          .then(() => {
+            alert('logeado perri')
+            router.push('/home/dashboard')
+          })
 
     }
 
