@@ -57,7 +57,6 @@ export default function LoginContainer () {
                  <Link href="/signup">
                    <h4 className="text-regularPink font-medium">Register</h4>
                  </Link>
-                
             </div>
             <SideRight/>
         </div>
