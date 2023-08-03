@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
           <div className="flex">
             {path === "/login" ||
             path === "/signup" ||
-            path === "/About" ||
-            path === "/Pricing" ||
-            path === "/Features" ||
+            path === "/about" ||
+            path === "/pricing" ||
+            path === "/features" ||
             path === "/" ? null : (
             <SideBar />
             )}

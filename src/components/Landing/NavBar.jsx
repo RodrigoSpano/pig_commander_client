@@ -28,19 +28,19 @@ const NavBar = () => {
             </p>
           </Link>
 
-          <Link href='/About'>
+          <Link href='/about'>
             <p className='mr-10 hover:font-semibold hover:text-regularPink cursor-pointer'>
               About Us
             </p>
           </Link>
 
-          <Link href='/Pricing'>
+          <Link href='/pricing'>
             <p className='mr-10 hover:font-semibold hover:text-regularPink cursor-pointer'>
               Pricing
             </p>
           </Link>
 
-          <Link href='/Features'>
+          <Link href='/features'>
             <p className='hover:font-semibold hover:text-regularPink cursor-pointer'>
               Features
             </p>
