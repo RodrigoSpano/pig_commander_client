@@ -1,6 +1,11 @@
+import { authorizeUser, loginUser } from "@/redux/actions/userActions";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { redirect } from "next/navigation";
 
 export default function () {
+
+    const dispatch = useDispatch(); 
 
     const [userLogin, setUserLogin] = useState({
         email: "", 
@@ -24,9 +29,24 @@ export default function () {
     const handleSubmit = (event) => {
         //para que no salte de pagina
         event.preventDefault();
-        if (isEmail) return;
-        if (isPassword) return;
-      
+
+    //loginUser = action
+        dispatch(loginUser(userLogin))
+        .then(resp=>{
+            if(resp.success){
+                dispatch(authorizeUser(resp.token))
+                .then(res => {
+                    if(res.logged){
+                        redirect("/home/dashboard"); 
+                    }
+                })
+            }
+        
+        })
+        .cath((error) => {
+            alert("Invalid credential")
+        })
+
     }
 
     //validaciones de input
