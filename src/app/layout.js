@@ -4,8 +4,10 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import SideBar from "../components/SideBar/SideBarComponent";
 import { usePathname } from "next/navigation";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
+axios.defaults.baseURL = `${process.env.API_URI}`
 
 export default function RootLayout({ children }) {
   const path = usePathname();

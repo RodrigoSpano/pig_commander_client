@@ -1,11 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-const API_URI = `${process.env.API_URI}`
 
 //helper para traer incomes
 export const getMonthlyIncomes = async () => {
   try {
-    const { data } = await axios(`${API_URI}/incomes/monthly`)
+    const { data } = await axios(`/incomes/monthly`)
     const modifiedData = data.map(el => {
       return {
         id: el.id,
@@ -27,7 +26,7 @@ export const getMonthlyIncomes = async () => {
 //helper para traer expenses
 export const getMonthlyExpenses = async () => {
   try {
-    const { data } = await axios(`${API_URI}/expenses/monthly`)
+    const { data } = await axios(`/expenses/monthly`)
     const modifiedData = data.map(el => {
       return {
         id: el.id,

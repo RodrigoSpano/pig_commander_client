@@ -21,7 +21,6 @@ export const monthlyTransactionsSlice = createSlice({
       state.transactions = action.payload.transactions
       state.backup_transactions = action.payload.transactions
     })
-
   }
 })
 
