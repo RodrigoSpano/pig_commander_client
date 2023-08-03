@@ -13,6 +13,9 @@ module.exports = {
       Poppins: ["Poppins", "sans-serif"],
     },
     extend: {
+      backgroundImage: (theme) => ({
+        'side-right': "url('public/images/sideRight.png')",
+      }),
       screens: {
         sm: "480px",
         md: "768px",
@@ -57,6 +60,7 @@ module.exports = {
             strong: "#111827", // gray-900
             inverted: "#ffffff", // white
           },
+          
         },
         // dark mode
         "dark-tremor": {
