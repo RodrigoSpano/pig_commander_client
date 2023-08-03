@@ -5,16 +5,16 @@ const usePagination = () => {
     const TRANSACTION_PER_PAGE = 3;
 
     const transactionsState = [
-        { name: 'trans1', amount: 500 },
-        { name: 'trans2', amount: 100 },
-        { name: 'trans3', amount: 200 },
-        { name: 'trans4', amount: 150 },
-        { name: 'trans5', amount: 560 },
-        { name: 'trans6', amount: 500 },
-        { name: 'trans7', amount: 800 },
-        { name: 'trans8', amount: 900 },
-        { name: 'trans9', amount: 507 },
-        { name: 'trans10', amount: 780 }
+        { name: 'Trans1', amount: '$500' },
+        { name: 'Trans2', amount: '$100' },
+        { name: 'Trans3', amount: '$200' },
+        { name: 'Trans4', amount: '$150' },
+        { name: 'Trans5', amount: '$560' },
+        { name: 'Trans6', amount: '$500' },
+        { name: 'Trans7', amount: '$800' },
+        { name: 'Trans8', amount: '$900' },
+        { name: 'Trans9', amount: '$507' },
+        { name: 'Trans10', amount: '$780' }
     ]
 
     const [prev, setPrev] = useState(0)
