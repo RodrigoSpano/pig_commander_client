@@ -2,8 +2,8 @@ import React from "react";
 
 const PaginationComponent = ({ count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler }) => {
   return (
-    <div>
-      <div>
+    <div className="flex flex-col justify-center items-center">
+      <div className="flex gap-2">
         <button onClick={prevHandler}>{"<"}</button>
 
         <h3>
@@ -12,9 +12,10 @@ const PaginationComponent = ({ count, totalPages, nextHandler, prevHandler, firs
 
         <button onClick={nextHandler}>{">"}</button>
       </div>
-
-      <button onClick={firstPageHandler}>{"FIRST"}</button>
-      <button onClick={lastPageHandler}>{"LAST"}</button>
+      <div className="flex gap-3">
+        <button onClick={firstPageHandler}>{"FIRST"}</button>
+        <button onClick={lastPageHandler}>{"LAST"}</button>
+      </div>
     </div>
   );
 };
