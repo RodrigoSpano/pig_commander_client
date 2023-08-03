@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { createExpense, createIncome, deleteExpense, deleteIncome, getAllTransactions, updateExpense } from '../actions/transactionsActions'
+import { createExpense, createIncome, deleteExpense, deleteIncome, getAllTransactions, updateExpense, updateIncome } from '../actions/transactionsActions'
 
 
 const initialState = {
