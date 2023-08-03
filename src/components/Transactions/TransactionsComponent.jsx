@@ -8,7 +8,7 @@ const TransactionsComponent = () => {
     const {transactions, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler} = usePagination() 
 
   return (
-        <div className={`${styles.mySpendings}  ${styles.shadow_background} w-[1059px] h-[380px]`}>
+        <div className={`${styles.mySpendings}  ${styles.shadow_background}`}>
             {transactions.length && transactions.map((t, index) => (
                 <p key={index}>{t.name}</p>
             ))}
