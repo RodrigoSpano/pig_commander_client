@@ -43,12 +43,18 @@ const NavBar = () => {
 
         {/* BOTONES */}
         <div className='flex justify-center items-center'>
-          <button className="text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-4 mx-2" >
-            Log In
-          </button>
-          <button className="text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-4" >
-            Register
-          </button>
+          <Link href="/#">
+            <button className="text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-4 mx-2" >
+              Log In
+            </button>
+          </Link>
+
+          <Link href="/#">
+            <button className="text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-4" >
+              Register
+            </button>
+          </Link>
+
         </div>
       </nav>
     </>
