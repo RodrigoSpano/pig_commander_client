@@ -14,7 +14,7 @@ export default function HeroSection() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
-                href="#"
+                href="/#"
                 className="rounded-md bg-gradient-to-r from-regularPink to-boldPink px-8 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Get started <span aria-hidden="true">&rarr;</span>
