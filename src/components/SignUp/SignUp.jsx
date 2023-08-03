@@ -15,6 +15,7 @@ export default function SignUpComponent () {
         inputInvalidPassword,
         someFieldEmpty,} = useSignup(); 
 
+
     return (
         <div className="flex flex-row h-screen	">
             <div className="w-2/4 self-center text-center">
