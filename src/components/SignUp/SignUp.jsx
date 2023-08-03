@@ -1,4 +1,6 @@
 import React from "react";
+import SideRight from "../SideRight/SideRight"; 
+
 
 export default function SignUpComponent () {
     return (
@@ -20,9 +22,7 @@ export default function SignUpComponent () {
                 <h3 className="text-gray-500 mt-5">Already have an account?</h3>
                 <h4 className="text-regularPink font-medium">Login</h4>
             </div>
-            <div className="w-2/4">
-            lado 2s
-            </div>
+           <SideRight/>
         </div>
     )
 }; 
