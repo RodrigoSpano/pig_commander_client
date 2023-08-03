@@ -4,16 +4,27 @@ import { useEffect, useState } from 'react'
 const usePagination = () => {
     const TRANSACTION_PER_PAGE = 3;
 
-    const transactionsState = [{name: 'trans1'},{name: 'trans2'},{name: 'trans3'},{name: 'trans4'},{name: 'trans5'},{name: 'trans6'},{name: 'trans7'},{name: 'trans8'},{name: 'trans9'},{name: 'trans10'}]
+    const transactionsState = [
+        { name: 'trans1', amount: 500 },
+        { name: 'trans2', amount: 100 },
+        { name: 'trans3', amount: 200 },
+        { name: 'trans4', amount: 150 },
+        { name: 'trans5', amount: 560 },
+        { name: 'trans6', amount: 500 },
+        { name: 'trans7', amount: 800 },
+        { name: 'trans8', amount: 900 },
+        { name: 'trans9', amount: 507 },
+        { name: 'trans10', amount: 780 }
+    ]
 
     const [prev, setPrev] = useState(0)
     const [next, setNext] = useState(TRANSACTION_PER_PAGE)
     const [count, setCount] = useState(1); //? para que haga el cambio de pagina
 
     let transactions = transactionsState.slice(prev, next) //? para mostrar de 3 en 3
-    
+
     const totalPages = Math.ceil(transactionsState.length / TRANSACTION_PER_PAGE); //total de paginas que va a tener mi SPA
-    
+
     const nextHandler = () => {
         if (count < totalPages) {
             setNext(next + TRANSACTION_PER_PAGE); //? aumenta el valor de next para mostrar la siguiente pag
