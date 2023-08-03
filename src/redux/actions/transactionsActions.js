@@ -76,11 +76,11 @@ export const deleteIncome = createAsyncThunk('income/delete', async (id) => {
   return id
 })
 
-export const updateExpense = createAsyncThunk('expense/update', async (id, data) => {
-  const { data } = await axios.put(`/expenses/${id}`, data)
+export const updateExpense = createAsyncThunk('expense/update', async (id, newData) => {
+  const { data } = await axios.put(`/expenses/${id}`, newData)
   return data
 })
-export const updateIncome = createAsyncThunk('income/update', async (id, data) => {
-  const { data } = await axios.put(`/incomes/${id}`, data)
+export const updateIncome = createAsyncThunk('income/update', async (id, newData) => {
+  const { data } = await axios.put(`/incomes/${id}`, newData)
   return data
 })
