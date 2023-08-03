@@ -1,8 +1,7 @@
 'use client'; 
 import React, { useState } from "react";
-import SideRight from "../SideRight/SideRight"
-
-
+import SideRight from "../SideRight/SideRight";
+import Link from "next/link";
 
 export default function LoginContainer () {
 
@@ -55,7 +54,10 @@ export default function LoginContainer () {
                     Login Now
                 </button>
                 <h3 className="text-gray-500 mt-5">Don't have an account?</h3>
-                <h4 className="text-regularPink font-medium">Register</h4>
+                 <Link href="/signup">
+                   <h4 className="text-regularPink font-medium">Register</h4>
+                 </Link>
+                
             </div>
             <SideRight/>
         </div>
