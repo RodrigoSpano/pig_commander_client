@@ -1,69 +1,96 @@
-'use client'
 import { useEffect, useState } from 'react'
 
 const usePagination = () => {
-    const TRANSACTION_PER_PAGE = 3;
+  const TRANSACTION_PER_PAGE = 3;
 
-    const transactionsState = [
-        { name: 'Trans1',type:'expense', amount: '$500' },
-        { name: 'Trans2',type:'income', amount: '$100' },
-        { name: 'Trans8',type:'expense', amount: '$900' },
-        { name: 'Trans3',type:'income', amount: '$200' },
-        { name: 'Trans6',type:'expense', amount: '$500' },
-        { name: 'Trans7',type:'expense', amount: '$800' },
-        { name: 'Trans4',type:'income', amount: '$150' },
-        { name: 'Trans9',type:'expense', amount: '$507' },
-        { name: 'Trans5',type:'income', amount: '$560' },
-        { name: 'Trans10',type:'expense', amount: '$780' }
-    ]
+  const transactionsOrigin = [
+    { name: 'McDonalds', type: 'expense', amount: '$500' },
+    { name: 'Levis', type: 'income', amount: '$100' },
+    { name: 'Subway', type: 'expense', amount: '$900' },
+    { name: 'Coto', type: 'income', amount: '$200' },
+    { name: 'Carrefour', type: 'expense', amount: '$500' },
+    { name: 'Adidas', type: 'expense', amount: '$800' },
+    { name: 'Nike', type: 'income', amount: '$150' },
+    { name: 'Burger King', type: 'expense', amount: '$507' },
+    { name: 'Puma', type: 'income', amount: '$560' },
+    { name: 'YPF', type: 'expense', amount: '$780' }
+  ];
 
-    const [prev, setPrev] = useState(0)
-    const [next, setNext] = useState(TRANSACTION_PER_PAGE)
-    const [count, setCount] = useState(1); //? para que haga el cambio de pagina
+  const [transactions, setTransactions] = useState([...transactionsOrigin]);
+  const [prev, setPrev] = useState(0);
+  const [next, setNext] = useState(TRANSACTION_PER_PAGE);
+  const [count, setCount] = useState(1);
 
-    let transactions = transactionsState.slice(prev, next) //? para mostrar de 3 en 3
+  const handleSearch = (e) => {
+    console.log('Valor del campo de búsqueda:', e.target.value);
+    const filteredTransactions = transactionsOrigin.filter(t => t.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    console.log('Resultado de la búsqueda:', filteredTransactions);
 
-    const totalPages = Math.ceil(transactionsState.length / TRANSACTION_PER_PAGE); //total de paginas que va a tener mi SPA
-
-    const nextHandler = () => {
-        if (count < totalPages) {
-            setNext(next + TRANSACTION_PER_PAGE); //? aumenta el valor de next para mostrar la siguiente pag
-            setPrev(prev + TRANSACTION_PER_PAGE); //? Aumenta el valor de 'prev' para mantener la coherencia de los perros mostrados en la página.
-            setCount(count + 1);    //? Aumentamos el valor de 'count' para indicar la página actual.
-        }
+    if (e.target.value === '') {
+      setTransactions([...transactionsOrigin]);
+    } else {
+      setTransactions(filteredTransactions);
     }
+  };
 
-    const prevHandler = () => {
-        if (count > 1) {
-            if (prev - TRANSACTION_PER_PAGE <= 0) {   //esta verificacion es para cuando estemos en la primera pagina
-                setPrev(0)  //? para que no se pueda seguir yendo para atras 
-                setNext(TRANSACTION_PER_PAGE) //? para mostrar los perros de la primer pag 
-            }
-            else if (prev - 3 >= 0) {  //esta verificacion es para cuando NO estemos en la primera pagina
-                setPrev(prev - TRANSACTION_PER_PAGE)  //? se reduce prev para saber si se puede seguir yendo para atras
-                setNext(next - TRANSACTION_PER_PAGE)  //? Aumentamos el valor de 'count' para indicar la página actual.
-            }
-            setCount(count - 1) //? se reduce el valor de count para indicar la nueav pagina actual
-        }
+  const sortMonthlyTransactions = (sortOrder) => {
+    if (sortOrder === "asc") {
+      const sortedTransactions = [...transactions].sort((a, b) => b.name.localeCompare(a.name));
+      setTransactions(sortedTransactions);
+      return "desc";
+    } else {
+      const sortedTransactions = [...transactions].sort((a, b) => a.name.localeCompare(b.name));
+      setTransactions(sortedTransactions);
+      return "asc";
     }
+  };
 
-    const firstPageHandler = () => {
-        setPrev(0);                 //? se establece el valor de prev en 0 para mostrar la primera pag
-        setNext(TRANSACTION_PER_PAGE);    //? se establece el valor de 'next' en el número de perros por pág para mostrar los perros de la primera pág
-        setCount(1);
+  const totalPages = Math.ceil(transactions.length / TRANSACTION_PER_PAGE);
+
+  const nextHandler = () => {
+    if (count < totalPages) {
+      setNext(next + TRANSACTION_PER_PAGE);
+      setPrev(prev + TRANSACTION_PER_PAGE);
+      setCount(count + 1);
     }
+  };
 
-    const lastPageHandler = () => {
-        setPrev((totalPages - 1) * TRANSACTION_PER_PAGE); //? Establece el valor de 'prev' en el índice del primer perro de la última página
-        setNext(totalPages * TRANSACTION_PER_PAGE);   //? Establece que al navegar a la última página, se muestren los perros desde el índice correcto en la interfaz de usuario 
-        setCount(totalPages);   //? indica que esta en la ultima pagina
-    };
+  const prevHandler = () => {
+    if (count > 1) {
+      setNext(next - TRANSACTION_PER_PAGE);
+      setPrev(prev - TRANSACTION_PER_PAGE);
+      setCount(count - 1);
+    }
+  };
 
-    useEffect(() => {   //? cada vez que la longitud de 'dogsState' cambia, irá a la primera página automáticamente
-        firstPageHandler()
-    }, [transactionsState.length])
+  const firstPageHandler = () => {
+    setPrev(0);                
+    setNext(TRANSACTION_PER_PAGE);    
+    setCount(1);
+  }
 
-    return { nextHandler, prevHandler, firstPageHandler, lastPageHandler, totalPages, count, transactions }
-}
+  const lastPageHandler = () => {
+    setPrev((totalPages - 1) * TRANSACTION_PER_PAGE); 
+    setNext(totalPages * TRANSACTION_PER_PAGE);   
+    setCount(totalPages);
+  };
+
+  useEffect(() => { 
+    firstPageHandler()
+  }, [transactions.length])
+
+
+  return {
+    transactions: transactions.slice(prev, next),
+    prevHandler,
+    nextHandler,
+    firstPageHandler,
+    lastPageHandler,
+    count,
+    totalPages,
+    handleSearch,
+    sortMonthlyTransactions
+  };
+};
 
 export default usePagination;
