@@ -21,12 +21,12 @@ export const loginUser = createAsyncThunk('user/login', async (userData) => {
     if (data.token) {
       const auth = await authorizeUser(data.token)
       if (auth.logged) {
+        alert('logeado perri')
         return { user: data.user, logged: true }
       }
     }
-    throw Error('could not login')
   } catch (error) {
-    alert('error perri')
+    alert('error')
     console.log(error)
   }
 })

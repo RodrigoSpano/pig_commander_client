@@ -4,15 +4,18 @@ import styles from "./dashboard.module.css";
 import usePagination from "@/customHooks/usePagination";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
 import PaginationComponent from "../Pagination/PaginationComponent";
+import { useSelector } from "react-redux";
 
 export default function DashboardComponent() {
+  const user = useSelector(state => state.user)
   return (
     <>
       <div>
         <div className={styles.container}>
           <div className={styles.grid_2x12}>
             <div className={`${styles.welcome}`}>
-              <div className={styles.tipography_welcome}>Welcome Back Chanchuski</div>
+              <div className={styles.tipography_welcome}>Welcome Back {user.name.replace(/^\w/, (c) => c.toUpperCase())
+}</div>
               <div className={styles.tipography_title}>Pig Commander is the most secure finance app.</div>
             </div>
             <div
