@@ -44,6 +44,13 @@ export const getAllExpenses = async () => {
   }
 }
 
+export const getAllTransactions = createAsyncThunk('transactions/all', async () => {
+  const incomes = await getAllIncomes()
+  const expenses = await getAllExpenses()
+  const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
+  return { transactions }
+})
+
 export const createExpense = createAsyncThunk('expense/create', async (expenseInfo) => {
   try {
     const { data } = await axios.post('/expenses', expenseInfo)
@@ -62,17 +69,11 @@ export const createIncome = createAsyncThunk('income/create', async (incomeInfo)
   }
 })
 
-export const getAllTransactions = createAsyncThunk('transactions/all', async () => {
-  const incomes = await getAllIncomes()
-  const expenses = await getAllExpenses()
-  const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
-  return { incomes, expenses, transactions }
-})
-
 export const deleteExpense = createAsyncThunk('expense/delete', async (id) => {
   await axios.delete(`/expenses/${id}`)
   return id
 })
+
 export const deleteIncome = createAsyncThunk('income/delete', async (id) => {
   await axios.delete(`/incomes/${id}`)
   return id
@@ -82,6 +83,7 @@ export const updateExpense = createAsyncThunk('expense/update', async (id, newDa
   const { data } = await axios.put(`/expenses/${id}`, newData)
   return data
 })
+
 export const updateIncome = createAsyncThunk('income/update', async (id, newData) => {
   const { data } = await axios.put(`/incomes/${id}`, newData)
   return data
