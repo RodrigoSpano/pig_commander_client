@@ -7,8 +7,6 @@ import { FcGoogle } from "react-icons/fc";
 
 
 export default function LoginContainer () {
-    const [focusedEmailInput, setFocusedEmailInput] = useState(false); 
-    const [focusedPasswordInput, setFocusedPasswordInput] = useState(false); 
 
     const {
         userLogin,
@@ -16,16 +14,13 @@ export default function LoginContainer () {
         inputInvalidPassword, 
         handleChange, 
         inputInvalidEmail, 
-        someFieldEmpty
+        someFieldEmpty,
+        focusedEmailInput,
+        focusedPasswordInput,
+        allowEmailErrorMessage,
+        allowPasswordErrorMessage,
     } = useLogin(); 
 
-    const allowEmailErrorMessage = () => {
-        setFocusedEmailInput(true);
-    }
-
-    const allowPasswordErrorMessage = () => {
-        setFocusedPasswordInput(true);
-    }
 
     return (
         <div className="flex flex-row h-screen">

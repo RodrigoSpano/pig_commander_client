@@ -8,9 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 
 
 export default function SignUpComponent () {
-    const [focusedEmailInput, setFocusedEmailInput] = useState(false); 
-    const [focusedPasswordInput, setFocusedPasswordInput] = useState(false); 
-    const [focusedNameInput, setFocusedNameInput] = useState(false); 
+     
 
     const {userSignUp, 
         handleChange, 
@@ -18,20 +16,14 @@ export default function SignUpComponent () {
         inputInvalidName,
         inputInvalidEmail, 
         inputInvalidPassword,
-        someFieldEmpty,} = useSignup(); 
-
-    const allowNameErrorMessage = () => {
-        setFocusedNameInput(true); 
-    }
-
-    const allowEmailErrorMessage = () => {
-        setFocusedEmailInput(true);
-    }
-    
-    const allowPasswordErrorMessage = () => {
-        setFocusedPasswordInput(true);
-    }
-
+        someFieldEmpty,
+        focusedEmailInput,
+        focusedPasswordInput,
+        focusedNameInput,
+        allowNameErrorMessage,
+        allowEmailErrorMessage,
+        allowPasswordErrorMessage
+    } = useSignup(); 
 
 
     return (
