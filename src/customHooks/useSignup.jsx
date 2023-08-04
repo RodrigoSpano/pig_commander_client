@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function () {
-
+  	const router = useRouter()
     const [userSignUp, setUserSignUp] = useState({
         name:"",
         lastName:"",
@@ -17,6 +19,30 @@ export default function () {
         });
     };
 
+    const signupRequest = async () => {
+        try {
+            const user = {
+                name: userSignUp.name,
+                lastname: userSignUp.lastName,
+                password: userSignUp.password,
+                email: userSignUp.email
+            }
+            const {data} = await axios.post('/auth/signup', user)
+            if(data?.success){
+                alert('cuenta creada')
+								router.push('/login')
+            }else {
+							throw Error('hubo un error al crear tu cuenta')
+						}
+        } catch (error) {
+            if(error.response){
+							alert(error.response.data.error)
+						}else {
+							alert(error.message)
+						}
+        }
+    }
+
     const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userSignUp.email); 
 
     const isPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/.test(userSignUp.password); 
@@ -28,12 +54,10 @@ export default function () {
 
     // mandar siemre y cuando ningun espacio este vacio 
     const handleSubmit = (event) => {
-        //para que no salte de pagina
-        event.preventDefault();
-        if (isName) return; 
-        if (isLastName) return;
-        if (isEmail) return;
-        if (isPassword) return;
+       //para que no salte de pagina
+      event.preventDefault();
+      signupRequest()
+
     }
 
     //validaciones de input
