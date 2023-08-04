@@ -1,26 +1,23 @@
 import { useEffect, useState } from 'react'
 
 const usePagination = () => {
-  const TRANSACTION_PER_PAGE = 3;
+  const TRANSACTION_PER_PAGE = 4;
 
   const transactionsOrigin = [
-    { name: 'McDonalds', type: 'expense', amount: '$500' },
-    { name: 'Levis', type: 'income', amount: '$100' },
-    { name: 'Subway', type: 'expense', amount: '$900' },
-    { name: 'Coto', type: 'income', amount: '$200' },
-    { name: 'Carrefour', type: 'expense', amount: '$500' },
-    { name: 'Adidas', type: 'expense', amount: '$800' },
-    { name: 'Nike', type: 'income', amount: '$150' },
-    { name: 'Burger King', type: 'expense', amount: '$507' },
-    { name: 'Puma', type: 'income', amount: '$560' },
-    { name: 'YPF', type: 'expense', amount: '$780' }
+    { name: 'McDonalds', amount: '$500', category: 'Food', date: '11/2/23', type: 'expense' },
+    { name: 'Levis', amount: '$100', category: 'Clothes', date: '16/11/22', type: 'income' },
+    { name: 'Subway', amount: '$900', category: 'Food', date: '1/1/21', type: 'expense' },
+    { name: 'Coto', amount: '$200', category: 'Shopping', date: '20/2/23', type: 'income' },
+    { name: 'Carrefour', amount: '$500', category: 'Shopping', date: '14/6/23', type: 'expense' },
+    { name: 'Adidas', amount: '$800', category: 'Shopping', date: '22/11/23', type: 'expense' },
+    { name: 'Cine', amount: '$150', category: 'Entertaining', date: '19/3/20', type: 'income' },
+    { name: 'Burger King', amount: '$507', category: 'Food', date: '29/7/22', type: 'expense' },
+    { name: 'Puma', amount: '$560', category: 'Shopping', date: '17/8/22', type: 'income' },
+    { name: 'Taxi', amount: '$780', category: 'Transport', date: '21/8/23', type: 'expense' }
   ];
 
   const [transactions, setTransactions] = useState([...transactionsOrigin]);
-  const [prev, setPrev] = useState(0);
-  const [next, setNext] = useState(TRANSACTION_PER_PAGE);
-  const [count, setCount] = useState(1);
-
+  
   const handleSearch = (e) => {
     console.log('Valor del campo de búsqueda:', e.target.value);
     const filteredTransactions = transactionsOrigin.filter(t => t.name.toLowerCase().includes(e.target.value.toLowerCase()));
@@ -44,7 +41,7 @@ const usePagination = () => {
       return "asc";
     }
   };
-
+  
   const sortMonthlyTransactionsAmount = (sortOrderMonthlyTransactionAmount) => {
     if (sortOrderMonthlyTransactionAmount === "asc") {
       const sortedTransactions = [...transactions].sort((a, b) => parseFloat(b.amount.slice(1)) - parseFloat(a.amount.slice(1)));
@@ -56,8 +53,11 @@ const usePagination = () => {
       return "asc";
     }
   };
-    
 
+  const [prev, setPrev] = useState(0);
+  const [next, setNext] = useState(TRANSACTION_PER_PAGE);
+  const [count, setCount] = useState(1);
+  
   const totalPages = Math.ceil(transactions.length / TRANSACTION_PER_PAGE);
 
   const nextHandler = () => {
