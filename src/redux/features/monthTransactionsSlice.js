@@ -34,6 +34,6 @@ export const monthlyTransactionsSlice = createSlice({
   },
 });
 
-export const { sortMonthlyTransactions } = monthlyTransactionsSlice.actions;
+export const { clearFilters, filterByType } = monthlyTransactionsSlice.actions;
 
 export default monthlyTransactionsSlice.reducer;
