@@ -4,7 +4,6 @@ import { getAllTransactions } from "../actions/monthTransactionsActions";
 const initialState = {
   transactions: [],
   backup_transactions: [],
-  sortOrder: "asc",
 };
 
 const transactionsTypes = {
