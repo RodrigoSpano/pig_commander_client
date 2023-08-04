@@ -5,14 +5,33 @@ import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
 
 const TransactionsComponent = () => {
-  const { transactions, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler, handleSearch, sortMonthlyTransactions } = usePagination();
-  const [sortOrder, setSortOrder] = useState('asc');
+  const {
+    transactions,
+    count,
+    totalPages,
+    nextHandler,
+    prevHandler,
+    firstPageHandler,
+    lastPageHandler,
+    handleSearch,
+    sortMonthlyTransactions,
+    sortMonthlyTransactionsAmount
+  } = usePagination();
 
-  const handleSort = () => {
-    const newSortOrder = sortMonthlyTransactions(sortOrder);
-    setSortOrder(newSortOrder);
+  const [sortOrderMonthlyTransactionNameLocalSate, setSortOrderMonthlyTransactionNameLocalSate] = useState('asc');
+
+  const [sortMonthlyTransactionsAmountLocalSate, setsortMonthlyTransactionsAmountLocalSate] = useState('asc');
+  
+  const handleSortMonthlyTransactionName = () => {
+    const monthlyTransactionName = sortMonthlyTransactions(sortOrderMonthlyTransactionNameLocalSate);
+    setSortOrderMonthlyTransactionNameLocalSate(monthlyTransactionName);
   };
 
+  const handleSortMonthlyTransactionAmount = () => {
+    const monthlyTransactionAmount = sortMonthlyTransactionsAmount(sortMonthlyTransactionsAmountLocalSate);
+    setsortMonthlyTransactionsAmountLocalSate(monthlyTransactionAmount);
+  };
+  
   return (
     <div className={`${styles.mySpendings} ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
       <div className='flex'>
@@ -21,10 +40,10 @@ const TransactionsComponent = () => {
       </div>
       <div className='h-[200px]'>
         <div className='flex gap-80 m-3 items-center justify-center'>
-          <div className='font-medium w-[100px] cursor-pointer' onClick={handleSort}>
+          <div className='font-medium w-[100px] cursor-pointer' onClick={handleSortMonthlyTransactionName}>
             Name
           </div>
-          <div className='font-medium'>
+          <div className='font-medium cursor-pointer' onClick={handleSortMonthlyTransactionAmount}>
             Amount
           </div>
         </div>

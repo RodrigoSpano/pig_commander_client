@@ -33,8 +33,8 @@ const usePagination = () => {
     }
   };
 
-  const sortMonthlyTransactions = (sortOrder) => {
-    if (sortOrder === "asc") {
+  const sortMonthlyTransactions = (sortOrderMonthlyTransactionName) => {
+    if (sortOrderMonthlyTransactionName === "asc") {
       const sortedTransactions = [...transactions].sort((a, b) => b.name.localeCompare(a.name));
       setTransactions(sortedTransactions);
       return "desc";
@@ -44,6 +44,19 @@ const usePagination = () => {
       return "asc";
     }
   };
+
+  const sortMonthlyTransactionsAmount = (sortOrderMonthlyTransactionAmount) => {
+    if (sortOrderMonthlyTransactionAmount === "asc") {
+      const sortedTransactions = [...transactions].sort((a, b) => parseFloat(b.amount.slice(1)) - parseFloat(a.amount.slice(1)));
+      setTransactions(sortedTransactions);
+      return "desc";
+    } else {
+      const sortedTransactions = [...transactions].sort((a, b) => parseFloat(a.amount.slice(1)) - parseFloat(b.amount.slice(1)));
+      setTransactions(sortedTransactions);
+      return "asc";
+    }
+  };
+    
 
   const totalPages = Math.ceil(transactions.length / TRANSACTION_PER_PAGE);
 
@@ -89,7 +102,8 @@ const usePagination = () => {
     count,
     totalPages,
     handleSearch,
-    sortMonthlyTransactions
+    sortMonthlyTransactions,
+    sortMonthlyTransactionsAmount
   };
 };
 
