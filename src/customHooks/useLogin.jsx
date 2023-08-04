@@ -14,6 +14,7 @@ export default function () {
   
 
     const handleChange = (e) => {
+        console.log({ e });
         setUserLogin({
             ...userLogin, 
             [e.target.name]: e.target.value
