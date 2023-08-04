@@ -27,16 +27,15 @@ export default function () {
 
     // mandar siemre y cuando ningun espacio este vacio 
     const handleSubmit = (event) => {
-        //para que no salte de pagina
         event.preventDefault();
 
     //loginUser = action
         dispatch(loginUser(userLogin))
-          .then(() => {
-            alert('logeado perri')
-            router.push('/home/dashboard')
-          })
-
+          .then((resp)=> {
+            if(resp.payload?.logged){
+              router.push('/home/dashboard')
+            }
+          } )
     }
 
     //validaciones de input
