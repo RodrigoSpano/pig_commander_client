@@ -1,27 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { getAllTransactions } from '../actions/monthTransactionsActions'
-
+import { createSlice } from "@reduxjs/toolkit";
+import { getAllTransactions } from "../actions/monthTransactionsActions";
 
 const initialState = {
   incomes: [],
   expenses: [],
   transactions: [],
-  backup_transactions: []
-}
-
+  backup_transactions: [],
+  sortOrder: "asc",
+};
 
 export const monthlyTransactionsSlice = createSlice({
-  name: 'monthTransactions',
+  name: "monthTransactions",
   initialState,
-  reducers: {},
+  reducers: {
+
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllTransactions.fulfilled, (state, action) => {
-      state.incomes = action.payload.incomes
-      state.expenses = action.payload.expenses
-      state.transactions = action.payload.transactions
-      state.backup_transactions = action.payload.transactions
-    })
-  }
-})
+      state.incomes = action.payload.incomes;
+      state.expenses = action.payload.expenses;
+      state.transactions = action.payload.transactions;
+      state.backup_transactions = action.payload.transactions;
+    });
+  },
+});
 
-export default monthlyTransactionsSlice.reducer
+export const { sortMonthlyTransactions } = monthlyTransactionsSlice.actions;
+
+export default monthlyTransactionsSlice.reducer;

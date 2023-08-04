@@ -9,7 +9,12 @@ export default function () {
         lastName:"",
         email: "", 
         password: "", 
-    })
+    }); 
+
+
+    const [focusedEmailInput, setFocusedEmailInput] = useState(false); 
+    const [focusedPasswordInput, setFocusedPasswordInput] = useState(false); 
+    const [focusedNameInput, setFocusedNameInput] = useState(false);
   
 
     const handleChange = (e) => {
@@ -68,6 +73,20 @@ export default function () {
     //boton disable
     const someFieldEmpty = !isEmail || !isPassword || !isName || !isLastName
 
+    //focus del inmput con error 
+    const allowNameErrorMessage = () => {
+        setFocusedNameInput(true); 
+    }
+
+    const allowEmailErrorMessage = () => {
+        setFocusedEmailInput(true);
+    }
+    
+    const allowPasswordErrorMessage = () => {
+        setFocusedPasswordInput(true);
+    }
+
+
     return {
         userSignUp, 
         handleChange, 
@@ -75,6 +94,12 @@ export default function () {
         inputInvalidName,
         inputInvalidEmail, 
         inputInvalidPassword,
-        someFieldEmpty, 
+        someFieldEmpty,
+        focusedEmailInput,
+        focusedPasswordInput,
+        focusedNameInput,
+        allowNameErrorMessage,
+        allowEmailErrorMessage,
+        allowPasswordErrorMessage
     }
 }

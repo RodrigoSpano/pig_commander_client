@@ -12,8 +12,11 @@ export default function () {
         password: "", 
     })
   
+    const [focusedEmailInput, setFocusedEmailInput] = useState(false); 
+    const [focusedPasswordInput, setFocusedPasswordInput] = useState(false); 
 
     const handleChange = (e) => {
+        console.log({ e });
         setUserLogin({
             ...userLogin, 
             [e.target.name]: e.target.value
@@ -45,6 +48,17 @@ export default function () {
     //boton disable
     const someFieldEmpty = !isEmail || !isPassword
 
+
+    const allowEmailErrorMessage = () => {
+        setFocusedEmailInput(true);
+    }
+
+    const allowPasswordErrorMessage = () => {
+        setFocusedPasswordInput(true);
+    }
+
+
+
     return {
         userLogin, 
         handleChange, 
@@ -52,5 +66,10 @@ export default function () {
         inputInvalidEmail, 
         inputInvalidPassword,
         someFieldEmpty, 
-    }
+        focusedEmailInput,
+        focusedPasswordInput,
+        allowEmailErrorMessage,
+        allowPasswordErrorMessage,
+
+     }
 }
