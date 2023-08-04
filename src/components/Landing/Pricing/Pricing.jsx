@@ -9,7 +9,7 @@ const Pricing = () => {
     <>
       <NavBar />
       <div className='flex flex-col items-center justify-center min-h-screen pt-4'>
-        <div className='text-center mb-8 select-none'>
+        <div className='text-center mb-16 select-none'>
           <h1 className='font-bold text-3xl mb-4'>Convenient Pricing</h1>
           <div>
             <h3 className='text-lg'>Choose the right plan for you and get started controlling your capital.</h3>

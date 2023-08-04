@@ -3,6 +3,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../utils/Images/image.png';
+import {
+      HiOutlineHome,
+      HiOutlineFire,
+      HiOutlineCurrencyDollar,
+      HiOutlineExclamationCircle,
+      HiOutlineUserAdd,
+      HiOutlineUser
+} from "react-icons/hi";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,20 +81,37 @@ const NavBar = () => {
 
           {/* Hamburguer Menu Icon */}
           <div className='block md:hidden' onClick={toggleMenu}>
-            <svg
-              className='w-6 h-6 cursor-pointer'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M4 6h16M4 12h16m-7 6h7'
-              />
-            </svg>
+            {isOpen ? (
+              <svg
+                className='w-6 h-6 cursor-pointer'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M6 18L18 6M6 6l12 12'
+                />
+              </svg>
+            ) : (
+              <svg
+                className='w-6 h-6 cursor-pointer'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M4 6h16M4 12h16m-7 6h7'
+                />
+              </svg>
+            )}
           </div>
         </div>
 
@@ -94,42 +119,69 @@ const NavBar = () => {
         {isOpen && (
           <div className='px-4 py-2 bg-white'>
             <Link href='/'>
-              <p className='mb-2 text-sm hover:font-semibold hover:text-regularPink cursor-pointer'>
-                Home
-              </p>
+              <div className='flex justify-start items-center'>
+                <HiOutlineHome className='mr-1 text-regularPink text-xl' />
+                <p className='my-2 text-md'>
+                  Home
+                </p>
+              </div>
             </Link>
 
-            <Link href='/About'>
-              <p className='mb-2 text-sm hover:font-semibold hover:text-regularPink cursor-pointer'>
-                About Us
-              </p>
+            <hr />
+
+            <Link href='/about'>
+              <div className='flex justify-start items-center'>
+                <HiOutlineExclamationCircle className='mr-1 text-regularPink text-xl' />
+                <p className='my-2 text-md'>
+                  About Us
+                </p>
+              </div>
             </Link>
 
-            <Link href='/Pricing'>
-              <p className='mb-2 text-sm hover:font-semibold hover:text-regularPink cursor-pointer'>
-                Pricing
-              </p>
+            <hr />
+
+            <Link href='/pricing'>
+              <div className='flex justify-start items-center'>
+                <HiOutlineCurrencyDollar className='mr-1 text-regularPink text-xl' />
+                <p className='my-2 text-md'>
+                  Pricing
+                </p>
+              </div>
             </Link>
 
-            <Link href='/Features'>
-              <p className='mb-2 text-sm hover:font-semibold hover:text-regularPink cursor-pointer'>
-                Features
-              </p>
+            <hr />
+
+            <Link href='/features'>
+              <div className='flex justify-start items-center'>
+                <HiOutlineFire className='mr-1 text-regularPink text-xl' />
+                <p className='my-2 text-md'>
+                  Features
+                </p>
+              </div>
             </Link>
 
-            <div className='flex justify-center'>
-              <Link href='/login'>
-                <button className='text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-3 mx-2'>
+            <hr />
+
+            <Link href='/login'>
+              <div className='flex justify-start items-center'>
+                <HiOutlineUser className='mr-1 text-regularPink text-xl' />
+                <p className='my-2 text-md'>
                   Log In
-                </button>
-              </Link>
+                </p>
+              </div>
+            </Link>
 
-              <Link href='/signup'>
-                <button className='text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-3'>
+            <hr />
+
+            <Link href='/signup'>
+              <div className='flex justify-start items-center'>
+                <HiOutlineUserAdd className='mr-1 text-regularPink text-xl' />
+                <p className='my-2 text-md'>
                   Register
-                </button>
-              </Link>
-            </div>
+                </p>
+              </div>
+            </Link>
+
           </div>
         )}
       </nav>
