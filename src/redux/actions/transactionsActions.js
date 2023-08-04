@@ -7,6 +7,7 @@ export const getAllIncomes = async () => {
     const modifiedData = data.map(el => {
       return {
         id: el.id,
+        name: el.name,
         mount: el.mount,
         automatized: el.automatized,
         auto_date: el.auto_date,
@@ -27,6 +28,7 @@ export const getAllExpenses = async () => {
     const modifiedData = data.map(el => {
       return {
         id: el.id,
+        name: el.name,
         mount: el.mount,
         automatized: el.automatized,
         auto_date: el.auto_date,
