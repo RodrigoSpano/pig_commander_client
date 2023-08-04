@@ -7,7 +7,7 @@ import { HiMail, HiPhone } from 'react-icons/hi';
 const Footer = () => {
   return (
     <footer className='rounded-t-md shadow-black bg-white'>
-      <div className='flex flex-col md:flex-row justify-around items-center md:px-12 py-8'>
+      <div className='flex flex-col xl:items-start lg:items-start md:flex-row justify-around items-center md:px-12 py-8'>
         {/* CONTACT */}
         <div className='flex flex-col items-center md:items-start mb-4 md:mb-0'>
           <Image src={Logo} width={50} height={60} alt='Logo' />

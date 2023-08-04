@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ReduxProvider>
           <div className="flex">
-            {path === "/login" ||
+            { path === "/login" ||
               path === "/signup" ||
               path === "/about" ||
               path === "/pricing" ||
