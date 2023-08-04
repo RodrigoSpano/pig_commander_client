@@ -9,7 +9,7 @@ const TransactionsComponent = () => {
   const { transactions, count, totalPages, nextHandler, prevHandler, firstPageHandler, lastPageHandler } = usePagination()
 
   return (
-    <div className={`${styles.mySpendings}  ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px]`}>
+    <div className={`${styles.mySpendings}  ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
         <SearchBarComponent/>
       <div className='h-[200px]'>
         <div className='flex gap-80 m-3'>
@@ -26,7 +26,7 @@ const TransactionsComponent = () => {
               <p key={index}>{t.name}</p>
             </div>
             <div>
-              <p>{t.amount}</p>
+              <p className={`font-bold ${t.type === 'expense' ? 'text-red-500' : 'text-green-500'}`}>{t.amount}</p>
             </div>
           </div>
         ))}
