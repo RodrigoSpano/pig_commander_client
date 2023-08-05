@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+
 
 export default function () {
   	const router = useRouter()
@@ -34,10 +36,16 @@ export default function () {
             }
             const {data} = await axios.post('/auth/signup', user)
             if(data?.success){
-                alert('cuenta creada')
+                Swal.Fire({
+                    type:"success",
+                    title:"User created successfully",
+                }); 
 								router.push('/login')
             }else {
-							throw Error('hubo un error al crear tu cuenta')
+				Swal.Fire({
+                    type:"error",
+                    title:"There was an error creating your account successfully",
+                });
 						}
         } catch (error) {
             if(error.response){

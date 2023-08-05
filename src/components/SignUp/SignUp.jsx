@@ -33,18 +33,26 @@ export default function SignUpComponent () {
                 <h2 className="text-gray-500 mb-5">Pig Commander is the most secure finance App.</h2>
                 <div className="flex flex-row justify-center mb-3">
                     <div>
-                        <input className="bg-inputForm placeholder-black font-light rounded-lg text-sm p-1.5 w-40  relative right-1 focus:outline-none active:outline-none" type="text" value={userSignUp.name} name="name" placeholder="Name" autoComplete="off" onChange={handleChange} onFocus={allowNameErrorMessage} />
-                        <input className="bg-inputForm placeholder-black font-light rounded-lg text-sm p-1.5 w-40 relative left-1 focus:outline-none active:outline-none" type="text" value={userSignUp.lastName} name="lastName" autoComplete="off" placeholder="Last Name" onChange={handleChange}/>
+                        <input 
+                            className="bg-inputForm placeholder-black font-light rounded-lg text-sm p-1.5 w-40  relative right-1 focus:outline-none active:outline-none" type="text" value={userSignUp.name} name="name" placeholder="Name" autoComplete="off" onChange={handleChange} onFocus={allowNameErrorMessage} />
+                        <input 
+                            className="bg-inputForm placeholder-black font-light rounded-lg text-sm p-1.5 w-40 relative left-1 focus:outline-none active:outline-none" type="text" value={userSignUp.lastName} name="lastName" autoComplete="off" placeholder="Last Name" onChange={handleChange}/>
                         <div className="text-red-400 relative text-xs">{inputInvalidName && focusedNameInput ? ("Only letters in these fields ") : ("")}</div>
                     </div>
                 </div>
                  <div className="flex flex-col text-center items-center">
-                    <input className="bg-inputForm placeholder-black font-light w-2/4 p-1.5 rounded-lg mb-3 text-sm focus:outline-none active:outline-none" type="mail" value={userSignUp.email} placeholder='Email' name="email" autoComplete="off" onChange={handleChange} onFocus={allowEmailErrorMessage}/>
-                    <div className="text-red-400 relative bottom-2.5 text-xs">{inputInvalidEmail && focusedEmailInput ? ("Email invalid") : ("")}</div>
-                    <input className="bg-inputForm placeholder-black font-light w-2/4 p-1.5 rounded-lg text-sm focus:outline-none active:outline-none" type="password" value={userSignUp.password} placeholder="Password" autoComplete="off" name="password" onChange={handleChange} onFocus={allowPasswordErrorMessage}/>
-                    <div className="text-red-400 relative top-0.5 text-xs text-center w-80">{inputInvalidPassword && focusedPasswordInput ? (<div>This field is <span className="font-bold">required</span>. It must have at least <span className="font-bold"> 1 lowercase </span>letter,  <span className="font-bold"> 1 uppercase</span> letter, <spam className="font-bold">1 number</spam> , <span className="font-bold" >no spaces</span> and a minimum of <span className="font-bold" >8 characters</span>.</div>) : ("")}</div>
+                    <input 
+                        className="bg-inputForm placeholder-black font-light w-2/4 p-1.5 rounded-lg mb-3 text-sm focus:outline-none active:outline-none" type="mail" value={userSignUp.email} placeholder='Email' name="email" autoComplete="off" onChange={handleChange} onFocus={allowEmailErrorMessage}/>
+                    <div 
+                        className="text-red-400 relative bottom-2.5 text-xs">{inputInvalidEmail && focusedEmailInput ? ("Email invalid") : ("")}
+                    </div>
+                    <input 
+                        className="bg-inputForm placeholder-black font-light w-2/4 p-1.5 rounded-lg text-sm focus:outline-none active:outline-none" type="password" value={userSignUp.password} placeholder="Password" autoComplete="off" name="password" onChange={handleChange} onFocus={allowPasswordErrorMessage}/>
+                    <div 
+                        className="text-red-400 relative top-0.5 text-xs text-center w-80">{inputInvalidPassword && focusedPasswordInput ? (<div>This field is <span className="font-bold">required</span>. It must have at least <span className="font-bold"> 1 lowercase </span>letter,  <span className="font-bold"> 1 uppercase</span> letter, <spam className="font-bold">1 number</spam> , <span className="font-bold" >no spaces</span> and a minimum of <span className="font-bold" >8 characters</span>.</div>) : ("")}</div>
                 </div>
-                <button className={` text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 mt-8 text-base disabled:cursor-no-drop ${someFieldEmpty ? "bg-buttonDisabled" : "bg-gradient-to-r from-regularPink to-boldPink" }`} disabled={someFieldEmpty} onClick={handleSubmit}>
+                <button 
+                    className={` text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 mt-8 text-base disabled:cursor-no-drop ${someFieldEmpty ? "bg-buttonDisabled" : "bg-gradient-to-r from-regularPink to-boldPink" }`} disabled={someFieldEmpty} onClick={handleSubmit}>
                     Register
                 </button>
                 <h3 className="text-gray-500 mt-5">Already have an account?</h3>

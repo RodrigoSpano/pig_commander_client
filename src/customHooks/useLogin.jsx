@@ -2,6 +2,7 @@ import {  loginUser } from "@/redux/actions/userActions";
 import  { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
+import Swal from "sweetalert2";
 
 export default function () {
     const router = useRouter()
@@ -36,7 +37,10 @@ export default function () {
     //loginUser = action
         dispatch(loginUser(userLogin))
           .then(() => {
-            alert('logeado perri')
+            Swal.Fire({
+                type:"success",
+                title:"User created successfully",
+            }); 
             router.push('/home/dashboard')
           })
 
