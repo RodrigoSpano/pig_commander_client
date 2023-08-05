@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PaginationComponent from '../Pagination/PaginationComponent';
 import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
-import TransactionDetail from '../../customHooks/useTransactionDetail';
+import useTransactionDetail from '../../customHooks/useTransactionDetail';
 
 const TransactionsComponent = () => {
   const {
@@ -19,20 +19,20 @@ const TransactionsComponent = () => {
     sortMonthlyTransactionsAmount
   } = usePagination();
 
-  const {handelDetail} = TransactionDetail()
+  const {handelDetail} = useTransactionDetail()
 
-  const [sortOrderMonthlyTransactionNameLocalSate, setSortOrderMonthlyTransactionNameLocalSate] = useState('asc');
+  const [sortOrderMonthlyTransactionNameLocalSate, setSortOrderMonthlyTransactionNameLocalState] = useState('asc');
 
-  const [sortMonthlyTransactionsAmountLocalSate, setsortMonthlyTransactionsAmountLocalSate] = useState('asc');
+  const [sortMonthlyTransactionsAmountLocalSate, setsortMonthlyTransactionsAmountLocalState] = useState('asc');
   
   const handleSortMonthlyTransactionName = () => {
     const monthlyTransactionName = sortMonthlyTransactions(sortOrderMonthlyTransactionNameLocalSate);
-    setSortOrderMonthlyTransactionNameLocalSate(monthlyTransactionName);
+    setSortOrderMonthlyTransactionNameLocalState(monthlyTransactionName);
   };
 
   const handleSortMonthlyTransactionAmount = () => {
     const monthlyTransactionAmount = sortMonthlyTransactionsAmount(sortMonthlyTransactionsAmountLocalSate);
-    setsortMonthlyTransactionsAmountLocalSate(monthlyTransactionAmount);
+    setsortMonthlyTransactionsAmountLocalState(monthlyTransactionAmount);
   };
   
   return (
@@ -51,8 +51,8 @@ const TransactionsComponent = () => {
           </div>
         </div>
         {transactions.length && transactions.map((t, index) => (
-          <div className='flex gap-80 m-3 cursor-pointer' onClick={() => {handelDetail(t)}}>
-            <p className='w-[100px] overflow-hidden' key={index}>{t.name}</p>
+          <div className='flex gap-80 m-3 cursor-pointer' key={index} onClick={() => {handelDetail(t)}}>
+            <p className='w-[100px] overflow-hidden' >{t.name}</p>
             <div>
               <p className={`font-bold ${t.type === 'expense' ? 'text-red-500' : 'text-green-500'}`}>{t.amount}</p>
             </div>

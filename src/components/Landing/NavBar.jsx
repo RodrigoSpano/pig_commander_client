@@ -11,6 +11,7 @@ import {
       HiOutlineUserAdd,
       HiOutlineUser
 } from "react-icons/hi";
+import {motion} from 'framer-motion'
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,27 +32,27 @@ const NavBar = () => {
         {/* REDIRECCIONES */}
         <div className='flex justify-between items-center'>
           <Link href='/'>
-            <p className='mr-10 hover:font-semibold hover:text-regularPink cursor-pointer'>
+            <motion.p whileHover={{scale: 1.1}} whileTap={{scale: [0.9,1.1,1]}} className='mr-10 font-semibold hover:text-regularPink cursor-pointer'>
               Home
-            </p>
+            </motion.p>
           </Link>
 
           <Link href='/about'>
-            <p className='mr-10 hover:font-semibold hover:text-regularPink cursor-pointer'>
+            <motion.p whileHover={{scale: 1.1}} whileTap={{scale: [0.9,1.1,1]}} className='mr-10 font-semibold hover:text-regularPink cursor-pointer'>
               About Us
-            </p>
+            </motion.p>
           </Link>
 
           <Link href='/pricing'>
-            <p className='mr-10 hover:font-semibold hover:text-regularPink cursor-pointer'>
+            <motion.p whileHover={{scale: 1.1}} whileTap={{scale: [0.9,1.1,1]}} className='mr-10 font-semibold hover:text-regularPink cursor-pointer'>
               Pricing
-            </p>
+            </motion.p>
           </Link>
 
           <Link href='/features'>
-            <p className='hover:font-semibold hover:text-regularPink cursor-pointer'>
+            <motion.p whileHover={{scale: 1.1}} whileTap={{scale: [0.9,1.1,1]}} className='font-semibold hover:text-regularPink cursor-pointer'>
               Features
-            </p>
+            </motion.p>
           </Link>
         </div>
 
