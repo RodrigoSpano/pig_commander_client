@@ -35,13 +35,13 @@ export default function () {
         event.preventDefault();
 
     //loginUser = action
-        dispatch(loginUser(userLogin))
-        .then((resp)=> {
-            if(resp.payload?.logged){
-              router.push('/home/dashboard')
-            }
-          } )
-    }
+			dispatch(loginUser(userLogin))
+				.then((resp) => {
+					if (resp.payload?.logged) {
+						router.push('/home/dashboard')
+					}
+				})
+		}
 
     //validaciones de input
     const inputInvalidEmail = !isEmail;
