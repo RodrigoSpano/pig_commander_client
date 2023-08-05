@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { HiArrowUpRight } from "react-icons/hi2";
 import exampleImage from '../../../utils/Images/example.png';
 
 const FeaturesAboutSection = () => {
@@ -42,8 +43,11 @@ const FeaturesAboutSection = () => {
 
       <div className='flex justify-center my-4'>
         <Link href="/features">
-          <h4 className='text-lg text-center md:text-left'>
+          <h4 className='flex items-center text-lg text-center md:text-left text-regularPink hover:text-boldPink'>
             See more Features
+            <span>
+              <HiArrowUpRight className='ml-2'/>
+            </span>
           </h4>
         </Link>
       </div>

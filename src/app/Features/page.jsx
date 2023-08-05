@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import FeaturesPage from '../../components/Landing/Features/FeaturesPage'
 
-const Features = () => {
+export default function Features() {
   return (
-    <div>Features</div>
-  )
+    <FeaturesPage />
+  );
 }
-
-export default Features
