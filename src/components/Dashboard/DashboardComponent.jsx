@@ -1,22 +1,38 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./dashboard.module.css";
 import usePagination from "@/customHooks/usePagination";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getAllSavings } from "@/redux/actions/savingsActions";
 
 export default function DashboardComponent() {
-  const user = useSelector(state => state.user)
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const savings = useSelector((state) => state.savings.allSavings);
+
+  useEffect(() => {
+    dispatch(getAllSavings());
+  }, []);
+
+  //! DEBO SACAR ESTE CONSOLE.LOG ANTES DE PR
+  console.log(savings);
+
   return (
     <>
       <div>
         <div className={styles.container}>
           <div className={styles.grid_2x12}>
             <div className={`${styles.welcome}`}>
-              <div className={styles.tipography_welcome}>Welcome Back {user.name.replace(/^\w/, (c) => c.toUpperCase())
-}</div>
-              <div className={styles.tipography_title}>Pig Commander is the most secure finance app.</div>
+              <div className={styles.tipography_welcome}>
+                Welcome Back {user.name.replace(/^\w/, (c) => c.toUpperCase())}
+              </div>
+              <div className={styles.tipography_title}>
+                Pig Commander is the most secure finance app.
+              </div>
             </div>
             <div
               className={`${styles.myBalance} ${styles.shadow_background} ${styles.flex_inline}`}
@@ -59,7 +75,9 @@ export default function DashboardComponent() {
               <div className={styles.chancheiro}></div>
               <div className={styles.flex_column}>
                 <div className={`${styles.tipography_title}`}>Savings</div>
-                <div className={`${styles.tipography_number}`}>$93.222</div>
+                <div className={`${styles.tipography_number}`}>
+                  ${savings.length && savings.reduce((a, b) => a.mount + b.mount).toLocaleString()}
+                </div>
               </div>
             </div>
           </div>
@@ -71,9 +89,7 @@ export default function DashboardComponent() {
               myJournal
             </div>
             <TransactionsComponent />
-            <div
-              className={`${styles.myGraph}  ${styles.shadow_background} `}
-            >
+            <div className={`${styles.myGraph}  ${styles.shadow_background} `}>
               myGraph
             </div>
           </div>
