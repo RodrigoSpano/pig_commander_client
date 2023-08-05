@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk('user/login', async (userData) => {
   try {
     const { data } = await axios.post(`/auth/login`, userData)
     if (data.success === true) {
-      document.cookie = `token=${data.token}; max-age=43200 path=/`
+      sessionStorage.setItem('token', data.token)
       Swal.fire({
         icon: 'success',
         title: 'Logged successfully',

@@ -4,7 +4,11 @@ import axios from 'axios'
 //helper para traer incomes
 export const getMonthlyIncomes = async () => {
   try {
-    const { data } = await axios(`/incomes/monthly`)
+    const { data } = await axios(`/incomes/monthly`, {
+      headers: {
+        'Authorization': ''
+      }
+    })
     const modifiedData = data.map(el => {
       return {
         id: el.id,
@@ -49,6 +53,8 @@ export const getMonthlyExpenses = async () => {
 
 export const getAllTransactions = createAsyncThunk('transactions/month', async () => {
   try {
+    const token = sessionStorage.getItem('token')
+    console.log(token)
     const expenses = await getMonthlyExpenses()
     const incomes = await getMonthlyIncomes()
     const transactions = [...expenses, ...incomes].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
