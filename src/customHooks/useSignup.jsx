@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function () {
   	const router = useRouter()
@@ -34,16 +35,32 @@ export default function () {
             }
             const {data} = await axios.post('/auth/signup', user)
             if(data?.success){
-                alert('cuenta creada')
+                Swal.fire({
+                  icon:'success',
+                  title: 'Account created successfully!',
+                  showConfirmButton: false,
+                  timer:1000
+                })
 								router.push('/login')
             }else {
 							throw Error('hubo un error al crear tu cuenta')
 						}
         } catch (error) {
             if(error.response){
-							alert(error.response.data.error)
+              Swal.fire({
+                icon: 'error',
+                title: error.response.data.error,
+                showConfirmButton:false,
+                timer: 1500
+              })
 						}else {
-							alert(error.message)
+              Swal.fire({
+                icon: 'error',
+                title: error.message,
+                text: 'Try again later!',
+                showConfirmButton:false,
+                timer: 1500
+              })
 						}
         }
     }
