@@ -36,15 +36,11 @@ export default function () {
 
     //loginUser = action
         dispatch(loginUser(userLogin))
-            .then(() => {
-                if (res.payload?.logged) {
-                    Swal.Fire({
-                        type: "success",
-                        title: "Successful income",
-                    });
-                    router.push('/home/dashboard')
-                }
-            })
+        .then((resp)=> {
+            if(resp.payload?.logged){
+              router.push('/home/dashboard')
+            }
+          } )
     }
 
     //validaciones de input
