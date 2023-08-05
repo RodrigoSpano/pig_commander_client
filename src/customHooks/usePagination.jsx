@@ -1,110 +1,86 @@
+'use client'
+
+import { getAllTransactions } from '@/redux/actions/transactionsActions';
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 const usePagination = () => {
-  const TRANSACTION_PER_PAGE = 4;
+  const dispatch = useDispatch()
 
-  const transactionsOrigin = [
-    { name: 'McDonalds', amount: '$500', category: 'Food', date: '11/2/23', type: 'expense' },
-    { name: 'Levis', amount: '$100', category: 'Clothes', date: '16/11/22', type: 'income' },
-    { name: 'Subway', amount: '$900', category: 'Food', date: '1/1/21', type: 'expense' },
-    { name: 'Coto', amount: '$200', category: 'Shopping', date: '20/2/23', type: 'income' },
-    { name: 'Carrefour', amount: '$500', category: 'Shopping', date: '14/6/23', type: 'expense' },
-    { name: 'Adidas', amount: '$800', category: 'Shopping', date: '22/11/23', type: 'expense' },
-    { name: 'Cine', amount: '$150', category: 'Entertaining', date: '19/3/20', type: 'income' },
-    { name: 'Burger King', amount: '$507', category: 'Food', date: '29/7/22', type: 'expense' },
-    { name: 'Puma', amount: '$560', category: 'Shopping', date: '17/8/22', type: 'income' },
-    { name: 'Taxi', amount: '$780', category: 'Transport', date: '21/8/23', type: 'expense' }
-  ];
+  useEffect(()=>{
+    dispatch(getAllTransactions())
+  },[])
 
-  const [transactions, setTransactions] = useState([...transactionsOrigin]);
-  
-  const handleSearch = (e) => {
-    console.log('Valor del campo de búsqueda:', e.target.value);
-    const filteredTransactions = transactionsOrigin.filter(t => t.name.toLowerCase().includes(e.target.value.toLowerCase()));
-    console.log('Resultado de la búsqueda:', filteredTransactions);
-
-    if (e.target.value === '') {
-      setTransactions([...transactionsOrigin]);
-    } else {
-      setTransactions(filteredTransactions);
-    }
-  };
-
-  const sortMonthlyTransactions = (sortOrderMonthlyTransactionName) => {
-    if (sortOrderMonthlyTransactionName === "asc") {
-      const sortedTransactions = [...transactions].sort((a, b) => b.name.localeCompare(a.name));
-      setTransactions(sortedTransactions);
-      return "desc";
-    } else {
-      const sortedTransactions = [...transactions].sort((a, b) => a.name.localeCompare(b.name));
-      setTransactions(sortedTransactions);
-      return "asc";
-    }
-  };
-  
-  const sortMonthlyTransactionsAmount = (sortOrderMonthlyTransactionAmount) => {
-    if (sortOrderMonthlyTransactionAmount === "asc") {
-      const sortedTransactions = [...transactions].sort((a, b) => parseFloat(b.amount.slice(1)) - parseFloat(a.amount.slice(1)));
-      setTransactions(sortedTransactions);
-      return "desc";
-    } else {
-      const sortedTransactions = [...transactions].sort((a, b) => parseFloat(a.amount.slice(1)) - parseFloat(b.amount.slice(1)));
-      setTransactions(sortedTransactions);
-      return "asc";
-    }
-  };
-
+  const MOVE_PER_PAGE = 4;
+  const transactionsState = useSelector(state => state.monthTransactions.transactions)
   const [prev, setPrev] = useState(0);
-  const [next, setNext] = useState(TRANSACTION_PER_PAGE);
+  const [next, setNext] = useState(MOVE_PER_PAGE);
   const [count, setCount] = useState(1);
+  let transactions = transactionsState.length > 0 ? transactionsState.slice(prev, next) : []
+  console.log(`state: ${transactionsState}`)
+  console.log(`variable : ${transactions}`)
+  const totalPages = Math.ceil(transactionsState.length / MOVE_PER_PAGE); 
   
-  const totalPages = Math.ceil(transactions.length / TRANSACTION_PER_PAGE);
-
-  const nextHandler = () => {
-    if (count < totalPages) {
-      setNext(next + TRANSACTION_PER_PAGE);
-      setPrev(prev + TRANSACTION_PER_PAGE);
-      setCount(count + 1);
-    }
-  };
+  useEffect(() => {
+    firstPageHandler()
+  }, [transactionsState.length]);
 
   const prevHandler = () => {
     if (count > 1) {
-      setNext(next - TRANSACTION_PER_PAGE);
-      setPrev(prev - TRANSACTION_PER_PAGE);
+      if (prev - MOVE_PER_PAGE < 0) {
+        setPrev(0);
+        setNext(MOVE_PER_PAGE);
+      } else if (prev - MOVE_PER_PAGE >= 0) {
+        setPrev(prev - MOVE_PER_PAGE);
+        setNext(next - MOVE_PER_PAGE);
+      }
       setCount(count - 1);
     }
   };
 
-  const firstPageHandler = () => {
-    setPrev(0);                
-    setNext(TRANSACTION_PER_PAGE);    
-    setCount(1);
-  }
-
-  const lastPageHandler = () => {
-    setPrev((totalPages - 1) * TRANSACTION_PER_PAGE); 
-    setNext(totalPages * TRANSACTION_PER_PAGE);   
-    setCount(totalPages);
+  const nextHandler = () => {
+    if (count < totalPages) {
+      setNext(next + MOVE_PER_PAGE);
+      setPrev(prev + MOVE_PER_PAGE);
+      setCount(count + 1);
+    }
   };
 
-  useEffect(() => { 
-    firstPageHandler()
-  }, [transactions.length])
+  const lastPageHandler = () => {
+    setPrev((totalPages-1)*MOVE_PER_PAGE)
+    setNext(totalPages * MOVE_PER_PAGE)
+    setCount(totalPages)
+  }
 
+  const firstPageHandler = () => {
+    setPrev(0)
+    setNext(MOVE_PER_PAGE)
+    setCount(1)
+  }
 
+  
   return {
-    transactions: transactions.slice(prev, next),
-    prevHandler,
     nextHandler,
-    firstPageHandler,
-    lastPageHandler,
+    prevHandler,
+    transactions,
     count,
     totalPages,
-    handleSearch,
-    sortMonthlyTransactions,
-    sortMonthlyTransactionsAmount
+    firstPageHandler,
+    lastPageHandler
   };
 };
 
 export default usePagination;
+
+  // const transactionsOrigin = [
+  //   { name: 'McDonalds', amount: '$500', category: 'Food', date: '11/2/23', type: 'expense' },
+  //   { name: 'Levis', amount: '$100', category: 'Clothes', date: '16/11/22', type: 'income' },
+  //   { name: 'Subway', amount: '$900', category: 'Food', date: '1/1/21', type: 'expense' },
+  //   { name: 'Coto', amount: '$200', category: 'Shopping', date: '20/2/23', type: 'income' },
+  //   { name: 'Carrefour', amount: '$500', category: 'Shopping', date: '14/6/23', type: 'expense' },
+  //   { name: 'Adidas', amount: '$800', category: 'Shopping', date: '22/11/23', type: 'expense' },
+  //   { name: 'Cine', amount: '$150', category: 'Entertaining', date: '19/3/20', type: 'income' },
+  //   { name: 'Burger King', amount: '$507', category: 'Food', date: '29/7/22', type: 'expense' },
+  //   { name: 'Puma', amount: '$560', category: 'Shopping', date: '17/8/22', type: 'income' },
+  //   { name: 'Taxi', amount: '$780', category: 'Transport', date: '21/8/23', type: 'expense' }
+  // ];

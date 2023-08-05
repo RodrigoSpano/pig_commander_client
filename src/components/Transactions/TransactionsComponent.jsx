@@ -1,63 +1,50 @@
+'use client'
 import usePagination from '@/customHooks/usePagination';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PaginationComponent from '../Pagination/PaginationComponent';
 import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
 import useTransactionDetail from '../../customHooks/useTransactionDetail';
+import { useDispatch } from 'react-redux';
+import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
 
 const TransactionsComponent = () => {
+
+
+
   const {
-    transactions,
-    count,
-    totalPages,
-    nextHandler,
-    prevHandler,
-    firstPageHandler,
-    lastPageHandler,
-    handleSearch,
-    sortMonthlyTransactions,
-    sortMonthlyTransactionsAmount
+    nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages
   } = usePagination();
 
   const {handelDetail} = useTransactionDetail()
 
-  const [sortOrderMonthlyTransactionNameLocalSate, setSortOrderMonthlyTransactionNameLocalState] = useState('asc');
 
-  const [sortMonthlyTransactionsAmountLocalSate, setsortMonthlyTransactionsAmountLocalState] = useState('asc');
-  
-  const handleSortMonthlyTransactionName = () => {
-    const monthlyTransactionName = sortMonthlyTransactions(sortOrderMonthlyTransactionNameLocalSate);
-    setSortOrderMonthlyTransactionNameLocalState(monthlyTransactionName);
-  };
-
-  const handleSortMonthlyTransactionAmount = () => {
-    const monthlyTransactionAmount = sortMonthlyTransactionsAmount(sortMonthlyTransactionsAmountLocalSate);
-    setsortMonthlyTransactionsAmountLocalState(monthlyTransactionAmount);
-  };
   
   return (
     <div className={`${styles.mySpendings} ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
       <div className='flex'>
         <h1 className='text-2xl font-semibold m-7'>Last Transactions</h1>
-        <SearchBarComponent handleSearch={handleSearch} />
+        {/* <SearchBarComponent handleSearch={handleSearch} /> */}
       </div>
       <div className='h-[200px]'>
         <div className='flex gap-80 m-3 items-center justify-center'>
-          <div className='font-medium w-[100px] cursor-pointer' onClick={handleSortMonthlyTransactionName}>
+          <div className='font-medium w-[100px] cursor-pointer' >
             Name
           </div>
-          <div className='font-medium cursor-pointer' onClick={handleSortMonthlyTransactionAmount}>
+          <div className='font-medium cursor-pointer' >
             Amount
           </div>
         </div>
-        {transactions.length && transactions.map((t, index) => (
+        
+        {transactions.length ? transactions.map((t, index) => (
           <div className='flex gap-80 m-3 cursor-pointer' key={index} onClick={() => {handelDetail(t)}}>
             <p className='w-[100px] overflow-hidden' >{t.name}</p>
             <div>
               <p className={`font-bold ${t.type === 'expense' ? 'text-red-500' : 'text-green-500'}`}>{t.amount}</p>
             </div>
           </div>
-        ))}
+        )): null}
+
       </div>
       {transactions.length &&
         <PaginationComponent

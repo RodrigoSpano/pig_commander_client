@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import styles from "./dashboard.module.css";
-import usePagination from "@/customHooks/usePagination";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
-import PaginationComponent from "../Pagination/PaginationComponent";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
+
 
 export default function DashboardComponent() {
+
   const user = useSelector(state => state.user)
   return (
     <>
