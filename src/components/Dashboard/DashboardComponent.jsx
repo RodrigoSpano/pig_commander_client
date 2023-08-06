@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
-import usePagination from "@/customHooks/usePagination";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
-import PaginationComponent from "../Pagination/PaginationComponent";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
+
 
 export default function DashboardComponent() {
   const user = useSelector((state) => state.user);
   return (
-        <div className="flex flex-col gap-5 pt-5 px-10">
+        <div className="flex flex-col gap-5 pt-3 px-10">
           <div className="grid grid-cols-1 sm:grid-cols-12 h-2/5 gap-5">
             <div className="col-span-5 flex flex-col pl-6">
               <div className="font-bold text-4xl leading-normal text-slate-900 mt-10 ">
@@ -75,9 +74,7 @@ export default function DashboardComponent() {
             <div className="col-span-3 row-span-5 bg-white rounded-lg shadow-md h-[330px]">
               myJournal
             </div>
-            <div className="bg-white rounded-lg shadow-md col-span-2 ">
             <TransactionsComponent />
-            </div>
             
             <div className=" bg-white rounded-lg shadow-md ">myGraph</div>
           </div>
