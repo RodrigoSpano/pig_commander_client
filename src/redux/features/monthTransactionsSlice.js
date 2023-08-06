@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllTransactions } from "../actions/monthTransactionsActions";
+import { ScatterChart } from "@tremor/react";
 
 const initialState = {
   transactions: [],
@@ -31,6 +32,13 @@ export const monthlyTransactionsSlice = createSlice({
       } else if (action.payload === 'zA') {
         state.transactions = state.backup_transactions.sort((a, b) => b.name.localeCompare(a.name))
       }
+    },
+    orderMount: (state, action) => {
+      if (action.payload === 'asc') {
+        state.transactions = state.backup_transactions.sort((a, b) => a.mount - b.mount)
+      } else if (action.payload === 'desc') {
+        state.transactions = state.backup_transactions.sort((a, b) => b.mount - a.mount)
+      }
     }
   },
   extraReducers: (builder) => {
@@ -42,6 +50,6 @@ export const monthlyTransactionsSlice = createSlice({
   },
 });
 
-export const { clearFilters, filterByType, orderNameAlphabetically } = monthlyTransactionsSlice.actions;
+export const { clearFilters, filterByType, orderNameAlphabetically, orderMount } = monthlyTransactionsSlice.actions;
 
 export default monthlyTransactionsSlice.reducer;

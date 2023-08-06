@@ -20,14 +20,20 @@ const TransactionsComponent = () => {
     }
   },[])
 
-  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder } = usePagination();
+  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleMountOrder } = usePagination();
 
   const {handelDetail} = useTransactionDetail()
 
-  const [alphabetically, setAlphabetically] = useState(false)
+  const [orders, setOrders] = useState({ alphabetically: false, byMount: false })
+
   const handleAlphabetically = () => {
-    setAlphabetically(!alphabetically)
-    handleAlphabeticallyOrder(alphabetically)
+    setOrders({...orders, alphabetically:!orders.alphabetically})
+    handleAlphabeticallyOrder(orders.alphabetically)
+  }
+
+  const handleOrderByMount = () => {
+    setOrders({...orders, byMount: !orders.byMount})
+    handleMountOrder(orders.byMount)
   }
   
   return (
@@ -38,12 +44,12 @@ const TransactionsComponent = () => {
       </div>
       <div className='h-[200px]'>
         <div className='flex gap-80 m-3 items-center justify-center'>
-          <div className='font-medium w-[100px] cursor-pointer' onClick={handleAlphabetically} >
+          <span className='font-medium w-[100px] cursor-pointer' onClick={handleAlphabetically} >
             Name
-          </div>
-          <div className='font-medium cursor-pointer' >
+          </span>
+          <span className='font-medium cursor-pointer' onClick={handleOrderByMount} >
             Amount
-          </div>
+          </span>
         </div>
         
         {transactions.length ? transactions.map((t, index) => (

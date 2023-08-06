@@ -1,6 +1,6 @@
 'use client'
 
-import { orderNameAlphabetically } from '@/redux/features/monthTransactionsSlice';
+import { orderMount, orderNameAlphabetically } from '@/redux/features/monthTransactionsSlice';
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -18,8 +18,12 @@ const usePagination = () => {
   
   useEffect(() => {
     firstPageHandler()
-    setTransactions(transactionsState?.slice(prev,next))
-  }, [transactionsState.length, transactionsState]);
+    setTransactions(transactionsState.slice(prev,next))
+  }, [transactionsState.length]);
+  
+  useEffect(() => {
+    setTransactions(transactionsState.slice(prev,next))
+  }, [ transactionsState, next, prev])
 
   const prevHandler = () => {
     if (count > 1) {
@@ -63,10 +67,16 @@ const usePagination = () => {
     }
   }
   
-  const handleAlphabeticallyOrder = async (type) => {
+  const handleAlphabeticallyOrder = (type) => {
       if(!type){
         dispatch(orderNameAlphabetically('zA'));
       } else dispatch(orderNameAlphabetically('aZ'))
+  }
+
+  const handleMountOrder = (type) => {
+    if(!type){
+      dispatch(orderMount('desc'))
+    } else dispatch(orderMount('asc'))
   }
 
   return {
@@ -78,7 +88,8 @@ const usePagination = () => {
     firstPageHandler,
     lastPageHandler,
     handleSearch,
-    handleAlphabeticallyOrder
+    handleAlphabeticallyOrder,
+    handleMountOrder
   };
 };
 
