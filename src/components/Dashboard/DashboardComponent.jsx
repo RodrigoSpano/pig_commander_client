@@ -1,81 +1,87 @@
 "use client";
 import React from "react";
-import styles from "./dashboard.module.css";
 import usePagination from "@/customHooks/usePagination";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import { useSelector } from "react-redux";
 
 export default function DashboardComponent() {
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   return (
     <>
       <div>
-        <div className={styles.container}>
-          <div className={styles.grid_2x12}>
-            <div className={`${styles.welcome}`}>
-              <div className={styles.tipography_welcome}>Welcome Back {user.name.replace(/^\w/, (c) => c.toUpperCase())
-}</div>
-              <div className={styles.tipography_title}>Pig Commander is the most secure finance app.</div>
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-12 h-2/5">
+            <div className="col-span-5 flex flex-col p-3vh 0 0 2vh ml-6">
+              <div className="font-bold text-4xl leading-normal text-slate-900 mt-10 ">
+                Welcome Back {user.name.replace(/^\w/, (c) => c.toUpperCase())}
+              </div>
+              <div className="font-normal text-base leading-tight text-gray-500">
+                Pig Commander is the most secure finance app.
+              </div>
             </div>
-            <div
-              className={`${styles.myBalance} ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}></div>
-              <div className={`${styles.flex_column}`}>
-                <div className={`${styles.tipography_title}`}>My Balance</div>
-                <div className={`${styles.tipography_balance}`}>
+            <div className="flex flex-row bg-white rounded-lg shadow-md mt-10 col-span-4 ">
+              <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
+              <div className="flex flex-col p-13 pl-8">
+                <div className="text-slate-950  text-xl font-semibold pl-7vw">
+                  My Balance
+                </div>
+                <div className="text-regularPink text-4xl font-semibold pl-7vw">
                   $255.000,00
                 </div>
               </div>
             </div>
-            <div className={`${styles.profile} ${styles.shadow_background}`}>
-              <div className={styles.profileContent}>
-                <div className={styles.circle}></div>
-                <h1 className={styles.name}>Nombre del Usuario</h1>
+            <div className="bg-white rounded-lg shadow-md m-5 row-span-3 col-span-3">
+              <div className="flex flex-col justify-center content-center">
+                <div className="w-120 h-120 rounded-full mx-auto bg-gray-950 flex items-center justify-center">
+                </div>
+                <div className="text-24 font-bold">Nombre del Usuario</div>
               </div>
             </div>
-            <div
-              className={`${styles.myExpenses} ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}></div>
-              <div className={styles.flex_column}>
-                <div className={`${styles.tipography_title}`}>Expenses</div>
-                <div className={`${styles.tipography_number}`}>$155.000</div>
+            <div className=" bg-white rounded-lg shadow-md ml-5 mt-5 mb-5 flex flex-row col-span-3 row-span-2  ">
+              <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
+              <div className="flex flex-col p-13 pl-16">
+                <div className="text-slate-950  text-xl font-semibold pl-7vw">
+                  Expenses
+                </div>
+                <div className="text-gray-950 text-25 font-semibold pt-20%">
+                  $155.000
+                </div>
               </div>
             </div>
-            <div
-              className={`${styles.myIncome} ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}> </div>
-              <div className={styles.flex_column}>
-                <div className={`${styles.tipography_title}`}>Income</div>
-                <div className={`${styles.tipography_number}`}>$75.00</div>
+            <div className=" bg-white rounded-lg shadow-md ml-5 mt-5 mb-5 flex flex-row col-span-3 row-span-2  ">
+              <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
+              <div className="flex flex-col p-13 pl-16">
+                <div className="text-slate-950 text-xl font-semibold pl-7vw">
+                  Income
+                </div>
+                <div className="text-gray-950  text-25 font-semibold pt-20%">
+                  $75.00
+                </div>
               </div>
             </div>
-            <div
-              className={`${styles.mySavings}  ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}></div>
-              <div className={styles.flex_column}>
-                <div className={`${styles.tipography_title}`}>Savings</div>
-                <div className={`${styles.tipography_number}`}>$93.222</div>
+            <div className=" bg-white rounded-lg shadow-md ml-5 mt-5 mb-5 flex flex-row col-span-3 row-span-2  ">
+              <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
+              <div className="flex flex-col p-13 pl-10">
+                <div className="text-gray-950 font-poppins text-xl font-semibold pl-7vw">
+                  Savings
+                </div>
+                <div className="text-gray-950 font-poppins text-25 font-semibold pt-20%">
+                  $93.222
+                </div>
               </div>
             </div>
           </div>
 
-          <div className={styles.grid_2x3}>
-            <div
-              className={`${styles.myJournal}  ${styles.shadow_background} `}
-            >
+          <div className="grid grid-cols-1 sm:grid-cols-3 h-3/5">
+            <div className="col-span-3 row-span-5 bg-white rounded-lg shadow-md ml-5 pb-24">
               myJournal
             </div>
+            <div className="bg-white rounded-lg shadow-md ml-5 mt-5 col-span-2 ">
             <TransactionsComponent />
-            <div
-              className={`${styles.myGraph}  ${styles.shadow_background} `}
-            >
-              myGraph
             </div>
+            
+            <div className=" bg-white rounded-lg shadow-md ml-5 mt-5">myGraph</div>
           </div>
         </div>
       </div>
