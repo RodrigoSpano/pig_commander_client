@@ -1,7 +1,7 @@
 'use client'
 
-import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
 import { useEffect, useState } from 'react'
+import { CgKey } from 'react-icons/cg';
 import { useDispatch, useSelector } from 'react-redux';
 
 const usePagination = () => {
@@ -11,7 +11,8 @@ const usePagination = () => {
   const [prev, setPrev] = useState(0);
   const [next, setNext] = useState(MOVE_PER_PAGE);
   const [count, setCount] = useState(1);
-  let transactions =  transactionsState.slice(prev, next)
+  // let transactions =  transactionsState.slice(prev, next)
+  const [transactions, setTransactions] = useState(transactionsState.slice(prev,next))
   const totalPages = Math.ceil(transactionsState.length / MOVE_PER_PAGE); 
   
   useEffect(() => {
@@ -51,6 +52,14 @@ const usePagination = () => {
     setCount(1)
   }
 
+  const handleSearch = (e) => {
+    if(e.target.value === ''){
+      setTransactions(transactionsState.slice(prev, next))
+    } else {
+      let searchTrans = transactionsState.filter(t => t.name.toLowerCase().startsWith(e.target.value.toLowerCase())).slice(prev, next)
+      setTransactions(searchTrans)
+    }
+  }
   
   return {
     nextHandler,
@@ -59,7 +68,8 @@ const usePagination = () => {
     count,
     totalPages,
     firstPageHandler,
-    lastPageHandler
+    lastPageHandler,
+    handleSearch
   };
 };
 

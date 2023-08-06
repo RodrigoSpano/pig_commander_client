@@ -1,6 +1,6 @@
 'use client'
 import usePagination from '@/customHooks/usePagination';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import PaginationComponent from '../Pagination/PaginationComponent';
 import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
@@ -20,19 +20,15 @@ const TransactionsComponent = () => {
     }
   },[])
 
-  const {
-    nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages
-  } = usePagination();
+  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch } = usePagination();
 
   const {handelDetail} = useTransactionDetail()
-
-
   
   return (
     <div className={`${styles.mySpendings} ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
       <div className='flex'>
         <h1 className='text-2xl font-semibold m-7'>Last Transactions</h1>
-        {/* <SearchBarComponent handleSearch={handleSearch} /> */}
+        <SearchBarComponent handleSearch={handleSearch} />
       </div>
       <div className='h-[200px]'>
         <div className='flex gap-80 m-3 items-center justify-center'>
