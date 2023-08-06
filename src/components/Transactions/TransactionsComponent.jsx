@@ -1,7 +1,6 @@
 import usePagination from '@/customHooks/usePagination';
 import { useState } from 'react';
 import PaginationComponent from '../Pagination/PaginationComponent';
-import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
 import useTransactionDetail from '../../customHooks/useTransactionDetail';
 
@@ -36,7 +35,7 @@ const TransactionsComponent = () => {
   };
   
   return (
-    <div className={`${styles.mySpendings} ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
+    <div className=" flex flex-col items-center content-center select-none ">
       <div className='flex'>
         <h1 className='text-2xl font-semibold m-7'>Last Transactions</h1>
         <SearchBarComponent handleSearch={handleSearch} />
