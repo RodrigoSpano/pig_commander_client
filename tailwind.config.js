@@ -23,7 +23,7 @@ module.exports = {
         xl: "1440px",
       },
       colors: {
-                  
+        strongPink: '#BD147A',
         boldPink: '#BA1578',
         regularPink: '#ED4998',
         lightPink: '#FF8AC8',
@@ -31,7 +31,7 @@ module.exports = {
         regularGray: '#D9D9D9',
         lightGray: '#EEEEEE',
         mediumGray: "#c1bfbf",
-        google:"#334155",
+        google: "#334155",
         inputForm: "#f3f1ff",
         buttonDisabled: "#d9d7e5",
 
@@ -64,7 +64,7 @@ module.exports = {
             strong: "#111827", // gray-900
             inverted: "#ffffff", // white
           },
-          
+
         },
         // dark mode
         "dark-tremor": {

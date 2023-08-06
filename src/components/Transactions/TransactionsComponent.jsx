@@ -2,13 +2,13 @@
 import usePagination from '@/customHooks/usePagination';
 import { useEffect, useState } from 'react';
 import PaginationComponent from '../Pagination/PaginationComponent';
-import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
 import useTransactionDetail from '../../customHooks/useTransactionDetail';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
 import TransactionCard from './subcomps/TransactionCard';
 import TransactionsPropsContainer from './subcomps/TransactionsPropsContainer';
+import PermanentFilter from './subcomps/PermanentFilter';
 
 const TransactionsComponent = () => {
 
@@ -39,9 +39,11 @@ const TransactionsComponent = () => {
   }
   
   return (
-    <div className={`${styles.mySpendings} ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
-      <div className='flex items-center'>
-        <h1 className='text-2xl font-semibold '>Last Transactions</h1>
+    
+    <div className=" flex flex-col items-center content-center select-none bg-white rounded-lg shadow-md col-span-2 relative">
+      <PermanentFilter /> 
+      <div className='flex'>
+        <h1 className='text-2xl font-semibold m-7'>Last Transactions</h1>
         <SearchBarComponent handleSearch={handleSearch} />
       </div>
 

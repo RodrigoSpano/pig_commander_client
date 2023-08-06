@@ -23,6 +23,8 @@ export const monthlyTransactionsSlice = createSlice({
         state.transactions = state.backup_transactions.filter(t => t.type === transactionsTypes.expense)
       } else if (action.payload === transactionsTypes.income) {
         state.transactions = state.backup_transactions.filter(t => t.type === transactionsTypes.income)
+      } else {
+        state.transactions = state.backup_transactions
       }
     },
     orderNameAlphabetically: (state, action) => {
