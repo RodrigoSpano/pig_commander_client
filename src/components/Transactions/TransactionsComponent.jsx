@@ -5,12 +5,20 @@ import PaginationComponent from '../Pagination/PaginationComponent';
 import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
 import useTransactionDetail from '../../customHooks/useTransactionDetail';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
 
 const TransactionsComponent = () => {
 
+  const dispatch = useDispatch()
+  const transactionsState = useSelector(state => state.monthTransactions.transactions)
 
+  useEffect(()=>{
+    if(!transactionsState.length){
+      const token = sessionStorage.getItem('token')
+      dispatch(getAllTransactions(token))
+    }
+  },[])
 
   const {
     nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages
@@ -40,7 +48,7 @@ const TransactionsComponent = () => {
           <div className='flex gap-80 m-3 cursor-pointer' key={index} onClick={() => {handelDetail(t)}}>
             <p className='w-[100px] overflow-hidden' >{t.name}</p>
             <div>
-              <p className={`font-bold ${t.type === 'expense' ? 'text-red-500' : 'text-green-500'}`}>{t.amount}</p>
+              <p className={`font-bold ${t.type === 'expense' ? 'text-red-500' : 'text-green-500'}`}>{t.mount}</p>
             </div>
           </div>
         )): null}

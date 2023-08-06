@@ -26,11 +26,12 @@ export const monthlyTransactionsSlice = createSlice({
       }
     },
   },
-  extraReducers: {
-    [getAllTransactions.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(getAllTransactions.fulfilled, (state, action) => {
       state.transactions = action?.payload;
       state.backup_transactions = action?.payload;
-    }
+    })
+
   },
 });
 

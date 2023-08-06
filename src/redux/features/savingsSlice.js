@@ -1,11 +1,11 @@
-import { createReducer } from "@reduxjs/toolkit";
+// import { createReducer } from "@reduxjs/toolkit";
 
-const initialState = {
-  savings: []
-}
+// const initialState = {
+//   savings: []
+// }
 
-export const savingSlice = createReducer({
-  name: 'savings',
-  initialState,
-  reducers: {}
-})
+// export const savingSlice = createReducer({
+//   name: 'savings',
+//   initialState,
+//   reducers: {}
+// })

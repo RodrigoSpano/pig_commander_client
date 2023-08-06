@@ -1,24 +1,17 @@
 'use client'
 
-import { getAllTransactions } from '@/redux/actions/transactionsActions';
+import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 const usePagination = () => {
-  const dispatch = useDispatch()
-
-  useEffect(()=>{
-    dispatch(getAllTransactions())
-  },[])
-
+  
   const MOVE_PER_PAGE = 4;
   const transactionsState = useSelector(state => state.monthTransactions.transactions)
   const [prev, setPrev] = useState(0);
   const [next, setNext] = useState(MOVE_PER_PAGE);
   const [count, setCount] = useState(1);
-  let transactions = transactionsState.length > 0 ? transactionsState.slice(prev, next) : []
-  console.log(`state: ${transactionsState}`)
-  console.log(`variable : ${transactions}`)
+  let transactions =  transactionsState.slice(prev, next)
   const totalPages = Math.ceil(transactionsState.length / MOVE_PER_PAGE); 
   
   useEffect(() => {

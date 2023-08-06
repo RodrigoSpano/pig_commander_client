@@ -7,7 +7,7 @@ const useTransactionDetail = () => {
       position: 'center',
       title: `<p>${transaction.category}</p>
               <p>${transaction.name}</p>
-              <p>${transaction.amount}</p>
+              <p>${transaction.mount}</p>
               <p>${transaction.date}</p>`,
       showConfirmButton: false,
       showCloseButton: true,
