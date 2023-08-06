@@ -7,6 +7,8 @@ import SearchBarComponent from '../SearchBar/SearchBarComponent';
 import useTransactionDetail from '../../customHooks/useTransactionDetail';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
+import TransactionCard from './subcomps/TransactionCard';
+import TransactionsPropsContainer from './subcomps/TransactionsPropsContainer';
 
 const TransactionsComponent = () => {
 
@@ -24,7 +26,7 @@ const TransactionsComponent = () => {
 
   const {handelDetail} = useTransactionDetail()
 
-  const [orders, setOrders] = useState({ alphabetically: false, byMount: false })
+  const [orders, setOrders] = useState({ alphabetically: false, byMount: false }) //estado con el cual modifico los ordenamientos por nombre o monto 
 
   const handleAlphabetically = () => {
     setOrders({...orders, alphabetically:!orders.alphabetically})
@@ -38,29 +40,16 @@ const TransactionsComponent = () => {
   
   return (
     <div className={`${styles.mySpendings} ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
-      <div className='flex'>
-        <h1 className='text-2xl font-semibold m-7'>Last Transactions</h1>
+      <div className='flex items-center'>
+        <h1 className='text-2xl font-semibold '>Last Transactions</h1>
         <SearchBarComponent handleSearch={handleSearch} />
       </div>
-      <div className='h-[200px]'>
-        <div className='flex gap-80 m-3 items-center justify-center'>
-          <span className='font-medium w-[100px] cursor-pointer' onClick={handleAlphabetically} >
-            Name
-          </span>
-          <span className='font-medium cursor-pointer' onClick={handleOrderByMount} >
-            Amount
-          </span>
-        </div>
-        
-        {transactions.length ? transactions.map((t, index) => (
-          <div className='flex gap-80 m-3 cursor-pointer' key={index} onClick={() => {handelDetail(t)}}>
-            <p className='w-[100px] overflow-hidden' >{t.name}</p>
-            <div>
-              <p className={`font-bold ${t.type === 'expense' ? 'text-red-500' : 'text-green-500'}`}>{t.mount}</p>
-            </div>
-          </div>
-        )): null}
 
+      <div className='h-[200px] flex flex-col'>
+        <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByMount={handleOrderByMount}/>
+        <div className='flex flex-col gap-2'>
+        {transactions.length ? transactions.map((t, i) => (<TransactionCard handelDetail={handelDetail} transaction={t} key={i} />)): null} 
+        </div>
       </div>
       {transactions.length &&
         <PaginationComponent

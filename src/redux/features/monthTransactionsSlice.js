@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllTransactions } from "../actions/monthTransactionsActions";
-import { ScatterChart } from "@tremor/react";
 
 const initialState = {
   transactions: [],
