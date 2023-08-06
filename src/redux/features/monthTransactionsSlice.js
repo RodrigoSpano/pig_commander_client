@@ -25,6 +25,13 @@ export const monthlyTransactionsSlice = createSlice({
         state.transactions = state.backup_transactions.filter(t => t.type === transactionsTypes.income)
       }
     },
+    orderNameAlphabetically: (state, action) => {
+      if (action.payload === 'aZ') {
+        state.transactions = state.backup_transactions.sort((a, b) => a.name.localeCompare(b.name))
+      } else if (action.payload === 'zA') {
+        state.transactions = state.backup_transactions.sort((a, b) => b.name.localeCompare(a.name))
+      }
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(getAllTransactions.fulfilled, (state, action) => {
@@ -35,6 +42,6 @@ export const monthlyTransactionsSlice = createSlice({
   },
 });
 
-export const { clearFilters, filterByType } = monthlyTransactionsSlice.actions;
+export const { clearFilters, filterByType, orderNameAlphabetically } = monthlyTransactionsSlice.actions;
 
 export default monthlyTransactionsSlice.reducer;

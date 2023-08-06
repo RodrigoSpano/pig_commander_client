@@ -1,6 +1,6 @@
 'use client'
 import usePagination from '@/customHooks/usePagination';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PaginationComponent from '../Pagination/PaginationComponent';
 import styles from "../Dashboard/dashboard.module.css";
 import SearchBarComponent from '../SearchBar/SearchBarComponent';
@@ -20,9 +20,15 @@ const TransactionsComponent = () => {
     }
   },[])
 
-  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch } = usePagination();
+  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder } = usePagination();
 
   const {handelDetail} = useTransactionDetail()
+
+  const [alphabetically, setAlphabetically] = useState(false)
+  const handleAlphabetically = () => {
+    setAlphabetically(!alphabetically)
+    handleAlphabeticallyOrder(alphabetically)
+  }
   
   return (
     <div className={`${styles.mySpendings} ${styles.shadow_background} flex flex-col items-center content-center w-[1059px] h-[380px] select-none`}>
@@ -32,7 +38,7 @@ const TransactionsComponent = () => {
       </div>
       <div className='h-[200px]'>
         <div className='flex gap-80 m-3 items-center justify-center'>
-          <div className='font-medium w-[100px] cursor-pointer' >
+          <div className='font-medium w-[100px] cursor-pointer' onClick={handleAlphabetically} >
             Name
           </div>
           <div className='font-medium cursor-pointer' >

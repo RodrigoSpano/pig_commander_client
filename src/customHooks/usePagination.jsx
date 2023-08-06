@@ -1,23 +1,25 @@
 'use client'
 
+import { orderNameAlphabetically } from '@/redux/features/monthTransactionsSlice';
 import { useEffect, useState } from 'react'
-import { CgKey } from 'react-icons/cg';
 import { useDispatch, useSelector } from 'react-redux';
 
 const usePagination = () => {
-  
+
   const MOVE_PER_PAGE = 4;
   const transactionsState = useSelector(state => state.monthTransactions.transactions)
   const [prev, setPrev] = useState(0);
   const [next, setNext] = useState(MOVE_PER_PAGE);
   const [count, setCount] = useState(1);
-  // let transactions =  transactionsState.slice(prev, next)
-  const [transactions, setTransactions] = useState(transactionsState.slice(prev,next))
+  const [transactions, setTransactions] = useState([])
   const totalPages = Math.ceil(transactionsState.length / MOVE_PER_PAGE); 
+
+  const dispatch = useDispatch()
   
   useEffect(() => {
     firstPageHandler()
-  }, [transactionsState.length]);
+    setTransactions(transactionsState?.slice(prev,next))
+  }, [transactionsState.length, transactionsState]);
 
   const prevHandler = () => {
     if (count > 1) {
@@ -61,6 +63,12 @@ const usePagination = () => {
     }
   }
   
+  const handleAlphabeticallyOrder = async (type) => {
+      if(!type){
+        dispatch(orderNameAlphabetically('zA'));
+      } else dispatch(orderNameAlphabetically('aZ'))
+  }
+
   return {
     nextHandler,
     prevHandler,
@@ -69,21 +77,9 @@ const usePagination = () => {
     totalPages,
     firstPageHandler,
     lastPageHandler,
-    handleSearch
+    handleSearch,
+    handleAlphabeticallyOrder
   };
 };
 
 export default usePagination;
-
-  // const transactionsOrigin = [
-  //   { name: 'McDonalds', amount: '$500', category: 'Food', date: '11/2/23', type: 'expense' },
-  //   { name: 'Levis', amount: '$100', category: 'Clothes', date: '16/11/22', type: 'income' },
-  //   { name: 'Subway', amount: '$900', category: 'Food', date: '1/1/21', type: 'expense' },
-  //   { name: 'Coto', amount: '$200', category: 'Shopping', date: '20/2/23', type: 'income' },
-  //   { name: 'Carrefour', amount: '$500', category: 'Shopping', date: '14/6/23', type: 'expense' },
-  //   { name: 'Adidas', amount: '$800', category: 'Shopping', date: '22/11/23', type: 'expense' },
-  //   { name: 'Cine', amount: '$150', category: 'Entertaining', date: '19/3/20', type: 'income' },
-  //   { name: 'Burger King', amount: '$507', category: 'Food', date: '29/7/22', type: 'expense' },
-  //   { name: 'Puma', amount: '$560', category: 'Shopping', date: '17/8/22', type: 'income' },
-  //   { name: 'Taxi', amount: '$780', category: 'Transport', date: '21/8/23', type: 'expense' }
-  // ];
