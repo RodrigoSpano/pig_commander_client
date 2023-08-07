@@ -10,7 +10,7 @@ const PermanentFilter = () => {
   }
 
   return (
-    <div className='absolute top-[25px] right-[15px]'>
+    <div className='absolute top-[30px] right-[50px]'>
       <select onChange={handleOptions}>
         <option value='default'>all transactions</option>
         <option value="expense">expenses</option>
