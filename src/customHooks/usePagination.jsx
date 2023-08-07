@@ -12,17 +12,17 @@ const usePagination = () => {
   const [next, setNext] = useState(MOVE_PER_PAGE);
   const [count, setCount] = useState(1);
   const [transactions, setTransactions] = useState([])
-  const totalPages = Math.ceil(transactionsState.length / MOVE_PER_PAGE); 
+  const totalPages = Math.ceil(transactionsState?.length / MOVE_PER_PAGE); 
 
   const dispatch = useDispatch()
   
   useEffect(() => {
     firstPageHandler()
-    setTransactions(transactionsState.slice(prev,next))
-  }, [transactionsState.length]);
+    setTransactions(transactionsState?.slice(prev,next))
+  }, [transactionsState?.length]);
   
   useEffect(() => {
-    setTransactions(transactionsState.slice(prev,next))
+    setTransactions(transactionsState?.slice(prev,next))
   }, [ transactionsState, next, prev])
 
   const prevHandler = () => {
@@ -60,9 +60,9 @@ const usePagination = () => {
 
   const handleSearch = (e) => {
     if(e.target.value === ''){
-      setTransactions(transactionsState.slice(prev, next))
+      setTransactions(transactionsState?.slice(prev, next))
     } else {
-      let searchTrans = transactionsState.filter(t => t.name.toLowerCase().startsWith(e.target.value.toLowerCase())).slice(prev, next)
+      let searchTrans = transactionsState?.filter(t => t.name.toLowerCase().startsWith(e.target.value.toLowerCase())).slice(prev, next)
       setTransactions(searchTrans)
     }
   }

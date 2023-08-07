@@ -50,10 +50,10 @@ const TransactionsComponent = () => {
       <div className='h-[200px] flex flex-col'>
         <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByMount={handleOrderByMount}/>
         <div className='flex flex-col gap-2'>
-        {transactions.length ? transactions.map((t, i) => (<TransactionCard handelDetail={handelDetail} transaction={t} key={i} />)): null} 
+        {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handelDetail={handelDetail} transaction={t} key={i} />)): null} 
         </div>
       </div>
-      {transactions.length &&
+      {transactions?.length &&
         <PaginationComponent
           count={count}
           totalPages={totalPages}
