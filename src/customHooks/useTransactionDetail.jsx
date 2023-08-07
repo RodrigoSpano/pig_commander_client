@@ -2,13 +2,13 @@ import Swal from 'sweetalert2';
 
 const useTransactionDetail = () => {
 
-  const handelDetail = (transaction) => {
+  const handelDetail = (transaction) => { //todo => mapear categorias para traer nombre de la categoria
     Swal.fire({
       position: 'center',
       title: `<p>${transaction.category}</p>
               <p>${transaction.name}</p>
-              <p>${transaction.amount}</p>
-              <p>${transaction.date}</p>`,
+              <p>${transaction.mount}</p>
+              <p>${transaction.createdAt}</p>`,
       showConfirmButton: false,
       showCloseButton: true,
       customClass: {

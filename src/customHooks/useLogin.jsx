@@ -16,7 +16,6 @@ export default function () {
     const [focusedPasswordInput, setFocusedPasswordInput] = useState(false); 
 
     const handleChange = (e) => {
-        console.log({ e });
         setUserLogin({
             ...userLogin, 
             [e.target.name]: e.target.value

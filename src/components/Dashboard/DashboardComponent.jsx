@@ -1,100 +1,96 @@
 "use client";
-import React, { useEffect } from "react";
-import styles from "./dashboard.module.css";
-import usePagination from "@/customHooks/usePagination";
+import React from "react";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
-import PaginationComponent from "../Pagination/PaginationComponent";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch} from "react-redux"
 import { getAllSavings } from "@/redux/actions/savingsActions";
+import { useEffect } from "react";
 
 export default function DashboardComponent() {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  // ! ANTES QUE TODO RECORDAR MANEJAR MEJOR LOS ERRORES, TIENEN CONSOLE.LOGS
+  const dispatch = useDispatch();
+
   const savings = useSelector((state) => state.savings.allSavings);
 
   useEffect(() => {
     dispatch(getAllSavings());
   }, []);
-
-  //! DEBO SACAR ESTE CONSOLE.LOG ANTES DE PR
-  console.log(savings);
-
+   
+//! DEBO SACAR ESTE CONSOLE.LOG ANTES DE PR
+console.log(savings);
   return (
-    <>
-      <div>
-        <div className={styles.container}>
-          <div className={styles.grid_2x12}>
-            <div className={`${styles.welcome}`}>
-              <div className={styles.tipography_welcome}>
-                Welcome Back {user.name.replace(/^\w/, (c) => c.toUpperCase())}
-              </div>
-              <div className={styles.tipography_title}>
-                Pig Commander is the most secure finance app.
-              </div>
-            </div>
-            <div
-              className={`${styles.myBalance} ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}></div>
-              <div className={`${styles.flex_column}`}>
-                <div className={`${styles.tipography_title}`}>My Balance</div>
-                <div className={`${styles.tipography_balance}`}>
-                  $255.000,00
-                </div>
-              </div>
-            </div>
-            <div className={`${styles.profile} ${styles.shadow_background}`}>
-              <div className={styles.profileContent}>
-                <div className={styles.circle}></div>
-                <h1 className={styles.name}>Nombre del Usuario</h1>
-              </div>
-            </div>
-            <div
-              className={`${styles.myExpenses} ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}></div>
-              <div className={styles.flex_column}>
-                <div className={`${styles.tipography_title}`}>Expenses</div>
-                <div className={`${styles.tipography_number}`}>$155.000</div>
-              </div>
-            </div>
-            <div
-              className={`${styles.myIncome} ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}> </div>
-              <div className={styles.flex_column}>
-                <div className={`${styles.tipography_title}`}>Income</div>
-                <div className={`${styles.tipography_number}`}>$75.00</div>
-              </div>
-            </div>
-            <div
-              className={`${styles.mySavings}  ${styles.shadow_background} ${styles.flex_inline}`}
-            >
-              <div className={styles.chancheiro}></div>
-              <div className={styles.flex_column}>
-                <div className={`${styles.tipography_title}`}>Savings</div>
-                <div className={`${styles.tipography_number}`}>
-                  ${savings.length && savings.reduce((a, b) => a.mount + b.mount).toLocaleString()}
-                </div>
-              </div>
-            </div>
+    <div className="flex flex-col gap-5 pt-3 px-10">
+      <div className="grid grid-cols-1 sm:grid-cols-12 h-2/5 gap-5">
+        <div className="col-span-5 flex flex-col pl-6">
+          <div className="font-bold text-4xl leading-normal text-slate-900 mt-10 ">
+            Welcome Back {user.name.replace(/^\w/, (c) => c.toUpperCase())}
           </div>
+          <div className="font-normal text-base leading-tight text-gray-500">
+            Pig Commander is the most secure finance app.
+          </div>
+        </div>
+        <div className="flex flex-row bg-white rounded-lg shadow-md col-span-4 gap-10 h-[120px] ">
+          <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
+          <div className="flex flex-col justify-between py-2 w-full">
+            <p className="text-[#AFAFAF] text-base font-Poppins font-medium">
+              My Balance
+            </p>
+            <span className="text-strongPink text-5xl font-Poppins font-bold text-right pr-5 ">
+              $255.000,00
+            </span>
+          </div>
+        </div>
+        <div className="bg-white rounded-lg shadow-md row-span-3 col-span-3  flex flex-col justify-center items-center">
+          <div className="w-[120px] h-[120px] rounded-full mx-auto bg-gray-950 flex items-center justify-center"></div>
+          <span className="text-24 font-bold">Nombre del Usuario</span>
+        </div>
+        <div className=" bg-white rounded-lg shadow-md flex gap-10 flex-row col-span-3 row-span-2 h-[100px]">
+          <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
 
-          <div className={styles.grid_2x3}>
-            <div
-              className={`${styles.myJournal}  ${styles.shadow_background} `}
-            >
-              myJournal
-            </div>
-            <TransactionsComponent />
-            <div className={`${styles.myGraph}  ${styles.shadow_background} `}>
-              myGraph
-            </div>
+          <div className="flex flex-col justify-evenly ">
+            <p className="text-[#AFAFAF] text-base font-Poppins font-medium">
+              Expenses
+            </p>
+            <span className="text-[#15223C] text-[20px] font-semibold">
+              $155.000
+            </span>
+          </div>
+        </div>
+        <div className=" bg-white rounded-lg shadow-md gap-10 flex flex-row col-span-3 row-span-2 h-[100px]">
+          <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
+          <div className="flex flex-col justify-evenly">
+            <p className="text-[#AFAFAF] text-base font-Poppins font-medium">
+              Income
+            </p>
+            <span className="text-[#15223C] text-[20px] font-semibold">
+              $75.00
+            </span>
+          </div>
+        </div>
+
+        <div className=" bg-white rounded-lg shadow-md gap-10 flex flex-row col-span-3 row-span-2  h-[100px]">
+          <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
+          <div className="flex flex-col justify-evenly">
+            <p className="text-[#AFAFAF] text-base font-Poppins font-medium">
+              Savings
+            </p>
+            <span className="text-[#15223C] text-[20px] font-semibold">
+              $
+              {savings.length &&
+                savings.reduce((a, b) => a.mount + b.mount).toLocaleString()}
+            </span>
           </div>
         </div>
       </div>
-    </>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 h-3/5 gap-5">
+        <div className="col-span-3 row-span-5 bg-white rounded-lg shadow-md h-[330px]">
+          myJournal
+        </div>
+        <TransactionsComponent />
+
+        <div className=" bg-white rounded-lg shadow-md ">myGraph</div>
+      </div>
+    </div>
   );
 }

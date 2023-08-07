@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// ! ANTES QUE TODO RECORDAR MANEJAR MEJOR LOS ERRORES, TIENEN CONSOLE.LOGS
-
 //* CREATE THE SAVING
 export const createSaving = createAsyncThunk(
   "saving/create",
@@ -17,28 +15,25 @@ export const createSaving = createAsyncThunk(
 );
 
 //* GET ALL SAVING
-export const getAllSavings = createAsyncThunk(
-  "savings/getAll",
-  async () => {
-    try {
-      const { data } = await axios("/savings");
-      const allSavings = data.map((saving) => {
-        return {
-          id: saving.id,
-          name: saving.name,
-          mount: saving.mount,
-          goal: saving.goal,
-          createdAt: saving.createdAt,
-          updatedAt: saving.updatedAt,
-          user_id: saving.user_id,
-        };
-      });
-      return allSavings;
-    } catch (error) {
-      console.log(error);
-    }
+export const getAllSavings = createAsyncThunk("savings/getAll", async () => {
+  try {
+    const { data } = await axios("/savings");
+    const allSavings = data.map((saving) => {
+      return {
+        id: saving.id,
+        name: saving.name,
+        mount: saving.mount,
+        goal: saving.goal,
+        createdAt: saving.createdAt,
+        updatedAt: saving.updatedAt,
+        user_id: saving.user_id,
+      };
+    });
+    return allSavings;
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 //* UPDATE SAVING
 export const updateSaving = createAsyncThunk(
@@ -56,8 +51,8 @@ export const updateSaving = createAsyncThunk(
 //* DELETE SAVING
 export const deleteSaving = createAsyncThunk("saving/delete", async (id) => {
   try {
-    await axios.delete(`/savings/${id}`);
-    return id;
+    const { data } = await axios.delete(`/savings/${id}`);
+    return data;
   } catch (error) {
     console.log(error);
   }
