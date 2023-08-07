@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-//* CREATE THE SAVING
-export const createSaving = createAsyncThunk(
-  "saving/create",
-  async (saving, token) => {
+//* CREATE THE INVERSION
+export const createInversion = createAsyncThunk(
+  "inversion/create",
+  async (inversion, token) => {
     try {
-      const { data } = await axios.post("/savings", saving, {
+      const { data } = await axios.post("/inversions", inversion, {
         headers: { Authorization: token },
       });
       return data;
@@ -16,12 +16,12 @@ export const createSaving = createAsyncThunk(
   }
 );
 
-//* GET ALL SAVING
-export const getAllSavings = createAsyncThunk(
-  "savings/getAll",
+//* GET ALL INVERSIONS
+export const getAllInversions = createAsyncThunk(
+  "inversions/getAll",
   async (token) => {
     try {
-      const { data } = await axios("/savings", {
+      const { data } = await axios("/inversions", {
         headers: { Authorization: token },
       });
       return data;
@@ -31,12 +31,12 @@ export const getAllSavings = createAsyncThunk(
   }
 );
 
-//* UPDATE SAVING
-export const updateSaving = createAsyncThunk(
-  "saving/update",
+//* UPDATE INVERSION
+export const updateInversion = createAsyncThunk(
+  "inversion/update",
   async (id, newData, token) => {
     try {
-      const { data } = await axios.put(`/savings/${id}`, newData, {
+      const { data } = await axios.put(`/inversions/${id}`, newData, {
         headers: { Authorization: token },
       });
       return data;
@@ -46,12 +46,12 @@ export const updateSaving = createAsyncThunk(
   }
 );
 
-//* DELETE SAVING
-export const deleteSaving = createAsyncThunk(
-  "saving/delete",
+//* DELETE INVERSION
+export const deleteInversion = createAsyncThunk(
+  "inversion/delete",
   async (id, token) => {
     try {
-      const { data } = await axios.delete(`/savings/${id}`, {
+      const { data } = await axios.delete(`/inversions/${id}`, {
         headers: { Authorization: token },
       });
       return data;

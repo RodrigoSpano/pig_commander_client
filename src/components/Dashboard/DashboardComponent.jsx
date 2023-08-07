@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
-import { useSelector, useDispatch} from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 import { getAllSavings } from "@/redux/actions/savingsActions";
 import { useEffect } from "react";
 
@@ -13,11 +13,14 @@ export default function DashboardComponent() {
   const savings = useSelector((state) => state.savings.allSavings);
 
   useEffect(() => {
-    dispatch(getAllSavings());
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      dispatch(getAllSavings(token));
+    }
   }, []);
-   
-//! DEBO SACAR ESTE CONSOLE.LOG ANTES DE PR
-console.log(savings);
+
+  //! DEBO SACAR ESTE CONSOLE.LOG ANTES DE PR
+  console.log(savings);
   return (
     <div className="flex flex-col gap-5 pt-3 px-10">
       <div className="grid grid-cols-1 sm:grid-cols-12 h-2/5 gap-5">
