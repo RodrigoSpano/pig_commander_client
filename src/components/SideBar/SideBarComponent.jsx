@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineDollarCircle, AiOutlineInfoCircle } from "react-icons/ai";
 import { IoWalletOutline } from "react-icons/io5";
@@ -10,8 +11,20 @@ import Link from "next/link";
 //
 import Logo from "@/utils/Images/image.png";
 import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserData } from "@/redux/actions/userActions";
 
 export default function SideBar() {
+
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token && !user.logged) {
+      dispatch(getUserData(token))
+    }
+  }, [])
   return (
     <div className="bg-white w-80 h-screen text-boldGray p-4 rounded-r-3xl">
       <span className="flex text-2xl align-center justify-between">

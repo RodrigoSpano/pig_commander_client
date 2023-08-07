@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loginUser } from '../actions/userActions'
+import { getUserData, loginUser } from '../actions/userActions'
 
 const initialState = {
   name: '',
@@ -27,11 +27,19 @@ export const userSlice = createSlice({
         state.premium = action.payload.user.premium
         state.logged = true
       }
-    })
+    }),
+      builder.addCase(getUserData.fulfilled, (state, action) => {
+        state.name = action.payload.user.name;
+        state.lastname = action.payload.user.lastname
+        state.email = action.payload.user.email
+        state.image = action.payload.user.image
+        state.premium = action.payload.user.premium
+        state.logged = true
+      })
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { clearUser } = userSlice.actions
+export const { clearUser, setUserInfo } = userSlice.actions
 
 export default userSlice.reducer

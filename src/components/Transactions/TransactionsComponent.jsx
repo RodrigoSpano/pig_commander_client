@@ -17,7 +17,7 @@ const TransactionsComponent = () => {
 
   useEffect(()=>{
     if(!transactionsState.length){
-      const token = sessionStorage.getItem('token')
+      const token = localStorage.getItem('token')
       dispatch(getAllTransactions(token))
     }
   },[])
