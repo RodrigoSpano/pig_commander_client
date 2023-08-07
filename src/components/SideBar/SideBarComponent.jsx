@@ -95,7 +95,7 @@ export default function SideBar() {
       </div>
       <div className="m-5">
         
-        <Link href="/">
+        <Link href="/login" onClick={() => localStorage.removeItem('token')}>
           <p className="flex mt-40 cursor-pointer font-semibold hover:text-pink-600 hover:bg-pink-100 hover:rounded-md ">
             <span className="text-2xl mr-2 ">
               <ImExit />

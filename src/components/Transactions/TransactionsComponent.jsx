@@ -53,7 +53,7 @@ const TransactionsComponent = () => {
         {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handelDetail={handelDetail} transaction={t} key={i} />)): null} 
         </div>
       </div>
-      {transactions?.length &&
+      {transactions?.length ?
         <PaginationComponent
           count={count}
           totalPages={totalPages}
@@ -61,7 +61,7 @@ const TransactionsComponent = () => {
           prevHandler={prevHandler}
           lastPageHandler={lastPageHandler}
           firstPageHandler={firstPageHandler}
-        />
+        /> : null
       }
     </div>
   );

@@ -5,10 +5,14 @@ const PaginationComponent = ({ count, totalPages, nextHandler, prevHandler, firs
     <div className="flex flex-col justify-center items-center pt-3">
       <div className="flex gap-2">
         <button onClick={prevHandler}>{"<"}</button>
+        {
+          count ? (
+            <h3>
+              {count} - {totalPages}
+            </h3>
 
-        <h3>
-          {count} - {totalPages}
-        </h3>
+          ) : null
+        }
 
         <button onClick={nextHandler}>{">"}</button>
       </div>
