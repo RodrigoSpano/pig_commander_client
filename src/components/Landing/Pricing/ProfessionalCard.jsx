@@ -1,10 +1,17 @@
+"use client"
 import React from 'react';
 import Link from 'next/link';
 import { HiOutlineCheck } from 'react-icons/hi';
+import { motion } from 'framer-motion';
 
 const ProfessionalCard = () => {
   return (
-    <div className='rounded-md p-6 bg-gradient-to-r from-regularPink to-boldPink w-[90%] md:w-[350px] h-[480px] flex flex-col justify-between shadow-2xl select-none'>
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      className='rounded-md p-6 bg-gradient-to-r from-regularPink to-boldPink w-[90%] md:w-[350px] h-[480px] flex flex-col justify-between shadow-2xl select-none'
+    >
       <div>
         <h3 className='pb-4 text-white text-2xl font-semibold'>Professional</h3>
 
@@ -21,29 +28,49 @@ const ProfessionalCard = () => {
         <hr className='pb-4' />
 
         <ul className='pb-4'>
-          <li className='flex items-center pb-2 text-white'>
+          <motion.li
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className='flex items-center pb-2 text-white'
+          >
             <HiOutlineCheck className='mr-3 text-3xl text-white' />
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          </li>
-          <li className='flex items-center pb-2 text-white'>
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            className='flex items-center pb-2 text-white'
+          >
             <HiOutlineCheck className='mr-3 text-3xl text-white' />
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          </li>
-          <li className='flex items-center pb-2 text-white'>
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+            className='flex items-center pb-2 text-white'
+          >
             <HiOutlineCheck className='mr-3 text-3xl text-white' />
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          </li>
+          </motion.li>
         </ul>
       </div>
 
-      <div className='flex items-center justify-center'>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className='flex items-center justify-center'
+      >
         <Link href='/login'>
           <button className='bg-white py-3 px-16 rounded-sm hover:bg-gray-100 focus:outline-none'>
             Get started
           </button>
         </Link>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
