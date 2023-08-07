@@ -30,6 +30,7 @@ export default function SavingFormComponent() {
 
           <div className="mb-3">
             <input
+              
               type="date"
               id="start"
               name="goal-start"

@@ -9,7 +9,7 @@ export default function InvestmentFormComponent() {
         <div className="column-span-1">
           <div className="border-1 m-2">Name</div>
           <input
-            className="border-1 m-2 bg-slate-200 rounded-2xl h-10 w-11/12"
+            className="border-1 m-2 pl-4 bg-slate-200 rounded-2xl h-10 w-11/12"
             placeholder="Enter Name"
           ></input>
         </div>
@@ -28,7 +28,7 @@ export default function InvestmentFormComponent() {
         </div>
         <div className="column-span-1">
           <input
-            className="border-1 m-2 bg-slate-200 rounded-2xl h-10  w-11/12"
+            className="border-1 m-2 pl-4 bg-slate-200 rounded-2xl h-10  w-11/12"
             placeholder="Enter Taxes"
           ></input>
         </div>
