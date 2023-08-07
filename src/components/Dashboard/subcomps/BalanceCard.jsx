@@ -26,7 +26,7 @@ const BalanceCard = ({transactions}) => {
           My Balance
         </p>
         <span className="text-strongPink text-5xl font-Poppins font-bold text-right pr-5 ">
-          ${total}
+          ${total.toLocaleString()}
         </span>
       </div>
     </div>

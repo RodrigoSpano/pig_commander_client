@@ -1,20 +1,21 @@
 import { getExpensesTotal, getIncomesTotal } from '@/utils/helper/monthTransactions'
 import React, { useEffect, useState } from 'react'
 
-const MoneyCard = ({title, type, transactions}) => {
+const MoneyCard = ({title, type, array}) => {
   const [value, setValue] = useState(0)
 
   useEffect(() => {
     if(type === 'expense'){
-      const total = getExpensesTotal(transactions)
+      const total = getExpensesTotal(array)
       setValue(total)
     } else if(type === 'income'){
-      const total = getIncomesTotal(transactions)
+      const total = getIncomesTotal(array)
       setValue(total)
     } else if(type==='saving'){
-      setValue(324875) //todo => cambiar por estado savings
+      const total = array.length && array.reduce((a, b) => a.mount + b.mount)
+      setValue(total)
     }
-  }, [transactions])
+  }, [array])
 
   return (
     <div className=" bg-white rounded-lg shadow-md flex gap-10 flex-row col-span-3 row-span-2 h-[100px]">
@@ -25,7 +26,7 @@ const MoneyCard = ({title, type, transactions}) => {
         {title}
       </p>
       <span className="text-[#15223C] text-[20px] font-semibold">
-        ${value}
+        ${value.toLocaleString()}
       </span>
     </div>
   </div>
