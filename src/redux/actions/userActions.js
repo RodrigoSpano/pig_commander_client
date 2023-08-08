@@ -13,7 +13,7 @@ export const loginUser = createAsyncThunk('user/login', async (userData) => {
         icon: 'success',
         title: 'Logged successfully',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1500
       })
       return { user: data.user, logged: true }
 
@@ -45,6 +45,6 @@ export const getUserData = createAsyncThunk('getUserData', async (token) => {
     return data
   } catch (error) {
     console.log(error)
-    Swal.fire({ icon: 'error', title: 'invalid token or user not found', showConfirmButton: false, timer: 2000 })
+    Swal.fire({ icon: 'error', title: 'Invalid token or user not found', showConfirmButton: false, timer: 2000 })
   }
 })
