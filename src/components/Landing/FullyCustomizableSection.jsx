@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import Image from 'next/image';
-import MockUp from '../../utils/Images/iPhone_14_Blue_PDP_Image_Position-1A_LAES.png';
+import Mockup3 from '../../utils/Images/Mockups/Mockup3.png';
 import { HiOutlineStar } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 
@@ -16,7 +16,7 @@ const FeaturesSection = () => {
         transition={{ duration: 0.8 }}
         className='flex items-center justify-center mt-6 md:mt-0'
       >
-        <Image src={MockUp} width={260} height={505} alt='Logo' />
+        <Image src={Mockup3} width={600} height={600} alt='Logo' />
       </motion.div>
 
       {/* TEXTS */}
