@@ -21,7 +21,7 @@ const BasicCard = () => {
             transition={{ delay: 0.2 }}
             className='text-black text-4xl font-bold'
           >
-            $19
+            $14.99
           </motion.h1>
           <motion.h4
             initial={{ opacity: 0, y: -10 }}
@@ -29,7 +29,7 @@ const BasicCard = () => {
             transition={{ delay: 0.3 }}
             className='text-black font-semibold'
           >
-            / month
+            / 3 month
           </motion.h4>
         </div>
 
