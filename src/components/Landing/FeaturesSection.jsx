@@ -1,7 +1,9 @@
 "use client"
 import React from 'react';
 import Image from 'next/image';
-import MockUp from '../../utils/Images/iPhone_14_Blue_PDP_Image_Position-1A_LAES.png';
+import Link from 'next/link';
+import Mockup1 from '../../utils/Images/Mockups/Mockup1.png';
+import { HiArrowUpRight } from "react-icons/hi2";
 import { HiFire } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 
@@ -15,7 +17,7 @@ const FeaturesSection = () => {
         transition={{ duration: 0.8 }}
         className='flex items-center justify-center md:justify-start'
       >
-        <Image src={MockUp} width={260} height={505} alt='Logo' />
+        <Image src={Mockup1} width={600} height={600} alt='Logo' />
       </motion.div>
 
       {/* TEXTS */}
@@ -113,6 +115,25 @@ const FeaturesSection = () => {
           >
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className='flex justify-center my-2'
+          >
+          </motion.div>
+            <Link href="/features">
+              <motion.h4
+                whileHover={{ color: '#ff4a6e', scale: 1.05 }}
+                className='flex items-center text-lg text-center md:text-left text-boldPink hover:text-regularPink'
+              >
+                See more Features
+                <span className='ml-2'>
+                  <HiArrowUpRight />
+                </span>
+              </motion.h4>
+            </Link>
         </motion.div>
       </div>
     </div>

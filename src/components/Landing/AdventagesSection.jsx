@@ -1,7 +1,9 @@
 "use client"
 import React from 'react';
 import Image from 'next/image';
-import MockUp from '../../utils/Images/iPhone_14_Blue_PDP_Image_Position-1A_LAES.png';
+import Link from 'next/link';
+import { HiArrowUpRight } from "react-icons/hi2";
+import Mockup2 from '../../utils/Images/Mockups/Mockup2.png';
 import { HiFire } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 
@@ -135,6 +137,19 @@ const AdventagesSection = () => {
           >
             The app should provide users with personal finance information so they can learn and improve their financial skills.
           </motion.p>
+
+          <Link href="/features">
+              <motion.h4
+                whileHover={{ color: '#ff4a6e', scale: 1.05 }}
+                className='flex items-center text-lg text-center md:text-left text-boldPink hover:text-regularPink mt-2'
+              >
+                See more Features
+                <span className='ml-2'>
+                  <HiArrowUpRight />
+                </span>
+              </motion.h4>
+            </Link>
+
         </motion.div>
       </motion.div>
 
@@ -145,7 +160,7 @@ const AdventagesSection = () => {
         transition={{ duration: 0.8 }}
         className='flex items-center justify-center md:justify-end'
       >
-        <Image src={MockUp} width={260} height={505} alt='Logo' />
+        <Image src={Mockup2} width={600} height={600} alt='Logo' />
       </motion.div>
     </div>
   );
