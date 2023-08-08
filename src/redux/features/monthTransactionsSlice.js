@@ -29,16 +29,16 @@ export const monthlyTransactionsSlice = createSlice({
     },
     orderNameAlphabetically: (state, action) => {
       if (action.payload === 'aZ') {
-        state.transactions = state.backup_transactions.sort((a, b) => a.name.localeCompare(b.name))
+        state.transactions = state.transactions.sort((a, b) => a.name.localeCompare(b.name))
       } else if (action.payload === 'zA') {
-        state.transactions = state.backup_transactions.sort((a, b) => b.name.localeCompare(a.name))
+        state.transactions = state.transactions.sort((a, b) => b.name.localeCompare(a.name))
       }
     },
     orderMount: (state, action) => {
       if (action.payload === 'asc') {
-        state.transactions = state.backup_transactions.sort((a, b) => a.mount - b.mount)
+        state.transactions = state.transactions.sort((a, b) => a.mount - b.mount)
       } else if (action.payload === 'desc') {
-        state.transactions = state.backup_transactions.sort((a, b) => b.mount - a.mount)
+        state.transactions = state.transactions.sort((a, b) => b.mount - a.mount)
       }
     }
   },

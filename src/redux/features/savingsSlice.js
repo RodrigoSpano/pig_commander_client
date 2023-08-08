@@ -14,7 +14,7 @@ const initialState = {
 
 // * Sort dates from newest to oldest
 const sortSavings = (state) => {
-  const sortedDateSavings = state.allSavings.sort(
+  const sortedDateSavings = state.allSavings?.sort(
     (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
   );
   state.allSavings = sortedDateSavings;

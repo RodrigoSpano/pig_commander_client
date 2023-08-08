@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk('user/login', async (userData) => {
   try {
     const { data } = await axios.post(`/auth/login`, userData)
     if (data.success === true) {
-      sessionStorage.setItem('token', data.token)
+      localStorage.setItem('token', data.token)
       Swal.fire({
         icon: 'success',
         title: 'Logged successfully',
@@ -36,5 +36,15 @@ export const loginUser = createAsyncThunk('user/login', async (userData) => {
         timer: 2000
       })
     }
+  }
+})
+
+export const getUserData = createAsyncThunk('getUserData', async (token) => {
+  try {
+    const { data } = await axios('/profile', { headers: { 'Authorization': token } })
+    return data
+  } catch (error) {
+    console.log(error)
+    Swal.fire({ icon: 'error', title: 'invalid token or user not found', showConfirmButton: false, timer: 2000 })
   }
 })

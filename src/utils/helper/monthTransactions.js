@@ -1,8 +1,8 @@
 
 export const getExpensesTotal = (transactions) => {
   let total = 0
-  const expenses = transactions.filter(el => el.type === 'expense')
-  expenses.map(t => {
+  const expenses = transactions?.filter(el => el.type === 'expense')
+  expenses?.map(t => {
     total += t.mount
   })
   return total;
@@ -10,8 +10,8 @@ export const getExpensesTotal = (transactions) => {
 
 export const getIncomesTotal = (transactions) => {
   let total = 0
-  const expenses = transactions.filter(el => el.type === 'income')
-  expenses.map(t => {
+  const incomes = transactions?.filter(el => el.type === 'income')
+  incomes?.map(t => {
     total += t.mount
   })
   return total;

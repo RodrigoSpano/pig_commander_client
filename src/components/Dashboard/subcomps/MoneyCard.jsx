@@ -12,7 +12,7 @@ const MoneyCard = ({title, type, array}) => {
       const total = getIncomesTotal(array)
       setValue(total)
     } else if(type==='saving'){
-      const total = array.length && array.reduce((a, b) => a.mount + b.mount)
+      const total = array?.length && array.reduce((a, b) => a.mount + b.mount)
       setValue(total)
     }
   }, [array])
@@ -26,7 +26,7 @@ const MoneyCard = ({title, type, array}) => {
         {title}
       </p>
       <span className="text-[#15223C] text-[20px] font-semibold">
-        ${value.toLocaleString()}
+        ${value?.toLocaleString()}
       </span>
     </div>
   </div>

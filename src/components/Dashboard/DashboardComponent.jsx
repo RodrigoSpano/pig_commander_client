@@ -11,7 +11,7 @@ export default function DashboardComponent() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (token) {
       dispatch(getAllSavings(token));
     }
