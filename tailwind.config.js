@@ -34,7 +34,8 @@ module.exports = {
         google: "#334155",
         inputForm: "#f3f1ff",
         buttonDisabled: "#d9d7e5",
-
+        lowGray: "#9da4b0",
+      
         // light mode
         tremor: {
           brand: {
