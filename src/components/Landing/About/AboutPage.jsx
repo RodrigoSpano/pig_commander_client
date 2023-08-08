@@ -14,6 +14,7 @@ const AboutPage = () => {
             <div className='flex flex-col items-center justify-center min-h-screen'>
                 <WelcomeMessage />
                 <AboutUsSection />
+                <hr />
                 <MainFeatures />
                 <FeaturesAboutSection />
                 <HelpAndFAQSection /> 

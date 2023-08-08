@@ -14,7 +14,7 @@ const WelcomeMessage = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className='font-bold text-3xl md:text-5xl mb-2'
+        className='font-bold text-4xl md:text-5xl mb-2'
       >
         Welcome to Pig Commander!
       </motion.h1>
