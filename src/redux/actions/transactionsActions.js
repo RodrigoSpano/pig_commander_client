@@ -3,8 +3,8 @@ import axios from "axios";
 
 export const getAllIncomes = async () => {
   try {
-    const { data } = await axios('/incomes')
-    const modifiedData = data.map(el => {
+    const { data } = await axios("/incomes");
+    const modifiedData = data.map((el) => {
       return {
         id: el.id,
         name: el.name,
@@ -14,18 +14,25 @@ export const getAllIncomes = async () => {
         method_id: el.method_id,
         category_id: el.category_id,
         createdAt: el.createdAt,
-        type: 'income'
-      }
-    })
-    return modifiedData
+        type: "income",
+      };
+    });
+    return modifiedData;
   } catch (error) {
-    console.log(error)
+    if (error.response) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   }
-}
+};
 export const getAllExpenses = async () => {
   try {
-    const { data } = await axios('/expenses')
-    const modifiedData = data.map(el => {
+    const { data } = await axios("/expenses");
+    const modifiedData = data.map((el) => {
       return {
         id: el.id,
         name: el.name,
@@ -35,56 +42,94 @@ export const getAllExpenses = async () => {
         method_id: el.method_id,
         category_id: el.category_id,
         createdAt: el.createdAt,
-        type: 'expense'
+        type: "expense",
+      };
+    });
+    return modifiedData;
+  } catch (error) {
+    if (error.response) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  }
+};
+
+export const getAllTransactions = createAsyncThunk(
+  "transactions/all",
+  async () => {
+    const incomes = await getAllIncomes();
+    const expenses = await getAllExpenses();
+    const transactions = [...incomes, ...expenses].sort(
+      (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
+    );
+    return { transactions };
+  }
+);
+
+export const createExpense = createAsyncThunk(
+  "expense/create",
+  async (expenseInfo) => {
+    try {
+      const { data } = await axios.post("/expenses", expenseInfo);
+      return data;
+    } catch (error) {
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
-    })
-    return modifiedData
-  } catch (error) {
-    console.log(error)
+    }
   }
-}
+);
 
-export const getAllTransactions = createAsyncThunk('transactions/all', async () => {
-  const incomes = await getAllIncomes()
-  const expenses = await getAllExpenses()
-  const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
-  return { transactions }
-})
-
-export const createExpense = createAsyncThunk('expense/create', async (expenseInfo) => {
-  try {
-    const { data } = await axios.post('/expenses', expenseInfo)
-    return data
-  } catch (error) {
-    console.log(error)
+export const createIncome = createAsyncThunk(
+  "income/create",
+  async (incomeInfo) => {
+    try {
+      const { data } = await axios.post("/incomes", incomeInfo);
+      return data;
+    } catch (error) {
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
   }
-})
+);
 
-export const createIncome = createAsyncThunk('income/create', async (incomeInfo) => {
-  try {
-    const { data } = await axios.post('/incomes', incomeInfo)
-    return data
-  } catch (error) {
-    console.log(error)
+export const deleteExpense = createAsyncThunk("expense/delete", async (id) => {
+  await axios.delete(`/expenses/${id}`);
+  return id;
+});
+
+export const deleteIncome = createAsyncThunk("income/delete", async (id) => {
+  await axios.delete(`/incomes/${id}`);
+  return id;
+});
+
+export const updateExpense = createAsyncThunk(
+  "expense/update",
+  async (id, newData) => {
+    const { data } = await axios.put(`/expenses/${id}`, newData);
+    return data;
   }
-})
+);
 
-export const deleteExpense = createAsyncThunk('expense/delete', async (id) => {
-  await axios.delete(`/expenses/${id}`)
-  return id
-})
-
-export const deleteIncome = createAsyncThunk('income/delete', async (id) => {
-  await axios.delete(`/incomes/${id}`)
-  return id
-})
-
-export const updateExpense = createAsyncThunk('expense/update', async (id, newData) => {
-  const { data } = await axios.put(`/expenses/${id}`, newData)
-  return data
-})
-
-export const updateIncome = createAsyncThunk('income/update', async (id, newData) => {
-  const { data } = await axios.put(`/incomes/${id}`, newData)
-  return data
-})
+export const updateIncome = createAsyncThunk(
+  "income/update",
+  async (id, newData) => {
+    const { data } = await axios.put(`/incomes/${id}`, newData);
+    return data;
+  }
+);
