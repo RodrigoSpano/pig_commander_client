@@ -3,7 +3,7 @@ import React from 'react';
 export default function ProfileComponent () {
     return (
         <div>
-            profile
+            <button>Become Premium</button>
         </div>
     )
 }
