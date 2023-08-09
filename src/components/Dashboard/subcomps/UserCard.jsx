@@ -12,6 +12,7 @@ const UserCard = ({ user }) => {
     setImage(e.target.files[0]);
   };
 
+const UserCard = ({ user }) => {
   // Envia la imagen al backend para actualizarla
   const handleSubmit = () => {
     if (image) {
