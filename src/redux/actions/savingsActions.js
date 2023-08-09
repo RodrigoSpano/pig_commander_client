@@ -11,7 +11,14 @@ export const createSaving = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );
@@ -26,7 +33,14 @@ export const getAllSavings = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );
@@ -41,7 +55,14 @@ export const updateSaving = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );
@@ -56,7 +77,14 @@ export const deleteSaving = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );

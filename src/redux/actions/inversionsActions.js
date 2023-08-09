@@ -11,7 +11,14 @@ export const createInversion = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );
@@ -26,7 +33,14 @@ export const getAllInversions = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );
@@ -41,7 +55,14 @@ export const updateInversion = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );
@@ -56,7 +77,14 @@ export const deleteInversion = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   }
 );

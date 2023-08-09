@@ -13,12 +13,19 @@ export const getAllIncomes = async (data) => {
         method_id: el.method_id,
         category_id: el.category_id,
         createdAt: el.createdAt,
-        type: 'income'
-      }
-    })
-    return modifiedData
+        type: "income",
+      };
+    });
+    return modifiedData;
   } catch (error) {
-    console.log(error)
+    if (error.response) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   }
 }
 export const getAllExpenses = async (data) => {
@@ -33,14 +40,21 @@ export const getAllExpenses = async (data) => {
         method_id: el.method_id,
         category_id: el.category_id,
         createdAt: el.createdAt,
-        type: 'expense'
-      }
-    })
-    return modifiedData
+        type: "expense",
+      };
+    });
+    return modifiedData;
   } catch (error) {
-    console.log(error)
+    if (error.response) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   }
-}
+};
 
 export const getAllTransactions = createAsyncThunk('transactions/all', async (token) => {
   const { data: incomeData } = await axios('/incomes', { headers: { 'Authorization': token } })
@@ -58,7 +72,7 @@ export const createExpense = createAsyncThunk('expense/create', async (expenseIn
   } catch (error) {
     console.log(error)
   }
-})
+});
 
 export const createIncome = createAsyncThunk('income/create', async (incomeInfo, token) => {
   try {
@@ -67,7 +81,7 @@ export const createIncome = createAsyncThunk('income/create', async (incomeInfo,
   } catch (error) {
     console.log(error)
   }
-})
+});
 
 export const deleteExpense = createAsyncThunk('expense/delete', async (id, token) => {
   await axios.delete(`/expenses/${id}`, { headers: { 'Authorization': token } })

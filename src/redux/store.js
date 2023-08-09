@@ -13,4 +13,4 @@ export const store = configureStore({
     savings: savingsReducer,
     others: otherInfoReducer
   },
-})
+});

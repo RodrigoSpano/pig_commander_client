@@ -16,21 +16,27 @@ export default function SavingFormComponent() {
 
   return (
     <div>
-      <div className="m-5 text-lg text-boldPink font-bold">Create New:</div>
+      <div className="mt-5 ml-2 text-3xl text-boldPink font-extrabold tracking-tight">
+        Create New Goal:
+      </div>
       <div className="grid grid-cols-1 gap-2 w-full h-full">
         <div className="column-span-1">
-          <div className="border-1 m-2">Name</div>
+          <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
+            Name
+          </div>
           <input
-            className="border-1 m-2 bg-slate-200 rounded-2xl h-10 w-11/12"
+            className=" ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-2/5"
             placeholder="Enter Name"
           ></input>
-          <Inputs title={"Set a goal amount"} />
-
-          <div className="border-1 m-2">Goal deadline</div>
+          <div className="w-5/12">
+            <Inputs title={"Set a goal amount"} icon={"$"} />
+          </div>
+          <div className=" m-2 ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
+            Goal deadline
+          </div>
 
           <div className="mb-3">
             <input
-              
               type="date"
               id="start"
               name="goal-start"
@@ -40,7 +46,7 @@ export default function SavingFormComponent() {
             />
           </div>
 
-          <button className="text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-5 py-2 mx-2">
+          <button className="mt-4 text-lg bg-gradient-to-r from-regularPink to-boldPink text-white rounded-sm px-5 py-2 mx-2 font-extrabold tracking-widest">
             Submit
           </button>
         </div>

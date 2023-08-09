@@ -16,8 +16,8 @@ const ProfessionalCard = () => {
         <h3 className='pb-4 text-white text-2xl font-semibold'>Professional</h3>
 
         <div className='flex justify-start items-end pb-2'>
-          <h1 className='text-white text-6xl font-bold'>$49</h1>
-          <h4 className='text-white font-semibold'>/ month</h4>
+          <h1 className='text-white text-6xl font-bold'>$24.99</h1>
+          <h4 className='text-white font-semibold'>/ 6 month</h4>
         </div>
 
         <div className='pb-4 leading-[1.5]'>

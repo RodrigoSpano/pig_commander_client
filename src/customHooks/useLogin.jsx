@@ -1,43 +1,43 @@
-import {  loginUser } from "@/redux/actions/userActions";
-import  { useState } from "react";
+import { loginUser } from "@/redux/actions/userActions";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation';
 
 export default function () {
     const router = useRouter()
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
 
     const [userLogin, setUserLogin] = useState({
-        email: "", 
-        password: "", 
+        email: "",
+        password: "",
     })
-  
-    const [focusedEmailInput, setFocusedEmailInput] = useState(false); 
-    const [focusedPasswordInput, setFocusedPasswordInput] = useState(false); 
+
+    const [focusedEmailInput, setFocusedEmailInput] = useState(false);
+    const [focusedPasswordInput, setFocusedPasswordInput] = useState(false);
 
     const handleChange = (e) => {
         setUserLogin({
-            ...userLogin, 
+            ...userLogin,
             [e.target.name]: e.target.value
         });
     };
 
-    const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userLogin.email); 
+    const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userLogin.email);
 
-    const isPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/.test(userLogin.password); 
+    const isPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{8,}$/.test(userLogin.password);
 
 
     // mandar siemre y cuando ningun espacio este vacio 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-    //loginUser = action
+        //loginUser = action
         dispatch(loginUser(userLogin))
-          .then((resp)=> {
-            if(resp.payload?.logged){
-              router.push('/home/dashboard')
-            }
-          } )
+            .then((resp) => {
+                if (resp.payload?.logged) {
+                    router.push('/home/dashboard')
+                }
+            })
     }
 
     //validaciones de input
@@ -47,7 +47,6 @@ export default function () {
     //boton disable
     const someFieldEmpty = !isEmail || !isPassword
 
-
     const allowEmailErrorMessage = () => {
         setFocusedEmailInput(true);
     }
@@ -56,19 +55,16 @@ export default function () {
         setFocusedPasswordInput(true);
     }
 
-
-
     return {
-        userLogin, 
-        handleChange, 
-        handleSubmit, 
-        inputInvalidEmail, 
+        userLogin,
+        handleChange,
+        handleSubmit,
+        inputInvalidEmail,
         inputInvalidPassword,
-        someFieldEmpty, 
+        someFieldEmpty,
         focusedEmailInput,
         focusedPasswordInput,
         allowEmailErrorMessage,
-        allowPasswordErrorMessage,
-
-     }
+        allowPasswordErrorMessage
+    }
 }
