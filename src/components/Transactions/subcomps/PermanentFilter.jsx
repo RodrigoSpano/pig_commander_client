@@ -1,4 +1,4 @@
-import { filterByType } from '@/redux/features/monthTransactionsSlice'
+import { clearFilters, filterByType } from '@/redux/features/monthTransactionsSlice'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -6,7 +6,11 @@ const PermanentFilter = () => {
   const dispatch = useDispatch()
 
   const handleOptions = (e) => {
-    dispatch(filterByType(e.target.value))
+    if (e.target.value === 'default') {
+      dispatch(clearFilters())
+    } else {
+      dispatch(filterByType(e.target.value))
+    }
   }
 
   return (
