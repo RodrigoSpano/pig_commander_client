@@ -2,6 +2,7 @@
 import React from "react";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
 import StatsContainer from "./subcomps/StatsContainer";
+import MyGraph from './subcomps/MyGraph/MyGraph'
 
 import { useDispatch } from "react-redux";
 import { getAllSavings } from "@/redux/actions/savingsActions";
@@ -27,7 +28,7 @@ export default function DashboardComponent() {
             </div>
             <TransactionsComponent />
             
-            <div className=" bg-white rounded-lg shadow-md ">myGraph</div>
+            <div className=" bg-white rounded-lg shadow-md "><MyGraph /></div>
           </div>
         </div>
   );
