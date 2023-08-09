@@ -61,8 +61,8 @@ export default function FormWallet () {
                 <button className="text-white h-8 w-32 font-bold cursor-no-drop rounded-2xl text-sm bg-regularGray">AutoDate</button>
             </div>
             <div className="mt-5">
-                <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-buttonDisabled" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty}>Add Money</button>
-                <button className="text-white h-10 w-32 font-bold cursor-pointer rounded-2xl mt-8 text-base bg-gradient-to-r from-regularPink to-boldPink"  disabled={someFieldEmpty}>Add Expense</button>
+                <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty}>Add Money</button>
+                <button className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty}>Add Expense</button>
             </div>
         </div>
     )
