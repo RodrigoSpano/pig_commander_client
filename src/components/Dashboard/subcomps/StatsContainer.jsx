@@ -19,7 +19,6 @@ const StatsContainer = () => {
     const token = localStorage.getItem('token')
     if(!categories.length){
       dispatch(getCategoriesAction(token))
-      dispatch(getCategoriesAction(token))
     }
     if(!maxSpend){
       dispatch(getMaxSpendAction(token))

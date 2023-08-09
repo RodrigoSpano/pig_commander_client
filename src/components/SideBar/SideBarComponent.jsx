@@ -11,21 +11,20 @@ import LogOut from "./Subcomponents/LogOut";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "@/redux/actions/userActions";
-import { getMethodsAction } from "@/redux/actions/otherInfoActions";
+import { getAllSavings } from "@/redux/actions/savingsActions";
 
 export default function SideBar() {
 
   const user = useSelector(state => state.user)
-  const methods = useSelector(state => state.others.methods)
   const dispatch = useDispatch()
 
   useEffect(() => {
       const token = localStorage.getItem('token')
-      if (token && !user.logged) { //todo falta get de othersstate
-        dispatch(getUserData(token))
-      }
-      if(!methods.length){
-        dispatch(getMethodsAction(token))
+      if(token){
+        if (!user.logged) {
+          dispatch(getUserData(token))
+        }
+        dispatch(getAllSavings(token));
       }
 
   }, [dispatch])
