@@ -17,7 +17,9 @@ export default function FormWallet () {
     } = useFormWallet();
 
     return (
+        
         <div className="flex flex-col items-center h-3">
+            <div className='bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink'>h</div>
             <h1 className="text-xl font-bold mt-5 m-2.5">Transaction Form</h1>
             <div className="flex flex-row mt-2 h">
                 <div className="flex flex-col mr-2.5">
