@@ -2,6 +2,9 @@
 import React from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useVisibility from "@/customHooks/useVisibility";
+import SearchBarComponent from '../SearchBar/SearchBarComponent';
+import TransactionsPropsContainer from '../Transactions/subcomps/TransactionsPropsContainer';
+import PermanentFilter from '../Transactions/subcomps/PermanentFilter';
 
 
 
@@ -28,10 +31,26 @@ export default function WalletComponent () {
                     <button className='bg-regularPink text-white font-bold h-7 w-36 rounded-xl'>Create Category</button>
                 </div>
             </div>
-            <div className='flex place-content-center'>
-              <div className='w-4/5 h-0.5 bg-regularGray mt-6'></div>
-            </div>
-            
+            <hr className='my-2 mx-16 mt-6' />
+                <div className='flex items-center justify-around my-4'>
+                    <h1 className='text-2xl font-bold text-boldPink'>Transactions</h1>
+                    <SearchBarComponent/>
+                    <PermanentFilter />
+                </div>
+                <div className='flex items-center justify-between px-6 py-3 mx-16 my-2 bg-white border border-gray-200 rounded-lg'>
+      <div
+        className='text-xl font-medium text-gray-700 cursor-pointer hover:text-boldPink'
+        
+      >
+        Name
+      </div>
+      <div
+        className='text-xl font-medium text-gray-700 cursor-pointer hover:text-boldPink'
+        
+      >
+        Amount
+      </div>
+    </div>
         </div>
     )
 }
