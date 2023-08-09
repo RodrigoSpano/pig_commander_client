@@ -59,3 +59,18 @@ export const getUserData = createAsyncThunk("getUserData", async (token) => {
     }
   }
 });
+
+export const updatePicture = createAsyncThunk(
+  "post picture",
+  async ({ formData, token }) => {
+    try {
+      const { data } = await axios.post("/profile", formData, {
+        headers: { Authorization: token },
+      });
+      return data;
+    } catch (error) {
+      alert("error detectado bip bup");
+      console.log(error);
+    }
+  }
+);
