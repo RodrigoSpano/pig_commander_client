@@ -1,5 +1,5 @@
 const { createSlice } = require('@reduxjs/toolkit')
-const { getMethodsAction, getCategoriesAction, getMaxSpendAction } = require('../actions/otherInfoActions')
+const { getMethodsAction, getCategoriesAction, getMaxSpendAction, createCategoriesAction, deleteCategoryAction, createMaxSpendAction, updateMaxSpendAction, deleteMaxSpendAction, getAllState } = require('../actions/otherInfoActions')
 
 const initialState = {
   methods: [],
@@ -16,10 +16,25 @@ const otherInfoSlice = createSlice({
       state.methods = action.payload
     }),
       builder.addCase(getCategoriesAction.fulfilled, (state, action) => {
-        state.categories = action.paylaod
+        state.categories = action.payload
+      }),
+      builder.addCase(createCategoriesAction.fulfilled, (state, action) => {
+        state.categories.push(action.payload)
+      }),
+      builder.addCase(deleteCategoryAction.fulfilled, (state, action) => {
+        state.categories = state.categories.filter(el => el.id !== action.payload)
       }),
       builder.addCase(getMaxSpendAction.fulfilled, (state, action) => {
-        state.maxSpend = action.paylaod
+        state.maxSpend = action.payload
+      }),
+      builder.addCase(createMaxSpendAction.fulfilled, (state, action) => {
+        state.maxSpend = action.payload.mount
+      }),
+      builder.addCase(updateMaxSpendAction.fulfilled, (state, action) => {
+        state.maxSpend = action.payload.mount
+      }),
+      builder.addCase(deleteMaxSpendAction.fulfilled, (state, action) => {
+        state.maxSpend = null
       })
   }
 })

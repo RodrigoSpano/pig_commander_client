@@ -6,6 +6,7 @@ import StatsContainer from "./subcomps/StatsContainer";
 import { useDispatch } from "react-redux";
 import { getAllSavings } from "@/redux/actions/savingsActions";
 import { useEffect } from "react";
+import { getAllTransactions } from "@/redux/actions/transactionsActions";
 
 export default function DashboardComponent() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ export default function DashboardComponent() {
     const token = localStorage.getItem("token");
     if (token) {
       dispatch(getAllSavings(token));
+      dispatch(getAllTransactions(token))
     }
   }, []);
 

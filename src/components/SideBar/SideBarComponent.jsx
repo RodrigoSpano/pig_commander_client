@@ -13,18 +13,24 @@ import Logo from "@/utils/Images/image.png";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "@/redux/actions/userActions";
+import { getMethodsAction } from "@/redux/actions/otherInfoActions";
 
 export default function SideBar() {
 
   const user = useSelector(state => state.user)
+  const methods = useSelector(state => state.others.methods)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token && !user.logged) {
-      dispatch(getUserData(token))
-    }
-  }, [])
+      const token = localStorage.getItem('token')
+      if (token && !user.logged) { //todo falta get de othersstate
+        dispatch(getUserData(token))
+      }
+      if(!methods.length){
+        dispatch(getMethodsAction(token))
+      }
+
+  }, [dispatch])
   return (
     <div className="bg-white w-80 h-screen text-boldGray p-4 rounded-r-3xl">
       <span className="flex text-2xl align-center justify-between">
