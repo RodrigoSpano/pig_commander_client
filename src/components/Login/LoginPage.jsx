@@ -59,10 +59,10 @@ export default function LoginContainer() {
                 
                 <h4 className="text-gray-500 mt-5">or</h4>
                 
-                <div className="flex justify-center">
+                <div onClick={() => {window.location.href="http://localhost:8080/api/auth/google"}} className="flex justify-center">
                     <div className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl">
                         <div className="self-center"><FcGoogle /></div>
-                        <h2 className="m-1.5 font-semibold text-google cursor-pointer">Continue with Google</h2>
+                        <h2  className="m-1.5 font-semibold text-google cursor-pointer">Continue with Google</h2>
                     </div>
                 </div>
             </div>
