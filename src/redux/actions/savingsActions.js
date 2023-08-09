@@ -7,7 +7,7 @@ export const createSaving = createAsyncThunk(
   async (saving, token) => {
     try {
       const { data } = await axios.post("/savings", saving, {
-        headers: { Authorization: token },
+        headers: { 'Authorization': token },
       });
       return data;
     } catch (error) {
@@ -22,7 +22,7 @@ export const getAllSavings = createAsyncThunk(
   async (token) => {
     try {
       const { data } = await axios("/savings", {
-        headers: { Authorization: token },
+        headers: { 'Authorization': token },
       });
       return data;
     } catch (error) {
@@ -37,7 +37,7 @@ export const updateSaving = createAsyncThunk(
   async (id, newData, token) => {
     try {
       const { data } = await axios.put(`/savings/${id}`, newData, {
-        headers: { Authorization: token },
+        headers: { 'Authorization': token },
       });
       return data;
     } catch (error) {
@@ -52,7 +52,7 @@ export const deleteSaving = createAsyncThunk(
   async (id, token) => {
     try {
       const { data } = await axios.delete(`/savings/${id}`, {
-        headers: { Authorization: token },
+        headers: { 'Authorization': token },
       });
       return data;
     } catch (error) {

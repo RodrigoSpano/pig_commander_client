@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getAllIncomes = async () => {
+export const getAllIncomes = async (data) => {
   try {
-    const { data } = await axios('/incomes')
     const modifiedData = data.map(el => {
       return {
         id: el.id,
@@ -22,9 +21,8 @@ export const getAllIncomes = async () => {
     console.log(error)
   }
 }
-export const getAllExpenses = async () => {
+export const getAllExpenses = async (data) => {
   try {
-    const { data } = await axios('/expenses')
     const modifiedData = data.map(el => {
       return {
         id: el.id,
@@ -44,47 +42,49 @@ export const getAllExpenses = async () => {
   }
 }
 
-export const getAllTransactions = createAsyncThunk('transactions/all', async () => {
-  const incomes = await getAllIncomes()
-  const expenses = await getAllExpenses()
+export const getAllTransactions = createAsyncThunk('transactions/all', async (token) => {
+  const { data: incomeData } = await axios('/incomes', { headers: { 'Authorization': token } })
+  const { data: expenseData } = await axios('/expenses', { headers: { 'Authorization': token } })
+  const incomes = await getAllIncomes(incomeData)
+  const expenses = await getAllExpenses(expenseData)
   const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
   return { transactions }
 })
 
-export const createExpense = createAsyncThunk('expense/create', async (expenseInfo) => {
+export const createExpense = createAsyncThunk('expense/create', async (expenseInfo, token) => {
   try {
-    const { data } = await axios.post('/expenses', expenseInfo)
+    const { data } = await axios.post('/expenses', expenseInfo, { headers: { 'Authorization': token } })
     return data
   } catch (error) {
     console.log(error)
   }
 })
 
-export const createIncome = createAsyncThunk('income/create', async (incomeInfo) => {
+export const createIncome = createAsyncThunk('income/create', async (incomeInfo, token) => {
   try {
-    const { data } = await axios.post('/incomes', incomeInfo)
+    const { data } = await axios.post('/incomes', incomeInfo, { headers: { 'Authorization': token } })
     return data
   } catch (error) {
     console.log(error)
   }
 })
 
-export const deleteExpense = createAsyncThunk('expense/delete', async (id) => {
-  await axios.delete(`/expenses/${id}`)
+export const deleteExpense = createAsyncThunk('expense/delete', async (id, token) => {
+  await axios.delete(`/expenses/${id}`, { headers: { 'Authorization': token } })
   return id
 })
 
-export const deleteIncome = createAsyncThunk('income/delete', async (id) => {
-  await axios.delete(`/incomes/${id}`)
+export const deleteIncome = createAsyncThunk('income/delete', async (id, token) => {
+  await axios.delete(`/incomes/${id}`, { headers: { 'Authorization': token } })
   return id
 })
 
-export const updateExpense = createAsyncThunk('expense/update', async (id, newData) => {
-  const { data } = await axios.put(`/expenses/${id}`, newData)
+export const updateExpense = createAsyncThunk('expense/update', async (id, newData, token) => {
+  const { data } = await axios.put(`/expenses/${id}`, newData, { headers: { 'Authorization': token } })
   return data
 })
 
-export const updateIncome = createAsyncThunk('income/update', async (id, newData) => {
-  const { data } = await axios.put(`/incomes/${id}`, newData)
+export const updateIncome = createAsyncThunk('income/update', async (id, newData, token) => {
+  const { data } = await axios.put(`/incomes/${id}`, newData, { headers: { 'Authorization': token } })
   return data
 })
