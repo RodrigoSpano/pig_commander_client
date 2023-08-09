@@ -7,7 +7,7 @@ export const createInversion = createAsyncThunk(
   async (inversion, token) => {
     try {
       const { data } = await axios.post("/inversions", inversion, {
-        headers: { Authorization: token },
+        headers: { 'Authorization': token },
       });
       return data;
     } catch (error) {
@@ -29,7 +29,7 @@ export const getAllInversions = createAsyncThunk(
   async (token) => {
     try {
       const { data } = await axios("/inversions", {
-        headers: { Authorization: token },
+        headers: { 'Authorization': token },
       });
       return data;
     } catch (error) {
@@ -51,7 +51,7 @@ export const updateInversion = createAsyncThunk(
   async (id, newData, token) => {
     try {
       const { data } = await axios.put(`/inversions/${id}`, newData, {
-        headers: { Authorization: token },
+        headers: { 'Authorization': token },
       });
       return data;
     } catch (error) {
