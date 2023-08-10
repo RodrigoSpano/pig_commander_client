@@ -28,10 +28,10 @@ const otherInfoSlice = createSlice({
         state.maxSpend = action.payload
       }),
       builder.addCase(createMaxSpendAction.fulfilled, (state, action) => {
-        state.maxSpend = action.payload.mount
+        state.maxSpend = action.payload.amount
       }),
       builder.addCase(updateMaxSpendAction.fulfilled, (state, action) => {
-        state.maxSpend = action.payload.mount
+        state.maxSpend = action.payload.amount
       }),
       builder.addCase(deleteMaxSpendAction.fulfilled, (state, action) => {
         state.maxSpend = null

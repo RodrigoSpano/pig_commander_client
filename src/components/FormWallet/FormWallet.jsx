@@ -9,12 +9,11 @@ export default function FormWallet () {
         formWallet,
         inputInvalids,
         handleChange,
-        someFieldEmpty,
-        allowMountErrorMessage,
+        someFieldEmpty, 
+        allowAmountErrorMessage,
         allowNameErrorMessage,
-        focusedMountInput,
-        focusedNameInput,
-        handleSubmitExpense,
+        focusedAmountInput,
+        focusedNameInput
     } = useFormWallet();
 
     return (
@@ -32,7 +31,7 @@ export default function FormWallet () {
                     <input className="bg-lightGray placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none" autoComplete="off"  type="number" name="amount" value={formWallet.amount} onChange={handleChange} onFocus={allowMountErrorMessage} placeholder="$"/>
                 </div>
             </div>
-            <p className="text-red-400 relative mt-2 text-xs">{(inputInvalids && (focusedNameInput || focusedMountInput)) ? ("These fields are required") : (<span className=""></span>)}</p>
+            <p className="text-red-400 relative mt-2 text-xs">{(inputInvalids && (focusedNameInput || focusedAmountInput)) ? ("These fields are required") : (<span className=""></span>)}</p>
             <div className="flex flex-row m-2.5 mt-5">
                 <div className="flex flex-col mr-2.5 ">
                     <label className="text-boldGray text-sm font-light">Method:</label>

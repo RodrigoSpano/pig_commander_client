@@ -15,7 +15,7 @@ export default function () {
     })
 
     const [focusedNameInput, setFocusedNameInput] = useState(false);
-    const [focusedMountInput, setFocusedMountInput] = useState(false);
+    const [focusedMountInput, setFocusedAmountInput] = useState(false);
     const [cookies, setCookie] = useCookies();
 
     const handleChange = (e) => {
@@ -27,23 +27,21 @@ export default function () {
     };
 
     const isName = formWallet.name.length > 0;
-    const isMount = formWallet.amount.length > 0;
+    const isAmount = formWallet.amount.length > 0; 
 
 
-    //validaciones de input
-    const inputInvalids = false;
-    // !isName || !isMount 
+       //validaciones de input
+       const inputInvalids = !isName || !isAmount;
 
     //boton disable
-    const someFieldEmpty = false;
-    // !isName || !isMount 
+    const someFieldEmpty = !isName || !isAmount; 
 
     const allowNameErrorMessage = () => {
         setFocusedNameInput(true);
     }
 
-    const allowMountErrorMessage = () => {
-        setFocusedMountInput(true);
+    const allowAmountErrorMessage = () => {
+        setFocusedAmountInput(true);
     }
 
     //POST
@@ -67,11 +65,10 @@ export default function () {
         formWallet,
         inputInvalids,
         handleChange,
-        someFieldEmpty,
-        allowMountErrorMessage,
+        someFieldEmpty, 
+        allowAmountErrorMessage,
         allowNameErrorMessage,
-        focusedMountInput,
-        focusedNameInput,
-        handleSubmitExpense,
-    }
+        focusedAmountInput,
+        focusedNameInput
+     }
 }

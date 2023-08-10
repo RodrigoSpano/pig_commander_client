@@ -1,6 +1,6 @@
 'use client'
 
-import { orderMount, orderNameAlphabetically } from '@/redux/features/monthTransactionsSlice';
+import { orderAmount, orderNameAlphabetically } from '@/redux/features/monthTransactionsSlice';
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -73,10 +73,10 @@ const usePagination = () => {
       } else dispatch(orderNameAlphabetically('aZ'))
   }
 
-  const handleMountOrder = (type) => {
+  const handleAmountOrder = (type) => {
     if(!type){
-      dispatch(orderMount('desc'))
-    } else dispatch(orderMount('asc'))
+      dispatch(orderAmount('desc'))
+    } else dispatch(orderAmount('asc'))
   }
 
   return {
@@ -89,7 +89,7 @@ const usePagination = () => {
     lastPageHandler,
     handleSearch,
     handleAlphabeticallyOrder,
-    handleMountOrder
+    handleAmountOrder
   };
 };
 

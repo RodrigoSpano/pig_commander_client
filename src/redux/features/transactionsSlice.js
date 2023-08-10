@@ -36,29 +36,23 @@ export const transactionsSlice = createSlice({
     })
     builder.addCase(createExpense.fulfilled, (state, action) => {
       state.transactions.push(action.payload)
-
     })
     builder.addCase(createIncome.fulfilled, (state, action) => {
       state.transactions.push(action.payload)
-
     })
     builder.addCase(deleteIncome.fulfilled, (state, action) => {
       state.transactions = state.transactions.filter(el => el.id !== action.payload)
-
     })
     builder.addCase(deleteExpense.fulfilled, (state, action) => {
       state.transactions = state.transactions.filter(el => el.id !== action.payload)
-
     })
     builder.addCase(updateExpense.fulfilled, (state, action) => {
       let updatedArr = state.transactions.filter(el => el.id !== action.payload.id)
       state.transactions = updatedArr.push(action.payload)
-
     })
     builder.addCase(updateIncome.fulfilled, (state, action) => {
       let updatedArr = state.transactions.filter(el => el.id !== action.payload.id)
       state.transactions = updatedArr.push(action.payload)
-
     })
   }
 })
