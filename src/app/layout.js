@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
             <div className="flex">
               {path === "/login" ||
                 path === "/signup" ||
+                path === '/google/success' ||
                 path === "/about" ||
                 path === "/pricing" ||
                 path === "/features" ||
