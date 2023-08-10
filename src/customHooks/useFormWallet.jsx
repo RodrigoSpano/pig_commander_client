@@ -5,11 +5,11 @@ export default function () {
 
     const [formWallet, setFormWallet] = useState({
         name: "", 
-        mount: "", 
+        amount: "", 
     })
 
     const [focusedNameInput, setFocusedNameInput] = useState(false); 
-    const [focusedMountInput, setFocusedMountInput] = useState(false); 
+    const [focusedAmountInput, setFocusedAmountInput] = useState(false); 
 
    
     const handleChange = (e) => {
@@ -20,21 +20,21 @@ export default function () {
     };
 
     const isName = formWallet.name.length > 0;
-    const isMount = formWallet.mount.length > 0; 
+    const isAmount = formWallet.amount.length > 0; 
 
 
        //validaciones de input
-       const inputInvalids = !isName || !isMount;
+       const inputInvalids = !isName || !isAmount;
 
     //boton disable
-    const someFieldEmpty = !isName || !isMount; 
+    const someFieldEmpty = !isName || !isAmount; 
 
     const allowNameErrorMessage = () => {
         setFocusedNameInput(true);
     }
 
-    const allowMountErrorMessage = () => {
-        setFocusedMountInput(true);
+    const allowAmountErrorMessage = () => {
+        setFocusedAmountInput(true);
     }
 
 
@@ -44,9 +44,9 @@ export default function () {
         inputInvalids,
         handleChange,
         someFieldEmpty, 
-        allowMountErrorMessage,
+        allowAmountErrorMessage,
         allowNameErrorMessage,
-        focusedMountInput,
+        focusedAmountInput,
         focusedNameInput
      }
 }

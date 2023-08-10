@@ -60,9 +60,9 @@ export const createMaxSpendAction = createAsyncThunk('create maxSpend', async (i
   }
 })
 
-export const updateMaxSpendAction = createAsyncThunk('update maxSpend', async (mount, token) => {
+export const updateMaxSpendAction = createAsyncThunk('update maxSpend', async (amount, token) => {
   try {
-    const { data } = await axios.put('/maxSpend', mount, { headers: { 'Authorization': token } })
+    const { data } = await axios.put('/maxSpend', amount, { headers: { 'Authorization': token } })
     return data
   } catch (error) {
     console.log(error)
