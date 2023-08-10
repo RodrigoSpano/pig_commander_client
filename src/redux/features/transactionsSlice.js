@@ -12,14 +12,10 @@ const transactionsTypes = {
   income: 'income'
 }
 
-const sortTransactions = () => {
-  const sortedArr = state.transactions.sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
-  state.transactions = sortedArr
-  state.backup_transactions = sortedArr
-}
 
-export const monthlyTransactionsSlice = createSlice({
-  name: 'monthTransactions',
+
+export const transactionsSlice = createSlice({
+  name: 'transactions',
   initialState,
   reducers: {
     clearFilters: (state) => {
@@ -40,32 +36,32 @@ export const monthlyTransactionsSlice = createSlice({
     })
     builder.addCase(createExpense.fulfilled, (state, action) => {
       state.transactions.push(action.payload)
-      sortTransactions()
+
     })
     builder.addCase(createIncome.fulfilled, (state, action) => {
       state.transactions.push(action.payload)
-      sortTransactions()
+
     })
     builder.addCase(deleteIncome.fulfilled, (state, action) => {
       state.transactions = state.transactions.filter(el => el.id !== action.payload)
-      sortTransactions()
+
     })
     builder.addCase(deleteExpense.fulfilled, (state, action) => {
       state.transactions = state.transactions.filter(el => el.id !== action.payload)
-      sortTransactions()
+
     })
     builder.addCase(updateExpense.fulfilled, (state, action) => {
       let updatedArr = state.transactions.filter(el => el.id !== action.payload.id)
       state.transactions = updatedArr.push(action.payload)
-      sortTransactions()
+
     })
     builder.addCase(updateIncome.fulfilled, (state, action) => {
       let updatedArr = state.transactions.filter(el => el.id !== action.payload.id)
       state.transactions = updatedArr.push(action.payload)
-      sortTransactions()
+
     })
   }
 })
 
-export const { clearFilters, filterByType } = monthlyTransactionsSlice.actions
-export default monthlyTransactionsSlice.reducer
+export const { clearFilters, filterByType } = transactionsSlice.actions
+export default transactionsSlice.reducer

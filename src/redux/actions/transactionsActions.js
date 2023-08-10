@@ -65,8 +65,9 @@ export const getAllTransactions = createAsyncThunk('transactions/all', async (to
   return { transactions }
 })
 
-export const createExpense = createAsyncThunk('expense/create', async (expenseInfo, token) => {
+export const createExpense = createAsyncThunk('expense/create', async (payload) => {
   try {
+    const { token, ...expenseInfo } = payload;
     const { data } = await axios.post('/expenses', expenseInfo, { headers: { 'Authorization': token } })
     return data
   } catch (error) {
