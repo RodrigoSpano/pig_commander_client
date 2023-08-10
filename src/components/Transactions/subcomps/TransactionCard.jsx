@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BiTrendingUp, BiTrendingDown } from 'react-icons/bi';
 
-const TransactionCard = ({ transaction, handelDetail }) => {
+const TransactionCard = ({ transaction, handleDetail }) => {
   const containerVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
@@ -18,7 +18,7 @@ const TransactionCard = ({ transaction, handelDetail }) => {
       initial="hidden"
       animate="visible"
       className='flex items-center justify-between px-6 py-4 mx-16 my-2 bg-white border border-gray-200 rounded-lg cursor-pointer'
-      onClick={() => { handelDetail(transaction) }}
+      onClick={() => { handleDetail(transaction) }}
     >
       <div className='flex flex-col'>
         <p className='text-lg font-semibold'>{transaction.name}</p>

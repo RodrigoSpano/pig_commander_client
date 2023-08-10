@@ -25,7 +25,7 @@ const TransactionsComponent = () => {
 
   const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleMountOrder } = usePagination();
 
-  const {handelDetail} = useTransactionDetail()
+  const {handleDetail} = useTransactionDetail()
 
   const [orders, setOrders] = useState({ alphabetically: false, byMount: false }) //estado con el cual modifico los ordenamientos por nombre o monto 
 
@@ -54,7 +54,7 @@ const TransactionsComponent = () => {
       <div className=''>
         <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByMount={handleOrderByMount}/>
         <div className=''>
-        {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handelDetail={handelDetail} transaction={t} key={i} />)): null} 
+        {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handleDetail={handleDetail} transaction={t} key={i} />)): null} 
         </div>
       </div>
       {transactions?.length ?
