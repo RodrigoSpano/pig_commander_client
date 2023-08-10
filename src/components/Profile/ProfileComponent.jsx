@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { becomePremiumHandler } from "./becomePremiumHandler";
 import { useSelector } from "react-redux";
