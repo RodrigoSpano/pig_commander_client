@@ -1,18 +1,13 @@
 import React from "react";
 import { becomePremiumHandler } from "./becomePremiumHandler";
 import { useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
 
 export default function ProfileComponent() {
-  //* Variable auxiliar, se la paso a la funcion por params
-  let token;
+  const [cookies, setCookie] = useCookies();
 
   //* Selecciono el estado global de usuario
   const user = useSelector((state) => state.user);
-
-  // * Condicional para buscar el token
-  if (typeof localStorage !== "undefined") {
-    token = localStorage.getItem("token");
-  }
 
   // * Condicional para que renderize segun si es premium o no
   return (
@@ -22,7 +17,7 @@ export default function ProfileComponent() {
       {user.premium ? (
         <p>PRO</p>
       ) : (
-        <button onClick={() => becomePremiumHandler(token)}>
+        <button onClick={() => becomePremiumHandler(cookies.token)}>
           Become Premium
         </button>
       )}

@@ -8,15 +8,16 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllTransactions } from "@/redux/actions/monthTransactionsActions";
 import { getMethodsAction } from "@/redux/actions/otherInfoActions";
+import { useCookies } from "react-cookie";
 
 export default function DashboardComponent() {
   const dispatch = useDispatch();
+  const [cookies, setCookie] = useCookies();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      dispatch(getAllTransactions(token))
-      dispatch(getMethodsAction(token))
+    if (cookies.token) {
+      dispatch(getAllTransactions(cookies.token))
+      dispatch(getMethodsAction(cookies.token))
     }
   }, []);
 

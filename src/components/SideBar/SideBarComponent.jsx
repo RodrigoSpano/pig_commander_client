@@ -12,19 +12,23 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "@/redux/actions/userActions";
 import { getAllSavings } from "@/redux/actions/savingsActions";
+import { useCookies } from "react-cookie";
 
 export default function SideBar() {
 
   const user = useSelector(state => state.user)
+  const savings = useSelector(state => state.savings.allSavings)
+  const [cookies, setCookie] = useCookies();
   const dispatch = useDispatch()
 
+
   useEffect(() => {
-      const token = localStorage.getItem('token')
-      if(token){
+      if(cookies.token){
         if (!user.logged) {
-          dispatch(getUserData(token))
+          dispatch(getUserData(cookies.token))
         }
-        dispatch(getAllSavings(token));
+        if(!savings.length)
+        dispatch(getAllSavings(cookies.token));
       }
 
   }, [dispatch])
