@@ -2,12 +2,11 @@ import React from "react";
 import { becomePremiumHandler } from "./becomePremiumHandler";
 import { useSelector } from "react-redux";
 
-export default function ProfileComponent() {
+export default function ProfileComponent({ user }) {
   //* Variable auxiliar, se la paso a la funcion por params
   let token;
 
   //* Selecciono el estado global de usuario
-  const user = useSelector((state) => state.user);
 
   // * Condicional para buscar el token
   if (typeof localStorage !== "undefined") {
