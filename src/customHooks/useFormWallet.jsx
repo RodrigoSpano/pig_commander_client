@@ -15,11 +15,17 @@ export default function () {
     })
 
     const [focusedNameInput, setFocusedNameInput] = useState(false);
-    const [focusedMountInput, setFocusedAmountInput] = useState(false);
+    const [focusedAmountInput, setFocusedAmountInput] = useState(false);
     const [cookies, setCookie] = useCookies();
 
     const handleChange = (e) => {
         console.log({ [e.target.name]: e.target.value });
+        if((e.target.name == "method_id" )||(e.target.name == "category_id)")){
+            setFormWallet({
+                ...formWallet,
+                [e.target.name]: parseInt(e.target.value)
+            });
+        }
         setFormWallet({
             ...formWallet,
             [e.target.name]: e.target.value
@@ -51,12 +57,11 @@ export default function () {
 
     const handleSubmitExpense = useCallback((event) => {
         event.preventDefault();
+        console.log(formWallet)
         const { token } = cookies;
-        const { name, amount, method_id, category_id } = formWallet;
-        console.log({ token, cookies });
         dispatch(
             createExpense({
-                name, mount: amount, method_id, category_id, token,
+                formWallet, token,
             })
         )
     }, [formWallet, cookies]);
@@ -69,6 +74,7 @@ export default function () {
         allowAmountErrorMessage,
         allowNameErrorMessage,
         focusedAmountInput,
-        focusedNameInput
+        focusedNameInput,
+        handleSubmitExpense
      }
 }
