@@ -1,21 +1,13 @@
-'use client'
 import React, { useEffect } from 'react';
 import { ImExit } from 'react-icons/im';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserData } from '@/redux/actions/userActions';
+import { useCookies } from 'react-cookie';
 
 const LogOut = () => {
-  const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token && !user.logged) {
-      dispatch(getUserData(token));
-    }
-  }, []);
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   const itemVariants = {
     hidden: { opacity: 0, x: -20 },
@@ -27,7 +19,7 @@ const LogOut = () => {
   };
 
   return (
-    <Link href="/login" onClick={() => localStorage.removeItem('token')}>
+    <Link href="/login" onClick={() => removeCookie('token', {path: '/'})}>
       <motion.div
         variants={itemVariants}
         initial="hidden"

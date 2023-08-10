@@ -6,7 +6,9 @@ export const loginUser = createAsyncThunk("user/login", async (userData) => {
   try {
     const { data } = await axios.post(`/auth/login`, userData);
     if (data.success === true) {
-      localStorage.setItem("token", data.token);
+      document.cookie = `token=${data.token}; expires=${new Date(
+        new Date().getTime() + 3 * 24 * 60 * 60 * 1000
+      ).toUTCString()}; path=/`;
       Swal.fire({
         icon: "success",
         title: "Logged successfully",
@@ -69,8 +71,7 @@ export const updatePicture = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      alert("error detectado bip bup");
-      console.log(error);
+      console.error(error);
     }
   }
 );

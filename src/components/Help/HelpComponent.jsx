@@ -52,7 +52,7 @@ export default function HelpComponent() {
   return (
     <div>
       <div className="container mx-auto mt-8">
-        <h1 className="text-3xl font-bold mb-4 text-pink-400">FAQ</h1>
+        <h1 className="text-3xl font-bold mb-4 text-pink-400">Frequently Asked Questions</h1>
         <div className="space-y-4">
           {faqData.map((item, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-md">

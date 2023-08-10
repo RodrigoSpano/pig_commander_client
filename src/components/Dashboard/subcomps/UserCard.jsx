@@ -1,10 +1,12 @@
 import ProfileComponent from "@/components/Profile/ProfileComponent";
 import { updatePicture } from "@/redux/actions/userActions";
 import React from "react";
+import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 
 const UserCard = ({ user }) => {
+  const [cookies, setCookie] = useCookies();
   const { image } = user;
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -12,7 +14,7 @@ const UserCard = ({ user }) => {
       title: "Insert your photo",
       input: "file",
       preConfirm: (file) => {
-        const token = localStorage.getItem("token");
+        const { token } = cookies;
         const formData = new FormData();
         formData.append("image", file);
         token && dispatch(updatePicture({ formData, token }));

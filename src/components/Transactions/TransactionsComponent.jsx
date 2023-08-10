@@ -9,16 +9,17 @@ import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
 import TransactionCard from './subcomps/TransactionCard';
 import TransactionsPropsContainer from './subcomps/TransactionsPropsContainer';
 import PermanentFilter from './subcomps/PermanentFilter';
+import { useCookies } from 'react-cookie';
 
 const TransactionsComponent = () => {
 
   const dispatch = useDispatch()
   const transactionsState = useSelector(state => state.monthTransactions.transactions)
+  const [cookies, setCookie] = useCookies();
 
   useEffect(()=>{
     if(!transactionsState.length){
-      const token = localStorage.getItem('token')
-      dispatch(getAllTransactions(token))
+      dispatch(getAllTransactions(cookies.token))
     }
   },[])
 
@@ -40,16 +41,19 @@ const TransactionsComponent = () => {
   
   return (
     
-    <div className=" flex flex-col items-center content-center select-none bg-white rounded-lg shadow-md col-span-2 relative">
-      <PermanentFilter /> 
-      <div className='flex'>
-        <h1 className='text-2xl font-semibold m-7'>Last Transactions</h1>
+    <div className=" flex flex-col select-none bg-white rounded-lg shadow-md col-span-2 relative">
+
+      <div className='flex items-center justify-around my-4'>
+        <h1 className='text-2xl font-bold text-boldPink'>Last Transactions</h1>
         <SearchBarComponent handleSearch={handleSearch} />
+        <PermanentFilter /> 
       </div>
 
-      <div className='h-[200px] flex flex-col'>
+      <hr  className='my-2 mx-16'/>
+
+      <div className=''>
         <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByMount={handleOrderByMount}/>
-        <div className='flex flex-col gap-2'>
+        <div className=''>
         {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handelDetail={handelDetail} transaction={t} key={i} />)): null} 
         </div>
       </div>
