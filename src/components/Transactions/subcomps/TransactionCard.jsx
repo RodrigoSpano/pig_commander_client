@@ -23,7 +23,7 @@ const TransactionCard = ({ transaction, handleDetail }) => {
       <div className='flex flex-col'>
         <p className='text-lg font-semibold'>{transaction.name}</p>
         <p className={`text-sm ${transaction.type === 'expense' ? 'text-red-500' : 'text-green-500'}`}>
-          $ {transaction.mount}
+          $ {transaction.amount}
         </p>
       </div>
       <motion.div

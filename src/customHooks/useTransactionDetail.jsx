@@ -11,7 +11,7 @@ const useTransactionDetail = () => {
       position: 'center',
       title: `<p>Category: ${findCategory.name.replace(/^\w/, (c) => c.toUpperCase())}</p>
               <p>Name: ${transaction.name}</p>
-              <p>Amount: $${transaction.mount}</p>
+              <p>Amount: $${transaction.amount}</p>
               <p>Date: ${transaction.createdAt.substring(0, 10)}</p>`,
       showConfirmButton: false,
       showCloseButton: true,

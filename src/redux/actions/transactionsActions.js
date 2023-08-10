@@ -7,7 +7,7 @@ export const getAllIncomes = async (data) => {
       return {
         id: el.id,
         name: el.name,
-        mount: el.mount,
+        amount: el.amount,
         automatized: el.automatized,
         auto_date: el.auto_date,
         method_id: el.method_id,
@@ -34,7 +34,7 @@ export const getAllExpenses = async (data) => {
       return {
         id: el.id,
         name: el.name,
-        mount: el.mount,
+        amount: el.amount,
         automatized: el.automatized,
         auto_date: el.auto_date,
         method_id: el.method_id,

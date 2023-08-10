@@ -23,20 +23,20 @@ const TransactionsComponent = () => {
     }
   },[])
 
-  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleMountOrder } = usePagination();
+  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleAmountOrder } = usePagination();
 
   const {handleDetail} = useTransactionDetail()
 
-  const [orders, setOrders] = useState({ alphabetically: false, byMount: false }) //estado con el cual modifico los ordenamientos por nombre o monto 
+  const [orders, setOrders] = useState({ alphabetically: false, byAmount: false }) //estado con el cual modifico los ordenamientos por nombre o monto 
 
   const handleAlphabetically = () => {
     setOrders({...orders, alphabetically:!orders.alphabetically})
     handleAlphabeticallyOrder(orders.alphabetically)
   }
 
-  const handleOrderByMount = () => {
-    setOrders({...orders, byMount: !orders.byMount})
-    handleMountOrder(orders.byMount)
+  const handleOrderByAmount = () => {
+    setOrders({...orders, byAmount: !orders.byAmount})
+    handleAmountOrder(orders.byAmount)
   }
   
   return (
@@ -52,7 +52,7 @@ const TransactionsComponent = () => {
       <hr  className='my-2 mx-16'/>
 
       <div className=''>
-        <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByMount={handleOrderByMount}/>
+        <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByAmount={handleOrderByAmount}/>
         <div className=''>
         {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handleDetail={handleDetail} transaction={t} key={i} />)): null} 
         </div>
