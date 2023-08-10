@@ -9,16 +9,17 @@ import { getAllTransactions } from '@/redux/actions/monthTransactionsActions';
 import TransactionCard from './subcomps/TransactionCard';
 import TransactionsPropsContainer from './subcomps/TransactionsPropsContainer';
 import PermanentFilter from './subcomps/PermanentFilter';
+import { useCookies } from 'react-cookie';
 
 const TransactionsComponent = () => {
 
   const dispatch = useDispatch()
   const transactionsState = useSelector(state => state.monthTransactions.transactions)
+  const [cookies, setCookie] = useCookies();
 
   useEffect(()=>{
     if(!transactionsState.length){
-      const token = localStorage.getItem('token')
-      dispatch(getAllTransactions(token))
+      dispatch(getAllTransactions(cookies.token))
     }
   },[])
 

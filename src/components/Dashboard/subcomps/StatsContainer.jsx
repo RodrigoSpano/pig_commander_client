@@ -5,6 +5,7 @@ import BalanceCard from './BalanceCard'
 import UserCard from './UserCard'
 import MoneyCard from './MoneyCard'
 import { getCategoriesAction, getMaxSpendAction } from '@/redux/actions/otherInfoActions'
+import { useCookies } from 'react-cookie'
 
 const StatsContainer = () => {
   const user =useSelector(state => state.user)
@@ -14,14 +15,14 @@ const StatsContainer = () => {
   const maxSpend = useSelector((state) => state.others.maxSpend);
 
   const dispatch = useDispatch()
+  const [cookies, setCookie] = useCookies();
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
     if(!categories.length){
-      dispatch(getCategoriesAction(token))
+      dispatch(getCategoriesAction(cookies.token))
     }
     if(!maxSpend){
-      dispatch(getMaxSpendAction(token))
+      dispatch(getMaxSpendAction(cookies.token))
     }
   },[])
 
