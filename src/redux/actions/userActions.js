@@ -6,7 +6,9 @@ export const loginUser = createAsyncThunk("user/login", async (userData) => {
   try {
     const { data } = await axios.post(`/auth/login`, userData);
     if (data.success === true) {
-      document.cookie = `token=${data.token}; expires=${new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000).toUTCString()}; path=/`
+      document.cookie = `token=${data.token}; expires=${new Date(
+        new Date().getTime() + 3 * 24 * 60 * 60 * 1000
+      ).toUTCString()}; path=/`;
       Swal.fire({
         icon: "success",
         title: "Logged successfully",
@@ -59,3 +61,17 @@ export const getUserData = createAsyncThunk("getUserData", async (token) => {
     }
   }
 });
+
+export const updatePicture = createAsyncThunk(
+  "post picture",
+  async ({ formData, token }) => {
+    try {
+      const { data } = await axios.post("/profile", formData, {
+        headers: { Authorization: token },
+      });
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);

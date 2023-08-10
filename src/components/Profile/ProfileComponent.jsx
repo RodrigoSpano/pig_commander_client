@@ -1,14 +1,11 @@
-'use client'
+"use client";
 import React from "react";
 import { becomePremiumHandler } from "./becomePremiumHandler";
 import { useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 
-export default function ProfileComponent() {
+export default function ProfileComponent({ user }) {
   const [cookies, setCookie] = useCookies();
-
-  //* Selecciono el estado global de usuario
-  const user = useSelector((state) => state.user);
 
   // * Condicional para que renderize segun si es premium o no
   return (
