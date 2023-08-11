@@ -1,17 +1,17 @@
-import { clearFilters, filterByType } from '@/redux/features/monthTransactionsSlice'
+import { clearFilters, filterByType } from '@/redux/features/transactionsSlice'
 import { useDispatch } from 'react-redux'
 
-const PermanentFilter = () => {
-  const dispatch = useDispatch();
+const FilterAllTransactions = () => {
+    const dispatch = useDispatch();
 
-  const handleOptions = (e) => {
-    if (e.target.value === 'default') {
-      dispatch(clearFilters())
-    } else {
-      dispatch(filterByType(e.target.value))
+    const handleOptions = (e) => {
+      if (e.target.value === 'default') {
+        dispatch(clearFilters())
+      } else {
+        dispatch(filterByType(e.target.value))
+      }
     }
-  }
-
+    
   return (
     <div>
       <select
@@ -24,6 +24,6 @@ const PermanentFilter = () => {
       </select>
     </div>
   );
-};
+}
 
-export default PermanentFilter;
+export default FilterAllTransactions

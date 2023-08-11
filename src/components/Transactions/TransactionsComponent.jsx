@@ -23,7 +23,7 @@ const TransactionsComponent = () => {
     }
   },[])
 
-  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleAmountOrder } = usePagination();
+  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleAmountOrder } = usePagination(transactionsState, 4);
 
   const {handleDetail} = useTransactionDetail()
 
@@ -49,7 +49,7 @@ const TransactionsComponent = () => {
         <PermanentFilter /> 
       </div>
 
-      <hr  className='my-2 mx-16'/>
+      <hr className='my-2 mx-16'/>
 
       <div className=''>
         <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByAmount={handleOrderByAmount}/>
