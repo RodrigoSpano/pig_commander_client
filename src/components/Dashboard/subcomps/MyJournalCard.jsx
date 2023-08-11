@@ -28,30 +28,34 @@ export default function MyJournalCard() {
 
   return (
     <motion.div
-      className="p-6 bg-white rounded-lg shadow-md mb-4 select-none"
+      className="p-8 bg-white rounded-lg shadow-md mb-4 select-none "
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.6 }}
     >
-      <h2 className="text-xl font-bold mb-4 text-boldPink">My Journal</h2>
-      <div className="custom-scrollbar grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-96 overflow-y-scroll">
+      <h2 className="text-xl font-bold ml-[20px] text-boldPink ">My Journal</h2>
+      <div className="custom-scrollbar grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  max-h-[36vh] overflow-y-scroll ">
         {journal.slice(0, visibleNewsCount).map((element, index) => (
           <motion.div
             key={index}
-            className="border border-gray-300 p-3 rounded-lg"
+            className="border border-gray-300  rounded-lg m-[15px] "
             whileHover={{
               scale: 1.02,
               boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
             }}
           >
-            <h3 className="text-lg font-semibold mb-1">{element.title}</h3>
-            <img
-              src={element.image}
-              alt={element.title}
-              className="mb-1"
-              style={{ maxWidth: "100%" }}
-            />
-            <p className="text-gray-600 text-sm mb-1">{element.summary}</p>
+            <h3>{element.tittle}</h3>
+            <div className="flex items-center rounded-t-lg  h-[180px] overflow-hidden border-b-4 w-[100%] ">
+              <img
+                src={element.image}
+                alt={element.title}
+                className="mb-1 "
+              />
+            </div>
+            <div class="p-3">
+            <p class="text-gray-600 text-sm mb-3 max-h-[3.7em] overflow-hidden leading-[1.2]">
+              {element.summary}
+            </p>
             <p className="text-xs text-gray-400">Author: {element.author}</p>
             <a
               href={element.url}
@@ -61,6 +65,8 @@ export default function MyJournalCard() {
             >
               Read more
             </a>
+            </div>
+            
           </motion.div>
         ))}
       </div>
