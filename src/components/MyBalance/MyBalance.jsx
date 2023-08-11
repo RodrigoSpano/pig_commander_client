@@ -8,7 +8,6 @@ import FilterAllTransactions from "../Wallet/subcomps/FilterAllTransactions";
 import { useSelector } from "react-redux";
 import AllTransactionsPropsContainer from "../Wallet/subcomps/AllTransactionsPropsContainer";
 import PaginationComponent from "../Pagination/PaginationComponent";
-import usePaginationAllTransactions from "@/customHooks/usePaginationAllTransactions";
 import usePagination from "@/customHooks/usePagination";
 
 export default function WalletComponent() {

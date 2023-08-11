@@ -14,12 +14,7 @@ const initialState = {
   backup_transactions: [],
 };
 
-const transactionsTypes = {
-  expense: "expense",
-  income: "income",
-};
-
-export const transactionsSlice = createSlice({
+const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
@@ -51,6 +46,56 @@ export const transactionsSlice = createSlice({
         (t) => t.type === action.payload
       );
     },
+    filterByMethod: (state, action) => {
+      let filteredTransactions = state.backup_transactions;
+
+      if (state.currentOrder === "aZ") {
+        filteredTransactions = filteredTransactions.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      } else if (state.currentOrder === "zA") {
+        filteredTransactions = filteredTransactions.sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      } else if (state.currentOrder === "asc") {
+        filteredTransactions = filteredTransactions.sort(
+          (a, b) => a.amount - b.amount
+        );
+      } else if (state.currentOrder === "desc") {
+        filteredTransactions = filteredTransactions.sort(
+          (a, b) => b.amount - a.amount
+        );
+      }
+
+      state.transactions = filteredTransactions.filter(
+        (t) => t.method_id === parseInt(action.payload)
+      );
+    },
+    filterByCategory: (state, action) => {
+      let filteredTransactions = state.backup_transactions;
+
+      if (state.currentOrder === "aZ") {
+        filteredTransactions = filteredTransactions.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      } else if (state.currentOrder === "zA") {
+        filteredTransactions = filteredTransactions.sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      } else if (state.currentOrder === "asc") {
+        filteredTransactions = filteredTransactions.sort(
+          (a, b) => a.amount - b.amount
+        );
+      } else if (state.currentOrder === "desc") {
+        filteredTransactions = filteredTransactions.sort(
+          (a, b) => b.amount - a.amount
+        );
+      }
+
+      state.transactions = filteredTransactions.filter(
+        (t) => t.category_id === parseInt(action.payload)
+      );
+    },
     orderNameAlphabetically: (state, action) => {
       if (action.payload === "aZ") {
         state.transactions = state.transactions.sort((a, b) =>
@@ -80,6 +125,7 @@ export const transactionsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllTransactions.fulfilled, (state, action) => {
+      console.log(action.payload);
       state.transactions = action.payload.transactions;
       state.backup_transactions = action.payload.transactions;
     });
@@ -116,8 +162,10 @@ export const transactionsSlice = createSlice({
 
 export const {
   clearFilters,
+  filterByCategory,
+  filterByMethod,
   filterByType,
-  orderNameAlphabetically,
   orderAmount,
+  orderNameAlphabetically,
 } = transactionsSlice.actions;
 export default transactionsSlice.reducer;
