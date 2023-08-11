@@ -1,14 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
 import StatsContainer from "./subcomps/StatsContainer";
 import MyGraph from "./subcomps/MyGraph/MyGraph";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
 import { getAllTransactions } from "@/redux/actions/monthTransactionsActions";
 import { getMethodsAction } from "@/redux/actions/otherInfoActions";
-
-import { useCookies } from "react-cookie";
 import MyJournalCard from "./subcomps/MyJournalCard";
 
 export default function DashboardComponent() {
@@ -26,14 +24,18 @@ export default function DashboardComponent() {
     <div className="flex flex-col gap-5 pt-3 px-10">
       <StatsContainer />
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 h-3/5 gap-5">
-        <div className="col-span-3 row-span-5 bg-white rounded-lg shadow-md h-[330px]">
+      <div className="flex flex-col">
+        <div>
           <MyJournalCard />
         </div>
-        <TransactionsComponent />
 
-        <div className=" bg-white rounded-lg shadow-md ">
-          <MyGraph />
+        <div className="flex">
+          <div className="w-2/3 pr-4">
+            <TransactionsComponent />
+          </div>
+          <div className="w-1/3">
+            <MyGraph />
+          </div>
         </div>
       </div>
     </div>

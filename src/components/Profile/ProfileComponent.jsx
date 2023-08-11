@@ -12,7 +12,7 @@ export default function ProfileComponent({ user }) {
     <div>
       {/* El que le de estilos y su usario no tiene premium y no tiene configurado el back de mercado pago,
        puede negar el user.premium y va a ver el PRO en pantalla, sacar este comentario y el ! de negacion al terminar */}
-      {user.premium ? (
+      {user?.premium ? (
         <p>PRO</p>
       ) : (
         <button onClick={() => becomePremiumHandler(cookies.token)}>
