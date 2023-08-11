@@ -12,6 +12,8 @@ const transactionsTypes = {
   income: 'income'
 }
 
+
+
 export const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
