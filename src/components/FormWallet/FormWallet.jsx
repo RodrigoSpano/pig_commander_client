@@ -50,8 +50,8 @@ export default function FormWallet () {
                 <div className="flex flex-col ">
                     <label className="text-boldGray text-sm font-light">Categories:</label>
                     <select className="text-xs w-40 bg-lightGray font-light rounded-lg p-1.5" name="category_id" id="selects" value={formWallet.category_id} onChange={handleChange}>
-                    {categories.length ? categories.map((categorie)=> (
-                        <option value={categorie.id}>{categorie.name}</option>
+                    {categories.length ? categories.map((category)=> (
+                        <option value={category.id}>{category.name.replace(/^\w/, (c) => c.toUpperCase())}</option>
                       )) : null}
                     </select>
                 </div>
