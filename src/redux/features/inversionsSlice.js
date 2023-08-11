@@ -13,7 +13,7 @@ const initialState = {
 };
 
 // * Sort dates from newest to oldest
-const sortInversions = () => {
+const sortInversions = (state) => {
   const sortedDateInversions = state.allInversions.sort(
     (a, b) => Date.parse(a.started_on) - Date.parse(b.started_on)
   );
