@@ -44,7 +44,7 @@ export default function FormWallet () {
                     <label className="text-boldGray text-sm font-light">Method:</label>
                     <select className="text-xs w-40 bg-lightGray font-light rounded-lg p-1.5" name="method_id" id="selects" onChange={handleChange} value={formWallet.method_id}>
                       {methods.length ? methods.map((method)=> (
-                        <option value={method.id}>{method.name}</option>
+                        <option key={method.id} value={method.id}>{method.name}</option>
                       )) : null}
                     </select>
                 </div>
@@ -52,7 +52,7 @@ export default function FormWallet () {
                     <label className="text-boldGray text-sm font-light">Categories:</label>
                     <select className="text-xs w-40 bg-lightGray font-light rounded-lg p-1.5" name="category_id" id="selects" value={formWallet.category_id} onChange={handleChange}>
                     {categories.length ? categories.map((category)=> (
-                        <option value={category.id}>{category.name.replace(/^\w/, (c) => c.toUpperCase())}</option>
+                        <option key={category.id} value={category.id}>{category.name}</option>
                       )) : null}
                     </select>
                 </div>

@@ -57,12 +57,16 @@ export const getAllExpenses = async (data) => {
 };
 
 export const getAllTransactions = createAsyncThunk('transactions/all', async (token) => {
-  const { data: incomeData } = await axios('/incomes', { headers: { 'Authorization': token } })
-  const { data: expenseData } = await axios('/expenses', { headers: { 'Authorization': token } })
-  const incomes = await getAllIncomes(incomeData)
-  const expenses = await getAllExpenses(expenseData)
-  const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
-  return { transactions }
+  try {
+    const { data: incomeData } = await axios('/incomes', { headers: { 'Authorization': token } })
+    const { data: expenseData } = await axios('/expenses', { headers: { 'Authorization': token } })
+    const incomes = await getAllIncomes(incomeData)
+    const expenses = await getAllExpenses(expenseData)
+    const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
+    return { transactions }
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 export const createExpense = createAsyncThunk('expense/create', async (payload) => {
