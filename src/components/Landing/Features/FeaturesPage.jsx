@@ -3,7 +3,7 @@ import React from 'react';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
 import RecordOfExpensesAndIncome from './RecordOfExpensesAndIncome';
-import SavingsandInvestment from './SavingsandInvestment';
+import SavingsandInvestment from './SavingsAndInvestment';
 import CustomDashboard from './CustomDashboard';
 import Automation from './Automation';
 import LimitPerMonth from './LimitPerMonth';
