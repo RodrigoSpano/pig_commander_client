@@ -63,6 +63,7 @@ export const getAllTransactions = createAsyncThunk('transactions/all', async (to
     const incomes = await getAllIncomes(incomeData)
     const expenses = await getAllExpenses(expenseData)
     const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
+    console.log(transactions)
     return { transactions }
   } catch (error) {
     console.log(error)
