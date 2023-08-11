@@ -50,10 +50,11 @@ export default function () {
                 ...formWallet,
                 token,
             })
-        )
+        ) , successExpense();
     }, 
      [formWallet, cookies]);
 
+     
      var toastMixin = Swal.mixin({
         toast: true,
         icon: 'success',
@@ -86,8 +87,8 @@ export default function () {
             createIncome({
                 ...formWallet,
                 token,
-            })
-        )
+            }) 
+        ), successIncome();
     }, [formWallet, cookies]);
  
     var toastMixin = Swal.mixin({
@@ -146,7 +147,5 @@ export default function () {
         focusedNameInput,
         handleSubmitExpense,
         handleSubmitIncome,
-        successExpense,
-        successIncome
      }
 }
