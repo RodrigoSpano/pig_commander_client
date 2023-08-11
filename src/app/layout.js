@@ -9,7 +9,7 @@ import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 // axios.defaults.baseURL = `${process.env.API_URI}`
-axios.defaults.baseURL = 'http://localhost:8080/api'
+axios.defaults.baseURL = 'https://pigcommanderapi-8x1k-dev.fl0.io/api'
 
 export default function RootLayout({ children }) {
   const path = usePathname();
