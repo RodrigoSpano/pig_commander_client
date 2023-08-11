@@ -31,7 +31,7 @@ export default function DashboardComponent() {
             </div>
             <TransactionsComponent />
             
-            <div className=" bg-white rounded-lg shadow-md "><MyGraph /></div>
+            <div> <MyGraph /></div>
           </div>
         </div>
   );
