@@ -21,7 +21,7 @@ export default function DashboardComponent() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pt-3 px-10">
+    <div className="flex flex-col gap-5 pt-3 px-10 mb-[20px]">
       <StatsContainer />
 
       <div className="flex flex-col">

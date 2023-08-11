@@ -18,7 +18,7 @@ const StatsContainer = () => {
   const [cookies, setCookie] = useCookies();
 
   useEffect(() => {
-    if(!categories.length){
+    if(!categories?.length){
       dispatch(getCategoriesAction(cookies.token))
     }
     if(!maxSpend){

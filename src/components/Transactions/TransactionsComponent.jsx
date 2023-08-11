@@ -18,7 +18,7 @@ const TransactionsComponent = () => {
   const [cookies, setCookie] = useCookies();
 
   useEffect(()=>{
-    if(!transactionsState.length){
+    if(!transactionsState?.length){
       dispatch(getAllTransactions(cookies.token))
     }
   },[])
@@ -41,7 +41,7 @@ const TransactionsComponent = () => {
   
   return (
     
-    <div className=" flex flex-col select-none bg-white rounded-lg shadow-md col-span-2 relative">
+    <div className=" flex flex-col select-none bg-white rounded-lg shadow-md col-span-2 relative min-h-[57vh]">
 
       <div className='flex items-center justify-around my-4'>
         <h1 className='text-2xl font-bold text-boldPink'>Last Transactions</h1>

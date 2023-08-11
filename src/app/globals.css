@@ -11,3 +11,25 @@
 body{
   background-color: #eee;
 }
+
+html{
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f5f5f5;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    
+    background-color: #f472b6;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #f472b6;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+}
