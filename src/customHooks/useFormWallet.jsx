@@ -2,6 +2,8 @@ import { createExpense, createIncome } from "@/redux/actions/transactionsActions
 import { useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+import toastMixin from "sweetalert2"; 
 
 
 export default function () {
@@ -49,7 +51,31 @@ export default function () {
                 token,
             })
         )
-    }, [formWallet, cookies]);
+    }, 
+     [formWallet, cookies]);
+
+     var toastMixin = Swal.mixin({
+        toast: true,
+        icon: 'success',
+        title: 'General Title',
+        animation: false,
+        position: 'top-right',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      });
+
+     const successExpense = (function(){
+        toastMixin.fire({
+          animation: true,
+          title: 'Expense created successfully'
+        });
+      });
+
 
 //INCOME 
 
@@ -63,7 +89,31 @@ export default function () {
             })
         )
     }, [formWallet, cookies]);
+ 
+    var toastMixin = Swal.mixin({
+        toast: true,
+        icon: 'success',
+        title: 'General Title',
+        animation: false,
+        position: 'top-right',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      });
 
+     const successIncome = (function(){
+        toastMixin.fire({
+          animation: true,
+          title: 'Income created successfully'
+        });
+      });
+
+
+  
 
 //VALIDACIONES 
         const isName = formWallet.name.length > 0;
@@ -95,6 +145,8 @@ export default function () {
         focusedAmountInput,
         focusedNameInput,
         handleSubmitExpense,
-        handleSubmitIncome
+        handleSubmitIncome,
+        successExpense,
+        successIncome
      }
 }
