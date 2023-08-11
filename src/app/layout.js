@@ -8,8 +8,7 @@ import { usePathname } from "next/navigation";
 import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
-// axios.defaults.baseURL = `${process.env.API_URI}`
-axios.defaults.baseURL = 'http://localhost:8080/api'
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URI
 
 export default function RootLayout({ children }) {
   const path = usePathname();

@@ -1,10 +1,9 @@
 import axios from "axios";
-const URL = "http://localhost:8080/api/subscription/10000";
 export const becomePremiumHandler = async (token) => {
   try {
     //* Si envian el token, hago la peticion al back para pagar por MP
     if (token) {
-      const { data } = await axios.get(URL, {
+      const { data } = await axios.get('/subscription/10000', {
         headers: { Authorization: token },
       });
 
