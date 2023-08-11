@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
+// cambia en el deploy x eso es un env
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URI
 
 export default function RootLayout({ children }) {
