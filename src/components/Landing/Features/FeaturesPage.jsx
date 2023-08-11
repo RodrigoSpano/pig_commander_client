@@ -3,8 +3,8 @@ import React from 'react';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
 import RecordOfExpensesAndIncome from './RecordOfExpensesAndIncome';
-import SavingsandInvestment from './SavingsAndInvestment';
 import CustomDashboard from './CustomDashboard';
+import SavingsandInvestment from './SavingsAndInvestment';
 import Automation from './Automation';
 import LimitPerMonth from './LimitPerMonth';
 import ProfessionalSubscription from './ProfessionalSubscription';
@@ -53,7 +53,7 @@ const FeaturesPage = () => {
                         <FinalcialNews />
                     </div>
 
-                    {/* PIE DE PAGINA */}
+                    {/* PIE DE PAGINA..*/}
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
