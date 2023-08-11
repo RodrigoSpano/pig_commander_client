@@ -1,58 +1,69 @@
-"use client"
-import React, {useState} from "react";
+"use client";
+import React, { useState } from "react";
 
 export default function HelpComponent() {
+  const [activeAccordion, setActiveAccordion] = useState(null);
 
-    const [activeAccordion, setActiveAccordion] = useState(null);
+  const toggleAccordion = (id) => {
+    setActiveAccordion((prevId) => (prevId === id ? null : id));
+  };
 
-    const toggleAccordion = (id) => {
-      setActiveAccordion((prevId) => (prevId === id ? null : id));
-    };
-  
-    const faqData = [
-      {
-        question: '¿Es necesario verificar mi identidad para usar pigCommander?',
-        answer: 'No es necesario verificar tu identidad para usar pigCommander dado que no utilizamos datos sensibles',
-      },
-      {
-        question: '¿Puedo vincular mi cuenta bancaria a la wallet?',
-        answer: 'Sí, puedes vincular tu cuenta bancaria a la wallet para cargar fondos o retirar dinero. Solo asegúrate de proporcionar los detalles correctos y verificar la cuenta antes de hacer transacciones.',
-      },
-      {
-        question: '¿Qué medidas de seguridad tienen implementadas?',
-        answer: 'Nuestra wallet utiliza encriptación de alto nivel para proteger tus datos personales y financieros. También implementamos la autenticación de dos factores (2FA) para garantizar una capa adicional de seguridad en tus transacciones.',
-      },
-      {
-        question: '¿Qué tipos de criptomonedas puedo almacenar en la wallet?',
-        answer: 'Nuestra wallet admite una amplia variedad de criptomonedas populares, como Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), Ripple (XRP) y muchas más. Puedes consultar la lista completa de criptomonedas disponibles en nuestra plataforma.',
-      },
-      {
-        question: '¿Cómo puedo cargar fondos en mi wallet?',
-        answer: 'Puedes cargar fondos en tu wallet mediante transferencias bancarias, tarjetas de crédito o débito. También puedes recibir criptomonedas de otras wallets o intercambios.',
-      },
-      {
-        question: '¿Hay algún cargo por usar la wallet?',
-        answer: 'El uso básico de la wallet es gratuito. Sin embargo, algunas transacciones pueden incurrir en cargos de red o comisiones de intercambio, dependiendo de la operación y la criptomoneda involucrada.',
-      },
-      {
-        question: '¿Cómo puedo proteger mi wallet de posibles ataques o robos?',
-        answer: 'Para proteger tu wallet, te recomendamos habilitar la autenticación de dos factores (2FA), utilizar una contraseña segura y mantener tus dispositivos libres de malware. Además, nunca compartas tu información de acceso con nadie.',
-      },
-      {
-        question: '¿Puedo recuperar mi cuenta si olvido mi contraseña?',
-        answer: 'Sí, puedes recuperar tu cuenta si olvidas tu contraseña. Proporcionamos opciones de recuperación, como restablecer la contraseña a través de tu dirección de correo electrónico o número de teléfono verificado.',
-      },
-      {
-        question: '¿Hay límites en las transacciones que puedo realizar desde mi wallet?',
-        answer: 'Sí, para garantizar la seguridad y cumplir con las regulaciones, establecemos límites en las transacciones diarias. Estos límites pueden variar según tu nivel de verificación de identidad.',
-      }
-      // Agrega más preguntas y respuestas aquí
-    ];
+  const faqData = [
+    {
+      question: "Is it necessary to verify my identity to use pigCommander?",
+      answer:
+        "It is not necessary to verify your identity to use pigCommander since we do not use sensitive data.",
+    },
+    {
+      question: "Can I link my bank account to the wallet?",
+      answer:
+        "Yes, you can link your bank account to the wallet to deposit funds or withdraw money. Just make sure to provide the correct details and verify the account before making transactions.",
+    },
+    {
+      question: "What security measures do you have in place?",
+      answer:
+        "Our wallet uses high-level encryption to protect your personal and financial data. We also implement two-factor authentication (2FA) to ensure an additional layer of security on your transactions.",
+    },
+    {
+      question: "What types of cryptocurrencies can I store in the wallet?",
+      answer:
+        "Our wallet supports a wide variety of popular cryptocurrencies, such as Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), Ripple (XRP), and many more. You can check the complete list of available cryptocurrencies on our platform.",
+    },
+    {
+      question: "How can I deposit funds into my wallet?",
+      answer:
+        "You can deposit funds into your wallet through bank transfers, credit or debit cards. You can also receive cryptocurrencies from other wallets or exchanges.",
+    },
+    {
+      question: "Are there any fees for using the wallet?",
+      answer:
+        "Basic usage of the wallet is free. However, some transactions may incur network fees or exchange commissions, depending on the operation and the involved cryptocurrency.",
+    },
+    {
+      question: "How can I protect my wallet from potential attacks or theft?",
+      answer:
+        "To protect your wallet, we recommend enabling two-factor authentication (2FA), using a strong password, and keeping your devices malware-free. Additionally, never share your access information with anyone.",
+    },
+    {
+      question: "Can I recover my account if I forget my password?",
+      answer:
+        "Yes, you can recover your account if you forget your password. We provide recovery options, such as resetting the password via your verified email address or phone number.",
+    },
+    {
+      question:
+        "Are there limits on the transactions I can perform from my wallet?",
+      answer:
+        "Yes, to ensure security and comply with regulations, we set limits on daily transactions. These limits may vary based on your level of identity verification.",
+    },
+    // Agrega más preguntas y respuestas aquí
+  ];
 
   return (
     <div>
       <div className="container mx-auto mt-8">
-        <h1 className="text-3xl font-bold mb-4 text-pink-400">Frequently Asked Questions</h1>
+        <h1 className="text-3xl font-bold mb-4 text-pink-400">
+          Frequently Asked Questions
+        </h1>
         <div className="space-y-4">
           {faqData.map((item, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-md">
