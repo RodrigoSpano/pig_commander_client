@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getJournal } from "@/redux/actions/journalAction";
 import { motion } from "framer-motion";
-import "./MyJournalCard.css"; // Importa tu archivo de estilos CSS personalizados
+import "./MyJournalCard.css";
 import { useCookies } from "react-cookie";
 
 export default function MyJournalCard() {
