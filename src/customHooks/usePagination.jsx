@@ -1,13 +1,14 @@
 'use client'
 
 import { orderAmount, orderNameAlphabetically } from '@/redux/features/monthTransactionsSlice';
+import { orderAmount as orderAmountAllTransactions, orderNameAlphabetically as orderNameAlphabeticallyAllTransactions } from '@/redux/features/transactionsSlice';
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-const usePagination = () => {
+const usePagination = (transactionsState, MOVE_PER_PAGE) => {
 
-  const MOVE_PER_PAGE = 4;
-  const transactionsState = useSelector(state => state.monthTransactions.transactions)
+  // const MOVE_PER_PAGE = 4;
+  // const transactionsState = useSelector(state => state.monthTransactions.transactions)
   const [prev, setPrev] = useState(0);
   const [next, setNext] = useState(MOVE_PER_PAGE);
   const [count, setCount] = useState(1);
@@ -73,12 +74,24 @@ const usePagination = () => {
       } else dispatch(orderNameAlphabetically('aZ'))
   }
 
+  const handleAlphabeticallyOrderAllTransactions = (type) => {
+    if(!type){
+      dispatch(orderNameAlphabeticallyAllTransactions('zA'));
+    } else dispatch(orderNameAlphabeticallyAllTransactions('aZ'))
+}
+  
   const handleAmountOrder = (type) => {
     if(!type){
       dispatch(orderAmount('desc'))
     } else dispatch(orderAmount('asc'))
   }
 
+  const handleAmountOrderAllTransactions = (type) => {
+    if(!type){
+      dispatch(orderAmountAllTransactions('desc'))
+    } else dispatch(orderAmountAllTransactions('asc'))
+  }
+  
   return {
     nextHandler,
     prevHandler,
@@ -89,7 +102,9 @@ const usePagination = () => {
     lastPageHandler,
     handleSearch,
     handleAlphabeticallyOrder,
-    handleAmountOrder
+    handleAmountOrder,
+    handleAlphabeticallyOrderAllTransactions,
+    handleAmountOrderAllTransactions
   };
 };
 
