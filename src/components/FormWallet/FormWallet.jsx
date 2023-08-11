@@ -1,5 +1,5 @@
 'use client';
-import React from "react";
+import React, { useEffect } from "react";
 import {FiAlertCircle} from "react-icons/fi"; 
 import useFormWallet from "@/customHooks/useFormWallet";
 import { useSelector } from "react-redux";
@@ -8,8 +8,8 @@ import { useSelector } from "react-redux";
 export default function FormWallet () {
 
     const categories = useSelector((state)=> state.others.categories); 
-    const methods = useSelector((state)=> state.others.methods)
-
+    const methods = useSelector((state)=> state.others.methods);
+    
     const {
         formWallet,
         inputInvalids,
@@ -19,11 +19,11 @@ export default function FormWallet () {
         allowNameErrorMessage,
         focusedAmountInput,
         focusedNameInput,
-        handleSubmitExpense
+        handleSubmitExpense,
+        handleSubmitIncome
     } = useFormWallet();
 
     return (
-        
         <div className="flex flex-col items-center h-3">
             <div className='bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink'>h</div>
             <h1 className="text-xl font-bold mt-5 m-2.5">Transaction Form</h1>
@@ -66,7 +66,7 @@ export default function FormWallet () {
                 <button className="text-white h-8 w-32 font-bold cursor-no-drop rounded-2xl text-sm bg-regularGray">AutoDate</button>
             </div>
             <div className="mt-5">
-                <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty}>Add Money</button>
+                <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty} onClick={handleSubmitIncome}>Add Money</button>
                 <button className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty} onClick={handleSubmitExpense}>Add Expense</button>
             </div>
         </div>
