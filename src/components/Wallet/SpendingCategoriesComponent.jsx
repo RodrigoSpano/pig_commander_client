@@ -11,19 +11,6 @@ export default function SpendingCategoriesComponent() {
   const categories = useSelector((state) => state.others.categories);
   const transactions = useSelector((state) => state.transactions.transactions);
 
-  /* Uso esto para debugear los estados de redux de transactions y categorias*/
-  useEffect(() => {
-    console.log("transactions:");
-    console.log(transactions);
-    console.log(" ");
-    console.log("categories");
-    console.log(categories);
-    console.log("selected year:");
-    console.log(selectedYear);
-    console.log("selected category");
-    console.log(selectedCategory);
-  });
-
   /* crea los años en funcion del año actual +10 y -10 años */
   function CreateYears() {
     const currentYear = new Date().getFullYear();
@@ -67,7 +54,7 @@ export default function SpendingCategoriesComponent() {
 
     //REVISAR SEGUN COMO ESTE LA FECHA ACTUALIZADA EN LA TRANSACCION
     const filteredTransactions = transactions.filter((element) => {
-      const transactionYear = new Date(element.auto_date).getFullYear();
+      const transactionYear = new Date(element.createdAt).getFullYear();
       return transactionYear === parseInt(selectedYear);
     });
 
