@@ -13,7 +13,7 @@ export default function CategoriesCard({
   category,
   validation,
 }) {
-  function iconito() {
+  function iconDisplayer() {
     switch (category) {
       case "education":
         return education;
@@ -30,11 +30,7 @@ export default function CategoriesCard({
     }
   }
 
-  useEffect(() => {
-    console.log(amount);
-  });
-
-  const iconSrc = iconito();
+  const iconSrc = iconDisplayer();
 
   return (
     <div className="flex flex-col pt-2 pl-2 w-1/5 text-center items-center">
