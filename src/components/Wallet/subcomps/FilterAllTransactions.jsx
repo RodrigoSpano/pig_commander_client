@@ -36,9 +36,9 @@ const FilterAllTransactions = () => {
     }
   };
   return (
-    <div className="flex">
+    <div className="flex justify-around py-4">
       <select
-        className="block w-full py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
+        className="block  py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
         onChange={handleFiltrerByType}
       >
         <option disabled selected value="">
@@ -50,7 +50,7 @@ const FilterAllTransactions = () => {
       </select>
 
       <select
-        className="block w-full py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
+        className="block py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
         onChange={handleFiltrerByMethod}
       >
         <option disabled selected value="">
@@ -67,7 +67,7 @@ const FilterAllTransactions = () => {
       </select>
 
       <select
-        className="block w-full py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
+        className="block py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
         onChange={handleFiltrerByCategory}
       >
         <option disabled selected value="">

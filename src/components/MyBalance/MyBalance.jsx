@@ -63,10 +63,12 @@ export default function WalletComponent() {
         </div>
       </div>
       <hr className="my-2 mx-16 mt-6" />
-      <div className="flex items-center justify-around my-4">
-        <h1 className="text-2xl font-bold text-boldPink">Transactions</h1>
-        <SearchBarComponent handleSearch={handleSearch} />
-        <FilterAllTransactions />
+      <div className="my-4">
+        <div className="flex justify-around">
+          <h1 className="text-4xl font-bold text-boldPink">Transactions</h1>
+          <SearchBarComponent handleSearch={handleSearch} />
+        </div>
+          <FilterAllTransactions />
       </div>
 
       <AllTransactionsPropsContainer
