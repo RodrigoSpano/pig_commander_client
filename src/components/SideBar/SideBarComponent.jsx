@@ -3,7 +3,7 @@ import Logo from "./Subcomponents/Logo";
 import Dashboard from './Subcomponents/Dashboard'
 import Management from './Subcomponents/Management'
 import Wallet from './Subcomponents/Wallet'
-import Reports from './Subcomponents/Reports'
+import Reviews from './Subcomponents/Reviews'
 import Profile from './Subcomponents/Profile'
 import Settings from './Subcomponents/Settings'
 import Help from './Subcomponents/Help'
@@ -40,7 +40,7 @@ export default function SideBar() {
         <Dashboard />
         <Management />
         <Wallet />
-        <Reports />
+        <Reviews />
         <Profile />
       </div>
 
