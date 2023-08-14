@@ -18,6 +18,9 @@ const PermanentFilter = () => {
         className='block w-full py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none'
         onChange={handleOptions}
       >
+        <option disabled selected value="">
+          Types
+        </option>
         <option value='default'>All Transactions</option>
         <option value='expense'>Expenses</option>
         <option value='income'>Incomes</option>
