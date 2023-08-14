@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function ReportsComponent () {
+export default function ReviewsComponent () {
     return (
         <div>
-            reports
+            reviews
         </div>
     )
 } 
