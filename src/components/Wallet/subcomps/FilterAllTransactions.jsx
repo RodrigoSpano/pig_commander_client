@@ -53,7 +53,7 @@ const FilterAllTransactions = () => {
         className="block w-full py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
         onChange={handleFiltrerByMethod}
       >
-        <option disabeld selected value="">
+        <option disabled selected value="">
           Methods
         </option>
         <option value="default">All Transactions</option>
@@ -70,7 +70,7 @@ const FilterAllTransactions = () => {
         className="block w-full py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
         onChange={handleFiltrerByCategory}
       >
-        <option disabeld selected value="">
+        <option disabled selected value="">
           Categories
         </option>
         <option value="default">All Transactions</option>
