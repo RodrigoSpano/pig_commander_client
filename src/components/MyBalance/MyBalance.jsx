@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import AllTransactionsPropsContainer from "../Wallet/subcomps/AllTransactionsPropsContainer";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import usePagination from "@/customHooks/usePagination";
+import BalancesCard from "./BalancesCard";
 
 export default function WalletComponent() {
   const { showPassword, togglePasswordVisibility } = useVisibility();
@@ -51,14 +52,8 @@ export default function WalletComponent() {
         <h1 className="font-bold ml-5 mt-2.5 text-xl">My Balance</h1>
         <div className="flex flex-row">
           <div className="text-regularPink text-7xl font-semibold mt-5 ml-5 ">
-            {showPassword ? `$30.000` : "$*****"}
+            <BalancesCard backup_transactions={allTransactions}/>
           </div>
-          <span
-            className="flex items-center cursor-pointer ml-2 focus:outline-none text-gray-500 text-2xl"
-            onClick={togglePasswordVisibility}
-          >
-            {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
-          </span>
         </div>
 
         <div className="flex justify-end mr-5">
