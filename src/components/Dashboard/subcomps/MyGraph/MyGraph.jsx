@@ -2,6 +2,12 @@ import ReactApexChart from "react-apexcharts";
 import { useSelector } from "react-redux";
 
 const DonutChartComponent = () => {
+  const isBrowser = process.browser;
+
+  if (!isBrowser) {
+    return null; // Evitar renderización en el servidor
+  }
+  
   const lastTransactions = useSelector(
     (state) => state.monthTransactions.transactions
   );
