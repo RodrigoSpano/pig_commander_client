@@ -23,7 +23,7 @@ const TransactionsComponent = () => {
     }
   },[])
 
-  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleAmountOrder } = usePagination(transactionsState, 4);
+  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleAmountOrder } = usePagination(transactionsState, 3);
 
   const {handleDetail} = useTransactionDetail()
 
