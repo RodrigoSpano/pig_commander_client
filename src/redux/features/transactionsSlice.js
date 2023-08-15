@@ -136,11 +136,13 @@ const transactionsSlice = createSlice({
       state.transactions.push({ ...action.payload, type: "income" });
     });
     builder.addCase(deleteIncome.fulfilled, (state, action) => {
+      console.log(action)
       state.transactions = state.transactions.filter(
         (el) => el.id !== action.payload
       );
     });
     builder.addCase(deleteExpense.fulfilled, (state, action) => {
+      console.log(action.payload)
       state.transactions = state.transactions.filter(
         (el) => el.id !== action.payload
       );

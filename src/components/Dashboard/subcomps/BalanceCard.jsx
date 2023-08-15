@@ -13,9 +13,16 @@ const BalanceCard = ({ transactions }) => {
   const getBalance = () => {
     const expensesTotal = getExpensesTotal(transactions);
     const incomesTotal = getIncomesTotal(transactions);
+    if(incomesTotal) {
+      setTotal(incomesTotal)
+    }
+    if(expensesTotal) {
+      setTotal(-expensesTotal); 
+    }
     if (expensesTotal > 0 && incomesTotal > 0) {
       setTotal(incomesTotal - expensesTotal);
     }
+    
   };
 
   useEffect(() => {
