@@ -90,14 +90,27 @@ export const createIncome = createAsyncThunk('income/create', async (payload) =>
   }
 });
 
-export const deleteExpense = createAsyncThunk('expense/delete', async (id, token) => {
-  await axios.delete(`/expenses/${id}`, { headers: { 'Authorization': token } })
-  return id
+export const deleteExpense = createAsyncThunk('expense/delete', async (payload) => {
+  try {
+    const {id, token } = payload;
+    await axios.delete(`/expenses/${id}`, { headers: { 'Authorization': token } })
+    return id;  
+  } catch (error) {
+    console.log("error")
+  }
+  
 })
 
-export const deleteIncome = createAsyncThunk('income/delete', async (id, token) => {
-  await axios.delete(`/incomes/${id}`, { headers: { 'Authorization': token } })
-  return id
+export const deleteIncome = createAsyncThunk('income/delete', async (payload) => {
+  try {
+    const { id, token } = payload;
+    await axios.delete(`/incomes/${id}`, { headers: { 'Authorization': token } })
+    return id;
+    
+  } catch (error) {
+    console.log("error")
+  }
+ 
 })
 
 export const updateExpense = createAsyncThunk('expense/update', async (id, newData, token) => {
