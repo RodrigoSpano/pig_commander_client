@@ -1,12 +1,14 @@
 import { createExpense, createIncome } from "@/redux/actions/transactionsActions";
 import { useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import toastMixin from "sweetalert2"; 
 
 
 export default function () {
+
+
 
     const [formWallet, setFormWallet] = useState({
         name: "",
@@ -18,6 +20,17 @@ export default function () {
     const [focusedNameInput, setFocusedNameInput] = useState(false);
     const [focusedAmountInput, setFocusedAmountInput] = useState(false);
     const [cookies, setCookie] = useCookies();
+
+    const [automatizedForm, setAutomatizedForm] = useState({
+        date: null, 
+        type: "",
+    }); 
+
+    const handleAutoChange= (event) => {
+        setAutomatizedForm({ ...automatizedForm, 
+            [event.target.name]: event.target.value })
+
+    };
 
     const handleChange = (e) => {
         let parsedValue;
@@ -119,6 +132,7 @@ export default function () {
 //VALIDACIONES 
         const isName = formWallet.name.length > 0;
         const isAmount = formWallet.amount > 0; 
+        const isDate = automatizedForm.date > 0 && automatizedForm.date <= 31;
 
 
         //validaciones de input
@@ -127,6 +141,8 @@ export default function () {
         //boton disable
         const someFieldEmpty = !isName || !isAmount; 
 
+        const someFieldEmptyAutomatized = !isDate; 
+
         const allowNameErrorMessage = () => {
             setFocusedNameInput(true);
         }
@@ -134,6 +150,15 @@ export default function () {
         const allowAmountErrorMessage = () => {
             setFocusedAmountInput(true);
         }
+
+
+    //AUTOMATIZED
+
+    // habilito la función
+    // guardo el valor del «input»
+    const [automatized, setAutomatized] = useState(false);
+
+
 
 
     return {
@@ -147,5 +172,11 @@ export default function () {
         focusedNameInput,
         handleSubmitExpense,
         handleSubmitIncome,
+        //AUTOMATIZED
+        setAutomatized,
+        automatized,
+        someFieldEmptyAutomatized,
+        handleAutoChange,
+        automatizedForm
      }
 }
