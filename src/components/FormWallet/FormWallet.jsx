@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from "react";
+import React from "react";
 import {FiAlertCircle} from "react-icons/fi"; 
 import useFormWallet from "@/customHooks/useFormWallet";
 import { useSelector } from "react-redux";
@@ -31,6 +31,7 @@ export default function FormWallet () {
         someFieldEmptyAutomatized,
         handleAutoChange, 
         automatizedForm,
+        handleSubmitAutomatize
     } = useFormWallet();
 
     return (
@@ -73,18 +74,18 @@ export default function FormWallet () {
             </div>
            
             <div className="flex flex-row mt-5">
-              <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={!userPremium.premium} />
-              <input className='bg-lightGray  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="date" value={automatizedForm.date} disabled={!userPremium.premium} onChange={handleAutoChange}/>
-              <select className="text-xs w-26 bg-lightGray font-light rounded-lg p-1.5 ml-2" name="type">
-                <option value="expenses">Expense</option>
-                <option value="incomes">Incomes</option>
+              <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={userPremium.premium} />
+              <input className='bg-lightGray  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="auto_date" value={automatizedForm.auto_date} disabled={!automatized && true } onChange={handleAutoChange}/>
+              <select defaultValue={'expense'} name='type' className="text-xs w-26 bg-lightGray font-light rounded-lg p-1.5 ml-2" disabled={!automatized && true } onChange={handleAutoChange}>
+                <option value="expense">Expense</option>
+                <option value="income">Incomes</option>
               </select>
             </div>
             <div className="mt-5">
                 {
                     automatized 
                         ? (
-                            <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmptyAutomatized ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmptyAutomatized}   >Automatize</button>
+                            <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmptyAutomatized ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmptyAutomatized} onClick={handleSubmitAutomatize} >Automatize</button>
                         ) 
                         : (
                             <>

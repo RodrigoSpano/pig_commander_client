@@ -1,14 +1,24 @@
+'use client'
 import { createExpense, createIncome } from "@/redux/actions/transactionsActions";
+import { createAutomateTransaction } from "@/utils/helper/automateTransactions";
 import { useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import toastMixin from "sweetalert2"; 
 
+const initialFormWallet = {
+    name: "",
+    amount: "",
+    method_id: 1,
+    category_id: 1,
+}
+
+const initialAutomate = {
+    auto_date: '', 
+    type: 'expense',
+}
 
 export default function () {
-
-
 
     const [formWallet, setFormWallet] = useState({
         name: "",
@@ -22,8 +32,8 @@ export default function () {
     const [cookies, setCookie] = useCookies();
 
     const [automatizedForm, setAutomatizedForm] = useState({
-        date: null, 
-        type: "",
+        auto_date: '', 
+        type: 'expense',
     }); 
 
     const handleAutoChange= (event) => {
@@ -132,7 +142,7 @@ export default function () {
 //VALIDACIONES 
         const isName = formWallet.name.length > 0;
         const isAmount = formWallet.amount > 0; 
-        const isDate = automatizedForm.date > 0 && automatizedForm.date <= 31;
+        const isDate = automatizedForm.auto_date > 0 && automatizedForm.auto_date <= 31;
 
 
         //validaciones de input
@@ -158,7 +168,18 @@ export default function () {
     // guardo el valor del «input»
     const [automatized, setAutomatized] = useState(false);
 
-
+    const handleSubmitAutomatize = async (e) => {
+        const data = {...formWallet, ...automatizedForm}
+        const createAutomate = await createAutomateTransaction(data, cookies.token)
+        if(createAutomate?.success){
+            Swal.fire({
+                icon: "success",
+                title: createAutomate.message
+            })
+            setFormWallet(initialFormWallet)
+            setAutomatizedForm(initialAutomate)
+        }
+    }
 
 
     return {
@@ -177,6 +198,7 @@ export default function () {
         automatized,
         someFieldEmptyAutomatized,
         handleAutoChange,
-        automatizedForm
+        automatizedForm,
+        handleSubmitAutomatize
      }
 }
