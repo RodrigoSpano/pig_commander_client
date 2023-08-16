@@ -8,7 +8,7 @@ const DashboardAdminComponent = () => {
     <div className="mx-6 sm:mx-8 md:mx-12 select-none p-4 rounded-lg">
 
       <section className="flex items-center justify-between my-6">
-        <h1 className="font-bold text-strongPink text-4xl sm:text-5xl md:text-6xl">
+        <h1 className="font-bold text-strongPink text-4xl sm:text-xl md:text-6xl">
           Admin Dashboard
         </h1>
         <UserSection />
