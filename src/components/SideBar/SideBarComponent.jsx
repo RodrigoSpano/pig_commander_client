@@ -8,6 +8,7 @@ import Profile from './Subcomponents/Profile'
 import Settings from './Subcomponents/Settings'
 import Help from './Subcomponents/Help'
 import LogOut from "./Subcomponents/LogOut";
+import RateApp from "./Subcomponents/RateApp/RateApp";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "@/redux/actions/userActions";
@@ -51,6 +52,7 @@ export default function SideBar() {
         <Settings />
         <Help />
         <SecurityPolitics/>
+        <RateApp />
       </div>
 
       <hr />
