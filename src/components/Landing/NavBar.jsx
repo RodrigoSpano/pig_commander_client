@@ -82,9 +82,9 @@ const NavBar = () => {
             </motion.p>
           </Link>
 
-          <Link href='/features'>
+          <Link href='/reviews'>
             <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: [0.9, 1.1, 1] }} className='font-semibold hover:text-regularPink cursor-pointer'>
-              Features
+              Reviews
             </motion.p>
           </Link>
         </div>

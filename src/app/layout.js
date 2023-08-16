@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
                 path === "/google/success" ||
                 path === "/about" ||
                 path === "/pricing" ||
-                path === "/features" ||
+                path === "/reviews" ||
                 path === "/" ? null : (
                 <SideBar />
               )}
