@@ -5,7 +5,6 @@ const { default: Swal } = require("sweetalert2")
 export const createAutomateTransaction = async (info, token) => {
   try {
     const { data } = await axios.post('/auto/transaction', info, { headers: { Authorization: token } })
-    console.log(data)
     return data
   } catch (error) {
     if (error.response.status === 302) {
@@ -19,5 +18,31 @@ export const createAutomateTransaction = async (info, token) => {
         title: error.message
       })
     }
+  }
+}
+
+export const getAllAutomateTransactions = async (token) => {
+  try {
+    const { data } = await axios('/auto/transactions', { headers: { Authorization: token } })
+    return data
+  } catch (error) {
+    console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: error.message
+    })
+  }
+}
+
+export const deleteAutomatedTransaction = async (name, token) => {
+  try {
+    const { data } = await axios.delete(`/auto/stop/${name}`, { headers: { Authorization: token } })
+    return data
+  } catch (error) {
+    console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: error.message
+    })
   }
 }
