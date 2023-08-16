@@ -1,30 +1,21 @@
 import React from "react";
 import AdminTable from "./AdminTable/AdminTable";
+import UsersCards from "./TotalUsersCards/UsersCards";
+import UserSection from "./User/UserSection";
 
 const DashboardAdminComponent = () => {
   return (
-    <div className="m-12">
-      <section className="flex justify-between items-center my-12">
-        <div>Administrator Dashboard</div>
-        <div className="flex items-center">
-          <div className="mx-2">AdminName</div>
-          <div className="mx-2">photo</div>
-        </div>
+    <div className="mx-6 sm:mx-8 md:mx-12 select-none p-4 rounded-lg">
+
+      <section className="flex items-center justify-between my-6">
+        <h1 className="font-bold text-strongPink text-4xl sm:text-xl md:text-6xl">
+          Admin Dashboard
+        </h1>
+        <UserSection />
       </section>
 
-      <section className="flex justify-between my-12">
-        <div className="w-1/4 p-4 bg-blue-300 flex justify-center items-center">
-          Total Users
-        </div>
-        <div className="w-1/4 p-4 bg-green-300 flex justify-center items-center">
-          Basic Users
-        </div>
-        <div className="w-1/4 p-4 bg-yellow-300 flex justify-center items-center">
-          Pro Users
-        </div>
-        <div className="w-1/4 p-4 bg-red-300 flex justify-center items-center">
-          Banned Users
-        </div>
+      <section className="my-8">
+        <UsersCards />
       </section>
 
       <section>

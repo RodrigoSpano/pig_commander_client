@@ -10,11 +10,10 @@ import {
   User,
   Chip,
   Tooltip,
-  getKeyValue,
 } from "@nextui-org/react";
 import { IoBan } from "react-icons/io5";
 import {AiOutlineExclamationCircle} from 'react-icons/ai'
-import { EyeIcon } from "./EyeIcon";
+import {AiOutlineEye} from 'react-icons/ai'
 import { columns, users } from "./data";
 
 const statusColorMap = {
@@ -78,7 +77,7 @@ export default function AdminTable() {
           <div className="relative flex items-center gap-2">
             <Tooltip content="Details">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EyeIcon />
+                <AiOutlineEye />
               </span>
             </Tooltip>
             <Tooltip color="warning" content="Unban">
