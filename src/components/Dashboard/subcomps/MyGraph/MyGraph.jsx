@@ -13,7 +13,7 @@ const DonutChartComponent = () => {
 
   const lastExpenses = lastTransactions.filter((t) => t.type === "expense");
 
-  const categoryExpenses = categories.map((category) => ({
+  const categoryExpenses = categories?.map((category) => ({
     id: category.id,
     name: category.name.replace(/^\w/, (c) => c.toUpperCase()),
     totalExpense: lastExpenses
@@ -35,13 +35,13 @@ const DonutChartComponent = () => {
     ];
   };
 
-  const chartData = categoryExpenses.map((categoryExpense) => ({
+  const chartData = categoryExpenses?.map((categoryExpense) => ({
     name: categoryExpense.name,
     value: categoryExpense.totalExpense,
     color: assignColorToCategory(categoryExpense.id),
   }));
 
-  const COLORS = chartData.map((data) => data.color);
+  const COLORS = chartData?.map((data) => data.color);
 
   const totalExpenses = chartData.reduce(
     (total, category) => total + category.value,
