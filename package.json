@@ -14,7 +14,6 @@
     "@tremor/react": "^3.6.0",
     "axios": "^1.4.0",
     "framer-motion": "^10.15.2",
-    "json-server": "^0.17.3",
     "next": "13.4.12",
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
