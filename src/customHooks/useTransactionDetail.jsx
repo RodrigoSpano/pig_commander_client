@@ -1,3 +1,4 @@
+import { deleteExpenseMonth, deleteIncomeMonth } from "@/redux/actions/monthTransactionsActions";
 import { deleteExpense, deleteIncome } from "@/redux/actions/transactionsActions";
 import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,7 +37,29 @@ const useTransactionDetail = () => {
         closeButton: "text-red-500 hover:text-red-100",
       },
     }).then((result) => {
+      
       if (result.isConfirmed) {
+        if(transaction.type === 'expense'){
+          const { token } = cookies; 
+          const data = {
+            id: transaction.id,
+            token,
+          };
+          dispatch(
+            deleteExpenseMonth(data)
+          );
+           } [transaction, cookies];
+        if(transaction.type === 'income'){
+          const { token } = cookies; 
+          const data = {
+            id: transaction.id,
+            token,
+          };
+          dispatch(
+            deleteIncomeMonth(data)
+          );
+            } [transaction, cookies];
+
         if(transaction.type === 'expense'){
           const { token } = cookies; 
           const data = {
