@@ -6,6 +6,8 @@ import { Inter } from "next/font/google";
 import SideBar from "../components/SideBar/SideBarComponent";
 import { usePathname } from "next/navigation";
 import axios from "axios";
+import {NextUIProvider} from "@nextui-org/react";
+
 
 const inter = Inter({ subsets: ["latin"] });
 // cambia en el deploy x eso es un env
@@ -16,6 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+      <NextUIProvider>
         <CookiesProvider>
           <ReduxProvider>
             <div className="flex">
@@ -32,6 +35,8 @@ export default function RootLayout({ children }) {
             </div>
           </ReduxProvider>
         </CookiesProvider>
+      </NextUIProvider>
+
       </body>
     </html>
   );
