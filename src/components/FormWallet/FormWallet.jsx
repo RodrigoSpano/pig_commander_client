@@ -65,6 +65,7 @@ export default function FormWallet () {
             <div className="flex flex-row mt-2.5">
                 <button className="text-white h-8 w-32 mr-1.5 font-bold rounded-2xl cursor-no-drop text-sm bg-regularGray">Automatized</button>
                 <button className="text-white h-8 w-32 font-bold cursor-no-drop rounded-2xl text-sm bg-regularGray">AutoDate</button>
+                {/* <Switch defaultSelected color="success">Success</Switch> */}
             </div>
             <div className="mt-5">
                 <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty} onClick={handleSubmitIncome}>Add Income</button>

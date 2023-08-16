@@ -28,13 +28,14 @@ export default function RootLayout({ children }) {
                 path === "/pricing" ||
                 path === "/features" ||
                 path === "/" ? null : (
-                  <SideBar />
-                )}
-                <div className="w-screen">{children}</div>
-              </div>
-            </ReduxProvider>
-          </CookiesProvider>
-        </NextUIProvider>
+                <SideBar />
+              )}
+              <div className="w-screen">{children}</div>
+            </div>
+          </ReduxProvider>
+        </CookiesProvider>
+      </NextUIProvider>
+
       </body>
     </html>
   );
