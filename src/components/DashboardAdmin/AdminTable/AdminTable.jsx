@@ -1,7 +1,7 @@
 import React from "react";
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue} from "@nextui-org/react";
 import {DeleteIcon} from "./DeleteIcon";
-import {EyeIcon} from "./EyeIcon";
+import { AiOutlineEye } from 'react-icons/ai';
 import {columns, users} from "./data";
 
 
@@ -44,7 +44,7 @@ export default function App() {
           <div className="relative flex items-center gap-2">
             <Tooltip content="Details">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EyeIcon />
+                <AiOutlineEye />
               </span>
             </Tooltip>
             <Tooltip color="danger" content="Delete user">
