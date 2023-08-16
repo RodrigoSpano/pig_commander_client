@@ -65,3 +65,24 @@ export const getAllTransactions = createAsyncThunk(
     }
   }
 );
+
+export const deleteExpenseMonth = createAsyncThunk('expense/monthly/delete', async (payload) => {
+  try {
+    const {id, token } = payload;
+    await axios.delete(`/expenses/${id}`, { headers: { 'Authorization': token } })
+    return id;  
+  } catch (error) {
+    console.log("error")
+  };
+});
+
+export const deleteIncomeMonth = createAsyncThunk('income/monthly/delete', async (payload) => {
+  try {
+    const { id, token } = payload;
+    await axios.delete(`/incomes/${id}`, { headers: { 'Authorization': token } })
+    return id;
+    
+  } catch (error) {
+    console.log("error")
+  };
+}); 
