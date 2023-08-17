@@ -1,54 +1,54 @@
+import React, { useEffect, useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import useVisibility from '@/customHooks/useVisibility';
 import { getExpensesTotal, getIncomesTotal } from '@/utils/helper/monthTransactions';
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const MoneyCard = ({ title, type, array }) => {
   const [value, setValue] = useState(0);
-
   const { showPassword, togglePasswordVisibility } = useVisibility();
 
   useEffect(() => {
+    let totalValue = 0;
+
     if (type === 'expense') {
-      const total = getExpensesTotal(array);
-      setValue(total);
+      totalValue = getExpensesTotal(array);
     } else if (type === 'income') {
-      const total = getIncomesTotal(array);
-      setValue(total);
+      totalValue = getIncomesTotal(array);
     } else if (type === 'saving') {
-      let total = 0
-      array?.map(el => total += el.amount)
-      setValue(total);
+      totalValue = array.reduce((acc, el) => acc + el.amount, 0);
     }
-  }, [array]);
+
+    setValue(totalValue);
+  }, [array, type]);
+
+  const eyeVariants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0.5 },
+  };
 
   return (
-    <motion.div
-      className="bg-white rounded-lg shadow-md flex gap-10 flex-row col-span-3 row-span-2 h-[100px] select-none"
-      whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-    >
-      <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
-
-      <div className="flex flex-col justify-evenly flex-grow">
-        <div className="flex justify-between items-center">
-          {/* TITLE */}
-          <p className="text-gray-500 text-base font-Poppins font-medium">{title}</p>
-          {/* EYE */}
-          <span
-            className="flex items-center cursor-pointer focus:outline-none text-gray-500 text-2xl mr-6"
+      <div className="bg-white rounded-lg shadow-md p-4 m-2 box-border w-full">
+        <div className="flex items-center justify-between lg:mb-8">
+          <p className="font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base">{title}</p>
+          <motion.span
+            className="cursor-pointer font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base"
             onClick={togglePasswordVisibility}
+            variants={eyeVariants}
+            initial="visible"
+            animate={showPassword ? 'visible' : 'hidden'}
+            whileHover={{ scale: 1.1 }}
           >
             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
-          </span>
+          </motion.span>
         </div>
-        <div className="mt-2">
-          <span className="text-[#15223C] font-semibold text-2xl">
+
+        <div className="font-medium text-xl xl:text-4xl lg:text-3xl md:text-lg sm:text-base">
+          <span>
             {showPassword ? `$${value?.toLocaleString()}` : '$*****'}
           </span>
         </div>
       </div>
-    </motion.div>
   );
 };
 
