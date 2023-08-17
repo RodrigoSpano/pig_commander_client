@@ -1,28 +1,11 @@
+"use client"
 import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import { becomePremiumHandler } from './becomePremiumHandler';
 import { useCookies } from 'react-cookie';
 
-function asdf({ user }) {
-  const [cookies, setCookie] = useCookies();
 
-  return (
-    <div className="mb-4">
-      {user?.premium ? (
-        <p className="text-lg font-semibold text-regularPink">PRO</p>
-      ) : (
-        <button
-          onClick={() => becomePremiumHandler(cookies.token)}
-          className="bg-regularPink text-white py-2 px-6 rounded-lg"
-        >
-          Become Premium
-        </button>
-      )}
-    </div>
-  );
-}
-
-function ProfileComponent({ user }) {
+export default function ProfileComponent({ user }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [cookies, setCookie] = useCookies();
 
@@ -72,9 +55,4 @@ function ProfileComponent({ user }) {
       </Modal>
     </div>
   );
-}
-
-module.exports = {
-  asdf,
-  ProfileComponent,
 }

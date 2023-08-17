@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProfileComponent } from '../../Profile/ProfileComponent';
+import ProfileComponent from '../../Profile/ProfileComponent';
 import { updatePicture } from '@/redux/actions/userActions';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
