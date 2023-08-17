@@ -24,13 +24,13 @@ export default function DashboardComponent() {
     <div className="m-6">
       <StatsContainer />
 
-      <div className="flex flex-col mt-2">
-        <div>
+      <div className="flex flex-col">
+        <div className="mt-3 mb-4">
           <MyJournalCard />
         </div>
 
-        <div className="flex mt-4">
-          <div className="w-2/3">
+        <div className="flex">
+          <div className="w-2/3 mr-4">
             <TransactionsComponent />
           </div>
           <div className="w-1/3">

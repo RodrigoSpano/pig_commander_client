@@ -1,31 +1,37 @@
-import { clearFilters, filterByType } from '@/redux/features/monthTransactionsSlice'
-import { useDispatch } from 'react-redux'
+import React from 'react';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@nextui-org/react';
+import { clearFilters, filterByType } from '@/redux/features/monthTransactionsSlice';
+import { useDispatch } from 'react-redux';
+import { HiChevronDown } from "react-icons/hi2";
 
 const PermanentFilter = () => {
   const dispatch = useDispatch();
 
-  const handleOptions = (e) => {
-    if (e.target.value === 'default') {
-      dispatch(clearFilters())
+  const handleOptions = (value) => {
+    if (value === 'default') {
+      dispatch(clearFilters());
     } else {
-      dispatch(filterByType(e.target.value))
+      dispatch(filterByType(value));
     }
-  }
+  };
 
   return (
-    <div>
-      <select
-        className='block w-full py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none'
-        onChange={handleOptions}
-      >
-        <option disabled selected value="">
-          Types
-        </option>
-        <option value='default'>All Transactions</option>
-        <option value='expense'>Expenses</option>
-        <option value='income'>Incomes</option>
-      </select>
-    </div>
+    <Dropdown className=''>
+      <DropdownTrigger className='py-2'>
+        <Button variant="bordered">Types <span className=''><HiChevronDown/></span></Button>
+      </DropdownTrigger>
+      <DropdownMenu aria-label="Filter Transactions">
+        <DropdownItem key="all" onClick={() => handleOptions('default')}>
+          All Transactions
+        </DropdownItem>
+        <DropdownItem key="expense" onClick={() => handleOptions('expense')}>
+          Expenses
+        </DropdownItem>
+        <DropdownItem key="income" onClick={() => handleOptions('income')}>
+          Incomes
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
   );
 };
 
