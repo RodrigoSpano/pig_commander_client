@@ -8,6 +8,7 @@ import {
   updateExpense,
   updateIncome,
 } from "../actions/transactionsActions";
+import { deleteExpenseMonth, deleteIncomeMonth } from "../actions/monthTransactionsActions";
 
 const initialState = {
   transactions: [],
@@ -147,6 +148,7 @@ const transactionsSlice = createSlice({
         (el) => el.id !== action.payload
       );
     });
+
     builder.addCase(updateExpense.fulfilled, (state, action) => {
       let updatedArr = state.transactions.filter(
         (el) => el.id !== action.payload.id
