@@ -55,16 +55,16 @@ export default function FormWallet() {
           />
         </div>
       </div>
-      <div class={'min-h-[15px]'}>
-      <p className="text-red-400 relative mt-2 text-l">
-        {inputInvalids && (focusedNameInput || focusedAmountInput) ? (
-          "These fields are required"
-        ) : (
-          <span></span>
-        )}
-      </p>
+      <div class={"min-h-[15px]"}>
+        <p className="text-red-400 relative mt-2 text-l">
+          {inputInvalids && (focusedNameInput || focusedAmountInput) ? (
+            "These fields are required"
+          ) : (
+            <span></span>
+          )}
+        </p>
       </div>
-     
+
       <div className="flex flex-row m-2.5 mt-5">
         <div className="flex flex-col mr-2.5 ">
           <label className="text-boldGray text-lg">Method:</label>
@@ -108,23 +108,22 @@ export default function FormWallet() {
         <div className="mt-5 self-center mr-1.5">
           <FiAlertCircle />{" "}
         </div>
-        <span className="text-boldGray text-l font-light mt-5">
+        <span className="text-boldGray text-sm font-light mt-5">
           Only premium members
         </span>
       </div>
       <div className="flex flex-row mt-2.5">
-        <button className="text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mr-5 text-base bg-regularGray">
+        <button className="text-white h-8 w-32 mr-1.5 font-bold rounded-2xl cursor-no-drop text-sm bg-regularGray">
           Automatized
         </button>
-        <button className="text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl  text-base bg-regularGray">
+        <button className="text-white h-8 w-32 font-bold cursor-no-drop rounded-2xl text-sm bg-regularGray">
           AutoDate
         </button>
         {/* <Switch defaultSelected color="success">Success</Switch> */}
       </div>
-      <hr />
       <div className="mt-5">
         <button
-          className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-4 text-base ${
+          className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${
             someFieldEmpty
               ? "bg-regularGray"
               : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
@@ -135,7 +134,7 @@ export default function FormWallet() {
           Add Income
         </button>
         <button
-          className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-4 text-base ${
+          className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-8 text-base ${
             someFieldEmpty
               ? "bg-regularGray"
               : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"

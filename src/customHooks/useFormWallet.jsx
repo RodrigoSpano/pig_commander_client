@@ -1,10 +1,22 @@
+'use client'
 import { createExpense, createIncome } from "@/redux/actions/transactionsActions";
+import { createAutomateTransaction } from "@/utils/helper/automateTransactions";
 import { useCallback, useState } from "react";
 import { useCookies } from "react-cookie";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import toastMixin from "sweetalert2"; 
 
+const initialFormWallet = {
+    name: "",
+    amount: "",
+    method_id: 1,
+    category_id: 1,
+}
+
+const initialAutomate = {
+    auto_date: '', 
+    type: 'expense',
+}
 
 export default function () {
 
@@ -18,6 +30,17 @@ export default function () {
     const [focusedNameInput, setFocusedNameInput] = useState(false);
     const [focusedAmountInput, setFocusedAmountInput] = useState(false);
     const [cookies, setCookie] = useCookies();
+
+    const [automatizedForm, setAutomatizedForm] = useState({
+        auto_date: '', 
+        type: 'expense',
+    }); 
+
+    const handleAutoChange= (event) => {
+        setAutomatizedForm({ ...automatizedForm, 
+            [event.target.name]: event.target.value })
+
+    };
 
     const handleChange = (e) => {
         let parsedValue;
@@ -119,6 +142,7 @@ export default function () {
 //VALIDACIONES 
         const isName = formWallet.name.length > 0;
         const isAmount = formWallet.amount > 0; 
+        const isDate = automatizedForm.auto_date > 0 && automatizedForm.auto_date <= 31;
 
 
         //validaciones de input
@@ -127,6 +151,8 @@ export default function () {
         //boton disable
         const someFieldEmpty = !isName || !isAmount; 
 
+        const someFieldEmptyAutomatized = !isDate; 
+
         const allowNameErrorMessage = () => {
             setFocusedNameInput(true);
         }
@@ -134,6 +160,26 @@ export default function () {
         const allowAmountErrorMessage = () => {
             setFocusedAmountInput(true);
         }
+
+
+    //AUTOMATIZED
+
+    // habilito la función
+    // guardo el valor del «input»
+    const [automatized, setAutomatized] = useState(false);
+
+    const handleSubmitAutomatize = async (e) => {
+        const data = {...formWallet, ...automatizedForm}
+        const createAutomate = await createAutomateTransaction(data, cookies.token)
+        if(createAutomate?.success){
+            Swal.fire({
+                icon: "success",
+                title: createAutomate.message
+            })
+            setFormWallet(initialFormWallet)
+            setAutomatizedForm(initialAutomate)
+        }
+    }
 
 
     return {
@@ -147,5 +193,12 @@ export default function () {
         focusedNameInput,
         handleSubmitExpense,
         handleSubmitIncome,
+        //AUTOMATIZED
+        setAutomatized,
+        automatized,
+        someFieldEmptyAutomatized,
+        handleAutoChange,
+        automatizedForm,
+        handleSubmitAutomatize
      }
 }
