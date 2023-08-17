@@ -24,22 +24,32 @@ export default function SignUpComponent() {
 
 
   const {
-    userSignUp,
-    handleChange,
-    handleSubmit,
-    inputInvalidName,
-    inputInvalidEmail,
-    inputInvalidPassword,
-    someFieldEmpty,
-    focusedEmailInput,
-    focusedPasswordInput,
-    focusedNameInput,
-    allowNameErrorMessage,
-    allowEmailErrorMessage,
-    allowPasswordErrorMessage,
+        userSignUp,
+        handleChange,
+        handleSubmit,
+        inputInvalidName,
+        inputInvalidEmail,
+        inputInvalidPassword,
+        someFieldEmpty,
+        focusedEmailInput,
+        focusedPasswordInput,
+        focusedNameInput,
+        focusedConfirmPasswordInput,
+        allowNameErrorMessage,
+        allowEmailErrorMessage,
+        allowPasswordErrorMessage,
+        allowConfirmPasswordErrorMessage,
+        handlePasswordConfirmationChange,
+        passwordsMatch,
+        passwordConfirmation,
   } = useSignup();
 
-  const { showPassword, togglePasswordVisibility } = useVisibility();
+  const {
+    showPassword,
+    togglePasswordVisibility,
+    showPasswordConfirmation,
+    togglePasswordConfirmationVisibility,
+  } = useVisibility();
 
   return (
     <div className="flex bg-white">
@@ -117,7 +127,7 @@ export default function SignUpComponent() {
             <div className="mb-3 flex items-center rounded-lg bg-inputForm">
               <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
               <input
-                className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
                 type={showPassword ? "text" : "password"}
                 value={userSignUp.password}
                 placeholder="Password"
@@ -129,11 +139,34 @@ export default function SignUpComponent() {
               <span className="password-toggle" onClick={togglePasswordVisibility}>
                 {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
               </span>
-            </div>
 
+            {/*CONFIRM PASSWORD */}
+            </div>
+            <div className="mb-3 flex items-center rounded-lg bg-inputForm">
+              <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
+              <input
+                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
+                type={showPasswordConfirmation ? "text" : "password"}
+                value={passwordConfirmation}
+                placeholder="Confirm Password"
+                autoComplete="off"
+                name="confirmPassword"
+                onChange={handlePasswordConfirmationChange}
+                onFocus={allowConfirmPasswordErrorMessage}
+              />
+              <span className="password-toggle" onClick={togglePasswordConfirmationVisibility}>
+                {showPasswordConfirmation ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              </span>
+            </div>
+            
             {inputInvalidPassword && focusedPasswordInput && (
               <p className="text-xs text-red-600 mt-1">
                 This field is required. It must have at least 1 lowercase letter, 1 uppercase letter, 1 number, no spaces, and a minimum of 8 characters.
+              </p>
+            )}
+            {!passwordsMatch && focusedConfirmPasswordInput && (
+              <p className="text-xs text-red-600 mt-1">
+                Passwords must match
               </p>
             )}
 
