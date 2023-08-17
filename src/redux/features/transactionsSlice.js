@@ -9,7 +9,6 @@ import {
   updateIncome,
   getFilterTransaction,
 } from "../actions/transactionsActions";
-import { deleteExpenseMonth, deleteIncomeMonth } from "../actions/monthTransactionsActions";
 
 const initialState = {
   transactions: [],
@@ -52,7 +51,6 @@ const transactionsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllTransactions.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.transactions = action.payload.transactions;
       state.backup_transactions = action.payload.transactions;
     });
@@ -65,16 +63,19 @@ const transactionsSlice = createSlice({
       state.backup_transactions.push({ ...action.payload, type: "income" });
     });
     builder.addCase(deleteIncome.fulfilled, (state, action) => {
-      console.log(action);
-      state.transactions = state.transactions.filter(
+      const filtered = state.transactions.filter(
         (el) => el.id !== action.payload
       );
+      state.backup_transactions = filtered
+      state.transactions = filtered
+
     });
     builder.addCase(deleteExpense.fulfilled, (state, action) => {
-      console.log(action.payload);
-      state.transactions = state.transactions.filter(
+      const filtered = state.transactions.filter(
         (el) => el.id !== action.payload
       );
+      state.transactions = filtered
+      state.backup_transactions = filtered
     });
 
     builder.addCase(updateExpense.fulfilled, (state, action) => {
@@ -105,7 +106,7 @@ const transactionsSlice = createSlice({
       } else if (state.currentOrder === "desc") {
         filteredTransactions.sort((a, b) => b.amount - a.amount);
       }
-    
+
       state.transactions = filteredTransactions;
     });
   },
