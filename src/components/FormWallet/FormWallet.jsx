@@ -113,17 +113,17 @@ export default function FormWallet() {
         </span>
       </div>
       <div className="flex flex-row mt-2.5">
-        <button className="text-white h-8 w-32 mr-1.5 font-bold rounded-2xl cursor-no-drop text-sm bg-regularGray">
+        <button className="text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-2 mr-5 text-base bg-regularGray">
           Automatized
         </button>
-        <button className="text-white h-8 w-32 font-bold cursor-no-drop rounded-2xl text-sm bg-regularGray">
+        <button className="text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-2 text-base bg-regularGray">
           AutoDate
         </button>
         {/* <Switch defaultSelected color="success">Success</Switch> */}
       </div>
       <div className="mt-5">
         <button
-          className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${
+          className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-4 text-base ${
             someFieldEmpty
               ? "bg-regularGray"
               : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
@@ -134,7 +134,7 @@ export default function FormWallet() {
           Add Income
         </button>
         <button
-          className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-8 text-base ${
+          className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-4 text-base ${
             someFieldEmpty
               ? "bg-regularGray"
               : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
