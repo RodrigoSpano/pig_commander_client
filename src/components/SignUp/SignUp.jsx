@@ -127,7 +127,7 @@ export default function SignUpComponent() {
             <div className="mb-3 flex items-center rounded-lg bg-inputForm">
               <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
               <input
-                className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
                 type={showPassword ? "text" : "password"}
                 value={userSignUp.password}
                 placeholder="Password"
@@ -139,11 +139,13 @@ export default function SignUpComponent() {
               <span className="password-toggle" onClick={togglePasswordVisibility}>
                 {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
               </span>
+
+            {/*CONFIRM PASSWORD */}
             </div>
             <div className="mb-3 flex items-center rounded-lg bg-inputForm">
               <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
               <input
-                className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
                 type={showPasswordConfirmation ? "text" : "password"}
                 value={passwordConfirmation}
                 placeholder="Confirm Password"
