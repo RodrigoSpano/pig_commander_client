@@ -17,56 +17,64 @@ const TransactionsComponent = () => {
   const transactionsState = useSelector(state => state.monthTransactions.transactions)
   const [cookies, setCookie] = useCookies();
 
-  useEffect(()=>{
-    if(!transactionsState?.length){
+  useEffect(() => {
+    if (!transactionsState?.length) {
       dispatch(getAllTransactions(cookies.token))
     }
-  },[])
+  }, [])
 
-  const { nextHandler,prevHandler,transactions,count,firstPageHandler,lastPageHandler,totalPages,handleSearch, handleAlphabeticallyOrder, handleAmountOrder } = usePagination(transactionsState, 4);
+  const { nextHandler, prevHandler, transactions, count, firstPageHandler, lastPageHandler, totalPages, handleSearch, handleAlphabeticallyOrder, handleAmountOrder } = usePagination(transactionsState, 4);
 
-  const {handleDetail} = useTransactionDetail()
+  const { handleDetail } = useTransactionDetail()
 
   const [orders, setOrders] = useState({ alphabetically: false, byAmount: false }) //estado con el cual modifico los ordenamientos por nombre o monto 
 
   const handleAlphabetically = () => {
-    setOrders({...orders, alphabetically:!orders.alphabetically})
+    setOrders({ ...orders, alphabetically: !orders.alphabetically })
     handleAlphabeticallyOrder(orders.alphabetically)
   }
 
   const handleOrderByAmount = () => {
-    setOrders({...orders, byAmount: !orders.byAmount})
+    setOrders({ ...orders, byAmount: !orders.byAmount })
     handleAmountOrder(orders.byAmount)
   }
-  
+
   return (
-    
-    <div className=" flex flex-col select-none bg-white rounded-lg shadow-md col-span-2 relative min-h-[57vh]">
 
-      <div className='flex items-center justify-around my-4'>
-        <h1 className='text-2xl font-bold text-boldPink'>Last Transactions</h1>
-        <SearchBarComponent handleSearch={handleSearch} />
-        <PermanentFilter /> 
+    <div className="bg-white rounded-md h-full flex flex-col justify-between box-border">
+
+      <div>
+        <section className='flex items-center justify-around py-4 '>
+          <h1 className='font-bold text-boldPink text-2xl xl:text-4xl lg:text-2xl md:text-xl sm:text-lg '>Last Transactions</h1>
+          <SearchBarComponent handleSearch={handleSearch} />
+          <PermanentFilter />
+        </section>
+
+        <hr className='mx-16' />
+
+        <section className=' py-4'>
+          <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByAmount={handleOrderByAmount} />
+          <div>
+            {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handleDetail={handleDetail} transaction={t} key={i} />)) : null}
+          </div>
+        </section>
       </div>
 
-      <hr className='my-2 mx-16'/>
-
-      <div className=''>
-        <TransactionsPropsContainer handleAlphabetically={handleAlphabetically} handleOrderByAmount={handleOrderByAmount}/>
-        <div className=''>
-        {transactions?.length ? transactions?.map((t, i) => (<TransactionCard handleDetail={handleDetail} transaction={t} key={i} />)): null} 
-        </div>
+      <div>
+        <section className=' py-4'>
+          {transactions?.length ?
+            <PaginationComponent
+              count={count}
+              totalPages={totalPages}
+              nextHandler={nextHandler}
+              prevHandler={prevHandler}
+              lastPageHandler={lastPageHandler}
+              firstPageHandler={firstPageHandler}
+            /> : null
+          }
+        </section>
       </div>
-      {transactions?.length ?
-        <PaginationComponent
-          count={count}
-          totalPages={totalPages}
-          nextHandler={nextHandler}
-          prevHandler={prevHandler}
-          lastPageHandler={lastPageHandler}
-          firstPageHandler={firstPageHandler}
-        /> : null
-      }
+
     </div>
   );
 };
