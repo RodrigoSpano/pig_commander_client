@@ -48,16 +48,16 @@ export default function WalletComponent() {
   return (
     <div>
       <div>
-        <div className="bg-mediumPink h-7 rounded-t-lg"></div>
+        <div className="bg-mediumPink h-7 rounded-t-lg "></div>
         <h1 className="font-bold ml-5 mt-2.5 text-xl">My Balance</h1>
         <div className="flex flex-row">
           <div className="text-regularPink text-7xl font-semibold mt-5 ml-5 ">
-            <BalancesCard backup_transactions={allTransactions}/>
+            <BalancesCard backup_transactions={allTransactions} />
           </div>
         </div>
 
         <div className="flex justify-end mr-5">
-          <button className="bg-regularPink text-white font-bold h-7 w-36 rounded-xl">
+          <button className="text-white h-10 w-40 font-bold cursor-no-drop  rounded-2xl text-base cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink">
             Create Category
           </button>
         </div>
@@ -68,7 +68,7 @@ export default function WalletComponent() {
           <h1 className="text-4xl font-bold text-boldPink">Transactions</h1>
           <SearchBarComponent handleSearch={handleSearch} />
         </div>
-          <FilterAllTransactions />
+        <FilterAllTransactions setOrders={setOrders} />
       </div>
 
       <AllTransactionsPropsContainer
@@ -77,14 +77,16 @@ export default function WalletComponent() {
       />
       <AllTransactionsComponent allTransactions={transactions} />
       {transactions?.length ? (
-        <PaginationComponent
-          count={count}
-          totalPages={totalPages}
-          nextHandler={nextHandler}
-          prevHandler={prevHandler}
-          lastPageHandler={lastPageHandler}
-          firstPageHandler={firstPageHandler}
-        />
+        <div >
+          <PaginationComponent
+            count={count}
+            totalPages={totalPages}
+            nextHandler={nextHandler}
+            prevHandler={prevHandler}
+            lastPageHandler={lastPageHandler}
+            firstPageHandler={firstPageHandler}
+          />
+        </div>
       ) : null}
     </div>
   );
