@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const StarRating = ({ stars }) => {
@@ -20,13 +21,24 @@ const StarRating = ({ stars }) => {
   };
 
   return (
-    <div className="flex items-center">
+    <motion.div
+      className="flex items-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+    >
       {renderStars().map((star, index) => (
-        <div key={index} className="mr-1">
+        <motion.div
+          key={index}
+          className="mr-1"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.2, delay: index * 0.1 }}
+        >
           {star}
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

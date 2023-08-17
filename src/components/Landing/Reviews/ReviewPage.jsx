@@ -2,14 +2,32 @@
 import React from 'react';
 import NavBar from '../NavBar';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Tooltip, Button } from '@nextui-org/react';
 import { HiSparkles } from 'react-icons/hi2';
 import ReviewList from './ReviewList';
 import Footer from '../Footer';
 
 const ReviewPage = () => {
+  const pageVariants = {
+    initial: { opacity: 0, y: -20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 20 },
+  };
+
+  const buttonVariants = {
+    initial: { scale: 0.8 },
+    hover: { scale: 1 },
+  };
+
   return (
-    <div className="bg-white">
+    <motion.div
+      className="bg-white"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+    >
       <NavBar />
       <section className="flex flex-col justify-center items-center select-none mt-20">
         <section>
@@ -21,12 +39,17 @@ const ReviewPage = () => {
         <div className="my-10">
           <Tooltip content="Login required" className="">
             <Link href="/home/dashboard">
-              <Button className="bg-gradient-to-r from-regularPink to-boldPink text-white">
-                <span>
-                  <HiSparkles />
-                </span>
-                Add Review
-              </Button>
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+              >
+                <Button className='bg-gradient-to-r from-regularPink to-boldPink text-white'>
+                  <span>
+                    <HiSparkles />
+                  </span>
+                  Add Review
+                </Button>
+              </motion.div>
             </Link>
           </Tooltip>
         </div>
@@ -39,7 +62,7 @@ const ReviewPage = () => {
         </section>
       </section>
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
