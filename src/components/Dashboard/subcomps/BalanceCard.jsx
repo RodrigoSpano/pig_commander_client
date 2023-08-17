@@ -1,28 +1,25 @@
-'use client'
+import React, { useEffect, useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import useVisibility from '@/customHooks/useVisibility';
 import { getExpensesTotal, getIncomesTotal } from '@/utils/helper/monthTransactions';
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const BalanceCard = ({ transactions }) => {
   const [total, setTotal] = useState(0);
-
   const { showPassword, togglePasswordVisibility } = useVisibility();
 
   const getBalance = () => {
     const expensesTotal = getExpensesTotal(transactions);
     const incomesTotal = getIncomesTotal(transactions);
-    if(incomesTotal) {
-      setTotal(incomesTotal)
+
+    if (incomesTotal) {
+      setTotal(incomesTotal);
     }
-    if(expensesTotal) {
-      setTotal(-expensesTotal); 
+    if (expensesTotal) {
+      setTotal(-expensesTotal);
     }
     if (expensesTotal > 0 && incomesTotal > 0) {
       setTotal(incomesTotal - expensesTotal);
     }
-    
   };
 
   useEffect(() => {
@@ -30,30 +27,27 @@ const BalanceCard = ({ transactions }) => {
   }, [transactions]);
 
   return (
-    <motion.div
-      className="flex flex-row bg-white rounded-lg shadow-md col-span-4 gap-10 h-[120px] select-none"
-      whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-    >
-      <div className="rounded-tl-2xl rounded-bl-2xl w-3 h-full bg-pink-400"></div>
-      <div className="flex flex-col justify-between py-2 w-full">
-        <div className="flex justify-between items-center">
-          {/* TITLE */}
-          <p className="text-gray-500 text-base font-Poppins font-medium">My Balance</p>
-          {/* EYE */}
+    <div className='mr-2'>
+      <div className="bg-white rounded-2xl shadow-md">
+        <div className="flex items-center justify-between p-4">
+          <p className="font-semibold xl:text-2xl lg:text-xl md:text-lg sm:text-base">
+            My Balance
+          </p>
           <span
-            className="flex items-center cursor-pointer focus:outline-none text-gray-500 text-2xl mr-7"
+            className="cursor-pointer font-semibold xl:text-2xl lg:text-xl md:text-lg sm:text-base"
             onClick={togglePasswordVisibility}
           >
             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
           </span>
         </div>
-        <div className="flex items-center">
-          <span className="text-strongPink text-5xl font-Poppins font-bold text-right pr-5">
+
+        <div className="p-4">
+          <span className="font-bold xl:text-4xl lg:text-5xl md:text-lg sm:text-base">
             {showPassword ? `$${total?.toLocaleString()}` : '$*****'}
           </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
