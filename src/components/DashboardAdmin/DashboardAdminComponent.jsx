@@ -1,22 +1,41 @@
 import React from "react";
+import { motion } from "framer-motion";
+import AdminTable from "./AdminTable/AdminTable";
+import UsersCards from "./TotalUsersCards/UsersCards";
+import UserSection from "./User/UserSection";
 
 const DashboardAdminComponent = () => {
+  const containerVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.6, delay: 0.2 } },
+  };
+
   return (
-    <div>
-      <div className="flex justify-between items-center my-4 mx-12">
-        <div>Administrator Dashboard</div>
-        <div className="flex items-center">
-          <div className="mx-2">AdminName</div>
-          <div className="mx-2">photo</div>
-        </div>
-      </div>
-      <div className="flex justify-between m-12">
-        <div className="w-1/4 p-4 bg-blue-300 flex justify-center items-center">Total User</div>
-        <div className="w-1/4 p-4 bg-green-300 flex justify-center items-center">Basic User</div>
-        <div className="w-1/4 p-4 bg-yellow-300 flex justify-center items-center">Pro User</div>
-        <div className="w-1/4 p-4 bg-red-300 flex justify-center items-center">Banned User</div>
-      </div>
-    </div>
+    <motion.div
+      className="mx-6 sm:mx-8 md:mx-12 select-none p-4 rounded-lg"
+      variants={containerVariants}
+      initial="initial"
+      animate="animate"
+    >
+      <section className="flex items-center justify-between my-6">
+        <motion.h1
+          className="font-bold text-strongPink text-4xl sm:text-xl md:text-6xl"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1, transition: { duration: 0.6, delay: 0.2 } }}
+        >
+          Admin Dashboard
+        </motion.h1>
+        <UserSection />
+      </section>
+
+      <section className="my-8">
+        <UsersCards />
+      </section>
+
+      <section>
+        <AdminTable />
+      </section>
+    </motion.div>
   );
 };
 

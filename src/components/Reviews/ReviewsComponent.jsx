@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-export default function ReviewsComponent () {
-    return (
-        <div>
-            reviews
-        </div>
-    )
-} 
+const ReviewsComponent = () => {
+  return (
+    <div>ReviewsComponent</div>
+  )
+}
+
+export default ReviewsComponent
