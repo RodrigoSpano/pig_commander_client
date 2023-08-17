@@ -4,8 +4,7 @@ import {FiAlertCircle} from "react-icons/fi";
 import useFormWallet from "@/customHooks/useFormWallet";
 import { useSelector } from "react-redux";
 import {Switch} from "@nextui-org/react";
-
-
+import ModalAutomatized from "./ModalAutomatized";
 
 
 export default function FormWallet () {
@@ -74,9 +73,9 @@ export default function FormWallet () {
             </div>
            
             <div className="flex flex-row mt-5">
-              <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={!userPremium.premium} />
-              <input className='bg-lightGray  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="auto_date" value={automatizedForm.auto_date} disabled={!automatized && true } onChange={handleAutoChange}/>
-              <select defaultValue={'expense'} name='type' className="text-xs w-26 bg-lightGray font-light rounded-lg p-1.5 ml-2" disabled={!automatized && true } onChange={handleAutoChange}>
+              <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={userPremium.premium} />
+              <input className='bg-lightGray  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="auto_date" value={!automatizedForm.auto_date} disabled={!automatized} onChange={handleAutoChange}/>
+              <select defaultValue={'expense'} name='type' className="text-xs w-26 bg-lightGray font-light rounded-lg p-1.5 ml-2" disabled={!automatized} onChange={handleAutoChange}>
                 <option value="expense">Expense</option>
                 <option value="income">Incomes</option>
               </select>
@@ -85,7 +84,10 @@ export default function FormWallet () {
                 {
                     automatized 
                         ? (
-                            <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmptyAutomatized ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmptyAutomatized} onClick={handleSubmitAutomatize} >Automatize</button>
+                            <div className="flex flex-col">
+                               <button className={`text-white h-10 self-center w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmptyAutomatized ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmptyAutomatized} onClick={handleSubmitAutomatize} >Automatize</button>
+                                <ModalAutomatized/>
+                            </div>
                         ) 
                         : (
                             <>

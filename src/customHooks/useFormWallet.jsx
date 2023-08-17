@@ -169,7 +169,8 @@ export default function () {
     const [automatized, setAutomatized] = useState(false);
 
     const handleSubmitAutomatize = async (e) => {
-        const data = {...formWallet, ...automatizedForm}
+        console.log({ automatizedForm, formWallet });
+        const data = {...formWallet, automatized: true, ...automatizedForm}
         const createAutomate = await createAutomateTransaction(data, cookies.token)
         if(createAutomate?.success){
             Swal.fire({

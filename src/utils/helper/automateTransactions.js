@@ -1,12 +1,19 @@
+import { createExpense, createIncome } from "@/redux/actions/transactionsActions";
 import axios from "axios"
 
 const { default: Swal } = require("sweetalert2")
 
 export const createAutomateTransaction = async (info, token) => {
   try {
-    const { data } = await axios.post('/auto/transaction', info, { headers: { Authorization: token } })
-    return data
+    const isExpense = info.type === 'expense';
+    const { data } = await axios.post((isExpense ? "/expenses" : "/incomes"), info, {
+      headers: { Authorization: token },
+    });
+    // const data = isExpense ? createExpense({...info, token}) : createIncome({...info, token});
+    console.log({ info, data });
+    return data;
   } catch (error) {
+    console.log({ error });
     if (error.response.status === 302) {
       Swal.fire({
         icon: 'info',
@@ -23,8 +30,8 @@ export const createAutomateTransaction = async (info, token) => {
 
 export const getAllAutomateTransactions = async (token) => {
   try {
-    const { data } = await axios('/auto/transactions', { headers: { Authorization: token } })
-    return data
+    const { data } = await axios('/expenses/automatized', { headers: { Authorization: token } })
+    return data;
   } catch (error) {
     console.log(error)
     Swal.fire({
