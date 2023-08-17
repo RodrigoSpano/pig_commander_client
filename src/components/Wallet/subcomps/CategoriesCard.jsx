@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import Image from "next/image";
-import education from "../../../utils/Images/CategoriesImages/education.png";
-import entertainment from "../../../utils/Images/CategoriesImages/entertainment.png";
-import food from "../../../utils/Images/CategoriesImages/food.png";
-import health from "../../../utils/Images/CategoriesImages/health.png";
-import transport from "../../../utils/Images/CategoriesImages/transport.png";
+import {
+  PiGraduationCapBold,
+  PiHeartbeatBold,
+  PiPiggyBankBold,
+} from "react-icons/pi";
+import { BiBus, BiHomeSmile } from "react-icons/bi";
+import { MdOutlineFastfood } from "react-icons/md";
 
 export default function CategoriesCard({
   name,
@@ -16,40 +17,35 @@ export default function CategoriesCard({
   function iconDisplayer() {
     switch (category) {
       case "education":
-        return education;
+        return <PiGraduationCapBold />;
       case "health":
-        return health;
+        return <PiHeartbeatBold />;
       case "food":
-        return food;
+        return <MdOutlineFastfood />;
       case "entertainment":
-        return entertainment;
+        return <BiHomeSmile />;
       case "transport":
-        return transport;
+        return <BiBus />;
       default:
-        null;
+        return <PiPiggyBankBold />;
     }
   }
 
   const iconSrc = iconDisplayer();
 
   return (
-    <div className="flex flex-col pt-2 pl-2 w-1/5 text-center items-center">
-      <Image
-        src={iconSrc}
-        alt="icon Category Pic"
-        width={40}
-        className="w-[50px] h-[50px] rounded-full items-center justify-center bg-slate-100"
-      />
+    <div className="flex flex-col pt-2 pl-2 w-1/5 text-center items-center mt-2">
+      <p className={"text-4xl"}>{iconSrc}</p>
 
-      <div className="font-bold overflow-x-auto">{name}</div>
+      <div className="font-bold overflow-x-auto capitalize">{name}</div>
       {/* Si es gasto va en rojo, si es ingreso va en verde */}
       {validation ? (
         <div className={type === "income" ? "text-green-700" : "text-red-700"}>
-          {amount}
+          $ {amount.toLocaleString()}
         </div>
       ) : (
         <div className={amount > 0 ? "text-green-700" : "text-red-700"}>
-          {amount}
+          $ {amount.toLocaleString()}
         </div>
       )}
     </div>
