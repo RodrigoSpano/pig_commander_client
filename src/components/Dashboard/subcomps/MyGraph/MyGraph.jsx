@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
+import EmptyDonut from "./EmptyDonutComponent";
 
 const DonutChartComponent = () => {
   const lastTransactions = useSelector(
@@ -73,40 +74,46 @@ const DonutChartComponent = () => {
 
   return (
     <div className="flex flex-col items-center justify-center max-w-xl max-h-xl p-4 shadow-lg rounded-lg bg-white select-none">
-      <h2 className="text-xl font-bold mb-8 text-boldPink">
-        Spent This Month
-      </h2>
-      <div className="text-center mb-4">
-        <p className="text-lg font-semibold text-[#374151]">Total Expenses</p>
-        <p className="text-2xl font-bold text-[#374151]">
-          {formattedTotalExpensesWithoutDecimals}
-        </p>
-      </div>
-      <div className="flex justify-center">
-        <div >
-          <Doughnut
-            data={{
-              datasets: chartDataSets,
-              labels: chartData.map((data) => data.name),
-            }}
-            options={chartOptions}
-          />
-        </div>
-      </div>
-      <div className="flex flex-wrap justify-center mt-14">
-        {chartData.map((data) => (
-          <div
-            key={data.name}
-            className={`flex items-center mb-2 mr-4 color[${data.color}]`}
-          >
-            <div
-              className={`w-4 h-4 rounded-full mr-1`} 
-              style={{ backgroundColor: data.color }}
-            />
-            <span>{data.name}</span>
+      <h2 className="text-xl font-bold mb-8 text-boldPink">Spent This Month</h2>
+      {lastExpenses.length > 0 ? (
+        <>
+          <div className="text-center mb-4">
+            <p className="text-lg font-semibold text-[#374151]">
+              Total Expenses
+            </p>
+            <p className="text-2xl font-bold text-[#374151]">
+              {formattedTotalExpensesWithoutDecimals}
+            </p>
           </div>
-        ))}
-      </div>
+          <div className="flex justify-center">
+            <div>
+              <Doughnut
+                data={{
+                  datasets: chartDataSets,
+                  labels: chartData.map((data) => data.name),
+                }}
+                options={chartOptions}
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap justify-center mt-14">
+            {chartData.map((data) => (
+              <div
+                key={data.name}
+                className={`flex items-center mb-2 mr-4 color[${data.color}]`}
+              >
+                <div
+                  className={`w-4 h-4 rounded-full mr-1`}
+                  style={{ backgroundColor: data.color }}
+                />
+                <span>{data.name}</span>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <EmptyDonut />
+      )}
     </div>
   );
 };
