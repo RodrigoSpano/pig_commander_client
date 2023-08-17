@@ -60,7 +60,7 @@ export default function () {
             if (error.response) {
                 Swal.fire({
                     icon: 'error',
-                    title: error.response.data.error,
+                    title: error.response.data.message.replace(/^\w/, (c) => c.toUpperCase()),
                     showConfirmButton: false,
                     timer: 1500
                 })
