@@ -6,7 +6,7 @@ import EmptyDonut from "./EmptyDonutComponent";
 
 const DonutChartComponent = () => {
   const lastTransactions = useSelector(
-    (state) => state.monthTransactions.transactions
+    (state) => state.monthTransactions.backup_transactions
   );
   const categories = useSelector((state) => state.others.categories);
 
