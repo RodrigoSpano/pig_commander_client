@@ -21,16 +21,16 @@ export default function DashboardComponent() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 pt-3 px-10 mb-[20px]">
+    <div className="m-6">
       <StatsContainer />
 
       <div className="flex flex-col">
-        <div>
+        <div className="mt-3 mb-4">
           <MyJournalCard />
         </div>
 
         <div className="flex">
-          <div className="w-2/3 pr-4">
+          <div className="w-2/3 mr-4">
             <TransactionsComponent />
           </div>
           <div className="w-1/3">

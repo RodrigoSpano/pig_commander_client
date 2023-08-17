@@ -18,7 +18,7 @@ export default function SpendingCategoriesComponent() {
 
   //manejo de selectores
   const categories = useSelector((state) => state.others.categories);
-  const transactions = useSelector((state) => state.transactions.transactions);
+  const transactions = useSelector((state) => state.transactions.backup_transactions);
 
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export default function SpendingCategoriesComponent() {
         </select>
       </div>
       {/* si se selecciona la primera opcion de categorias se muestran los totales por categorias */}
-      <div className="relative h-[90%]">
+      <div>
         {typeof filterResult === "object" && !Array.isArray(filterResult) ? (
           <div className="flex flex-wrap custom-scrollbar overflow-y-scroll max-h-[90%]">
             {/* Este código filtra por cada objeto */}

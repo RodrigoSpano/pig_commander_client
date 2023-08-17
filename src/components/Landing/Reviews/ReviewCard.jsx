@@ -1,12 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import StarRating from './StarRating';
 
 const ReviewCard = ({ review }) => {
   const { name, lastname, stars, opinion, image } = review;
 
+  const cardVariants = {
+    hover: { scale: 1.05, transition: { duration: 0.2 } },
+  };
+
   return (
-    <div className="w-full max-w-md p-6 border rounded-lg shadow-md bg-white">
+    <motion.div
+      className="w-full max-w-md p-6 border rounded-lg shadow-md bg-white"
+      variants={cardVariants}
+      whileHover="hover"
+    >
       <div className="flex items-center mb-3">
         <div className="mr-4">
           <Image
@@ -29,7 +38,7 @@ const ReviewCard = ({ review }) => {
       <div className="text-gray-600">
         <p>{opinion}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

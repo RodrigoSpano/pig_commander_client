@@ -29,7 +29,7 @@ const PaginationComponent = ({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex items-center justify-center my-4 space-x-4"
+      className="flex items-center justify-center space-x-4"
     >
       <motion.button
         variants={buttonHoverVariants}

@@ -19,8 +19,6 @@ const BalancesCard = ({ backup_transactions }) => {
     }
   };
 
-
-
   useEffect(() => {
     getBalance();
   }, [  backup_transactions]);

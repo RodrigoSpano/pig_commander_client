@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const usePagination = (transactionsState, MOVE_PER_PAGE) => {
 
-  // const MOVE_PER_PAGE = 4;
+   MOVE_PER_PAGE = 4;
   // const transactionsState = useSelector(state => state.monthTransactions.transactions)
   const [prev, setPrev] = useState(0);
   const [next, setNext] = useState(MOVE_PER_PAGE);
