@@ -1,16 +1,30 @@
 import React from "react";
+import { motion } from "framer-motion";
 import AdminTable from "./AdminTable/AdminTable";
 import UsersCards from "./TotalUsersCards/UsersCards";
 import UserSection from "./User/UserSection";
 
 const DashboardAdminComponent = () => {
-  return (
-    <div className="mx-6 sm:mx-8 md:mx-12 select-none p-4 rounded-lg">
+  const containerVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.6, delay: 0.2 } },
+  };
 
+  return (
+    <motion.div
+      className="mx-6 sm:mx-8 md:mx-12 select-none p-4 rounded-lg"
+      variants={containerVariants}
+      initial="initial"
+      animate="animate"
+    >
       <section className="flex items-center justify-between my-6">
-        <h1 className="font-bold text-strongPink text-4xl sm:text-xl md:text-6xl">
+        <motion.h1
+          className="font-bold text-strongPink text-4xl sm:text-xl md:text-6xl"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1, transition: { duration: 0.6, delay: 0.2 } }}
+        >
           Admin Dashboard
-        </h1>
+        </motion.h1>
         <UserSection />
       </section>
 
@@ -21,7 +35,7 @@ const DashboardAdminComponent = () => {
       <section>
         <AdminTable />
       </section>
-    </div>
+    </motion.div>
   );
 };
 
