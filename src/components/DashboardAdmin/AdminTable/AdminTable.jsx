@@ -1,5 +1,5 @@
-'use client'
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import {
   Table,
   TableHeader,
@@ -12,9 +12,17 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 import { IoBan } from "react-icons/io5";
-import {AiOutlineExclamationCircle} from 'react-icons/ai'
-import {AiOutlineEye} from 'react-icons/ai'
-import { columns, users } from "./data";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
+import { columns } from "./data";
+import {
+  banUser,
+  getTableUsers,
+  unbanUser,
+} from "@/redux/actions/adminActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
+import { succesBanned, succesUnBanned } from "@/customHooks/useAdmin";
 
 const statusColorMap = {
   active: "success",
@@ -22,23 +30,29 @@ const statusColorMap = {
 };
 
 const planColorMap = {
-  pro: "success",
-  basic: "warning",
+  true: "danger",
+  false: "default",
 };
 
 export default function AdminTable() {
-  const renderCell = React.useCallback((user, columnKey) => {
-    const cellValue = user[columnKey];
+  const [cookies, setCookie] = useCookies();
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.admin.tableUsers);
+  useEffect(() => {
+    dispatch(getTableUsers(cookies.token));
+  }, []);
+  const renderCell = React.useCallback((users, columnKey) => {
+    const cellValue = users[columnKey];
 
     switch (columnKey) {
       case "name":
         return (
           <User
-            avatarProps={{ radius: "lg", src: user.avatar }}
-            description={user.email}
-            name={cellValue}
+            avatarProps={{ radius: "lg", src: users.image }}
+            description={users.email}
+            name={`${users.name} ${users.lastname}`}
           >
-            {user.email}
+            {users.email}
           </User>
         );
       case "totalBalance":
@@ -46,7 +60,7 @@ export default function AdminTable() {
           <div className="flex flex-col">
             <p className="text-bold text-sm capitalize">{cellValue}</p>
             <p className="text-bold text-sm capitalize text-default-400">
-              {user.balance}
+              {users.balance}
             </p>
           </div>
         );
@@ -54,24 +68,24 @@ export default function AdminTable() {
         return (
           <Chip
             className="capitalize"
-            color={statusColorMap[user.status]}
+            color={statusColorMap[users.status]}
             size="sm"
             variant="flat"
           >
             {cellValue}
           </Chip>
         );
-        case "plan":
-          return (
-            <Chip
+      case "plan":
+        return (
+          <Chip
             className="capitalize"
-            color={planColorMap[user.plan]}
+            color={planColorMap[users.premium]}
             size="sm"
             variant="flat"
           >
             {cellValue}
           </Chip>
-          )
+        );
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
@@ -81,12 +95,24 @@ export default function AdminTable() {
               </span>
             </Tooltip>
             <Tooltip color="warning" content="Unban">
-              <span className="text-lg text-warning cursor-pointer active:opacity-50">
-              <AiOutlineExclamationCircle/>
+              <span
+                className="text-lg text-warning cursor-pointer active:opacity-50"
+                onClick={() => {
+                  dispatch(unbanUser({ token: cookies.token, id: users.id }));
+                  succesUnBanned();
+                }}
+              >
+                <AiOutlineExclamationCircle />
               </span>
             </Tooltip>
-            <Tooltip color="danger" content="Delete user">
-              <span className="text-lg text-danger cursor-pointer active:opacity-50">
+            <Tooltip color="danger" content="Ban user">
+              <span
+                className="text-lg text-danger cursor-pointer active:opacity-50"
+                onClick={() => {
+                  dispatch(banUser({ token: cookies.token, id: users.id }));
+                  succesBanned();
+                }}
+              >
                 <IoBan />
               </span>
             </Tooltip>
@@ -98,26 +124,34 @@ export default function AdminTable() {
   }, []);
 
   return (
-    <Table aria-label="Example table with custom cells">
-      <TableHeader columns={columns}>
-        {(column) => (
-          <TableColumn
-            key={column.uid}
-            align={column.uid === "actions" ? "center" : "start"}
-          >
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody items={users}>
-        {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
+    <>
+      {users === undefined ? (
+        <p>Loading...</p>
+      ) : (
+        <Table aria-label="Admin dashboard">
+          <TableHeader columns={columns}>
+            {(column) => (
+              <TableColumn
+                key={column.uid}
+                align={column.uid === "actions" ? "center" : "start"}
+              >
+                {column.name}
+              </TableColumn>
             )}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+          </TableHeader>
+          <TableBody items={users}>
+            {(item) => (
+              <TableRow key={item.id}>
+                {(columnKey) => (
+                  <TableCell key={columnKey}>
+                    {renderCell(item, columnKey)}
+                  </TableCell>
+                )}
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      )}
+    </>
   );
 }
