@@ -23,11 +23,9 @@ const adminSlice = createSlice({
   reducer: {},
   extraReducers: (builder) => {
     builder.addCase(banUser.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.bannedUsers++;
     });
     builder.addCase(unbanUser.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.bannedUsers--;
     });
     builder.addCase(getAllUsersCount.fulfilled, (state, action) => {
