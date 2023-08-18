@@ -30,8 +30,7 @@ const otherInfoSlice = createSlice({
           category.id !== 2 &&
           category.id !== 3 &&
           category.id !== 4 &&
-          category.id !== 5 &&
-          category.id !== 6
+          category.id !== 5
       );
     },
     filterCreatedCategory: (state) => {
@@ -41,8 +40,7 @@ const otherInfoSlice = createSlice({
           category.id !== 2 &&
           category.id !== 3 &&
           category.id !== 4 &&
-          category.id !== 5 &&
-          category.id !== 6
+          category.id !== 5
       );
     },
     filterCreatedCategory: (state) => {
@@ -52,8 +50,7 @@ const otherInfoSlice = createSlice({
           category.id !== 2 &&
           category.id !== 3 &&
           category.id !== 4 &&
-          category.id !== 5 &&
-          category.id !== 6
+          category.id !== 5 
       );
     },
     deleteCreatedCategory: (state, action) => {
