@@ -4,6 +4,7 @@ import Link from "next/link";
 import useSignup from "@/customHooks/useSignup";
 import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
+import { VscGithubInverted } from "react-icons/vsc";
 import useVisibility from "@/customHooks/useVisibility";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { HiUser, HiEnvelope, HiMiniLockClosed } from 'react-icons/hi2';
@@ -190,17 +191,40 @@ export default function SignUpComponent() {
                 onClick={() => {
                   window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/google`;
                 }}
-                className="flex justify-center cursor-pointer mt-4"
+                className="flex justify-center"
               >
-                <div className="flex items-center justify-center w-60 rounded-2xl p-2 bg-white drop-shadow-xl">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+                >
                   <div className="self-center">
-                    <FcGoogle size={24} />
+                    <FcGoogle />
                   </div>
-                  <h2 className="ml-2 font-semibold text-pink-500">
+                  <h2 className="m-1.5 font-semibold text-google cursor-pointer">
                     Continue with Google
                   </h2>
-                </div>
+                </motion.div>
               </div>
+              <div
+                onClick={() => {
+                  window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/github`;
+                }}
+                className="flex justify-center"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+                >
+                  <div className="self-center">
+                    <VscGithubInverted />
+                  </div>
+                  <h2 className="m-1.5 font-semibold text-google cursor-pointer">
+                    Continue with Github
+                  </h2>
+                </motion.div>
+            </div>
 
               {/* MESSAGE BUTTON */}
               <p className="text-gray-600 mt-4">

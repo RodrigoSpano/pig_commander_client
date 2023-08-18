@@ -23,10 +23,9 @@ export default function RootLayout({ children }) {
               <div className="flex">
                 {path === "/login" ||
                   path === "/signup" ||
-                  path === "/google/success" ||
+                  path === "/services/success" ||
                   path === "/about" ||
                   path === "/pricing" ||
-                  path === "/reviews" ||
                   path === "/securitypolicy" ||
                   path === "/" ? null : (
                   <SideBar />

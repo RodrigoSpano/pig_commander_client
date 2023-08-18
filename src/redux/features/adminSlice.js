@@ -6,6 +6,7 @@ import {
   getBasicUsers,
   getProUsers,
   getTableUsers,
+  getUserDetail,
   unbanUser,
 } from "../actions/adminActions";
 
@@ -15,6 +16,7 @@ const initialState = {
   proUsers: [],
   bannedUsers: [],
   tableUsers: [],
+  userDetail: [],
 };
 
 const adminSlice = createSlice({
@@ -41,6 +43,9 @@ const adminSlice = createSlice({
       state.bannedUsers = action.payload;
     });
     builder.addCase(getTableUsers.fulfilled, (state, action) => {
+      state.tableUsers = action.payload;
+    });
+    builder.addCase(getUserDetail.fulfilled, (state, action) => {
       state.tableUsers = action.payload;
     });
   },

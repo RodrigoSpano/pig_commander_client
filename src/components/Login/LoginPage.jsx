@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
+import { VscGithubInverted } from 'react-icons/vsc';
 import { motion } from 'framer-motion';
 import SideRight from '../SideRight/SideRight';
 import useLogin from '@/customHooks/useLogin';
@@ -144,6 +145,25 @@ const LoginContainer = () => {
             </div>
             <h2 className="m-1.5 font-semibold text-google cursor-pointer">
               Continue with Google
+            </h2>
+          </motion.div>
+        </div>
+        <div
+          onClick={() => {
+            window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/github`;
+          }}
+          className="flex justify-center"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+          >
+            <div className="self-center">
+              <VscGithubInverted />
+            </div>
+            <h2 className="m-1.5 font-semibold text-google cursor-pointer">
+              Continue with Github
             </h2>
           </motion.div>
         </div>

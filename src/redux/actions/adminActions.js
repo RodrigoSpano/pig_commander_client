@@ -61,6 +61,13 @@ const getTableUsers = createAsyncThunk("Table users", async (token) => {
   return data;
 });
 
+const getUserDetail = createAsyncThunk("User Detail", async ({ token, id }) => {
+  const { data } = await axios.get(`/admin/detail/${id}`, {
+    headers: { Authorization: token },
+  });
+  return data;
+});
+
 export {
   banUser,
   unbanUser,
@@ -69,4 +76,5 @@ export {
   getProUsers,
   getBannedUsers,
   getTableUsers,
+  getUserDetail,
 };
