@@ -8,6 +8,7 @@ import {
 } from "@/redux/actions/otherInfoActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
+import { filterCreatedCategory } from "@/redux/features/otherInfoSlice";
 import LoaderComponent from "../Loader/LoaderComponent";
 
 export default function WalletComponent() {
@@ -18,6 +19,7 @@ export default function WalletComponent() {
   const user = useSelector((state) => state.user.logged);
 
   useEffect(() => {
+    dispatch(filterCreatedCategory())
     dispatch(getMethodsAction(cookies.token));
     dispatch(getCategoriesAction(cookies.token));
 
