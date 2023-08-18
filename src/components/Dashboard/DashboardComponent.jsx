@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react"; // Import useState
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
@@ -8,36 +8,20 @@ import MyGraph from "./subcomps/MyGraph/MyGraph";
 import { getAllTransactions } from "@/redux/actions/monthTransactionsActions";
 import { getMethodsAction } from "@/redux/actions/otherInfoActions";
 import MyJournalCard from "./subcomps/MyJournalCard";
-import LoaderComponent from "../Loader/LoaderComponent";
 
 const DashboardComponent = () => {
   const dispatch = useDispatch();
   const [cookies, setCookie] = useCookies();
-  const [isLoading, setIsLoading] = useState(true);
 
   const user = useSelector(
     (state) => state.user.logged
   );
 
-  useEffect(() => {
-    if (cookies.token) {
-      dispatch(getAllTransactions(cookies.token));
-      dispatch(getMethodsAction(cookies.token));
-    }
-
-    if (user) {
-      setIsLoading(false);
-    }
-  }, [user]);
-
   return (
     <div className="m-6">
-      {isLoading ? (
-        <LoaderComponent />
-      ) : (
         <>
           <StatsContainer />
-
+{/* 
           <div className="flex flex-col">
             <div className="mt-3 mb-4">
               <MyJournalCard />
@@ -51,9 +35,8 @@ const DashboardComponent = () => {
                 <MyGraph />
               </div>
             </div>
-          </div>
+          </div> */}
         </>
-      )}
     </div>
   );
 }
