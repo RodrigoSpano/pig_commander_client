@@ -1,10 +1,9 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { getUserData } from "@/redux/actions/userActions";
-// import { getAllSavings } from "@/redux/actions/savingsActions";
-// import { useCookies } from "react-cookie";
-
 "use client";
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getUserData } from "@/redux/actions/userActions";
+import { getAllSavings } from "@/redux/actions/savingsActions";
+import { useCookies } from "react-cookie";
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../utils/Images/image.png';
@@ -16,7 +15,6 @@ import Settings from './Subcomponents/Settings'
 import Help from './Subcomponents/Help'
 import LogOut from "./Subcomponents/LogOut";
 import RateApp from "./Subcomponents/RateApp";
-// import SwitchButton from './Subcomponents/SwitchButton';
 import { BiSolidDashboard, BiSolidHelpCircle, BiStar } from 'react-icons/bi';
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { IoWalletOutline } from "react-icons/io5";
@@ -28,10 +26,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const user =useSelector(state => state.user)
+  const savings = useSelector(state => state.savings.allSavings)
+  const dispatch = useDispatch()
+  const [cookies, setCookies] = useCookies()
+  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    if(cookies.token){
+      if(!user.logged){
+        dispatch(getUserData(cookies.token))
+      }
+      if(!savings.length){
+        dispatch(getAllSavings(cookies.token))
+      }
+    }
+  }, [dispatch])
 
   const menuItems = [
     {
