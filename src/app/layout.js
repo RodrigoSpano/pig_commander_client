@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
                   path === "/about" ||
                   path === "/pricing" ||
                   path === "/reviews" ||
-                  path === "/securitypolitics" ||
+                  path === "/securitypolicy" ||
                   path === "/" ? null : (
                   <SideBar />
                 )}
