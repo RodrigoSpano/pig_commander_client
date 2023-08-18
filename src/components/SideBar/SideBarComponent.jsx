@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "@/redux/actions/userActions";
 import { getAllSavings } from "@/redux/actions/savingsActions";
 import { useCookies } from "react-cookie";
-import SecurityPolitics from "./Subcomponents/SecurityPolitics";
 
 export default function SideBar() {
 
@@ -51,7 +50,6 @@ export default function SideBar() {
       <div className="my-8">
         <Settings />
         <Help />
-        <SecurityPolitics/>
         <RateApp />
       </div>
 
