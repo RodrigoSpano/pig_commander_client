@@ -15,9 +15,7 @@ const DashboardComponent = () => {
   const [cookies, setCookie] = useCookies();
   const [isLoading, setIsLoading] = useState(true);
 
-  const user = useSelector(
-    (state) => state.user.logged
-  );
+  const userLogged = useSelector((state) => state.user.logged);
 
   useEffect(() => {
     if (cookies.token) {
@@ -25,10 +23,10 @@ const DashboardComponent = () => {
       dispatch(getMethodsAction(cookies.token));
     }
 
-    if (user) {
+    if (userLogged) {
       setIsLoading(false);
     }
-  }, [user]);
+  }, [userLogged]);
 
   return (
     <div className="m-6">
@@ -56,6 +54,6 @@ const DashboardComponent = () => {
       )}
     </div>
   );
-}
+};
 
-export default DashboardComponent
+export default DashboardComponent;
