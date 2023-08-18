@@ -41,7 +41,7 @@ const {
                                          
                                          <hr/>
                                         </>
-                                    )) : <p>There is no automated transactions yet</p>}
+                                    )) : <p>No automatic transactions yet.</p>}
                              
                             </ModalBody>
                             <ModalFooter>
