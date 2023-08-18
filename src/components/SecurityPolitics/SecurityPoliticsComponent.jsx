@@ -3,7 +3,7 @@ import React from "react";
 const SecurityPoliticsComponent= () => {
     return (
         <div className="bg-white m-8 p-8 rounded-2xl	">
-            <h1 className="font-bold text-xl text-strongPink">SECURITY POLITICS</h1>
+            <h1 className="font-bold text-xl text-strongPink">SECURITY POLICY</h1>
             <p className="mt-2.5">This Privacy Politics establishes the terms by which PigCommander uses and protects the information provided by its 
                users when using its website. This company is committed to ensuring the security of its users' data. When we ask you 
                to fill in fields of personal information with which you can be identified, we do so ensuring that it will only be used 

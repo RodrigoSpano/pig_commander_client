@@ -16,7 +16,9 @@ const MoneyCard = ({ title, type, array }) => {
     } else if (type === 'income') {
       totalValue = getIncomesTotal(array);
     } else if (type === 'saving') {
-      totalValue = array.reduce((acc, el) => acc + el.amount, 0);
+      if(array){
+        array?.forEach(el => totalValue += el.amount)
+      }
     }
 
     setValue(totalValue);

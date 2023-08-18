@@ -22,19 +22,20 @@ export default function RootLayout({ children }) {
             <ReduxProvider>
               <div className="flex">
                 {path === "/login" ||
-                path === "/signup" ||
-                path === "/google/success" ||
-                path === "/about" ||
-                path === "/pricing" ||
-                path === "/reviews" ||
-                path === "/" ? null : (
-                <SideBar />
-              )}
-              <div className="w-screen">{children}</div>
-            </div>
-          </ReduxProvider>
-        </CookiesProvider>
-      </NextUIProvider>
+                  path === "/signup" ||
+                  path === "/google/success" ||
+                  path === "/about" ||
+                  path === "/pricing" ||
+                  path === "/reviews" ||
+                  path === "/securitypolicy" ||
+                  path === "/" ? null : (
+                  <SideBar />
+                )}
+                <div className="w-screen">{children}</div>
+              </div>
+            </ReduxProvider>
+          </CookiesProvider>
+        </NextUIProvider>
 
       </body>
     </html>

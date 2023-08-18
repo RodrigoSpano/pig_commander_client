@@ -1,17 +1,28 @@
-import React from "react";
+import {
+  getAllUsersCount,
+  getBannedUsers,
+  getBasicUsers,
+  getProUsers,
+} from "@/redux/actions/adminActions";
+import React, { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
 const UsersCards = () => {
-  const count = {
-    total: 74507,
-    basic: 41051,
-    pro: 33456,
-    baned: 540,
-  };
+  const [cookies, setCookie] = useCookies();
 
-  const cardStyles =
-    "px-8 py-10 bg-white rounded-lg shadow-md text-center";
+  const dispatch = useDispatch();
+  const admin = useSelector((state) => state.admin);
 
+  useEffect(() => {
+    dispatch(getAllUsersCount(cookies.token));
+    dispatch(getBasicUsers(cookies.token));
+    dispatch(getBannedUsers(cookies.token));
+    dispatch(getProUsers(cookies.token));
+  }, [dispatch]);
+
+  const cardStyles = "px-8 py-10 bg-white rounded-lg shadow-md text-center";
   const cardVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.4 } },
@@ -36,7 +47,9 @@ const UsersCards = () => {
         <h2 className="font-semibold text-2xl text-neutral-800 mb-4">
           Total Users
         </h2>
-        <h1 className="font-bold text-5xl text-neutral-800">{count.total}</h1>
+        <h1 className="font-bold text-5xl text-neutral-800">
+          {admin.allUsers}
+        </h1>
       </motion.div>
 
       <motion.div
@@ -47,7 +60,9 @@ const UsersCards = () => {
         <h2 className="font-semibold text-2xl text-neutral-800 mb-4">
           Basic Users
         </h2>
-        <h1 className="font-bold text-5xl text-neutral-800">{count.basic}</h1>
+        <h1 className="font-bold text-5xl text-neutral-800">
+          {admin.basicUsers}
+        </h1>
       </motion.div>
 
       <motion.div
@@ -55,13 +70,10 @@ const UsersCards = () => {
         variants={cardHoverVariants}
         whileHover="hover"
       >
-        <h2 className="flex justify-center font-semibold text-2xl text-neutral-800 mb-4 gap-1">
-          <span className="text-regularPink">Pro</span>
-          <span>Users</span>
-        </h2>
-        <h1 className="font-bold text-5xl text-neutral-800">{count.pro}</h1>
+        <h1 className="font-bold text-5xl text-neutral-800">
+          {admin.proUsers}
+        </h1>
       </motion.div>
-
       <motion.div
         className={cardStyles}
         variants={cardHoverVariants}
@@ -70,7 +82,9 @@ const UsersCards = () => {
         <h2 className="font-semibold text-2xl text-neutral-800 mb-4">
           Banned Users
         </h2>
-        <h1 className="font-bold text-5xl text-neutral-800">{count.baned}</h1>
+        <h1 className="font-bold text-5xl text-neutral-800">
+          {admin.bannedUsers}
+        </h1>
       </motion.div>
     </motion.div>
   );

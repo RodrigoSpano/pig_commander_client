@@ -12,7 +12,7 @@ const DonutChartComponent = () => {
 
   Chart.register(ArcElement);
 
-  const lastExpenses = lastTransactions.filter((t) => t.type === "expense");
+  const lastExpenses = lastTransactions?.filter((t) => t.type === "expense");
 
   const categoryExpenses = categories?.map((category) => ({
     id: category.id,
@@ -44,22 +44,22 @@ const DonutChartComponent = () => {
 
   const COLORS = chartData?.map((data) => data.color);
 
-  const totalExpenses = chartData.reduce(
+  const totalExpenses = chartData?.reduce(
     (total, category) => total + category.value,
     0
   );
 
-  const formattedTotalExpenses = totalExpenses.toLocaleString("en-US", {
+  const formattedTotalExpenses = totalExpenses?.toLocaleString({
     style: "currency",
     currency: "USD",
   });
 
   const formattedTotalExpensesWithoutDecimals =
-    formattedTotalExpenses.split(".")[0];
+    formattedTotalExpenses?.split(".")[0];
 
   const chartDataSets = [
     {
-      data: chartData.map((data) => data.value),
+      data: chartData?.map((data) => data.value),
       backgroundColor: COLORS,
     },
   ];
