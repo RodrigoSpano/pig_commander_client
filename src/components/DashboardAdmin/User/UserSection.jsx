@@ -5,8 +5,8 @@ import UserImage from "../../../utils/Images/userimageexample.png";
 
 const user = {
   image: UserImage,
-  name: "Mauro",
-  lastname: "Lombardo",
+  name: "Mayor",
+  lastname: "Commander",
   occupation: "PigCommander Owner",
 };
 

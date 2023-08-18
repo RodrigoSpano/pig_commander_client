@@ -1,10 +1,12 @@
 const columns = [
-  {name: "NAME", uid: "name"},
-  {name: "ROLE", uid: "totalBalance"},
-  {name: "STATUS", uid: "status"},
-  {name: "PLAN", uid: "plan"},
-  {name: "ACTIONS", uid: "actions"},
+  { name: "NAME", uid: "name" },
+  { name: "TOTAL BALANCE", uid: "balance" },
+  { name: "STATUS", uid: "status" },
+  { name: "PLAN", uid: "plan" },
+  { name: "ACTIONS", uid: "actions" },
 ];
+
+// const users =
 
 const users = [
   {
@@ -39,7 +41,7 @@ const users = [
     age: "22",
     avatar: "https://i.pravatar.cc/150?u=a04258114e29026702d",
     email: "jane.fisher@example.com",
-  }
+  },
 ];
 
-export {columns, users};
+export { columns, users };

@@ -6,13 +6,13 @@ import EmptyDonut from "./EmptyDonutComponent";
 
 const DonutChartComponent = () => {
   const lastTransactions = useSelector(
-    (state) => state.monthTransactions.transactions
+    (state) => state.monthTransactions.backup_transactions
   );
   const categories = useSelector((state) => state.others.categories);
 
   Chart.register(ArcElement);
 
-  const lastExpenses = lastTransactions.filter((t) => t.type === "expense");
+  const lastExpenses = lastTransactions?.filter((t) => t.type === "expense");
 
   const categoryExpenses = categories?.map((category) => ({
     id: category.id,
@@ -44,22 +44,22 @@ const DonutChartComponent = () => {
 
   const COLORS = chartData?.map((data) => data.color);
 
-  const totalExpenses = chartData.reduce(
+  const totalExpenses = chartData?.reduce(
     (total, category) => total + category.value,
     0
   );
 
-  const formattedTotalExpenses = totalExpenses.toLocaleString("en-US", {
+  const formattedTotalExpenses = totalExpenses?.toLocaleString({
     style: "currency",
     currency: "USD",
   });
 
   const formattedTotalExpensesWithoutDecimals =
-    formattedTotalExpenses.split(".")[0];
+    formattedTotalExpenses?.split(".")[0];
 
   const chartDataSets = [
     {
-      data: chartData.map((data) => data.value),
+      data: chartData?.map((data) => data.value),
       backgroundColor: COLORS,
     },
   ];
@@ -73,7 +73,7 @@ const DonutChartComponent = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center max-w-xl max-h-xl p-4 shadow-lg rounded-lg bg-white select-none">
+    <div className="flex flex-col items-center justify-center w-full h-full p-4 shadow-lg rounded-lg bg-white select-none">
       <h2 className="text-xl font-bold mb-8 text-boldPink">Spent This Month</h2>
       {lastExpenses.length > 0 ? (
         <>

@@ -3,7 +3,7 @@ export const becomePremiumHandler = async (token) => {
   try {
     //* Si envian el token, hago la peticion al back para pagar por MP
     if (token) {
-      const { data } = await axios.get('/subscription/10000', {
+      const { data } = await axios.get("/subscription/createOrder/10000", {
         headers: { Authorization: token },
       });
 

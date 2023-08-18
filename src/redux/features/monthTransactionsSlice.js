@@ -58,15 +58,19 @@ export const monthlyTransactionsSlice = createSlice({
     });
 
     builder.addCase(deleteIncomeMonth.fulfilled, (state, action) => {
-      state.transactions = state.transactions.filter(
+      const filteredArray = state.transactions.filter(
         (el) => el.id !== action.payload
       );
+      state.backup_transactions = filteredArray
+      state.transactions = filteredArray
     });
 
     builder.addCase(deleteExpenseMonth.fulfilled, (state, action) => {
-      state.transactions = state.transactions.filter(
+      const filteredArray = state.transactions.filter(
         (el) => el.id !== action.payload
       );
+      state.transactions = filteredArray
+      state.backup_transactions = filteredArray
     });
 
 
