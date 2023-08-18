@@ -22,7 +22,6 @@ import {
 } from "@/redux/actions/adminActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
-import { succesBanned, succesUnBanned } from "@/customHooks/useAdmin";
 
 const statusColorMap = {
   active: "success",
@@ -30,7 +29,7 @@ const statusColorMap = {
 };
 
 const planColorMap = {
-  true: "danger",
+  true: "secondary",
   false: "default",
 };
 
@@ -99,7 +98,6 @@ export default function AdminTable() {
                 className="text-lg text-warning cursor-pointer active:opacity-50"
                 onClick={() => {
                   dispatch(unbanUser({ token: cookies.token, id: users.id }));
-                  succesUnBanned();
                 }}
               >
                 <AiOutlineExclamationCircle />
@@ -110,7 +108,6 @@ export default function AdminTable() {
                 className="text-lg text-danger cursor-pointer active:opacity-50"
                 onClick={() => {
                   dispatch(banUser({ token: cookies.token, id: users.id }));
-                  succesBanned();
                 }}
               >
                 <IoBan />

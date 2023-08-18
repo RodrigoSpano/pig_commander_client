@@ -1,13 +1,14 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { HiStar } from "react-icons/hi";
 import { motion } from "framer-motion";
 
-const RateStars = () => {
+const RateStars = ({ onReviewChange }) => {
   const [rating, setRating] = useState(0);
 
   const handleRating = (selectedRating) => {
     setRating(selectedRating);
+    onReviewChange(selectedRating);
   };
 
   return (
@@ -39,4 +40,3 @@ const RateStars = () => {
 };
 
 export default RateStars;
-
