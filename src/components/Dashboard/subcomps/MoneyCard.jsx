@@ -11,12 +11,14 @@ const MoneyCard = ({ title, type, array }) => {
   useEffect(() => {
     let totalValue = 0;
 
-    if (type === 'expense') {
-      totalValue = getExpensesTotal(array);
-    } else if (type === 'income') {
-      totalValue = getIncomesTotal(array);
-    } else if (type === 'saving') {
-      totalValue = array.reduce((acc, el) => acc + el.amount, 0);
+    if (array && array.length) {
+      if (type === 'expense') {
+        totalValue = getExpensesTotal(array);
+      } else if (type === 'income') {
+        totalValue = getIncomesTotal(array);
+      } else if (type === 'saving') {
+        totalValue = array.reduce((acc, el) => acc + el.amount, 0);
+      }
     }
 
     setValue(totalValue);
@@ -28,27 +30,24 @@ const MoneyCard = ({ title, type, array }) => {
   };
 
   return (
-      <div className="bg-white rounded-lg shadow-md p-4 m-2 box-border w-full">
-        <div className="flex items-center justify-between lg:mb-8">
-          <p className="font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base">{title}</p>
-          <motion.span
-            className="cursor-pointer font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base"
-            onClick={togglePasswordVisibility}
-            variants={eyeVariants}
-            initial="visible"
-            animate={showPassword ? 'visible' : 'hidden'}
-            whileHover={{ scale: 1.1 }}
-          >
-            {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
-          </motion.span>
-        </div>
-
-        <div className="font-medium text-xl xl:text-4xl lg:text-3xl md:text-lg sm:text-base">
-          <span>
-            {showPassword ? `$${value?.toLocaleString()}` : '$*****'}
-          </span>
-        </div>
+    <div className="bg-white rounded-lg shadow-md p-4 m-2 box-border w-full">
+      <div className="flex items-center justify-between lg:mb-8">
+        <p className="font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base">{title}</p>
+        <motion.span
+          className="cursor-pointer font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base"
+          onClick={togglePasswordVisibility}
+          variants={eyeVariants}
+          initial="visible"
+          animate={showPassword ? 'visible' : 'hidden'}
+          whileHover={{ scale: 1.1 }}
+        >
+          {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+        </motion.span>
       </div>
+      <div className="font-medium text-xl xl:text-4xl lg:text-3xl md:text-lg sm:text-base">
+        <span>{showPassword ? `$${value?.toLocaleString()}` : '$*****'}</span>
+      </div>
+    </div>
   );
 };
 

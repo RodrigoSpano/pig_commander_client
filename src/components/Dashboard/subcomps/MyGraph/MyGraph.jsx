@@ -40,20 +40,19 @@ const DonutChartComponent = () => {
     name: categoryExpense.name,
     value: categoryExpense.totalExpense,
     color: assignColorToCategory(categoryExpense.id),
-  }));
+  })) || [];
 
   const COLORS = chartData?.map((data) => data.color);
 
-  const totalExpenses = chartData.reduce(
+  const totalExpenses = chartData?.reduce(
     (total, category) => total + category.value,
     0
-  );
+  ) || 0;  
 
   const formattedTotalExpenses = totalExpenses.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });
-
   const formattedTotalExpensesWithoutDecimals =
     formattedTotalExpenses.split(".")[0];
 
