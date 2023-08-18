@@ -4,9 +4,10 @@ import axios from "axios";
 //* CREATE THE INVERSION
 export const createInversion = createAsyncThunk(
   "inversion/create",
-  async (inversion, token) => {
+  async ( payload) => {
     try {
-      const { data } = await axios.post("/inversions", inversion, {
+      const {token, ...datas} = payload;
+      const { data } = await axios.post("/inversions",  datas  , {
         headers: { 'Authorization': token },
       });
       return data;

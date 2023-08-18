@@ -18,8 +18,9 @@ export default function graphComponent({ option }) {
   //pido la info al redux de los savings y las inversiones
   useEffect(() => {
     if (cookies.token) {
-      dispatch(getAllInversions(cookies.token));
-      dispatch(getAllSavings(cookies.token));
+      const {token} = cookies;
+      dispatch(getAllInversions({token}));
+      dispatch(getAllSavings({token}));
     }
   }, []);
 

@@ -13,14 +13,13 @@ import { earnedUpToDate } from "@/utils/helper/inversionsFuncs";
 
 export default function Option_one_component({ inversions, savings }) {
   useEffect(() => {
-    console.log(inversions);
-    console.log("////");
-    console.log(savings);
+    console.log('inversions aca')
+    console.log(inversions)
     const date1 = new Date("2023-02-01");
     const date2 = new Date("2023-01-01");
     const interest = 0.1;
+    
     const chartDisplayer = earnedUpToDate(date1, date2, interest, 5000);
-    console.log(earnedUpToDate(date1, date2, interest, 5000));
   });
 
   //hardcodeooo

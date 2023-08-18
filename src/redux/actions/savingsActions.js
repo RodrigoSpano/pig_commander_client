@@ -4,9 +4,10 @@ import axios from "axios";
 //* CREATE THE SAVING
 export const createSaving = createAsyncThunk(
   "saving/create",
-  async (saving, token) => {
+  async (payload) => {
     try {
-      const { data } = await axios.post("/savings", saving, {
+      const {token, ...datas} = payload;
+      const { data } = await axios.post("/savings", datas, {
         headers: { 'Authorization': token },
       });
       return data;

@@ -119,6 +119,7 @@ export default function ManagmentComponent() {
           <div className="lg:row-span-6 lg:col-span-2 md:row-span-4 md:col-span-3 md:mt-4 sm:col-span-3 sm:row-span-4 shadow-lg rounded-2xl bg-white ml-5 mr-5 mb-5">
             <GraphComponent option={selectOpt} />
           </div>
+          {/* form component */}
           <div className="relative row-span-3 shadow-lg rounded-2xl bg-white mr-5 ml-5 mt-5 flex flex-col p-3 object-center justify-center">
             <h1 className="xl:text-5xl lg:text-3xl sm:text-xl font-extrabold text-gray-900 ml-2 xl:tracking-wide lg:tracking-normal sm:tracking-tighter absolute top-4">
               {form}
