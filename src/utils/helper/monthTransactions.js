@@ -20,7 +20,6 @@ export const getIncomesTotal = (transactions) => {
 export const getExpensesTotalWallet = (backup_transactions) => {
   let total = 0
   const expenses = backup_transactions?.filter(el => el.type === 'expense')
-  console.log({backup_transactions})
   expenses?.map(t => {
     total += t.amount
   })

@@ -11,7 +11,6 @@ const TransactionCard = ({ transaction, handleDetail }) => {
   const cardHoverVariants = {
     hover: { scale: 1.05 },
   };
-  console.log(transaction.type);
 
   return (
     <motion.div

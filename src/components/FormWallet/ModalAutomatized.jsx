@@ -16,8 +16,6 @@ const {
     handleDelete,
 } = useAutoModal(); 
 
-    console.log({ transactions });
-
     return (
         <div>
             <Button className="text-white h-10 self-center font-bold w-48 mr-5 rounded-2xl mt-8 text-base cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink" onPress={onOpen}>Show Automations</Button>

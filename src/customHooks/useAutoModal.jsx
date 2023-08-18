@@ -19,7 +19,6 @@ export default function useAutoModal() {
         if (isOpen, cookies.token) {
             const getTransactions = async () => {
                 const data = await getAllAutomateTransactions(cookies.token);
-                console.log({ data })
                 setTransactions(data);
             }
             getTransactions();
