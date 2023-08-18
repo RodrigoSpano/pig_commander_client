@@ -151,7 +151,7 @@ export default function () {
         //boton disable
         const someFieldEmpty = !isName || !isAmount; 
 
-        const someFieldEmptyAutomatized = !isDate; 
+        const someFieldEmptyAutomatized = !isDate || !isName || !isAmount; 
 
         const allowNameErrorMessage = () => {
             setFocusedNameInput(true);
@@ -169,7 +169,7 @@ export default function () {
     const [automatized, setAutomatized] = useState(false);
 
     const handleSubmitAutomatize = async (e) => {
-        const data = {...formWallet, ...automatizedForm}
+        const data = {...formWallet, automatized: true, ...automatizedForm}
         const createAutomate = await createAutomateTransaction(data, cookies.token)
         if(createAutomate?.success){
             Swal.fire({
