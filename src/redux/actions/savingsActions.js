@@ -31,7 +31,6 @@ export const getAllSavings = createAsyncThunk(
       const { data } = await axios("/savings", {
         headers: { 'Authorization': token },
       });
-      console.log(data)
       return data;
     } catch (error) {
       if (error.response) {
