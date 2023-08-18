@@ -1,9 +1,30 @@
-import React from 'react'
+'use client'
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import LoaderComponent from "../Loader/LoaderComponent";
 
 const ReviewsComponent = () => {
-  return (
-    <div>ReviewsComponent</div>
-  )
-}
+  const [isLoading, setIsLoading] = useState(true);
 
-export default ReviewsComponent
+  const user = useSelector((state) => state.user.logged);
+
+  useEffect(() => {
+    if (user) {
+      setIsLoading(false);
+    }
+  }, [user]);
+
+  return (
+    <>
+      {isLoading ? 
+        <LoaderComponent /> 
+        : (
+          <div>
+            ReviewsComponent
+          </div>
+        )
+      }
+    </>
+)};
+
+export default ReviewsComponent;
