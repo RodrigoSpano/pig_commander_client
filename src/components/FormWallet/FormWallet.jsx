@@ -73,7 +73,7 @@ export default function FormWallet () {
             </div>
            
             <div className="flex flex-row mt-5">
-              <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={userPremium.premium} />
+              <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={!userPremium.premium} />
               <input className='bg-lightGray  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="auto_date" value={!automatizedForm.auto_date} disabled={!automatized} onChange={handleAutoChange}/>
               <select defaultValue={'expense'} name='type' className="text-xs w-26 bg-lightGray font-light rounded-lg p-1.5 ml-2" disabled={!automatized} onChange={handleAutoChange}>
                 <option value="expense">Expense</option>
