@@ -6,6 +6,7 @@ import {
 } from "react-icons/pi";
 import { BiBus, BiHomeSmile } from "react-icons/bi";
 import { MdOutlineFastfood } from "react-icons/md";
+import { BsPiggyBank } from "react-icons/bs"
 
 export default function CategoriesCard({
   name,
@@ -27,17 +28,17 @@ export default function CategoriesCard({
       case "transport":
         return <BiBus />;
       default:
-        return <PiPiggyBankBold />;
+        return <BsPiggyBank />;
     }
   }
 
   const iconSrc = iconDisplayer();
 
   return (
-    <div className="flex flex-col pt-2 pl-2 w-1/5 text-center items-center mt-2">
+    <div className="flex flex-col pt-2 pl-2 w-1/5 text-center items-center mt-4">
       <p className={"text-4xl"}>{iconSrc}</p>
 
-      <div className="font-bold overflow-x-auto capitalize">{name}</div>
+      <div className="font-bold capitalize text-wrap w-24 text-">{name}</div>
       {/* Si es gasto va en rojo, si es ingreso va en verde */}
       {validation ? (
         <div className={type === "income" ? "text-green-700" : "text-red-700"}>

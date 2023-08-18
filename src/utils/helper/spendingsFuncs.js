@@ -1,13 +1,15 @@
+import {DropdownItem} from "@nextui-org/react";
+
 /* crea los años en funcion del año actual  -10 años */
-export const CreateYears = () => {
+export const CreateYears = (setSelect) => {
   const currentYear = new Date().getFullYear();
   const startYear = currentYear - 10;
   const endYear = currentYear;
 
   const years = Array.from({ length: endYear - startYear + 1 }, (_, index) => (
-    <option key={startYear + index} value={startYear + index}>
+    <DropdownItem key={startYear + index} value={startYear + index} onClick={(e)=> setSelect(e.target.value)}>
       {startYear + index}
-    </option>
+    </DropdownItem>
   ));
 
   return years;
