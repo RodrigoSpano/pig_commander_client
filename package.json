@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-stately/data": "^3.10.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@tremor/react": "^3.6.0",
     "axios": "^1.4.0",

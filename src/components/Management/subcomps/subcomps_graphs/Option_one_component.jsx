@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { LineChart, Card, Title } from "@tremor/react";
 import Buttons_nav from "./subcomps_module/Buttons_nav";
 import Signs from "./subcomps_module/signs";
+import TableComponent from "./subcomps_module/TableComponent";
 
 //funcs
 import { earnedUpToDate } from "@/utils/helper/inversionsFuncs";
@@ -53,7 +54,9 @@ export default function Option_one_component({ inversions, savings }) {
         <Signs title={"Total Taxes"} amount={"500,00"} />
         <Signs title={"Total Profit"} amount={"6500,00"} />
       </div>
-      <div></div>
+      <div>
+        <TableComponent/>
+      </div>
     </div>
   );
 }
