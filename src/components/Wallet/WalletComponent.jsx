@@ -8,11 +8,13 @@ import {
 } from "@/redux/actions/otherInfoActions";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
+import { filterCreatedCategory } from "@/redux/features/otherInfoSlice";
 
 export default function WalletComponent() {
   const [cookies, setCookie] = useCookies();
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(filterCreatedCategory())
     dispatch(getMethodsAction(cookies.token));
     dispatch(getCategoriesAction(cookies.token));
   }, []);

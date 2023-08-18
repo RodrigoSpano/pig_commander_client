@@ -1,21 +1,26 @@
 "use client";
-import { useState } from "react";
+import {  useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useVisibility from "@/customHooks/useVisibility";
 import SearchBarComponent from "../SearchBar/SearchBarComponent";
 import AllTransactionsComponent from "../Wallet/AllTransactionsComponent";
 import FilterAllTransactions from "../Wallet/subcomps/FilterAllTransactions";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AllTransactionsPropsContainer from "../Wallet/subcomps/AllTransactionsPropsContainer";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import usePagination from "@/customHooks/usePagination";
 import BalancesCard from "./BalancesCard";
+import ButtonCreateCategory from "./subComponent/ButtonCreateCategory";
+import DeleteCreatedCategory from "./subComponent/DeleteCreatedCategory";
+
 
 export default function WalletComponent() {
+  const dispatch = useDispatch()
   const { showPassword, togglePasswordVisibility } = useVisibility();
   const allTransactions = useSelector(
     (state) => state.transactions.transactions
   );
+
 
   const {
     nextHandler,
@@ -55,11 +60,9 @@ export default function WalletComponent() {
             <BalancesCard backup_transactions={allTransactions} />
           </div>
         </div>
-
-        <div className="flex justify-end mr-5">
-          <button className="text-white h-10 w-40 font-bold cursor-no-drop  rounded-2xl text-base cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink">
-            Create Category
-          </button>
+        <div className={"flex justify-end"}>
+        <ButtonCreateCategory />
+        <DeleteCreatedCategory/>
         </div>
       </div>
       <hr className="my-2 mx-16 mt-6" />
@@ -77,7 +80,7 @@ export default function WalletComponent() {
       />
       <AllTransactionsComponent allTransactions={transactions} />
       {transactions?.length ? (
-        <div >
+        <div>
           <PaginationComponent
             count={count}
             totalPages={totalPages}
