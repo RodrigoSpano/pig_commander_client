@@ -151,7 +151,7 @@ export default function () {
         //boton disable
         const someFieldEmpty = !isName || !isAmount; 
 
-        const someFieldEmptyAutomatized = !isDate; 
+        const someFieldEmptyAutomatized = !isDate || !isName || !isAmount; 
 
         const allowNameErrorMessage = () => {
             setFocusedNameInput(true);

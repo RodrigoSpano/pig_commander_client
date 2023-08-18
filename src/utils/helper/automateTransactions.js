@@ -5,11 +5,9 @@ const { default: Swal } = require("sweetalert2")
 
 export const createAutomateTransaction = async (info, token) => {
   try {
-    const isExpense = info.type === 'expense';
-    const { data } = await axios.post((isExpense ? "/expenses" : "/incomes"), info, {
+    const { data } = await axios.post('/auto/transaction', info, {
       headers: { Authorization: token },
     });
-    // const data = isExpense ? createExpense({...info, token}) : createIncome({...info, token});
     console.log({ info, data });
     return data;
   } catch (error) {
@@ -30,8 +28,8 @@ export const createAutomateTransaction = async (info, token) => {
 
 export const getAllAutomateTransactions = async (token) => {
   try {
-    const { data } = await axios('/expenses/automatized', { headers: { Authorization: token } })
-    return data;
+    const { data } = await axios('/auto/transactions', { headers: { Authorization: token } })
+    return data.automated;
   } catch (error) {
     console.log(error)
     Swal.fire({
