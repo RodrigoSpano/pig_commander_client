@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 export const getAllIncomes = async (data) => {
   try {
-    const modifiedData = data.map(el => {
+    const modifiedData = data.map((el) => {
       return {
         id: el.id,
         name: el.name,
@@ -27,10 +28,10 @@ export const getAllIncomes = async (data) => {
       });
     }
   }
-}
+};
 export const getAllExpenses = async (data) => {
   try {
-    const modifiedData = data.map(el => {
+    const modifiedData = data.map((el) => {
       return {
         id: el.id,
         name: el.name,
@@ -56,56 +57,131 @@ export const getAllExpenses = async (data) => {
   }
 };
 
-export const getAllTransactions = createAsyncThunk('transactions/all', async (token) => {
-  try {
-    const { data: incomeData } = await axios('/incomes', { headers: { 'Authorization': token } })
-    const { data: expenseData } = await axios('/expenses', { headers: { 'Authorization': token } })
-    const incomes = await getAllIncomes(incomeData)
-    const expenses = await getAllExpenses(expenseData)
-    const transactions = [...incomes, ...expenses].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt))
-    console.log(transactions)
-    return { transactions }
-  } catch (error) {
-    console.log(error)
+export const getAllTransactions = createAsyncThunk(
+  "transactions/all",
+  async (token) => {
+    try {
+      const { data: incomeData } = await axios("/incomes", {
+        headers: { Authorization: token },
+      });
+      const { data: expenseData } = await axios("/expenses", {
+        headers: { Authorization: token },
+      });
+      const incomes = await getAllIncomes(incomeData);
+      const expenses = await getAllExpenses(expenseData);
+      const transactions = [...incomes, ...expenses].sort(
+        (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
+      );
+      console.log(transactions);
+      return { transactions };
+    } catch (error) {
+      console.log(error);
+    }
   }
-})
+);
 
-export const createExpense = createAsyncThunk('expense/create', async (payload) => {
-  try {
-    const { token, ...expenseInfo } = payload;
-    const { data } = await axios.post('/expenses', expenseInfo, { headers: { 'Authorization': token } })
-    return data
-  } catch (error) {
-    console.log(error)
+export const createExpense = createAsyncThunk(
+  "expense/create",
+  async (payload) => {
+    try {
+      const { token, ...expenseInfo } = payload;
+      const { data } = await axios.post("/expenses", expenseInfo, {
+        headers: { Authorization: token },
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
-});
+);
 
-export const createIncome = createAsyncThunk('income/create', async (payload) => {
-  try {
-    const { token, ...incomeInfo } = payload;
-    const { data } = await axios.post('/incomes', incomeInfo, { headers: { 'Authorization': token } })
-    return data
-  } catch (error) {
-    console.log(error)
+export const createIncome = createAsyncThunk(
+  "income/create",
+  async (payload) => {
+    try {
+      const { token, ...incomeInfo } = payload;
+      const { data } = await axios.post("/incomes", incomeInfo, {
+        headers: { Authorization: token },
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
-});
+);
 
-export const deleteExpense = createAsyncThunk('expense/delete', async (id, token) => {
-  await axios.delete(`/expenses/${id}`, { headers: { 'Authorization': token } })
-  return id
-})
+export const deleteExpense = createAsyncThunk(
+  "expense/delete",
+  async (payload) => {
+    try {
+      const { id, token } = payload;
+      await axios.delete(`/expenses/${id}`, {
+        headers: { Authorization: token },
+      });
+      return id;
+    } catch (error) {
+      console.log("error");
+    }
+  }
+);
 
-export const deleteIncome = createAsyncThunk('income/delete', async (id, token) => {
-  await axios.delete(`/incomes/${id}`, { headers: { 'Authorization': token } })
-  return id
-})
+export const deleteIncome = createAsyncThunk(
+  "income/delete",
+  async (payload) => {
+    try {
+      const { id, token } = payload;
+      await axios.delete(`/incomes/${id}`, {
+        headers: { Authorization: token },
+      });
+      return id;
+    } catch (error) {
+      console.log("error");
+    }
+  }
+);
 
-export const updateExpense = createAsyncThunk('expense/update', async (id, newData, token) => {
-  const { data } = await axios.put(`/expenses/${id}`, newData, { headers: { 'Authorization': token } })
-  return data
-})
+export const updateExpense = createAsyncThunk(
+  "expense/update",
+  async (id, newData, token) => {
+    const { data } = await axios.put(`/expenses/${id}`, newData, {
+      headers: { Authorization: token },
+    });
+    return data;
+  }
+);
 
-export const updateIncome = createAsyncThunk('income/update', async (id, newData, token) => {
-  const { data } = await axios.put(`/incomes/${id}`, newData, { headers: { 'Authorization': token } })
-  return data
-})
+export const updateIncome = createAsyncThunk(
+  "income/update",
+  async (id, newData, token) => {
+    const { data } = await axios.put(`/incomes/${id}`, newData, {
+      headers: { Authorization: token },
+    });
+    return data;
+  }
+);
+
+//* GET FILTER TRANSACTION
+export const getFilterTransaction = createAsyncThunk(
+  "transaction/filter",
+  async (payload) => {
+    try {
+      const { method, category, transaction, token } = payload;
+      const { data } = await axios(
+        `/filters/?method=${method}&category=${category}&transaction=${transaction}`,
+        {
+          headers: { Authorization: token },
+        }
+      );
+      return data;
+    } catch (error) {
+      if (error.response) {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
+  }
+);

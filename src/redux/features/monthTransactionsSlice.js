@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllTransactions } from "../actions/monthTransactionsActions";
+import { deleteExpenseMonth, deleteIncomeMonth, getAllTransactions } from "../actions/monthTransactionsActions";
 
 const initialState = {
   transactions: [],
@@ -56,6 +56,24 @@ export const monthlyTransactionsSlice = createSlice({
       state.backup_transactions = action?.payload;
       state.currentOrder = null;
     });
+
+    builder.addCase(deleteIncomeMonth.fulfilled, (state, action) => {
+      const filteredArray = state.transactions.filter(
+        (el) => el.id !== action.payload
+      );
+      state.backup_transactions = filteredArray
+      state.transactions = filteredArray
+    });
+
+    builder.addCase(deleteExpenseMonth.fulfilled, (state, action) => {
+      const filteredArray = state.transactions.filter(
+        (el) => el.id !== action.payload
+      );
+      state.transactions = filteredArray
+      state.backup_transactions = filteredArray
+    });
+
+
   },
 });
 

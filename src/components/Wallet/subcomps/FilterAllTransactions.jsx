@@ -1,62 +1,88 @@
-import {
-  clearFilters,
-  filterByMethod,
-  filterByType,
-  filterByCategory
-} from "@/redux/features/transactionsSlice";
+import { getFilterTransaction } from "@/redux/actions/transactionsActions";
 import { useDispatch, useSelector } from "react-redux";
+import { use, useState } from "react";
+import { useCookies } from "react-cookie";
+import { clearFilters } from "@/redux/features/transactionsSlice";
 
-const FilterAllTransactions = () => {
+const FilterAllTransactions = ({ setOrders }) => {
+  const [cookies, setCookies] = useCookies();
   const methods = useSelector((state) => state.others.methods);
   const categories = useSelector((state) => state.others.categories);
+  const [type, setType] = useState("all");
+  const [method, setMethod] = useState("");
+  const [category, setCategory] = useState("");
+  const [selectBoolean, setSelectBoolean] = useState(false);
+  const [values, setValues] = useState({
+    types: "default",
+    categories: "default",
+    methods: "default",
+  });
 
   const dispatch = useDispatch();
 
-  const handleFiltrerByType = (e) => {
-    if (e.target.value === "default") {
-      dispatch(clearFilters());
-    } else {
-      dispatch(filterByType(e.target.value));
-    }
+  const filterTransactions = (method, category, transaction) => {
+    const { token } = cookies;
+    dispatch(getFilterTransaction({ token, method, category, transaction }));
   };
 
-  const handleFiltrerByMethod = (e) => {
-    if (e.target.value === "default") {
-      dispatch(clearFilters());
-    } else {
-      dispatch(filterByMethod(e.target.value));
-    }
+  const resetFilters = () => {
+    setOrders({
+      alphabetically: false,
+      byAmount: false,
+    });
+    setValues({
+      types: "default",
+      categories: "default",
+      methods: "default",
+    });
+    setType("all");
+    setMethod("");
+    setCategory("");
+    setSelectBoolean(false);
+    dispatch(clearFilters());
+  };
+  const handleFilterByType = (e) => {
+    setType(e.target.value);
+    setValues({ ...values, types: e.target.value });
+    setSelectBoolean(true);
   };
 
-  const handleFiltrerByCategory = (e) => {
-    if (e.target.value === "default") {
-      dispatch(clearFilters());
-    } else {
-      dispatch(filterByCategory(e.target.value));
-    }
+  const handleFilterByMethod = (e) => {
+    setMethod(e.target.value);
+    setValues({ ...values, methods: e.target.value });
+    setSelectBoolean(true);
   };
+
+  const handleFilterByCategory = (e) => {
+    setCategory(e.target.value);
+    setValues({ ...values, categories: e.target.value });
+    setSelectBoolean(true);
+  };
+
   return (
-    <div className="flex justify-around py-4">
+    <div className="flex justify-around py-4 items-center">
       <select
         className="block  py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
-        onChange={handleFiltrerByType}
+        onChange={handleFilterByType}
+        value={values.types}
       >
-        <option disabled selected value="">
+        <option disabled selected value="default">
           Types
         </option>
-        <option value="default">All Transactions</option>
-        <option value="expense">Expenses</option>
-        <option value="income">Incomes</option>
+        <option value="all">All Transactions</option>
+        <option value="expenses">Expenses</option>
+        <option value="incomes">Incomes</option>
       </select>
 
       <select
         className="block py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
-        onChange={handleFiltrerByMethod}
+        onChange={handleFilterByMethod}
+        value={values.methods}
       >
-        <option disabled selected value="">
+        <option disabled selected value="default">
           Methods
         </option>
-        <option value="default">All Transactions</option>
+
         {methods.length
           ? methods.map((method) => (
               <option key={method.id} value={method.id}>
@@ -68,12 +94,13 @@ const FilterAllTransactions = () => {
 
       <select
         className="block py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
-        onChange={handleFiltrerByCategory}
+        onChange={handleFilterByCategory}
+        value={values.categories}
       >
-        <option disabled selected value="">
+        <option disabled selected value="default">
           Categories
         </option>
-        <option value="default">All Transactions</option>
+
         {categories.length
           ? categories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -82,6 +109,28 @@ const FilterAllTransactions = () => {
             ))
           : null}
       </select>
+      <button
+        className={`text-white h-10 w-20 font-bold cursor-no-drop rounded-2xl text-base ${
+          !selectBoolean
+            ? "bg-regularGray"
+            : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
+        } `}
+        onClick={() => {
+          filterTransactions(method, category, type);
+        }}
+      >
+        Filter
+      </button>
+      <button
+        onClick={resetFilters}
+        className={`text-white h-10 w-20 font-bold cursor-no-drop rounded-2xl  text-base ${
+          !selectBoolean
+            ? "bg-regularGray"
+            : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
+        } `}
+      >
+        Reset
+      </button>
     </div>
   );
 };

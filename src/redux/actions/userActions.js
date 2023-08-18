@@ -21,7 +21,7 @@ export const loginUser = createAsyncThunk("user/login", async (userData) => {
     if (error.response) {
       Swal.fire({
         icon: "error",
-        title: error.response.data.message,
+        title: error.response.data.message.replace(/^\w/, (c) => c.toUpperCase()),
         showConfirmButton: false,
         timer: 1500,
       });

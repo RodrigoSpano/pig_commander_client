@@ -1,21 +1,26 @@
 "use client";
-import { useState } from "react";
+import {  useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useVisibility from "@/customHooks/useVisibility";
 import SearchBarComponent from "../SearchBar/SearchBarComponent";
 import AllTransactionsComponent from "../Wallet/AllTransactionsComponent";
 import FilterAllTransactions from "../Wallet/subcomps/FilterAllTransactions";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AllTransactionsPropsContainer from "../Wallet/subcomps/AllTransactionsPropsContainer";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import usePagination from "@/customHooks/usePagination";
 import BalancesCard from "./BalancesCard";
+import ButtonCreateCategory from "./subComponent/ButtonCreateCategory";
+import DeleteCreatedCategory from "./subComponent/DeleteCreatedCategory";
+
 
 export default function WalletComponent() {
+  const dispatch = useDispatch()
   const { showPassword, togglePasswordVisibility } = useVisibility();
   const allTransactions = useSelector(
     (state) => state.transactions.transactions
   );
+
 
   const {
     nextHandler,
@@ -48,18 +53,16 @@ export default function WalletComponent() {
   return (
     <div>
       <div>
-        <div className="bg-mediumPink h-7 rounded-t-lg"></div>
+        <div className="bg-mediumPink h-7 rounded-t-lg "></div>
         <h1 className="font-bold ml-5 mt-2.5 text-xl">My Balance</h1>
         <div className="flex flex-row">
           <div className="text-regularPink text-7xl font-semibold mt-5 ml-5 ">
-            <BalancesCard backup_transactions={allTransactions}/>
+            <BalancesCard backup_transactions={allTransactions} />
           </div>
         </div>
-
-        <div className="flex justify-end mr-5">
-          <button className="bg-regularPink text-white font-bold h-7 w-36 rounded-xl">
-            Create Category
-          </button>
+        <div className={"flex justify-end"}>
+        <ButtonCreateCategory />
+        <DeleteCreatedCategory/>
         </div>
       </div>
       <hr className="my-2 mx-16 mt-6" />
@@ -68,7 +71,7 @@ export default function WalletComponent() {
           <h1 className="text-4xl font-bold text-boldPink">Transactions</h1>
           <SearchBarComponent handleSearch={handleSearch} />
         </div>
-          <FilterAllTransactions />
+        <FilterAllTransactions setOrders={setOrders} />
       </div>
 
       <AllTransactionsPropsContainer
@@ -77,14 +80,16 @@ export default function WalletComponent() {
       />
       <AllTransactionsComponent allTransactions={transactions} />
       {transactions?.length ? (
-        <PaginationComponent
-          count={count}
-          totalPages={totalPages}
-          nextHandler={nextHandler}
-          prevHandler={prevHandler}
-          lastPageHandler={lastPageHandler}
-          firstPageHandler={firstPageHandler}
-        />
+        <div>
+          <PaginationComponent
+            count={count}
+            totalPages={totalPages}
+            nextHandler={nextHandler}
+            prevHandler={prevHandler}
+            lastPageHandler={lastPageHandler}
+            firstPageHandler={firstPageHandler}
+          />
+        </div>
       ) : null}
     </div>
   );

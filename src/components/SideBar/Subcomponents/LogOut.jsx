@@ -9,34 +9,30 @@ import { useCookies } from 'react-cookie';
 const LogOut = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, delay: 0.7 } },
-  };
-
-  const hoverVariants = {
-    hover: { scale: 1.05 },
+  const linkVariants = {
+    initial: { x: -20, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    hover: { scale: 1.1, },
   };
 
   return (
-    <Link href="/login" onClick={() => removeCookie('token', {path: '/'})}>
-      <motion.div
-        variants={itemVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover="hover"
-      >
-        <motion.div
-          variants={hoverVariants}
-          whileHover="hover"
-          className="flex cursor-pointer font-semibold py-4 pl-3 rounded-sm my-1 text-boldGray hover:text-red-600"
-        >
-          <motion.span whileHover={{ scale: 1.2 }}>
-            <ImExit className="text-2xl mr-2 " />
-          </motion.span>
-          Log Out
-        </motion.div>
-      </motion.div>
+    <Link href="/login" onClick={() => removeCookie('token', { path: '/' })}>
+      <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
+          <motion.div
+            className=' flex items-center justify-start font-semibold cursor-pointer text-boldGray hover:text-red-500'
+            variants={linkVariants}
+            initial='initial'
+            animate='animate'
+            whileHover='hover'
+          >
+            <motion.span className='mr-2'>
+              <ImExit className='text-2xl xl:text-3xl' />
+            </motion.span>
+            <motion.p className='font-semibold cursor-pointer text-base xl:text-lg'>
+              Log Out
+            </motion.p>
+          </motion.div>
+      </div>
     </Link>
   );
 };

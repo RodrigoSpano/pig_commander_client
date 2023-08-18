@@ -1,66 +1,244 @@
-'use client';
-import React, { useState } from "react";
-import SideRight from "../SideRight/SideRight"; 
+"use client";
+import React from "react";
 import Link from "next/link";
 import useSignup from "@/customHooks/useSignup";
+import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
+import { VscGithubInverted } from "react-icons/vsc";
+import useVisibility from "@/customHooks/useVisibility";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { HiUser, HiEnvelope, HiMiniLockClosed } from 'react-icons/hi2';
+import SideRight from "../SideRight/SideRight";
+import BackButton from "../CustomButtons/BackButton";
+
+export default function SignUpComponent() {
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.2,
+        yoyo: Infinity,
+      },
+    },
+  };
 
 
-
-export default function SignUpComponent () {
-     
-
-    const {userSignUp, 
-        handleChange, 
-        handleSubmit, 
+  const {
+        userSignUp,
+        handleChange,
+        handleSubmit,
         inputInvalidName,
-        inputInvalidEmail, 
+        inputInvalidEmail,
         inputInvalidPassword,
         someFieldEmpty,
         focusedEmailInput,
         focusedPasswordInput,
         focusedNameInput,
+        focusedConfirmPasswordInput,
         allowNameErrorMessage,
         allowEmailErrorMessage,
-        allowPasswordErrorMessage
-    } = useSignup(); 
+        allowPasswordErrorMessage,
+        allowConfirmPasswordErrorMessage,
+        handlePasswordConfirmationChange,
+        passwordsMatch,
+        passwordConfirmation,
+  } = useSignup();
 
+  const {
+    showPassword,
+    togglePasswordVisibility,
+    showPasswordConfirmation,
+    togglePasswordConfirmationVisibility,
+  } = useVisibility();
 
-    return (
-        <div className="flex flex-row h-screen bg-white	">
-            <div className="w-2/4 self-center text-center">
-                <h1 className="font-bold text-black text-2xl">REGISTER</h1>
-                <h2 className="text-gray-500 mb-5">Pig Commander is the most secure finance App.</h2>
-                <div className="flex flex-row justify-center mb-3">
-                    <div>
-                        <input className="bg-inputForm placeholder-black font-light rounded-lg text-sm p-1.5 w-40  relative right-1 focus:outline-none active:outline-none" type="text" value={userSignUp.name} name="name" placeholder="Name" autoComplete="off" onChange={handleChange} onFocus={allowNameErrorMessage} />
-                        <input className="bg-inputForm placeholder-black font-light rounded-lg text-sm p-1.5 w-40 relative left-1 focus:outline-none active:outline-none" type="text" value={userSignUp.lastName} name="lastName" autoComplete="off" placeholder="Last Name" onChange={handleChange}/>
-                        <div className="text-red-400 relative text-xs">{inputInvalidName && focusedNameInput ? ("Only letters in these fields ") : ("")}</div>
-                    </div>
-                </div>
-                 <div className="flex flex-col text-center items-center">
-                    <input className="bg-inputForm placeholder-black font-light w-2/4 p-1.5 rounded-lg mb-3 text-sm focus:outline-none active:outline-none" type="mail" value={userSignUp.email} placeholder='Email' name="email" autoComplete="off" onChange={handleChange} onFocus={allowEmailErrorMessage}/>
-                    <div className="text-red-400 relative bottom-2.5 text-xs">{inputInvalidEmail && focusedEmailInput ? ("Email invalid") : ("")}</div>
-                    <input className="bg-inputForm placeholder-black font-light w-2/4 p-1.5 rounded-lg text-sm focus:outline-none active:outline-none" type="password" value={userSignUp.password} placeholder="Password" autoComplete="off" name="password" onChange={handleChange} onFocus={allowPasswordErrorMessage}/>
-                    <div className="text-red-400 relative top-0.5 text-xs text-center w-80">{inputInvalidPassword && focusedPasswordInput ? (<div>This field is <span className="font-bold">required</span>. It must have at least <span className="font-bold"> 1 lowercase </span>letter,  <span className="font-bold"> 1 uppercase</span> letter, <span className="font-bold">1 number</span> , <span className="font-bold" >no spaces</span> and a minimum of <span className="font-bold" >8 characters</span>.</div>) : ("")}</div>
-                </div>
-                <button className={` text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 mt-8 text-base disabled:cursor-no-drop ${someFieldEmpty ? "bg-buttonDisabled" : "bg-gradient-to-r from-regularPink to-boldPink" }`} disabled={someFieldEmpty} onClick={handleSubmit}>
-                    Register
-                </button>
-                <h3 className="text-gray-500 mt-5">Already have an account?</h3>
-                <Link href="/login"> 
-                  <h4 className="text-regularPink font-medium">Login</h4>
-                </Link>
-                <h4  className="text-gray-500 mt-5">or</h4>
-                
-                 <div onClick={() => {window.location.href=`${process.env.NEXT_PUBLIC_API_URI}/auth/google`}} className="flex justify-center cursor-pointer">
-                    <div className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl">
-                        <div className="self-center "><FcGoogle/></div>
-                        <h2 className="m-1.5 font-semibold text-google">Continue with Google</h2>
-                    </div>
-                 </div>
+  return (
+    <div className="flex bg-white">
+      <BackButton />
+      <motion.div
+        className="flex items-center justify-center w-2/4 h-screen bg-white select-none"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="w-full max-w-md p-6">
+
+          <div className='flex flex-col justify-center items-center'>
+            <h1 className="font-bold text-black text-2xl">REGISTER</h1>
+            <h2 className="text-gray-500">
+              Pig Commander is the most secure finance App.
+            </h2>
+          </div>
+
+          <div className="mt-6">
+            <div className="mb-3 flex items-center rounded-lg bg-inputForm">
+              <HiUser className="ml-2 text-2xl text-neutral-700" />
+              <input
+                className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                type="text"
+                value={userSignUp.name}
+                name="name"
+                placeholder="Name"
+                autoComplete="off"
+                onChange={handleChange}
+                onFocus={allowNameErrorMessage}
+              />
             </div>
-           <SideRight/>
+
+            <div className="mb-3">
+              <div className="mb-3 flex items-center rounded-lg bg-inputForm">
+                <HiUser className="ml-2 text-2xl text-neutral-700" />
+                <input
+                  className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                  type="text"
+                  value={userSignUp.lastName}
+                  name="lastName"
+                  autoComplete="off"
+                  placeholder="Last Name"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            {inputInvalidName && focusedNameInput && (
+              <p className="text-xs text-red-600 mb-3">
+                Only letters in these fields
+              </p>
+            )}
+
+            <div className="mb-3 flex items-center rounded-lg bg-inputForm">
+              <HiEnvelope className="ml-2 text-2xl text-neutral-700" />
+              <input
+                className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                type="email"
+                value={userSignUp.email}
+                placeholder="Email"
+                name="email"
+                autoComplete="off"
+                onChange={handleChange}
+                onFocus={allowEmailErrorMessage}
+              />
+            </div>
+
+            {inputInvalidEmail && focusedEmailInput && (
+              <p className="text-xs text-red-600 mb-3">Email invalid</p>
+            )}
+
+            {/* PASSWORD */}
+            <div className="mb-3 flex items-center rounded-lg bg-inputForm">
+              <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
+              <input
+                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
+                type={showPassword ? "text" : "password"}
+                value={userSignUp.password}
+                placeholder="Password"
+                autoComplete="off"
+                name="password"
+                onChange={handleChange}
+                onFocus={allowPasswordErrorMessage}
+              />
+              <span className="password-toggle" onClick={togglePasswordVisibility}>
+                {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              </span>
+
+            {/*CONFIRM PASSWORD */}
+            </div>
+            <div className="mb-3 flex items-center rounded-lg bg-inputForm">
+              <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
+              <input
+                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
+                type={showPasswordConfirmation ? "text" : "password"}
+                value={passwordConfirmation}
+                placeholder="Confirm Password"
+                autoComplete="off"
+                name="confirmPassword"
+                onChange={handlePasswordConfirmationChange}
+                onFocus={allowConfirmPasswordErrorMessage}
+              />
+              <span className="password-toggle" onClick={togglePasswordConfirmationVisibility}>
+                {showPasswordConfirmation ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              </span>
+            </div>
+            
+            {inputInvalidPassword && focusedPasswordInput && (
+              <p className="text-xs text-red-600 mt-1">
+                This field is required. It must have at least 1 lowercase letter, 1 uppercase letter, 1 number, no spaces, and a minimum of 8 characters.
+              </p>
+            )}
+            {!passwordsMatch && focusedConfirmPasswordInput && (
+              <p className="text-xs text-red-600 mt-1">
+                Passwords must match
+              </p>
+            )}
+
+            <section className="flex flex-col justify-center items-center">
+              {/* CREATE ACCOUNT BUTTON */}
+              <button
+                className={`text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 text-base disabled:cursor-no-drop ${someFieldEmpty
+                    ? "bg-buttonDisabled"
+                    : "bg-gradient-to-r from-regularPink to-boldPink"
+                  }`}
+                disabled={someFieldEmpty}
+                onClick={handleSubmit}
+                whileHover="hover"
+                variants={buttonVariants}
+              >
+                Create Account
+              </button>
+
+              {/* GOOGLE BUTTON */}
+              <div
+                onClick={() => {
+                  window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/google`;
+                }}
+                className="flex justify-center"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+                >
+                  <div className="self-center">
+                    <FcGoogle />
+                  </div>
+                  <h2 className="m-1.5 font-semibold text-google cursor-pointer">
+                    Continue with Google
+                  </h2>
+                </motion.div>
+              </div>
+              <div
+                onClick={() => {
+                  window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/github`;
+                }}
+                className="flex justify-center"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+                >
+                  <div className="self-center">
+                    <VscGithubInverted />
+                  </div>
+                  <h2 className="m-1.5 font-semibold text-google cursor-pointer">
+                    Continue with Github
+                  </h2>
+                </motion.div>
+            </div>
+
+              {/* MESSAGE BUTTON */}
+              <p className="text-gray-600 mt-4">
+                Already have an account?{" "}
+                <Link href="/login">
+                  <span className="text-pink-500 cursor-pointer">Login</span>
+                </Link>
+              </p>
+            </section>
+
+          </div>
         </div>
-    )
-}; 
+      </motion.div>
+      <SideRight />
+    </div>
+  );
+}

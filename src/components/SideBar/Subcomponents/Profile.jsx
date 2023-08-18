@@ -1,41 +1,35 @@
-'use client'
+"use client"
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CgProfile } from "react-icons/cg";
 
 const Profile = () => {
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.5 } },
-  };
-
-  const hoverVariants = {
-    hover: { scale: 1.05 },
+  const linkVariants = {
+    initial: { x: -20, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    hover: { scale: 1.1, },
   };
 
   return (
-    <Link href='/home/profile'>
-      <motion.div
-        variants={itemVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover="hover"
-        className='hover:bg-pink-100 py-4 pl-3 rounded-sm my-1'
-      >
+    <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
+      <Link href='/home/profile'>
         <motion.div
-          variants={hoverVariants}
-          className='flex items-center justify-start text-boldGray font-semibold cursor-pointer hover:text-boldPink'
+          className=' flex items-center justify-start font-semibold cursor-pointer text-boldGray hover:text-regularPink'
+          variants={linkVariants}
+          initial='initial'
+          animate='animate'
+          whileHover='hover'
         >
-          <motion.div whileHover={{ rotate: 5 }} className='text-2xl'>
-            <CgProfile />
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.1 }} className='ml-2'>
+          <motion.span className='mr-2'>
+            <CgProfile className='text-2xl xl:text-3xl' />
+          </motion.span>
+          <motion.p className='font-semibold cursor-pointer text-base xl:text-lg'>
             Profile
-          </motion.div>
+          </motion.p>
         </motion.div>
-      </motion.div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
