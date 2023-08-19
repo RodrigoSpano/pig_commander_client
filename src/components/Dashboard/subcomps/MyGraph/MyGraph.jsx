@@ -73,7 +73,7 @@ const DonutChartComponent = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full p-4 shadow-lg rounded-lg bg-white select-none">
+    <div className="flex flex-col items-center justify-center w-full h-full p-4 shadow-lg rounded-md bg-white select-none">
       <h2 className="text-xl font-bold mb-8 text-boldPink">Spent This Month</h2>
       {lastExpenses.length > 0 ? (
         <>
@@ -85,7 +85,7 @@ const DonutChartComponent = () => {
               {formattedTotalExpensesWithoutDecimals}
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center lg:w-12">
             <div>
               <Doughnut
                 data={{

@@ -27,29 +27,27 @@ const StatsContainer = () => {
   }, [])
 
   return (
-    <div className="flex justify-between select-none">
+    <div className="flex select-none">
 
-      <div className='w-3/4'>
-        <section className='flex h-1/2'>
-          <div className='w-1/2 '>
-            <WelcomeCard user={user} />
-          </div>
-          <div className='w-1/2'>
-            <BalanceCard transactions={monthBackup} />
-          </div>
-        </section>
+      <div className=' flex justify-center items-stretch flex-col w-full lg:w-3/4 '>
+          <section className='mt-12 mb-2 h-full flex flex-col lg:flex-row md:mt-0'>
+            <div className='w-full lg:w-1/2'>
+              <WelcomeCard user={user} />
+            </div>
+            <div className='w-full lg:w-1/2'>
+              <BalanceCard transactions={monthBackup} />
+            </div>
+          </section>
 
-        <section className='flex justify-between h-1/2 w-full '>
-          <MoneyCard title={'Expenses'} type={'expense'} array={monthBackup} />
-          <MoneyCard title={'Incomes'} type={'income'} array={monthBackup} />
-          <MoneyCard title={'Savings'} type={'saving'} array={savings} />
-        </section>
+          <section className='h-full items-center flex flex-col lg:flex-row'>
+            <MoneyCard title={'Expenses'} type={'expense'} array={monthBackup} />
+            <MoneyCard title={'Incomes'} type={'income'} array={monthBackup} />
+            <MoneyCard title={'Savings'} type={'saving'} array={savings} />
+          </section>
       </div>
 
-      <div className='w-1/4'>
-        <section className=''>
+      <div className='hidden lg:w-1/4 lg:block'>
           <UserCard user={user} />
-        </section>
       </div>
 
     </div>

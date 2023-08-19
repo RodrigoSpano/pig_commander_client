@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react"; // Import useState
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import TransactionsComponent from "../Transactions/TransactionsComponent";
@@ -36,19 +36,20 @@ const DashboardComponent = () => {
         <>
           <StatsContainer />
 
-          <div className="flex flex-col">
-            <div className="mt-3 mb-4">
+          <div className="flex flex-col-reverse lg:flex-col">
+            <section className="mt-3 mb-4 ">
               <MyJournalCard />
-            </div>
+            </section>
 
-            <div className="flex">
-              <div className="w-2/3 mr-4">
+            <section className="flex flex-col-reverse  lg:flex-row">
+              <div className="mt-3 sm:w-full md:mt-0 lg:w-2/3 lg:mr-4">
                 <TransactionsComponent />
               </div>
-              <div className="w-1/3">
+              <div className="mt-2 sm:w-full md:mt-0 lg:w-1/3">
                 <MyGraph />
               </div>
-            </div>
+            </section>
+
           </div>
         </>
       )}

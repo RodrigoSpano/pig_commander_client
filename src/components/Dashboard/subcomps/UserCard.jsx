@@ -4,6 +4,7 @@ import { updatePicture } from '@/redux/actions/userActions';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 const UserCard = ({ user }) => {
   const [cookies, setCookie] = useCookies();
@@ -23,30 +24,43 @@ const UserCard = ({ user }) => {
     });
   };
 
-  return (
-    <div className="flex flex-col items-center justify-center p-2 bg-white rounded-lg shadow-md w-full h-full box-border">
+  const cardVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
+  return (
+    <motion.div
+      className="flex flex-col p-3 justify-between items-center bg-white rounded-lg shadow-md h-full box-border"
+      initial="hidden"
+      animate="visible"
+      exit={{ opacity: 0, y: -20 }}
+      variants={cardVariants}
+    >
       {/* IMAGE */}
-      <div className="">
+      <div className="p-4 justify-center items-center">
         {image && (
-          <img
+          <motion.img
             src={image}
             alt="Profile Pic"
-            className="h-32 lg:h-48 rounded-full object-cover cursor-pointer"
+            className="h-44 xl:h-56 shadow-xl rounded-full cursor-pointer"
             onClick={(e) => handleClick(e)}
+            whileHover={{ scale: 1.05 }}
           />
         )}
       </div>
 
-      {/* NAME */}
-      <span className="text-lg font-bold">
-        {user.name.replace(/^\w/, (c) => c.toUpperCase())}{' '}
-        {user.lastname.replace(/^\w/, (c) => c.toUpperCase())}
-      </span>
+      <div className='flex flex-col items-center'>
+        {/* NAME */}
+        <div className="font-bold text-xl xl:text-2xl">
+          {user.name.replace(/^\w/, (c) => c.toUpperCase())}{' '}
+          {user.lastname.replace(/^\w/, (c) => c.toUpperCase())}
+        </div>
 
-      {/* UPTATE BUTTON */}
-      <ProfileComponent user={user} />
-    </div>
+        {/* UPTATE BUTTON */}
+        <ProfileComponent user={user} />
+      </div>
+    </motion.div>
   );
 };
 
