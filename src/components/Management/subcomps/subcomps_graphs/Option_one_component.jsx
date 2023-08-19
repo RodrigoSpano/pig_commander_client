@@ -1,62 +1,107 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 //modulos
 import { LineChart, Card, Title } from "@tremor/react";
 import Buttons_nav from "./subcomps_module/Buttons_nav";
 import Signs from "./subcomps_module/signs";
 import TableComponent from "./subcomps_module/TableComponent";
-
 //funcs
-import { earnedUpToDate } from "@/utils/helper/inversionsFuncs";
+import {
+  earnedUpToDate,
+  getDate,
+  getEarnings,
+} from "@/utils/helper/inversionsFuncs";
 
-/* const dataFormatter = (number) =>
-  `${Intl.NumberFormat("us").format(number).toString()}`; */
+export default function Option_one_component({ inversions }) {
+  const [selectedInversion, setSelected] = useState(1);
+  const [chartDisplayer, setChartDisplayer] = useState("");
 
-export default function Option_one_component({ inversions, savings }) {
+  const setSelectedInversion = (e) => {
+    setSelected(e.currentTarget.getAttribute("data-id"));
+  };
+
   useEffect(() => {
-    console.log('inversions aca')
-    console.log(inversions)
-    const date1 = new Date("2023-02-01");
-    const date2 = new Date("2023-01-01");
-    const interest = 0.1;
-    
-    const chartDisplayer = earnedUpToDate(date1, date2, interest, 5000);
-  });
+    Charter();
+  }, [selectedInversion, inversions]);
 
-  //hardcodeooo
-  const date1 = new Date("2023-02-01");
-  const date2 = new Date("2023-01-01");
-  const interest = 0.1;
-  const chartDisplayer = earnedUpToDate(date1, date2, interest, 5000);
+  const Charter = async () => {
+    await waitForDefinedParams(inversions);
+
+    let data = {
+      date1: getDate(inversions[parseInt(selectedInversion)].started_on),
+      date2: getDate(inversions[parseInt(selectedInversion)].finish_at),
+      interest: inversions[parseInt(selectedInversion)].earning,
+      amount: inversions[parseInt(selectedInversion)].amount,
+    };
+
+    const chartDisplayer = earnedUpToDate(
+      data.date2,
+      data.date1,
+      data.interest,
+      data.amount
+    );
+    setChartDisplayer(chartDisplayer);
+  };
+
+  //elimina el error que si no llegaron las peticiones del back no te deje entrar a managment, sino que quede en bucle esperando
+  const waitForDefinedParams = async (paramsObj) => {
+    const keys = Object.keys(paramsObj);
+
+    while (keys.some((key) => paramsObj[key] === undefined)) {
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperar 1 segundo
+    }
+  };
 
   return (
     <div>
       <div>
-        <Buttons_nav />
+        {/* <Buttons_nav /> */}
         <Card>
-          <Title>Investment </Title>
+          <Title className="justify-center flex text-lg font-semibold text-boldPink">
+            Money vs Dates
+          </Title>
           <LineChart
-            className="mt-6 stroke-pink-400"
+            className="mt-6 stroke-pink-400 "
             data={chartDisplayer}
             index="day"
             startEndOnly={false}
             autoMinValue={true}
-            height='h-80'
+            height="h-60"
             categories={["total", "amount"]}
             colors={["blue", "gray"]}
             valueFormatter={undefined}
+            showXAxis={true}
             yAxisWidth={50}
           />
         </Card>
       </div>
-      <div className="flex flex-row justify-between">
-        <Signs title={"Investment amount"} amount={"5000,00"} />
-        <Signs title={"Total Taxes"} amount={"500,00"} />
-        <Signs title={"Total Profit"} amount={"6500,00"} />
+      <div className="flex flex-row w-full max-h-20">
+        <div className="w-1/3 flex justify-center content-center text-center">
+          <Signs
+            title={"Investment amount"}
+            amount={inversions[parseInt(selectedInversion)].amount}
+          />
+        </div>
+        <div className="w-1/3 flex justify-center content-center text-center">
+          <Signs title={"Total Taxes"} amount={"Not found"} />
+        </div>
+        <div className="w-1/3 flex justify-center content-center text-center">
+          <Signs
+            title={"Total Profit"}
+            amount={getEarnings(
+              getDate(inversions[parseInt(selectedInversion)].started_on),
+              getDate(inversions[parseInt(selectedInversion)].finish_at),
+              inversions[parseInt(selectedInversion)].earning,
+              inversions[parseInt(selectedInversion)].amount,
+              0
+            )}
+          />
+        </div>
       </div>
-      <div>
-        <TableComponent/>
-      </div>
+
+      <TableComponent
+        setSelectedInversion={setSelectedInversion}
+        inversions={inversions}
+      />
     </div>
   );
 }

@@ -1,5 +1,3 @@
-import { weldDates } from "./inversionsFuncs";
-
 //form saving control = false significa problemas, form saving control = true significa que paso las verificaciones de seguridad; puede o no devolver un mensaje de error
 export const formControlSavings = (values) => {
     let controlObjet = {
@@ -28,3 +26,25 @@ export const formControlSavings = (values) => {
 
       return controlObjet;
 }
+
+export const savingsUpToDate = (amount, dailySavings) => {
+  const startDate = new Date();
+  let currentSavings = 0;
+  let currentDate = new Date(startDate);
+  
+  const chartData = [];
+
+  while (currentSavings < amount) {
+    currentSavings += dailySavings;
+
+    chartData.push({
+      day: currentDate.toLocaleDateString(),
+      total: parseFloat(currentSavings.toFixed(2)),
+      amount: parseFloat(amount.toFixed(2)),
+    });
+
+    currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000); // Avanza un día
+  }
+
+  return chartData;
+};

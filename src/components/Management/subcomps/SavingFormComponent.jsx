@@ -70,7 +70,7 @@ export default function SavingFormComponent() {
 
             <div className="w-5/12 sm:w-full">
               <Inputs
-                title={"Set a goal amount"}
+                title={"Daily Savings"}
                 icon={"$"}
                 id={"amount"}
                 handleChange={handleChange}
@@ -79,14 +79,13 @@ export default function SavingFormComponent() {
 
             <div className="w-5/12 sm:w-full">
               <Inputs
-              title={"Goal deadline"}
+              title={"Goal Amount"}
                 icon={"$"}
                 id={"goal"}
                 handleChange={handleChange}
               />
             </div>
             
-
             <button
               className="mt-4 text-lg bg-gradient-to-r from-regularPink to-boldPink text-white rounded-sm px-5 py-2 mx-2 font-extrabold tracking-widest"
               onClick={handleSubmit}

@@ -44,7 +44,7 @@ export default function InvestmentFormComponent() {
     period: "days",
     interest: "",
     taxes: "",
-    earning: "",
+    earning: "", //guarda el interest en realidad, ya que no esta hecha la variable en la bd
   });
   //setea los valores del form a medida que cambian los componentes del form
   const handleChange = (e) => {
@@ -76,7 +76,7 @@ export default function InvestmentFormComponent() {
       <div className="mt-5 ml-2 text-3xl text-boldPink font-extrabold tracking-tight sm:text-xl">
         Create New:
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full h-full sm:gap-1 ">
           <div className="column-span-1">
             <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
@@ -155,7 +155,6 @@ export default function InvestmentFormComponent() {
             className=" mt-4 text-lg bg-gradient-to-r from-regularPink to-boldPink  hover:from-boldPink hover:to-regularPink text-white rounded-sm px-5 py-2 mx-2 font-extrabold tracking-widest"
             type="submit"
             value="Submit"
-            onClick={handleSubmit}
           ></input>
         </div>
       </form>

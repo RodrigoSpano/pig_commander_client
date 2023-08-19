@@ -30,7 +30,6 @@ export default function graphComponent({ option }) {
         setSelectedOption(
           <Option_one_component
             inversions={allInversions}
-            savings={allSavings}
           />
         );
         break;
@@ -38,7 +37,6 @@ export default function graphComponent({ option }) {
       case "opt2": {
         setSelectedOption(
           <Option_two_component
-            inversions={allInversions}
             savings={allSavings}
           />
         );

@@ -10,9 +10,14 @@ export const earnedUpToDate = (finalDate, initialDate, interest, amount) => {
 
   while (actualDate <= finalDate) {
     const timeDay = (actualDate - initialDate) / (1000 * 3600 * 24);
-    const dayAmount = amount * Math.pow(1 + interestDecimal, timeDay);
-    const dayInterest = dayAmount - amount;
-    sumInterest += dayInterest;
+    let dayInterest = 0;
+
+    if (timeDay > 0) {
+      dayInterest = (amount + sumInterest) * interestDecimal;
+      sumInterest += dayInterest;
+    } else {
+      dayInterest = amount;
+    }
 
     const dayNumber = Math.floor(timeDay) + 1; // Day number starting from 1
     chartData.push({
@@ -26,7 +31,6 @@ export const earnedUpToDate = (finalDate, initialDate, interest, amount) => {
 
   return chartData;
 };
-
 //form inversion control = false significa problemas, form inversion control = true significa que paso las verificaciones de seguridad; puede o no devolver un mensaje de error
 export const formInversionsControl = (values) => {
   let controlObjet = {
@@ -95,8 +99,8 @@ export const postConversion = (values) => {
   } else if (values.period === "days") {
     data.finish_at = new Date(year, month, day + parseInt(values.dayPeriod));
   }
-
-  data.earning = parseFloat(
+  data.earning = parseFloat(values.interest),
+/*   data.earning = parseFloat(
     getEarnings(
       data.started_on,
       data.finish_at,
@@ -104,7 +108,7 @@ export const postConversion = (values) => {
       data.amount,
       parseFloat(values.taxes)
     )
-  );
+  ); */
   data.started_on = weldDates(data.started_on);
   data.finish_at = weldDates(data.finish_at);
   
@@ -144,3 +148,8 @@ export const weldDates = (date) => {
   const formattedDate = `${finishYear}-${formattedMonth}-${formattedDay}`; /* ("YYYY-MM-DD"); */
   return formattedDate;
 };
+
+export const getDate = (date) => {
+  let data = new Date(date);
+  return  data;
+}
