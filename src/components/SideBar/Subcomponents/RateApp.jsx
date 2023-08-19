@@ -5,8 +5,11 @@ import { BiStar } from "react-icons/bi";
 import TextAreaModal from "./RateApp/Sobcomponents/TextAreaModal";
 import RateStars from "./RateApp/Sobcomponents/RateStars";
 import RateAppDescription from "./RateApp/Sobcomponents/RateAppDescription";
+import { useSelector } from "react-redux";
 
 export default function RateApp() {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const linkVariants = {
@@ -29,7 +32,7 @@ export default function RateApp() {
             <BiStar className='text-2xl xl:text-3xl' />
           </motion.span>
           <motion.p className='font-semibold cursor-pointer text-base xl:text-lg' onClick={onOpen}>
-            Rate App
+          {selectedLanguage === "en" ? "Rate App" : "Calificar App"}
           </motion.p>
         </motion.div>
       </div>

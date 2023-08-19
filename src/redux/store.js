@@ -7,6 +7,7 @@ import otherInfoReducer from "./features/otherInfoSlice";
 import journalAPIReducer from "./features/journalSlice";
 import inversionsReducer from "./features/inversionsSlice";
 import adminReducer from "./features/adminSlice";
+import languageReducer from './features/languageSlice' 
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     savings: savingsReducer,
     inversions: inversionsReducer,
     others: otherInfoReducer,
+    language: languageReducer,
   },
 });

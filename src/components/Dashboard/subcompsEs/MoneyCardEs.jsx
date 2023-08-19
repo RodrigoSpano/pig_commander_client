@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import useVisibility from '@/customHooks/useVisibility';
 import { getExpensesTotal, getIncomesTotal } from '@/utils/helper/monthTransactions';
 import { motion } from 'framer-motion';
 
-const MoneyCard = ({ title, type, array }) => {
+const MoneyCardEs = ({ title, type, array }) => {
   const [value, setValue] = useState(0);
   const { showPassword, togglePasswordVisibility } = useVisibility();
 
@@ -54,4 +54,4 @@ const MoneyCard = ({ title, type, array }) => {
   );
 };
 
-export default MoneyCard;
+export default MoneyCardEs;

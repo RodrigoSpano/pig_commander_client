@@ -3,8 +3,11 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CgProfile } from "react-icons/cg";
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const linkVariants = {
     initial: { x: -20, opacity: 0 },
     animate: { x: 0, opacity: 1 },
@@ -25,7 +28,7 @@ const Profile = () => {
             <CgProfile className='text-2xl xl:text-3xl' />
           </motion.span>
           <motion.p className='font-semibold cursor-pointer text-base xl:text-lg'>
-            Profile
+          {selectedLanguage === "en" ? "Profile" : "Perfil"}
           </motion.p>
         </motion.div>
       </Link>

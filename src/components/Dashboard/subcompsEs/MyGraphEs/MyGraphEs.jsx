@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
-import EmptyDonut from "./EmptyDonutComponent";
+import EmptyDonut from "./EmptyDonutComponentEs";
 
-const DonutChartComponent = () => {
+const DonutChartComponentEs = () => {
   const lastTransactions = useSelector(
     (state) => state.monthTransactions.backup_transactions
   );
@@ -107,12 +107,12 @@ const COLORS = chartData?.map((data) => data.color);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-4 shadow-lg rounded-lg bg-white select-none">
-      <h2 className="text-xl font-bold mb-8 text-boldPink">Spent This Month</h2>
+      <h2 className="text-xl font-bold mb-8 text-boldPink">Gastado Este Mes</h2>
       {lastExpenses.length > 0 ? (
         <>
           <div className="text-center mb-4">
             <p className="text-lg font-semibold text-[#374151]">
-              Total Expenses
+              Gastos Totales 
             </p>
             <p className="text-2xl font-bold text-[#374151]">
               {formattedTotalExpensesWithoutDecimals}
@@ -151,4 +151,4 @@ const COLORS = chartData?.map((data) => data.color);
   );
 };
 
-export default DonutChartComponent;
+export default DonutChartComponentEs;
