@@ -20,17 +20,12 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import { IoWalletOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { IoMdSettings } from "react-icons/io";
-<<<<<<< HEAD
 import { ImExit } from 'react-icons/im';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeSwitch from "./Subcomponents/ThemeSwitch";
-=======
-import { ImExit } from "react-icons/im";
-import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
 import { setLanguage } from "@/redux/features/languageSlice";
->>>>>>> 5ebaf95f250782d76a4baf24263f5bbd0ce1b6b4
+
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -154,11 +149,7 @@ const NavBar = () => {
           <div className="block md:hidden">
             <button onClick={toggleMenu}>
               {isOpen ? (
-<<<<<<< HEAD
                 <FiX className='w-6 h-6 text-gray-700 ' />
-=======
-                <FiX className="w-6 h-6 text-gray-700" />
->>>>>>> 5ebaf95f250782d76a4baf24263f5bbd0ce1b6b4
               ) : (
                 <FiMenu className="w-6 h-6 text-gray-700" />
               )}
