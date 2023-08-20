@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 //modulos
 import { LineChart, Card, Title } from "@tremor/react";
-import Buttons_nav from "./subcomps_module/Buttons_nav";
-import Signs from "./subcomps_module/signs";
+import Signs from "./subcomps_module/Signs";
 import TableComponent from "./subcomps_module/TableComponent";
 //funcs
 import {
