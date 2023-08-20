@@ -23,6 +23,10 @@ export const formControlSavings = (values) => {
         controlObjet.booleanMessage = false;
         controlObjet.errorMessages = "The goal have to be greater than the start amount"
       }
+      if(parseFloat(values.goal)/parseFloat(values.amount) > 250) {
+        controlObjet.booleanMessage = false;
+        controlObjet.errorMessages = 'Set a smaller goal or a greater amount'
+      }
 
       return controlObjet;
 }

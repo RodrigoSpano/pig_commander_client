@@ -100,15 +100,6 @@ export const postConversion = (values) => {
     data.finish_at = new Date(year, month, day + parseInt(values.dayPeriod));
   }
   data.earning = parseFloat(values.interest),
-/*   data.earning = parseFloat(
-    getEarnings(
-      data.started_on,
-      data.finish_at,
-      parseFloat(values.interest),
-      data.amount,
-      parseFloat(values.taxes)
-    )
-  ); */
   data.started_on = weldDates(data.started_on);
   data.finish_at = weldDates(data.finish_at);
   

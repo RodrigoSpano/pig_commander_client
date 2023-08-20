@@ -14,7 +14,7 @@ const useDetailSaving = () => {
     Swal.fire({
       position: "center",
       title: `
-                     <p>Name: ${selectedSavings.name}</p>
+        <p>Name: ${selectedSavings.name}</p>
         <p>Amount: ${selectedSavings.amount}</p>
         <p>Goal: ${selectedSavings.goal}</p>
                     `,
@@ -29,11 +29,11 @@ const useDetailSaving = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         const { token } = cookies;
-        const id = parseInt(selectedId)
-        const data ={
-            token,
-            id,
-        }
+        const id = parseInt(selectedId);
+        const data = {
+          token,
+          id,
+        };
         dispatch(deleteSaving(data));
       }
     });

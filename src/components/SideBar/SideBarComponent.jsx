@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "@/redux/actions/userActions";
 import { getAllSavings } from "@/redux/actions/savingsActions";
+import { getAllInversions } from "@/redux/actions/inversionsActions";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -28,6 +29,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user =useSelector(state => state.user)
   const savings = useSelector(state => state.savings.allSavings)
+  const allInversions = useSelector((state) => state.inversions.allInversions);
   const dispatch = useDispatch()
   const [cookies, setCookies] = useCookies()
   
@@ -42,6 +44,9 @@ const NavBar = () => {
       }
       if(!savings.length){
         dispatch(getAllSavings(cookies.token))
+      }
+      if(!allInversions.length){
+        dispatch(getAllInversions(cookies.token))
       }
     }
   }, [dispatch])

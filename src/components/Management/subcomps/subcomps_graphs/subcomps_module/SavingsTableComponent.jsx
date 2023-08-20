@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Table,
   TableHeader,
@@ -10,11 +11,11 @@ import {
 import "../../../../Wallet/CustomScrollBar.css";
 import useDetailSaving from "@/customHooks/useDetailSaving";
 
-export default function TableComponent({ setSelectedSaving, savings }) {
+export default function TableComponent({ setSelectedSaving }) {
+  const savings = useSelector((state) => state.savings.allSavings);
   const [selectedId, setSelectedId] = useState(0);
   const [preSelectedId, setPreSelectedId] = useState("");
   const [clickCount, setClickCount] = useState(0);
-
   const { handleDetailSav } = useDetailSaving();
 
   const handleDoubleClick = () => {
@@ -23,9 +24,7 @@ export default function TableComponent({ setSelectedSaving, savings }) {
     if (selectedId === preSelectedId) {
       setClickCount(clickCount + 1);
       if (clickCount === 1) {
-     
         handleDetailSav(selectedId); //pop up hook
-
         setClickCount(0);
       }
     }

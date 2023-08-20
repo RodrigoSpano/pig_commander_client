@@ -12,7 +12,6 @@ export default function InvestmentFormComponent() {
   //manejan el boton de yes, no del componente
   const [disableInput, setDisableInput] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
-
   const dispatch = useDispatch();
   const [cookies, setCookie] = useCookies();
 

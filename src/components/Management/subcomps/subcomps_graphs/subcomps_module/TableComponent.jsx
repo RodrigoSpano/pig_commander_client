@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   Table,
   TableHeader,
@@ -15,16 +16,15 @@ import {
 } from "@/utils/helper/inversionsFuncs";
 import useDetailInv from "@/customHooks/useDetailInv";
 
-export default function TableComponent({ setSelectedInversion, inversions }) {
+export default function TableComponent({ setSelectedInversion }) {
+  const inversions = useSelector((state) => state.inversions.allInversions);
   const [selectedId, setSelectedId] = useState(0)
   const [preSelectedId, setPreSelectedId] = useState("")
   const [clickCount, setClickCount] = useState(0);
-
   const { handleDetailInv } = useDetailInv();
 
   const handleDoubleClick = () => {
     setPreSelectedId(selectedId);
-    console.log("Selected ID:", selectedId);
     if(preSelectedId === selectedId) {
       setClickCount(clickCount + 1);
       if (clickCount === 1) {
@@ -58,6 +58,7 @@ export default function TableComponent({ setSelectedInversion, inversions }) {
                 <TableRow
                   key={element.id}
                   onClick={() => {
+                    console.log(index)
                     setSelectedInversion(index); //grafico
                     setSelectedId(element.id) //pop up
                     handleDoubleClick()

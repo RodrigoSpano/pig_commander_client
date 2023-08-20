@@ -2,45 +2,47 @@ import React, { useState, useEffect } from "react";
 import SavingsTableComponent from "./subcomps_module/SavingsTableComponent.jsx";
 import { LineChart, Card, Title } from "@tremor/react";
 import { savingsUpToDate } from "@/utils/helper/savingsFuncs.js";
+import { useSelector } from "react-redux";
 
 
-export default function Option_two_component({ savings }) {
+export default function Option_two_component() {
+  const savings = useSelector((state) => state.savings.allSavings);
   const [chartDisplayer, setChartDisplayer] = useState("");
   const [selectedSaving, setSelected] = useState(0);
+  const [isLoading, setLoading] = useState(true);
 
- 
-
-  useEffect(() => {
-    Charter();
-  }, [selectedSaving, savings]);
-
-  const Charter = async () => {
-    await waitForDefinedParams(savings);
-
-    const chartDisplayer = savingsUpToDate(
+  const calculateChartDataAsync = async () => {
+    const chartData = await savingsUpToDate(
       savings[parseInt(selectedSaving)].goal,
       savings[parseInt(selectedSaving)].amount
     );
-    setChartDisplayer(chartDisplayer);
+    return chartData;
+  };
+
+  const Charter = async () => {
+    setLoading(true);
+    console.log(isLoading)
+    try {
+      const chartData = await calculateChartDataAsync();
+      setChartDisplayer(chartData);
+    } catch (error) {
+      console.error("Error calculating chart data:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const setSelectedSaving = (data) => {
     setSelected(data);
   };
 
-  //elimina el error que si no llegaron las peticiones del back no te deje entrar a managment, sino que quede en bucle esperando
-  const waitForDefinedParams = async (paramsObj) => {
-    const keys = Object.keys(paramsObj);
-
-    while (keys.some((key) => paramsObj[key] === undefined)) {
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperar 1 segundo
-    }
-  };
+  useEffect(() => {
+    Charter();
+  }, [selectedSaving, savings]);
 
   return (
     <div>
       <div>
-        {" "}
         <Card>
           <Title>Savings</Title>
           <LineChart
@@ -60,7 +62,6 @@ export default function Option_two_component({ savings }) {
       </div>
       <div>
         <SavingsTableComponent
-          savings={savings}
           setSelectedSaving={setSelectedSaving}
         />
       </div>
