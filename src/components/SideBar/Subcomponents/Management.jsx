@@ -3,8 +3,11 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { AiOutlineDollarCircle } from "react-icons/ai";
+import { useSelector } from 'react-redux';
 
 const Management = () => {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const linkVariants = {
     initial: { x: -20, opacity: 0 },
     animate: { x: 0, opacity: 1 },
@@ -25,7 +28,7 @@ const Management = () => {
             <AiOutlineDollarCircle className='text-2xl xl:text-3xl' />
           </motion.span>
           <motion.p className='font-semibold cursor-pointer text-base xl:text-lg'>
-            Management
+          {selectedLanguage === "en" ? "Management" : "Gestión"}
           </motion.p>
         </motion.div>
       </Link>

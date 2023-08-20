@@ -3,9 +3,12 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IoWalletOutline } from "react-icons/io5";
+import { useSelector } from 'react-redux';
 
 
 const Wallet = () => {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const linkVariants = {
     initial: { x: -20, opacity: 0 },
     animate: { x: 0, opacity: 1 },
@@ -26,7 +29,7 @@ const Wallet = () => {
             <IoWalletOutline className='text-2xl xl:text-3xl' />
           </motion.span>
           <motion.p className='font-semibold cursor-pointer text-base xl:text-lg'>
-            Wallet
+          {selectedLanguage === "en" ? "Wallet" : "Billetera"}
           </motion.p>
         </motion.div>
       </Link>

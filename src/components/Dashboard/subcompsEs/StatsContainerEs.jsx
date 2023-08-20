@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import WelcomeCard from './WelcomeCard'
-import BalanceCard from './BalanceCard'
-import MoneyCard from './MoneyCard'
-import UserCard from './UserCard'
+import WelcomeCardEs from './WelcomeCardEs'
+import BalanceCardEs from './BalanceCardEs'
+import MoneyCardEs from './MoneyCardEs'
+import UserCardEs from './UserCardEs'
 import { getCategoriesAction, getMaxSpendAction } from '@/redux/actions/otherInfoActions'
 import { useCookies } from 'react-cookie'
 
-const StatsContainer = () => {
+const StatsContainerEs = () => {
   const user = useSelector(state => state.user)
   const monthBackup = useSelector(state => state.monthTransactions.backup_transactions)
   const savings = useSelector((state) => state.savings.allSavings);
@@ -32,23 +32,24 @@ const StatsContainer = () => {
       <div className='w-3/4'>
         <section className='flex h-1/2'>
           <div className='w-1/2 '>
-            <WelcomeCard user={user} />
+            {}
+            <WelcomeCardEs user={user} />
           </div>
           <div className='w-1/2'>
-            <BalanceCard transactions={monthBackup} />
+            <BalanceCardEs transactions={monthBackup} />
           </div>
         </section>
 
         <section className='flex justify-between h-1/2 w-full '>
-          <MoneyCard title={'Expenses'} type={'expense'} array={monthBackup} />
-          <MoneyCard title={'Incomes'} type={'income'} array={monthBackup} />
-          <MoneyCard title={'Savings'} type={'saving'} array={savings} />
+          <MoneyCardEs title={'Gastos'} type={'expense'} array={monthBackup} />
+          <MoneyCardEs title={'Ingresos'} type={'income'} array={monthBackup} />
+          <MoneyCardEs title={'Ahorros'} type={'saving'} array={savings} />
         </section>
       </div>
 
       <div className='w-1/4'>
         <section className=''>
-          <UserCard user={user} />
+          <UserCardEs user={user} />
         </section>
       </div>
 
@@ -56,4 +57,4 @@ const StatsContainer = () => {
   )
 }
 
-export default StatsContainer
+export default StatsContainerEs

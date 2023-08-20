@@ -7,6 +7,8 @@ import { getUserData } from '@/redux/actions/userActions';
 import { useCookies } from 'react-cookie';
 
 const LogOut = () => {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const [cookies, setCookie, removeCookie] = useCookies();
 
   const linkVariants = {
@@ -29,7 +31,7 @@ const LogOut = () => {
               <ImExit className='text-2xl xl:text-3xl' />
             </motion.span>
             <motion.p className='font-semibold cursor-pointer text-base xl:text-lg'>
-              Log Out
+            {selectedLanguage === "en" ? "Log Out" : "Cerrar sesión"}
             </motion.p>
           </motion.div>
       </div>

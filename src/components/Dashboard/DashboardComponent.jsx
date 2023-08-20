@@ -9,6 +9,10 @@ import { getAllTransactions } from "@/redux/actions/monthTransactionsActions";
 import { getMethodsAction } from "@/redux/actions/otherInfoActions";
 import MyJournalCard from "./subcomps/MyJournalCard";
 import LoaderComponent from "../Loader/LoaderComponent";
+import StatsContainerEs from "./subcompsEs/StatsContainerEs";
+import MyJournalCardEs from "./subcompsEs/MyJournalCardEs";
+import TransactionsComponentEs from "../Transactions/TransactionsComponentEs";
+import MyGraphEs from "./subcompsEs/MyGraphEs/MyGraphEs";
 
 const DashboardComponent = () => {
   const dispatch = useDispatch();
@@ -16,6 +20,7 @@ const DashboardComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const userLogged = useSelector((state) => state.user.logged);
+  const selectedLanguage = useSelector((state) => state.language);
 
   useEffect(() => {
     if (cookies.token) {
@@ -38,15 +43,23 @@ const DashboardComponent = () => {
 
           <div className="flex flex-col dark:bg-strongGray">
             <div className="mt-3 mb-4">
-              <MyJournalCard />
+              {selectedLanguage === "en" ? (
+                <MyJournalCard />
+              ) : (
+                <MyJournalCardEs />
+              )}
             </div>
 
             <div className="flex">
               <div className="w-2/3 mr-4">
-                <TransactionsComponent />
+                {selectedLanguage === "en" ? (
+                  <TransactionsComponent />
+                ) : (
+                  <TransactionsComponentEs />
+                )}
               </div>
               <div className="w-1/3">
-                <MyGraph />
+                {selectedLanguage === 'en' ? <MyGraph /> : <MyGraphEs/>}
               </div>
             </div>
           </div>
