@@ -15,7 +15,7 @@ const Help = () => {
     <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
       <Link href='/home/help'>
         <motion.div
-          className=' flex items-center justify-start font-semibold cursor-pointer text-boldGray hover:text-regularPink'
+          className=' flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:text-regularPink text-boldGray hover:text-regularPink'
           variants={linkVariants}
           initial='initial'
           animate='animate'

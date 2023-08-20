@@ -7,6 +7,7 @@ import SideBar from "../components/SideBar/SideBarComponent";
 import { usePathname } from "next/navigation";
 import axios from "axios";
 import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider } from "next-themes"
 
 const inter = Inter({ subsets: ["latin"] });
 // cambia en el deploy x eso es un env
@@ -17,25 +18,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextUIProvider>
-          <CookiesProvider>
-            <ReduxProvider>
-              <div className="flex">
-                {path === "/login" ||
-                  path === "/signup" ||
-                  path === "/services/success" ||
-                  path === "/about" ||
-                  path === "/pricing" ||
-                  path === "/securitypolicy" ||
-                  path === "/" ? null : (
-                  <SideBar />
-                )}
-                <div className="w-screen">{children}</div>
-              </div>
-            </ReduxProvider>
-          </CookiesProvider>
-        </NextUIProvider>
-
+        <ThemeProvider attribute="class">
+          <NextUIProvider>
+            <CookiesProvider>
+              <ReduxProvider>
+                <div className="flex dark:bg-strongGray ">
+                  {path === "/login" ||
+                    path === "/signup" ||
+                    path === "/services/success" ||
+                    path === "/about" ||
+                    path === "/pricing" ||
+                    path === "/securitypolicy" ||
+                    path === "/" ? null : (
+                    <SideBar />
+                  )}
+                  <div className="w-screen dark:bg-strongGray">{children}</div>
+                </div>
+              </ReduxProvider>
+            </CookiesProvider>
+          </NextUIProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -28,9 +28,9 @@ const BalanceCard = ({ transactions }) => {
 
   return (
     <div className='mr-2'>
-      <div className="bg-white rounded-2xl shadow-md">
+      <div className="bg-white dark:bg-mediumGrayDarkMode rounded-2xl shadow-md">
         <div className="flex items-center justify-between p-4">
-          <p className="font-semibold xl:text-2xl lg:text-xl md:text-lg sm:text-base">
+          <p className="font-semibold xl:text-2xl lg:text-xl md:text-lg sm:text-base dark:text-mediumPinkDark">
             My Balance
           </p>
           <span
