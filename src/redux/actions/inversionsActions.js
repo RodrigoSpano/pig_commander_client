@@ -71,8 +71,9 @@ export const updateInversion = createAsyncThunk(
 //* DELETE INVERSION
 export const deleteInversion = createAsyncThunk(
   "inversion/delete",
-  async (id, token) => {
+  async (payload) => {
     try {
+      const {token, id} = payload;
       const { data } = await axios.delete(`/inversions/${id}`, {
         headers: { Authorization: token },
       });

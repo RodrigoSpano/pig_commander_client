@@ -10,7 +10,7 @@ const useTransactionDetail = () => {
   const dispatch = useDispatch();
   const [cookies] = useCookies();
 
-  const handleDetail = (transaction) => {
+  const handleDetailSav = (transaction) => {
     const findCategory = categories.find(
       (cat) => cat.id === transaction.category_id
     );
@@ -88,7 +88,7 @@ const useTransactionDetail = () => {
    
   };
 
-  return { handleDetail };
+  return { handleDetailSav };
 };
 
 export default useTransactionDetail;

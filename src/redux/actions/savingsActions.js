@@ -71,8 +71,9 @@ export const updateSaving = createAsyncThunk(
 //* DELETE SAVING
 export const deleteSaving = createAsyncThunk(
   "saving/delete",
-  async (id, token) => {
+  async (payload) => {
     try {
+      const {token, id} = payload;
       const { data } = await axios.delete(`/savings/${id}`, {
         headers: { 'Authorization': token },
       });

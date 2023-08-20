@@ -3,9 +3,12 @@ import SavingsTableComponent from "./subcomps_module/SavingsTableComponent.jsx";
 import { LineChart, Card, Title } from "@tremor/react";
 import { savingsUpToDate } from "@/utils/helper/savingsFuncs.js";
 
+
 export default function Option_two_component({ savings }) {
   const [chartDisplayer, setChartDisplayer] = useState("");
   const [selectedSaving, setSelected] = useState(0);
+
+ 
 
   useEffect(() => {
     Charter();
@@ -21,8 +24,8 @@ export default function Option_two_component({ savings }) {
     setChartDisplayer(chartDisplayer);
   };
 
-  const setSelectedSaving = (e) => {
-    setSelected(e.currentTarget.getAttribute("data-id"));
+  const setSelectedSaving = (data) => {
+    setSelected(data);
   };
 
   //elimina el error que si no llegaron las peticiones del back no te deje entrar a managment, sino que quede en bucle esperando

@@ -14,9 +14,11 @@ import {
 export default function Option_one_component({ inversions }) {
   const [selectedInversion, setSelected] = useState(1);
   const [chartDisplayer, setChartDisplayer] = useState("");
+  const [earningShowUp, setEarningShowUp] = useState("Loading");
+  const [amountShowUp, setAmountShowUp] = useState("Loading")
 
-  const setSelectedInversion = (e) => {
-    setSelected(e.currentTarget.getAttribute("data-id"));
+  const setSelectedInversion = (data) => {
+    setSelected(data);
   };
 
   useEffect(() => {
@@ -49,6 +51,16 @@ export default function Option_one_component({ inversions }) {
     while (keys.some((key) => paramsObj[key] === undefined)) {
       await new Promise((resolve) => setTimeout(resolve, 1000)); // Esperar 1 segundo
     }
+    setEarningShowUp(
+      getEarnings(
+        getDate(inversions[parseInt(selectedInversion)].started_on),
+        getDate(inversions[parseInt(selectedInversion)].finish_at),
+        inversions[parseInt(selectedInversion)].earning,
+        inversions[parseInt(selectedInversion)].amount,
+        0
+      )
+    );
+    setAmountShowUp(inversions[parseInt(selectedInversion)].amount)
   };
 
   return (
@@ -78,23 +90,14 @@ export default function Option_one_component({ inversions }) {
         <div className="w-1/3 flex justify-center content-center text-center">
           <Signs
             title={"Investment amount"}
-            amount={inversions[parseInt(selectedInversion)].amount}
+            amount={amountShowUp}
           />
         </div>
         <div className="w-1/3 flex justify-center content-center text-center">
           <Signs title={"Total Taxes"} amount={"Not found"} />
         </div>
         <div className="w-1/3 flex justify-center content-center text-center">
-          <Signs
-            title={"Total Profit"}
-            amount={getEarnings(
-              getDate(inversions[parseInt(selectedInversion)].started_on),
-              getDate(inversions[parseInt(selectedInversion)].finish_at),
-              inversions[parseInt(selectedInversion)].earning,
-              inversions[parseInt(selectedInversion)].amount,
-              0
-            )}
-          />
+          <Signs title={"Total Profit"} amount={earningShowUp} />
         </div>
       </div>
 

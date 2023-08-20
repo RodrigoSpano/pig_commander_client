@@ -8,14 +8,28 @@ import {
   TableCell,
 } from "@nextui-org/react";
 import "../../../../Wallet/CustomScrollBar.css";
-import {
-  getEarnings,
-  getDate,
-  weldDates,
-} from "@/utils/helper/inversionsFuncs";
+import useDetailSaving from "@/customHooks/useDetailSaving";
 
 export default function TableComponent({ setSelectedSaving, savings }) {
-  const [selectedColor, setSelectedColor] = useState("default");
+  const [selectedId, setSelectedId] = useState(0);
+  const [preSelectedId, setPreSelectedId] = useState("");
+  const [clickCount, setClickCount] = useState(0);
+
+  const { handleDetailSav } = useDetailSaving();
+
+  const handleDoubleClick = () => {
+    setPreSelectedId(selectedId);
+
+    if (selectedId === preSelectedId) {
+      setClickCount(clickCount + 1);
+      if (clickCount === 1) {
+     
+        handleDetailSav(selectedId); //pop up hook
+
+        setClickCount(0);
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col gap-3">
@@ -36,8 +50,11 @@ export default function TableComponent({ setSelectedSaving, savings }) {
               return (
                 <TableRow
                   key={element.id}
-                  data-id={index}
-                  onClick={setSelectedSaving}
+                  onClick={() => {
+                    setSelectedSaving(index); //este es para el grafico
+                    setSelectedId(element.id); //este es para el popup
+                    handleDoubleClick();
+                  }}
                 >
                   <TableCell>{element.name}</TableCell>
                   <TableCell>{element.amount}</TableCell>
