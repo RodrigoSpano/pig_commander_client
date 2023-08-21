@@ -67,7 +67,7 @@ const TransactionsComponent = () => {
 
         <hr className="mx-16" />
 
-        <section className=" py-4">s
+        <section className=" py-4">
           <TransactionsPropsContainer
             handleAlphabetically={handleAlphabetically}
             handleOrderByAmount={handleOrderByAmount}

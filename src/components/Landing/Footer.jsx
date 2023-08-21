@@ -6,7 +6,7 @@ import { HiMail, HiPhone } from 'react-icons/hi';
 
 const Footer = () => {
   return (
-    <footer className='rounded-t-md shadow-black bg-white select-none'>
+    <footer className='rounded-t-md shadow-black bg-white dark:bg-mediumGrayDarkMode select-none'>
       <div className='flex flex-col xl:items-start lg:items-start md:flex-row justify-around items-center md:px-12 py-8'>
         {/* CONTACT */}
         <div className='flex flex-col items-center md:items-start mb-4 md:mb-0'>
@@ -25,7 +25,7 @@ const Footer = () => {
 
         {/* LINKS */}
         <div className='flex flex-col items-center md:items-start mb-4 md:mb-0'>
-          <h3 className='pb-2 text-3xl font-bold'>Links</h3>
+          <h3 className='pb-2 text-3xl font-bold dark:text-mediumPinkDark'>Links</h3>
           <Link href='#' className='pb-1 text-base'>
             Home
           </Link>
@@ -42,7 +42,7 @@ const Footer = () => {
 
         {/* LEGAL */}
         <div className='flex flex-col items-center md:items-start mb-4 md:mb-0'>
-          <h3 className='pb-2 text-3xl font-bold'>Legal</h3>
+          <h3 className='pb-2 text-3xl font-bold dark:text-mediumPinkDark'>Legal</h3>
           <Link href='#' className='pb-1 text-base'>
             Terms Of Use
           </Link>
@@ -56,7 +56,7 @@ const Footer = () => {
 
         {/* PRODUCT */}
         <div className='flex flex-col items-center md:items-start mb-4 md:mb-0'>
-          <h3 className='pb-2 text-3xl font-bold'>Product</h3>
+          <h3 className='pb-2 text-3xl font-bold dark:text-mediumPinkDark'>Product</h3>
           <Link href='#' className='pb-1 text-base'>
             Take Tour
           </Link>
@@ -70,7 +70,7 @@ const Footer = () => {
 
         {/* NEWSLETTER */}
         <div className='flex flex-col items-center md:items-start mb-4 md:mb-0'>
-          <h3 className='pb-2 text-3xl font-bold'>Newsletter</h3>
+          <h3 className='pb-2 text-3xl font-bold dark:text-mediumPinkDark'>Newsletter</h3>
           <Link href='#' className='pb-1 text-base'>
             Stay Up to Date
           </Link>

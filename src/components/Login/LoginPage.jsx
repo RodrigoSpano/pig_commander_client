@@ -30,18 +30,18 @@ const LoginContainer = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-row h-screen bg-white select-none"
+      className="flex flex-row h-screen bg-white dark:bg-strongGray select-none"
     >
       <BackButton />
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-2/4 self-center text-center"
+        className="w-2/4 self-center text-center "
       >
-        <h1 className="font-bold text-black text-2xl">LOGIN</h1>
+        <h1 className="font-bold text-black dark:text-mediumPinkDark text-2xl">LOGIN</h1>
 
-        <h2 className="text-gray-500 mb-5">
+        <h2 className="text-gray-500 mb-5 dark:text-white ">
           Pig Commander is the most secure finance App.
         </h2>
 
@@ -113,7 +113,7 @@ const LoginContainer = () => {
           Login Now
         </motion.button>
 
-        <h3 className="text-gray-500 mt-5 cursor-pointer">
+        <h3 className="text-gray-500 mt-5 cursor-pointer dark:text-white ">
           Don't have an account?
         </h3>
 
@@ -127,7 +127,7 @@ const LoginContainer = () => {
           </motion.h4>
         </Link>
 
-        <h4 className="text-gray-500 mt-5">or</h4>
+        <h4 className="text-gray-500 mt-5 dark:text-white ">or</h4>
 
         <div
           onClick={() => {
@@ -159,10 +159,10 @@ const LoginContainer = () => {
             whileTap={{ scale: 0.95 }}
             className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
           >
-            <div className="self-center">
+            <div className="self-center text-black dark:text-black">
               <VscGithubInverted />
             </div>
-            <h2 className="m-1.5 font-semibold text-google cursor-pointer">
+            <h2 className="m-1.5 font-semibold  text-google cursor-pointer">
               Continue with Github
             </h2>
           </motion.div>

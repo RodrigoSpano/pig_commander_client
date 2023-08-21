@@ -53,10 +53,10 @@ export default function SignUpComponent() {
   } = useVisibility();
 
   return (
-    <div className="flex bg-white">
+    <div className="flex bg-white dark:bg-strongGray">
       <BackButton />
       <motion.div
-        className="flex items-center justify-center w-2/4 h-screen bg-white select-none"
+        className="flex items-center justify-center w-2/4 h-screen bg-white dark:bg-strongGray  select-none"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -64,8 +64,8 @@ export default function SignUpComponent() {
         <div className="w-full max-w-md p-6">
 
           <div className='flex flex-col justify-center items-center'>
-            <h1 className="font-bold text-black text-2xl">REGISTER</h1>
-            <h2 className="text-gray-500">
+            <h1 className="font-bold text-black text-2xl dark:text-mediumPinkDark">REGISTER</h1>
+            <h2 className="text-gray-500 dark:text-white">
               Pig Commander is the most secure finance App.
             </h2>
           </div>
@@ -217,7 +217,7 @@ export default function SignUpComponent() {
                   whileTap={{ scale: 0.95 }}
                   className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
                 >
-                  <div className="self-center">
+                  <div className="self-center text-black dark:text-black">
                     <VscGithubInverted />
                   </div>
                   <h2 className="m-1.5 font-semibold text-google cursor-pointer">
@@ -227,7 +227,7 @@ export default function SignUpComponent() {
             </div>
 
               {/* MESSAGE BUTTON */}
-              <p className="text-gray-600 mt-4">
+              <p className="text-gray-600 mt-4 dark:text-white">
                 Already have an account?{" "}
                 <Link href="/login">
                   <span className="text-pink-500 cursor-pointer">Login</span>
