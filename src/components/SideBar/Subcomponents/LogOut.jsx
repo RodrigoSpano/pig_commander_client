@@ -7,6 +7,8 @@ import { getUserData } from '@/redux/actions/userActions';
 import { useCookies } from 'react-cookie';
 
 const LogOut = () => {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const [cookies, setCookie, removeCookie] = useCookies();
 
   const linkVariants = {
@@ -19,7 +21,7 @@ const LogOut = () => {
     <Link href="/login" onClick={() => removeCookie('token', { path: '/' })}>
       <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
           <motion.div
-            className=' flex items-center justify-start font-semibold cursor-pointer text-boldGray hover:text-red-500'
+            className=' flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:hover:text-red-500 text-boldGray hover:text-red-500'
             variants={linkVariants}
             initial='initial'
             animate='animate'
@@ -29,7 +31,7 @@ const LogOut = () => {
               <ImExit className='text-2xl xl:text-3xl' />
             </motion.span>
             <motion.p className='font-semibold cursor-pointer text-base xl:text-lg'>
-              Log Out
+            {selectedLanguage === "en" ? "Log Out" : "Cerrar sesión"}
             </motion.p>
           </motion.div>
       </div>

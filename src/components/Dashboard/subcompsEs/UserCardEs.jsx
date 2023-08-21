@@ -1,37 +1,37 @@
 import React from 'react';
-import ProfileComponent from '../../Profile/ProfileComponent';
+import ProfileComponentEs from '../../Profile/ProfileComponentEs';
 import { updatePicture } from '@/redux/actions/userActions';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 
-const UserCard = ({ user }) => {
+const UserCardEs = ({ user }) => {
   const [cookies, setCookie] = useCookies();
   const { image } = user;
   const dispatch = useDispatch();
 
   const handleClick = () => {
     Swal.fire({
-      title: 'Insert your photo',
-      input: 'file',
+      title: 'Ingresa tu foto',
+      input: 'archivo',
       preConfirm: (file) => {
         const { token } = cookies;
         const formData = new FormData();
-        formData.append('image', file);
+        formData.append('imagen', file);
         token && dispatch(updatePicture({ formData, token }));
       },
     });
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-2 bg-white dark:bg-mediumGrayDarkMode rounded-lg shadow-md w-full h-full box-border">
+    <div className="flex flex-col items-center justify-center p-2 bg-white rounded-lg shadow-md w-full h-full box-border">
 
       {/* IMAGE */}
       <div className="">
         {image && (
           <img
             src={image}
-            alt="Profile Pic"
+            alt="Foto de Perfil"
             className="h-32 lg:h-48 rounded-full object-cover cursor-pointer"
             onClick={(e) => handleClick(e)}
           />
@@ -45,9 +45,9 @@ const UserCard = ({ user }) => {
       </span>
 
       {/* UPTATE BUTTON */}
-      <ProfileComponent user={user} />
+      <ProfileComponentEs user={user} />
     </div>
   );
 };
 
-export default UserCard;
+export default UserCardEs;

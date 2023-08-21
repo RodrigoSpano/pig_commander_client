@@ -12,6 +12,7 @@ import {
   HiOutlineUser
 } from "react-icons/hi";
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -108,11 +109,15 @@ const NavBar = () => {
               Register
             </motion.button>
           </Link>
+          <div className=''>
+            <ThemeSwitch/>
+          </div>
         </div>
       </nav>
+    
 
       {/* MOBILE */}
-      <nav className='md:hidden bg-white'>
+      <nav className='md:hidden bg-white dark:bg-mediumGrayDarkMode'>
         <div className='flex justify-between items-center py-2 px-4'>
           {/* LOGO */}
           <div>
@@ -163,7 +168,7 @@ const NavBar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className='px-4 py-2 bg-white'
+              className='px-4 py-2 bg-white dark:bg-mediumGrayDarkMode'
             >
               {menuItems.map((item, index) => (
                 <motion.div
@@ -179,11 +184,15 @@ const NavBar = () => {
                     </div>
                   </Link>
                 </motion.div>
+                
               ))}
 
             </motion.div>
           )}
         </AnimatePresence>
+        <div className='ml-2 pb-2'>
+            <ThemeSwitch/>
+        </div>
       </nav>
     </>
   );

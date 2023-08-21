@@ -34,10 +34,10 @@ export default function HeroSection() {
               <motion.h1
                 className="text-4xl font-bold text-gray-900 sm:text-6xl"
               >
-                <span className='text-boldPink'>Make</span> the best financial <span className='text-boldPink'>decisions</span>
+                <span className='text-boldPink'>Make</span><span className='dark:text-white'> the best financial </span><span className='text-boldPink'> decisions</span>
               </motion.h1>
               <motion.p
-                className="mt-6 text-lg text-gray-600"
+                className="mt-6 text-lg text-gray-600 dark:text-white"
               >
                 With Pig Commander, you can track your income, expenses, and balances, create budgets, connect your bank and credit card accounts, and set financial goals.
               </motion.p>
@@ -56,7 +56,7 @@ export default function HeroSection() {
                     Get started <span>&rarr;</span>
                   </motion.span>
                 </Link>
-                <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900">
+                <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
                   <motion.span
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
