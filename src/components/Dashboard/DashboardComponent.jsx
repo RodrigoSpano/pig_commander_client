@@ -34,17 +34,14 @@ const DashboardComponent = () => {
   }, [userLogged]);
 
   return (
-    <div className="m-6">
+    <div className="m-6 dark:bg-strongGray ">
       {isLoading ? (
         <LoaderComponent />
       ) : (
         <>
-          {selectedLanguage === "en" ? (
-            <StatsContainer />
-          ) : (
-            <StatsContainerEs />
-          )}
-          <div className="flex flex-col">
+          <StatsContainer />
+
+          <div className="flex flex-col dark:bg-strongGray">
             <div className="mt-3 mb-4">
               {selectedLanguage === "en" ? (
                 <MyJournalCard />

@@ -24,7 +24,7 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-2 bg-white rounded-lg shadow-md w-full h-full box-border">
+    <div className="flex flex-col items-center justify-center p-2 bg-white dark:bg-mediumGrayDarkMode rounded-lg shadow-md w-full h-full box-border">
 
       {/* IMAGE */}
       <div className="">

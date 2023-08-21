@@ -30,11 +30,11 @@ const MoneyCard = ({ title, type, array }) => {
   };
 
   return (
-      <div className="bg-white rounded-lg shadow-md p-4 m-2 box-border w-full">
+      <div className="bg-white dark:text-white dark:bg-mediumGrayDarkMode rounded-lg shadow-md p-4 m-2 box-border w-full">
         <div className="flex items-center justify-between lg:mb-8">
-          <p className="font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base">{title}</p>
+          <p className="font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg dark:text-mediumPinkDark sm:text-base">{title}</p>
           <motion.span
-            className="cursor-pointer font-semibold text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base"
+            className="cursor-pointer font-semibold  text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base"
             onClick={togglePasswordVisibility}
             variants={eyeVariants}
             initial="visible"

@@ -21,7 +21,7 @@ const LogOut = () => {
     <Link href="/login" onClick={() => removeCookie('token', { path: '/' })}>
       <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
           <motion.div
-            className=' flex items-center justify-start font-semibold cursor-pointer text-boldGray hover:text-red-500'
+            className=' flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:hover:text-red-500 text-boldGray hover:text-red-500'
             variants={linkVariants}
             initial='initial'
             animate='animate'

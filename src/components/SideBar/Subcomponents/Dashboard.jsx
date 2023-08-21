@@ -18,7 +18,7 @@ const Dashboard = () => {
     <div className="hover:bg-pink-50 py-4 px-6 rounded-sm">
       <Link href="/home/dashboard">
         <motion.div
-          className=" flex items-center justify-start font-semibold cursor-pointer text-boldGray hover:text-regularPink"
+          className=" flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:text-regularPink text-boldGray hover:text-regularPink"
           variants={linkVariants}
           initial="initial"
           animate="animate"
@@ -27,8 +27,8 @@ const Dashboard = () => {
           <motion.span className="mr-2">
             <BiSolidDashboard className="text-2xl xl:text-3xl" />
           </motion.span>
-          <motion.p className="font-semibold cursor-pointer text-base xl:text-lg">
-            {selectedLanguage === "en" ? "Dashboard" : "Tablero"}
+          <motion.p className='font-semibold cursor-pointer text-base xl:text-lg '>
+            Dashboard
           </motion.p>
         </motion.div>
       </Link>

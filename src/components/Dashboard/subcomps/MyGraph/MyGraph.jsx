@@ -106,16 +106,16 @@ const COLORS = chartData?.map((data) => data.color);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full p-4 shadow-lg rounded-lg bg-white select-none">
-      <h2 className="text-xl font-bold mb-8 text-boldPink">Spent This Month</h2>
+    <div className="flex flex-col items-center justify-center w-full h-full p-4 shadow-lg rounded-lg bg-white dark:bg-mediumGrayDarkMode select-none">
+      <h2 className="text-xl font-bold mb-8 text-boldPink dark:text-mediumPinkDark">Spent This Month</h2>
       {lastExpenses.length > 0 ? (
         <>
           <div className="text-center mb-4">
-            <p className="text-lg font-semibold text-[#374151]">
+            <p className="text-lg font-semibold text-[#374151] dark:text-white">
               Total Expenses
             </p>
-            <p className="text-2xl font-bold text-[#374151]">
-              {formattedTotalExpensesWithoutDecimals}
+            <p className="text-2xl font-bold text-[#374151] dark:text-white">
+               ${formattedTotalExpensesWithoutDecimals}
             </p>
           </div>
           <div className="flex justify-center">
