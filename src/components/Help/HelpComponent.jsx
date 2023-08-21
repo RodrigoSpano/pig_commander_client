@@ -80,13 +80,13 @@ export default function HelpComponent() {
           </h1>
           <div className="space-y-4">
             {faqData.map((item, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+              <div key={index} className="bg-white dark:bg-mediumGrayDarkMode p-4 rounded-lg shadow-md">
                 <button
                   className="w-full flex justify-between items-center focus:outline-none"
                   onClick={() => toggleAccordion(index)}
                 >
                   <span className="text-xl font-semibold">{item.question}</span>
-                  <span className="text-gray-600">
+                  <span className="text-gray-600 dark:text-lighGrey">
                     <svg
                       className={`w-6 h-6 transform transition-transform ${
                         activeAccordion === index ? "rotate-180" : ""
@@ -108,7 +108,7 @@ export default function HelpComponent() {
                 </button>
                 {activeAccordion === index && (
                   <div className="mt-2">
-                    <p className="text-gray-600">{item.answer}</p>
+                    <p className="text-gray-600 dark:text-lighGrey">{item.answer}</p>
                   </div>
                 )}
               </div>
