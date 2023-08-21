@@ -40,9 +40,9 @@ const StatsContainerEs = () => {
         </section>
 
         <section className='h-full items-center flex flex-col lg:flex-row'>
-          <MoneyCardEs title={'Expenses'} type={'expense'} array={monthBackup} />
-          <MoneyCardEs title={'Incomes'} type={'income'} array={monthBackup} />
-          <MoneyCardEs title={'Savings'} type={'saving'} array={savings} />
+          <MoneyCardEs title={'Gastos'} type={'expense'} array={monthBackup} />
+          <MoneyCardEs title={'Ingresos'} type={'income'} array={monthBackup} />
+          <MoneyCardEs title={'Ahorros'} type={'saving'} array={savings} />
         </section>
       </div>
 

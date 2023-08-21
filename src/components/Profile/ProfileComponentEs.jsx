@@ -14,7 +14,7 @@ import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import LoaderComponent from "../Loader/LoaderComponent";
 
-const ProfileComponent = () => {
+const ProfileComponentEs = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [cookies] = useCookies();
   const [isLoading, setIsLoading] = useState(true);
@@ -108,4 +108,4 @@ const ProfileComponent = () => {
 };
 
 
-export default ProfileComponent;
+export default ProfileComponentEs;

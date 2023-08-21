@@ -61,14 +61,14 @@ const TransactionsComponentEs = () => {
       <section className='flex flex-col py-4 px-4'>
           <div className='flex flex-row items-center justify-between pb-2 mx-4'>
             <h1 className='font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl'>Ultimas Transacciones</h1>
-            <PermanentFilter />
+            <PermanentFilterEs />
           </div>
 
           <hr className='mx-8 my-4 lg:mx-18' />
 
           <div className='mx-4'>
-            <SearchBarComponent handleSearch={handleSearch} />
-            <PermanentFilter />
+            <SearchBarComponentEs handleSearch={handleSearch} />
+            {/* <PermanentFilterEs /> */}
           </div>
         </section>
 
