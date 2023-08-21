@@ -34,7 +34,7 @@ const UsersCards = () => {
 
   return (
     <motion.div
-      className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+      className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-4"
       variants={cardVariants}
       initial="initial"
       animate="animate"
@@ -70,6 +70,9 @@ const UsersCards = () => {
         variants={cardHoverVariants}
         whileHover="hover"
       >
+        <h2 className="font-semibold text-2xl text-neutral-800 mb-4">
+          Pro Users
+        </h2>
         <h1 className="font-bold text-5xl text-neutral-800">
           {admin.proUsers}
         </h1>

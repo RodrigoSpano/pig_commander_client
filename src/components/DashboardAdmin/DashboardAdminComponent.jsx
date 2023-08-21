@@ -12,14 +12,14 @@ const DashboardAdminComponent = () => {
 
   return (
     <motion.div
-      className="mx-6 sm:mx-8 md:mx-12 select-none p-4 rounded-lg"
+      className="mx-6 sm:mx-8 md:mx-12 md:mt-0 select-none p-4 rounded-lg"
       variants={containerVariants}
       initial="initial"
       animate="animate"
     >
-      <section className="flex items-center justify-between my-6">
+      <section className="flex flex-col md:flex-row items-center justify-between my-6">
         <motion.h1
-          className="font-bold text-strongPink text-4xl sm:text-xl md:text-6xl"
+          className="font-bold text-strongPink text-4xl invisible sm:text-xl md:text-6xl md:visible"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1, transition: { duration: 0.6, delay: 0.2 } }}
         >
