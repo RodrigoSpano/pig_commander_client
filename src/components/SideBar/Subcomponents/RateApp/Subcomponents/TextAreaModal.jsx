@@ -21,7 +21,7 @@ export default function TextAreaModal({ onContentChange }) {
         variant="faded"
         labelPlacement="outside"
         placeholder="Enter your Opinion..."
-        description="Enter a concise opinion of the Pig Commander!"
+        description="Enter a concise opinion of Pig Commander!"
         className="max-w-sm"
         value={content}
         onChange={handleContentChange}

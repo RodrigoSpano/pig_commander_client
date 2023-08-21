@@ -6,7 +6,6 @@ import useTransactionDetail from "../../customHooks/useTransactionDetail";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactions } from "@/redux/actions/monthTransactionsActions";
 import TransactionCard from "./subcomps/TransactionCard";
-import TransactionsPropsContainer from "./subcomps/TransactionsPropsContainer";
 import { useCookies } from "react-cookie";
 import SearchBarComponentEs from "../SearchBar/SearchBarComponentEs";
 import PermanentFilterEs from "./subcompsEs/PermanentFilterEs";
@@ -60,7 +59,7 @@ const TransactionsComponentEs = () => {
       <div>
       <section className='flex flex-col py-4 px-4'>
           <div className='flex flex-row items-center justify-between pb-2 mx-4'>
-            <h1 className='font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl'>Ultimas Transacciones</h1>
+            <h1 className='font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl'>Últimas Transacciones</h1>
             <PermanentFilterEs />
           </div>
 
