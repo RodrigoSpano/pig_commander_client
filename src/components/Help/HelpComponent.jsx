@@ -86,7 +86,7 @@ export default function HelpComponent() {
                   onClick={() => toggleAccordion(index)}
                 >
                   <span className="text-xl font-semibold">{item.question}</span>
-                  <span className="text-gray-600 dark:text-lighGrey">
+                  <span className="text-gray-600 dark:text-lightGrey">
                     <svg
                       className={`w-6 h-6 transform transition-transform ${
                         activeAccordion === index ? "rotate-180" : ""
@@ -108,7 +108,7 @@ export default function HelpComponent() {
                 </button>
                 {activeAccordion === index && (
                   <div className="mt-2">
-                    <p className="text-gray-600 dark:text-lighGrey">{item.answer}</p>
+                    <p className="text-gray-600 dark:text-lightGrey">{item.answer}</p>
                   </div>
                 )}
               </div>
