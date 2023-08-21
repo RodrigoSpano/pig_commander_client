@@ -25,24 +25,24 @@ export default function SignUpComponent() {
 
 
   const {
-        userSignUp,
-        handleChange,
-        handleSubmit,
-        inputInvalidName,
-        inputInvalidEmail,
-        inputInvalidPassword,
-        someFieldEmpty,
-        focusedEmailInput,
-        focusedPasswordInput,
-        focusedNameInput,
-        focusedConfirmPasswordInput,
-        allowNameErrorMessage,
-        allowEmailErrorMessage,
-        allowPasswordErrorMessage,
-        allowConfirmPasswordErrorMessage,
-        handlePasswordConfirmationChange,
-        passwordsMatch,
-        passwordConfirmation,
+    userSignUp,
+    handleChange,
+    handleSubmit,
+    inputInvalidName,
+    inputInvalidEmail,
+    inputInvalidPassword,
+    someFieldEmpty,
+    focusedEmailInput,
+    focusedPasswordInput,
+    focusedNameInput,
+    focusedConfirmPasswordInput,
+    allowNameErrorMessage,
+    allowEmailErrorMessage,
+    allowPasswordErrorMessage,
+    allowConfirmPasswordErrorMessage,
+    handlePasswordConfirmationChange,
+    passwordsMatch,
+    passwordConfirmation,
   } = useSignup();
 
   const {
@@ -53,10 +53,10 @@ export default function SignUpComponent() {
   } = useVisibility();
 
   return (
-    <div className="flex bg-white dark:bg-strongGray">
+    <div className="flex flex-col sm:flex-row bg-white dark:bg-strongGray select-none">
       <BackButton />
       <motion.div
-        className="flex items-center justify-center w-2/4 h-screen bg-white dark:bg-strongGray  select-none"
+        className="flex items-center justify-center w-full sm:w-2/4 h-screen bg-white dark:bg-strongGray select-none"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -141,7 +141,7 @@ export default function SignUpComponent() {
                 {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
               </span>
 
-            {/*CONFIRM PASSWORD */}
+              {/*CONFIRM PASSWORD */}
             </div>
             <div className="mb-3 flex items-center rounded-lg bg-inputForm">
               <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
@@ -159,7 +159,7 @@ export default function SignUpComponent() {
                 {showPasswordConfirmation ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
               </span>
             </div>
-            
+
             {inputInvalidPassword && focusedPasswordInput && (
               <p className="text-xs text-red-600 mt-1">
                 This field is required. It must have at least 1 lowercase letter, 1 uppercase letter, 1 number, no spaces, and a minimum of 8 characters.
@@ -171,7 +171,7 @@ export default function SignUpComponent() {
               </p>
             )}
 
-            <section className="flex flex-col justify-center items-center">
+            <section className="flex flex-col justify-center items-center md:space-y-2">
               {/* CREATE ACCOUNT BUTTON */}
               <button
                 className={`text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 text-base disabled:cursor-no-drop ${someFieldEmpty
@@ -191,12 +191,12 @@ export default function SignUpComponent() {
                 onClick={() => {
                   window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/google`;
                 }}
-                className="flex justify-center"
+                className="flex justify-center mt-2 sm:mt-0 sm:ml-2"
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+                  className="flex justify-center w-60 sm:w-auto rounded-2xl p-2 bg-white drop-shadow-xl"
                 >
                   <div className="self-center">
                     <FcGoogle />
@@ -210,12 +210,12 @@ export default function SignUpComponent() {
                 onClick={() => {
                   window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/github`;
                 }}
-                className="flex justify-center"
+                className="flex justify-center mt-2 sm:mt-0 sm:ml-2"
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+                  className="flex justify-center w-60 sm:w-auto rounded-2xl p-2 bg-white drop-shadow-xl"
                 >
                   <div className="self-center text-black dark:text-black">
                     <VscGithubInverted />
@@ -224,10 +224,10 @@ export default function SignUpComponent() {
                     Continue with Github
                   </h2>
                 </motion.div>
-            </div>
+              </div>
 
               {/* MESSAGE BUTTON */}
-              <p className="text-gray-600 mt-4 dark:text-white">
+              <p className="text-gray-600 mt-4 dark:text-white sm:ml-2 sm:mt-0">
                 Already have an account?{" "}
                 <Link href="/login">
                   <span className="text-pink-500 cursor-pointer">Login</span>
