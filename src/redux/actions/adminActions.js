@@ -1,6 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { succesBanned, succesUnBanned } from "@/customHooks/useAdmin";
+import {
+  failedBanned,
+  failedUnBanned,
+  succesBanned,
+  succesUnBanned,
+} from "@/customHooks/useAdmin";
 
 const banUser = createAsyncThunk("Ban User", async ({ token, id }) => {
   try {
@@ -10,7 +15,8 @@ const banUser = createAsyncThunk("Ban User", async ({ token, id }) => {
     succesBanned();
     return data;
   } catch (error) {
-    alert("User has already been banned");
+    failedBanned();
+    return { error: "User ban failed" };
   }
 });
 
@@ -22,7 +28,8 @@ const unbanUser = createAsyncThunk("unban User", async ({ token, id }) => {
     succesUnBanned();
     return data;
   } catch (error) {
-    alert("User has already been unbaned");
+    failedUnBanned();
+    return { error: "User unban failed" };
   }
 });
 
@@ -61,13 +68,6 @@ const getTableUsers = createAsyncThunk("Table users", async (token) => {
   return data;
 });
 
-const getUserDetail = createAsyncThunk("User Detail", async ({ token, id }) => {
-  const { data } = await axios.get(`/admin/detail/${id}`, {
-    headers: { Authorization: token },
-  });
-  return data;
-});
-
 export {
   banUser,
   unbanUser,
@@ -76,5 +76,4 @@ export {
   getProUsers,
   getBannedUsers,
   getTableUsers,
-  getUserDetail,
 };

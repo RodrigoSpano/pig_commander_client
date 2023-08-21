@@ -7,12 +7,11 @@ import { FcGoogle } from "react-icons/fc";
 import { VscGithubInverted } from "react-icons/vsc";
 import useVisibility from "@/customHooks/useVisibility";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { HiUser, HiEnvelope, HiMiniLockClosed } from 'react-icons/hi2';
+import { HiUser, HiEnvelope, HiMiniLockClosed } from "react-icons/hi2";
 import SideRight from "../SideRight/SideRight";
 import BackButton from "../CustomButtons/BackButton";
 
 export default function SignUpComponent() {
-
   const buttonVariants = {
     hover: {
       scale: 1.05,
@@ -23,26 +22,25 @@ export default function SignUpComponent() {
     },
   };
 
-
   const {
-        userSignUp,
-        handleChange,
-        handleSubmit,
-        inputInvalidName,
-        inputInvalidEmail,
-        inputInvalidPassword,
-        someFieldEmpty,
-        focusedEmailInput,
-        focusedPasswordInput,
-        focusedNameInput,
-        focusedConfirmPasswordInput,
-        allowNameErrorMessage,
-        allowEmailErrorMessage,
-        allowPasswordErrorMessage,
-        allowConfirmPasswordErrorMessage,
-        handlePasswordConfirmationChange,
-        passwordsMatch,
-        passwordConfirmation,
+    userSignUp,
+    handleChange,
+    handleSubmit,
+    inputInvalidName,
+    inputInvalidEmail,
+    inputInvalidPassword,
+    someFieldEmpty,
+    focusedEmailInput,
+    focusedPasswordInput,
+    focusedNameInput,
+    focusedConfirmPasswordInput,
+    allowNameErrorMessage,
+    allowEmailErrorMessage,
+    allowPasswordErrorMessage,
+    allowConfirmPasswordErrorMessage,
+    handlePasswordConfirmationChange,
+    passwordsMatch,
+    passwordConfirmation,
   } = useSignup();
 
   const {
@@ -62,9 +60,10 @@ export default function SignUpComponent() {
         transition={{ duration: 0.5 }}
       >
         <div className="w-full max-w-md p-6">
-
-          <div className='flex flex-col justify-center items-center'>
-            <h1 className="font-bold text-black text-2xl dark:text-mediumPinkDark">REGISTER</h1>
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="font-bold text-black text-2xl dark:text-mediumPinkDark">
+              REGISTER
+            </h1>
             <h2 className="text-gray-500 dark:text-white">
               Pig Commander is the most secure finance App.
             </h2>
@@ -74,7 +73,7 @@ export default function SignUpComponent() {
             <div className="mb-3 flex items-center rounded-lg bg-inputForm">
               <HiUser className="ml-2 text-2xl text-neutral-700" />
               <input
-                className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                className="dark:text-black ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
                 type="text"
                 value={userSignUp.name}
                 name="name"
@@ -89,7 +88,7 @@ export default function SignUpComponent() {
               <div className="mb-3 flex items-center rounded-lg bg-inputForm">
                 <HiUser className="ml-2 text-2xl text-neutral-700" />
                 <input
-                  className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                  className="dark:text-black ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
                   type="text"
                   value={userSignUp.lastName}
                   name="lastName"
@@ -109,7 +108,7 @@ export default function SignUpComponent() {
             <div className="mb-3 flex items-center rounded-lg bg-inputForm">
               <HiEnvelope className="ml-2 text-2xl text-neutral-700" />
               <input
-                className="ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
+                className="dark:text-black ml-2 input-field bg-transparent py-4 focus:outline-none active:outline-none"
                 type="email"
                 value={userSignUp.email}
                 placeholder="Email"
@@ -128,7 +127,7 @@ export default function SignUpComponent() {
             <div className="mb-3 flex items-center rounded-lg bg-inputForm">
               <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
               <input
-                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
+                className="dark:text-black ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
                 type={showPassword ? "text" : "password"}
                 value={userSignUp.password}
                 placeholder="Password"
@@ -137,16 +136,19 @@ export default function SignUpComponent() {
                 onChange={handleChange}
                 onFocus={allowPasswordErrorMessage}
               />
-              <span className="password-toggle" onClick={togglePasswordVisibility}>
+              <span
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+              >
                 {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
               </span>
 
-            {/*CONFIRM PASSWORD */}
+              {/*CONFIRM PASSWORD */}
             </div>
-            <div className="mb-3 flex items-center rounded-lg bg-inputForm">
+            <div className="dark:text-black mb-3 flex items-center rounded-lg bg-inputForm">
               <HiMiniLockClosed className="ml-2 text-2xl text-neutral-700" />
               <input
-                className="ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
+                className="dark:text-black ml-2 input-field bg-transparent py-4 w-80 focus:outline-none active:outline-none"
                 type={showPasswordConfirmation ? "text" : "password"}
                 value={passwordConfirmation}
                 placeholder="Confirm Password"
@@ -155,29 +157,37 @@ export default function SignUpComponent() {
                 onChange={handlePasswordConfirmationChange}
                 onFocus={allowConfirmPasswordErrorMessage}
               />
-              <span className="password-toggle" onClick={togglePasswordConfirmationVisibility}>
-                {showPasswordConfirmation ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              <span
+                className="password-toggle"
+                onClick={togglePasswordConfirmationVisibility}
+              >
+                {showPasswordConfirmation ? (
+                  <AiOutlineEye />
+                ) : (
+                  <AiOutlineEyeInvisible />
+                )}
               </span>
             </div>
-            
+
             {inputInvalidPassword && focusedPasswordInput && (
               <p className="text-xs text-red-600 mt-1">
-                This field is required. It must have at least 1 lowercase letter, 1 uppercase letter, 1 number, no spaces, and a minimum of 8 characters.
+                This field is required. It must have at least 1 lowercase
+                letter, 1 uppercase letter, 1 number, no spaces, and a minimum
+                of 8 characters.
               </p>
             )}
             {!passwordsMatch && focusedConfirmPasswordInput && (
-              <p className="text-xs text-red-600 mt-1">
-                Passwords must match
-              </p>
+              <p className="text-xs text-red-600 mt-1">Passwords must match</p>
             )}
 
             <section className="flex flex-col justify-center items-center">
               {/* CREATE ACCOUNT BUTTON */}
               <button
-                className={`text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 text-base disabled:cursor-no-drop ${someFieldEmpty
+                className={`text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 text-base disabled:cursor-no-drop ${
+                  someFieldEmpty
                     ? "bg-buttonDisabled"
                     : "bg-gradient-to-r from-regularPink to-boldPink"
-                  }`}
+                }`}
                 disabled={someFieldEmpty}
                 onClick={handleSubmit}
                 whileHover="hover"
@@ -224,7 +234,7 @@ export default function SignUpComponent() {
                     Continue with Github
                   </h2>
                 </motion.div>
-            </div>
+              </div>
 
               {/* MESSAGE BUTTON */}
               <p className="text-gray-600 mt-4 dark:text-white">
@@ -234,7 +244,6 @@ export default function SignUpComponent() {
                 </Link>
               </p>
             </section>
-
           </div>
         </div>
       </motion.div>

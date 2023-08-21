@@ -13,7 +13,6 @@ import {
 } from "@nextui-org/react";
 import { IoBan } from "react-icons/io5";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { AiOutlineEye } from "react-icons/ai";
 import { columns } from "./data";
 import {
   banUser,
@@ -22,6 +21,7 @@ import {
 } from "@/redux/actions/adminActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
+import UserDetailModal from "./UserDetailModal";
 
 const statusColorMap = {
   active: "success",
@@ -90,7 +90,7 @@ export default function AdminTable() {
           <div className="relative flex items-center gap-2">
             <Tooltip content="Details">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <AiOutlineEye />
+                <UserDetailModal user={users} />
               </span>
             </Tooltip>
             <Tooltip color="warning" content="Unban">

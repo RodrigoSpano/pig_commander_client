@@ -6,7 +6,6 @@ import {
   getBasicUsers,
   getProUsers,
   getTableUsers,
-  getUserDetail,
   unbanUser,
 } from "../actions/adminActions";
 
@@ -16,7 +15,6 @@ const initialState = {
   proUsers: [],
   bannedUsers: [],
   tableUsers: [],
-  userDetail: [],
 };
 
 const adminSlice = createSlice({
@@ -25,10 +23,26 @@ const adminSlice = createSlice({
   reducer: {},
   extraReducers: (builder) => {
     builder.addCase(banUser.fulfilled, (state, action) => {
-      state.bannedUsers = state.bannedUsers + 1;
+      if (!action.payload.error) {
+        state.bannedUsers += 1;
+      }
+      const userIndex = state.tableUsers.findIndex(
+        (user) => user.id === action.payload
+      );
+      if (userIndex !== -1) {
+        state.tableUsers[userIndex].status = "banned";
+      }
     });
     builder.addCase(unbanUser.fulfilled, (state, action) => {
-      state.bannedUsers = state.bannedUsers - 1;
+      if (!action.payload.error) {
+        state.bannedUsers -= 1;
+      }
+      const userIndex = state.tableUsers.findIndex(
+        (user) => user.id === action.payload
+      );
+      if (userIndex !== -1) {
+        state.tableUsers[userIndex].status = "active";
+      }
     });
     builder.addCase(getAllUsersCount.fulfilled, (state, action) => {
       state.allUsers = action.payload;
@@ -43,9 +57,6 @@ const adminSlice = createSlice({
       state.bannedUsers = action.payload;
     });
     builder.addCase(getTableUsers.fulfilled, (state, action) => {
-      state.tableUsers = action.payload;
-    });
-    builder.addCase(getUserDetail.fulfilled, (state, action) => {
       state.tableUsers = action.payload;
     });
   },

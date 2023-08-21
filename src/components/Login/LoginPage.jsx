@@ -1,15 +1,15 @@
-'use client'
-import React from 'react';
-import Link from 'next/link';
-import { FcGoogle } from 'react-icons/fc';
-import { VscGithubInverted } from 'react-icons/vsc';
-import { motion } from 'framer-motion';
-import SideRight from '../SideRight/SideRight';
-import useLogin from '@/customHooks/useLogin';
-import useVisibility from '@/customHooks/useVisibility';
-import BackButton from '../CustomButtons/BackButton';
-import { HiEnvelope, HiMiniLockClosed } from 'react-icons/hi2';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+"use client";
+import React from "react";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
+import { VscGithubInverted } from "react-icons/vsc";
+import { motion } from "framer-motion";
+import SideRight from "../SideRight/SideRight";
+import useLogin from "@/customHooks/useLogin";
+import useVisibility from "@/customHooks/useVisibility";
+import BackButton from "../CustomButtons/BackButton";
+import { HiEnvelope, HiMiniLockClosed } from "react-icons/hi2";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const LoginContainer = () => {
   const {
@@ -39,7 +39,9 @@ const LoginContainer = () => {
         transition={{ duration: 0.5 }}
         className="w-2/4 self-center text-center "
       >
-        <h1 className="font-bold text-black dark:text-mediumPinkDark text-2xl">LOGIN</h1>
+        <h1 className="font-bold text-black dark:text-mediumPinkDark text-2xl">
+          LOGIN
+        </h1>
 
         <h2 className="text-gray-500 mb-5 dark:text-white ">
           Pig Commander is the most secure finance App.
@@ -54,7 +56,7 @@ const LoginContainer = () => {
           >
             <HiEnvelope className="text-gray-500 w-7 h-7 text-lg ml-4" />
             <input
-              className="bg-transparent py-4 focus:outline-none active:outline-none w-full ml-2"
+              className="dark:text-black bg-transparent py-4 focus:outline-none active:outline-none w-full ml-2"
               type="email"
               name="email"
               value={userLogin.email}
@@ -65,7 +67,7 @@ const LoginContainer = () => {
             />
           </motion.div>
           <p className="text-red-400 relative bottom-2.5 text-xs">
-            {inputInvalidEmail && focusedEmailInput ? 'Email invalid' : ''}
+            {inputInvalidEmail && focusedEmailInput ? "Email invalid" : ""}
           </p>
 
           <motion.div
@@ -76,8 +78,8 @@ const LoginContainer = () => {
           >
             <HiMiniLockClosed className="text-gray-500 w-7 h-7 text-lg ml-4" />
             <input
-              className="bg-transparent py-4 focus:outline-none active:outline-none w-full ml-2"
-              type={showPassword ? 'text' : 'password'}
+              className="dark:text-black bg-transparent py-4 focus:outline-none active:outline-none w-full ml-2"
+              type={showPassword ? "text" : "password"}
               name="password"
               value={userLogin.password}
               placeholder="Password..."
@@ -96,8 +98,8 @@ const LoginContainer = () => {
           </motion.div>
           <p className="text-red-400 relative top-0.5 text-xs text-center w-80">
             {inputInvalidPassword && focusedPasswordInput
-              ? 'This field is required'
-              : ''}
+              ? "This field is required"
+              : ""}
           </p>
         </div>
 
@@ -105,7 +107,9 @@ const LoginContainer = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className={`text-white p-3.5 font-bold cursor-pointer rounded-2xl pl-5 pr-5 mt-8 text-base disabled:cursor-no-drop ${
-            someFieldEmpty ? 'bg-buttonDisabled' : 'bg-gradient-to-r from-regularPink to-boldPink'
+            someFieldEmpty
+              ? "bg-buttonDisabled"
+              : "bg-gradient-to-r from-regularPink to-boldPink"
           }`}
           disabled={someFieldEmpty}
           type="submit"
