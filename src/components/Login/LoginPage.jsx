@@ -30,14 +30,15 @@ const LoginContainer = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-row h-screen bg-white dark:bg-strongGray select-none"
+      className="flex flex-col sm:flex-row bg-white dark:bg-strongGray select-none"
     >
       <BackButton />
+
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-2/4 self-center text-center "
+        className="w-full h-full sm:w-2/4 self-center text-center"
       >
         <h1 className="font-bold text-black dark:text-mediumPinkDark text-2xl">
           LOGIN
@@ -137,12 +138,12 @@ const LoginContainer = () => {
           onClick={() => {
             window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/google`;
           }}
-          className="flex justify-center"
+          className="flex justify-center mt-2"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+            className="flex justify-center w-60 sm:w-auto rounded-2xl p-2 bg-white drop-shadow-xl"
           >
             <div className="self-center">
               <FcGoogle />
@@ -156,12 +157,12 @@ const LoginContainer = () => {
           onClick={() => {
             window.location.href = `${process.env.NEXT_PUBLIC_API_URI}/auth/github`;
           }}
-          className="flex justify-center"
+          className="flex justify-center mt-2"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex justify-center w-60 rounded-2xl p-2 bg-white mt-2 drop-shadow-xl"
+            className="flex justify-center w-60 sm:w-auto rounded-2xl p-2 bg-white drop-shadow-xl"
           >
             <div className="self-center text-black dark:text-black">
               <VscGithubInverted />
@@ -172,6 +173,7 @@ const LoginContainer = () => {
           </motion.div>
         </div>
       </motion.div>
+
       <SideRight />
     </form>
   );

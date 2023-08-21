@@ -14,7 +14,7 @@ import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import LoaderComponent from "../Loader/LoaderComponent";
 
-const ProfileComponent = () => {
+const ProfileComponentEs = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [cookies] = useCookies();
   const [isLoading, setIsLoading] = useState(true);
@@ -35,13 +35,17 @@ const ProfileComponent = () => {
         <>
           <>
             {user?.premium ? (
-              <p className="text-regularPink font-bold text-xl xl: lg:h-10">
+              <motion.p
+                className="text-regularPink font-bold text-xl xl:text-2xl"
+                whileHover={{ scale: 1.05 }}
+              >
                 PRO
-              </p>
+              </motion.p>
             ) : (
               <Button
                 onPress={onOpen}
                 className="bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
               >
                 Hazte Premium
               </Button>
@@ -63,8 +67,7 @@ const ProfileComponent = () => {
                       <p className="text-gray-600">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Nullam pulvinar risus non risus hendrerit venenatis.
-                        Pellentesque sit amet hendrerit risus, sed porttitor
-                        quam.
+                        Pellentesque sit amet hendrerit risus, sed porttitor quam.
                       </p>
                     </div>
                     <div>
@@ -85,12 +88,14 @@ const ProfileComponent = () => {
                     >
                       Cerrar
                     </Button>
-                    <Button
-                      className="bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300"
-                      onClick={() => becomePremiumHandler(cookies.token)}
-                    >
-                      Actualizar a Premium
-                    </Button>
+                    <motion.div whileHover={{ scale: 1.05 }}>
+                      <Button
+                        className="bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300"
+                        onClick={() => becomePremiumHandler(cookies.token)}
+                      >
+                        Actualizar a Premium
+                      </Button>
+                    </motion.div>
                   </ModalFooter>
                 </>
               )}
@@ -102,4 +107,5 @@ const ProfileComponent = () => {
   );
 };
 
-export default ProfileComponent;
+
+export default ProfileComponentEs;

@@ -4,9 +4,10 @@ import axios from "axios";
 //* CREATE THE INVERSION
 export const createInversion = createAsyncThunk(
   "inversion/create",
-  async (inversion, token) => {
+  async ( payload) => {
     try {
-      const { data } = await axios.post("/inversions", inversion, {
+      const {token, ...datas} = payload;
+      const { data } = await axios.post("/inversions",  datas  , {
         headers: { 'Authorization': token },
       });
       return data;
@@ -70,8 +71,9 @@ export const updateInversion = createAsyncThunk(
 //* DELETE INVERSION
 export const deleteInversion = createAsyncThunk(
   "inversion/delete",
-  async (id, token) => {
+  async (payload) => {
     try {
+      const {token, id} = payload;
       const { data } = await axios.delete(`/inversions/${id}`, {
         headers: { Authorization: token },
       });

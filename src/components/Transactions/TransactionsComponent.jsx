@@ -55,19 +55,24 @@ const TransactionsComponent = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-mediumGrayDarkMode rounded-md h-full flex flex-col justify-between box-border">
+    <div className="bg-white dark:bg-mediumGrayDarkMode rounded-md h-full w-full flex flex-col justify-between box-border">
       <div>
-        <section className="flex items-center justify-around py-4 ">
-          <h1 className="font-bold text-boldPink text-2xl xl:text-4xl lg:text-2xl md:text-xl sm:text-lg ">
-            Last Transactions
-          </h1>
-          <SearchBarComponent handleSearch={handleSearch} />
-          <PermanentFilter />
+        <section className='flex flex-col py-4 px-4'>
+          <div className='flex flex-row items-center justify-between pb-2 mx-4'>
+            <h1 className='font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl'>Last Transactions</h1>
+            <PermanentFilter />
+          </div>
+
+          <hr className='mx-8 my-4 lg:mx-18' />
+
+          <div className='mx-4'>
+            <SearchBarComponent handleSearch={handleSearch} />
+            <PermanentFilter />
+          </div>
         </section>
 
-        <hr className="mx-16" />
 
-        <section className=" py-4">
+        <section className="">
           <TransactionsPropsContainer
             handleAlphabetically={handleAlphabetically}
             handleOrderByAmount={handleOrderByAmount}
@@ -75,12 +80,12 @@ const TransactionsComponent = () => {
           <div>
             {transactions?.length
               ? transactions?.map((t, i) => (
-                  <TransactionCard
-                    handleDetail={handleDetail}
-                    transaction={t}
-                    key={i}
-                  />
-                ))
+                <TransactionCard
+                  handleDetail={handleDetail}
+                  transaction={t}
+                  key={i}
+                />
+              ))
               : null}
           </div>
         </section>

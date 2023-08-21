@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+//modules
 import Option_one_component from "./subcomps_graphs/Option_one_component";
 import Option_two_component from "./subcomps_graphs/Option_two_component";
 

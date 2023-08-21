@@ -5,6 +5,7 @@ import {
   getExpensesTotal,
   getIncomesTotal,
 } from "@/utils/helper/monthTransactions";
+import { motion } from 'framer-motion';
 
 const BalanceCard = ({ transactions }) => {
   const [total, setTotal] = useState(0);
@@ -17,19 +18,30 @@ const BalanceCard = ({ transactions }) => {
     return incomesTotal - expensesTotal;
   };
 
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
   useEffect(() => {
     setTotal(getBalance());
   }, [transactions]);
 
   return (
-    <div className="mr-2">
-      <div className="bg-white dark:bg-mediumGrayDarkMode rounded-2xl shadow-md">
-        <div className="flex items-center justify-between p-4">
-          <p className="font-semibold xl:text-2xl lg:text-xl md:text-lg sm:text-base dark:text-mediumPinkDark">
+<motion.div
+      className='mr-0 md:mr-2'
+      initial='hidden'
+      animate='visible'
+      variants={cardVariants}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="bg-gradient-to-r from-regularPink rounded-2xl shadow-md">
+        <div className="flex items-center justify-between p-4 xl:p-6">
+          <p className="font-semibold text-white text-2xl pb-0 md:text-3xl xl:text-4xl xl:pb-4">
             My Balance
           </p>
           <span
-            className="cursor-pointer font-semibold xl:text-2xl lg:text-xl md:text-lg sm:text-base"
+            className="cursor-pointer font-semibold text-3xl text-[#454545]"
             onClick={togglePasswordVisibility}
           >
             {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
@@ -37,12 +49,12 @@ const BalanceCard = ({ transactions }) => {
         </div>
 
         <div className="p-4">
-          <span className="font-bold xl:text-4xl lg:text-5xl md:text-lg sm:text-base">
-            {showPassword ? `$${total?.toLocaleString()}` : "$*****"}
+          <span className="font-bold text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+            {showPassword ? `$${total?.toLocaleString()}` : '$*****'}
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

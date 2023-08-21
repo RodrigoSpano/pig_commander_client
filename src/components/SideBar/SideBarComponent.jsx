@@ -25,6 +25,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 import { setLanguage } from "@/redux/features/languageSlice";
+import { getAllInversions } from "@/redux/actions/inversionsActions";
 
 
 const NavBar = () => {
@@ -46,6 +47,8 @@ const NavBar = () => {
       if (!savings.length) {
         dispatch(getAllSavings(cookies.token));
       }
+       dispatch(getAllInversions(cookies.token));
+
     }
   }, [dispatch]);
 
@@ -101,7 +104,7 @@ const NavBar = () => {
   return (
     <>
       {/* DESKTOP */}
-      <nav className="bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-64 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none">
+      <nav className="bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none">
         <div>
           {/* LOGO */}
           <div className="flex items-center justify-center mb-4 xl:mb-6">

@@ -9,7 +9,7 @@ export default function SignUpComponent () {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-2/4 bg-gradient-to-r from-boldPink to-regularPink flex items-center justify-center h-screen"
+            className="invisible sm:visible w-2/4 bg-gradient-to-r from-boldPink to-regularPink flex items-center justify-center h-screen"
         >
             <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
