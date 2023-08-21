@@ -42,19 +42,19 @@ const FeaturesSection = () => {
           transition={{ delay: 0.9, duration: 0.8 }}
           className='pt-4'
         >
-          <p className='text-gray-500 text-sm md:text-base'>
+          <p className='text-gray-500 text-sm md:text-base dark:text-white'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
-          <p className='text-gray-500 text-sm md:text-base'>
+          <p className='text-gray-500 text-sm md:text-base dark:text-white '>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
-          <p className='text-gray-500 text-sm md:text-base'>
+          <p className='text-gray-500 text-sm md:text-base dark:text-white'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
-          <p className='text-gray-500 text-sm md:text-base'>
+          <p className='text-gray-500 text-sm md:text-base dark:text-white'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
-          <p className='text-gray-500 text-sm md:text-base'>
+          <p className='text-gray-500 text-sm md:text-base dark:text-white'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
         </motion.div>

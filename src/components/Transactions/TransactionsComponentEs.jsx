@@ -2,16 +2,17 @@
 import usePagination from "@/customHooks/usePagination";
 import { useEffect, useState } from "react";
 import PaginationComponent from "../Pagination/PaginationComponent";
-import SearchBarComponent from "../SearchBar/SearchBarComponent";
 import useTransactionDetail from "../../customHooks/useTransactionDetail";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactions } from "@/redux/actions/monthTransactionsActions";
 import TransactionCard from "./subcomps/TransactionCard";
 import TransactionsPropsContainer from "./subcomps/TransactionsPropsContainer";
-import PermanentFilter from "./subcomps/PermanentFilter";
 import { useCookies } from "react-cookie";
+import SearchBarComponentEs from "../SearchBar/SearchBarComponentEs";
+import PermanentFilterEs from "./subcompsEs/PermanentFilterEs";
+import TransactionsPropsContainerEs from "./subcompsEs/TransactionsPropsContainer";
 
-const TransactionsComponent = () => {
+const TransactionsComponentEs = () => {
   const dispatch = useDispatch();
   const transactionsState = useSelector(
     (state) => state.monthTransactions.transactions
@@ -37,7 +38,7 @@ const TransactionsComponent = () => {
     handleAmountOrder,
   } = usePagination(transactionsState, 4);
 
-  const { handleDetail } = useTransactionDetail();
+  const {handleDetailEs } = useTransactionDetail();
 
   const [orders, setOrders] = useState({
     alphabetically: false,
@@ -55,34 +56,34 @@ const TransactionsComponent = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-mediumGrayDarkMode rounded-md h-full flex flex-col justify-between box-border">
+    <div className="bg-white rounded-md h-full flex flex-col justify-between box-border">
       <div>
         <section className="flex items-center justify-around py-4 ">
           <h1 className="font-bold text-boldPink text-2xl xl:text-4xl lg:text-2xl md:text-xl sm:text-lg ">
-            Last Transactions
+            Últimas Transacciones
           </h1>
-          <SearchBarComponent handleSearch={handleSearch} />
-          <PermanentFilter />
+          <SearchBarComponentEs handleSearch={handleSearch} />
+          <PermanentFilterEs />
         </section>
 
         <hr className="mx-16" />
 
         <section className=" py-4">
-          <TransactionsPropsContainer
+          <TransactionsPropsContainerEs
             handleAlphabetically={handleAlphabetically}
             handleOrderByAmount={handleOrderByAmount}
           />
-          <div>
+          <>
             {transactions?.length
               ? transactions?.map((t, i) => (
                   <TransactionCard
-                    handleDetail={handleDetail}
+                    handleDetail={handleDetailEs}
                     transaction={t}
                     key={i}
                   />
                 ))
               : null}
-          </div>
+          </>
         </section>
       </div>
 
@@ -104,4 +105,4 @@ const TransactionsComponent = () => {
   );
 };
 
-export default TransactionsComponent;
+export default TransactionsComponentEs;

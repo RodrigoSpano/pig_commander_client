@@ -59,7 +59,7 @@ const FeaturesSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className='text-gray-500 text-sm md:text-base mt-1'
+            className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </motion.p>
@@ -76,7 +76,7 @@ const FeaturesSection = () => {
             <motion.h3
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className='font-semibold text-lg ml-2'
+              className='font-semibold text-lg ml-2 dark:text-white'
             >
               Title
             </motion.h3>
@@ -85,7 +85,7 @@ const FeaturesSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
-            className='text-gray-500 text-sm md:text-base mt-1'
+            className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </motion.p>
@@ -111,7 +111,7 @@ const FeaturesSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.6 }}
-            className='text-gray-500 text-sm md:text-base mt-1'
+            className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </motion.p>

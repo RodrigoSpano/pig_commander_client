@@ -5,8 +5,11 @@ import { BiStar } from "react-icons/bi";
 import TextAreaModal from "./RateApp/Sobcomponents/TextAreaModal";
 import RateStars from "./RateApp/Sobcomponents/RateStars";
 import RateAppDescription from "./RateApp/Sobcomponents/RateAppDescription";
+import { useSelector } from "react-redux";
 
 export default function RateApp() {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const linkVariants = {
@@ -19,7 +22,7 @@ export default function RateApp() {
     <>
       <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
         <motion.div
-          className=' flex items-center justify-start font-semibold cursor-pointer text-boldGray hover:text-regularPink'
+          className=' flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:text-regularPink text-boldGray hover:text-regularPink'
           variants={linkVariants}
           initial='initial'
           animate='animate'
@@ -29,7 +32,7 @@ export default function RateApp() {
             <BiStar className='text-2xl xl:text-3xl' />
           </motion.span>
           <motion.p className='font-semibold cursor-pointer text-base xl:text-lg' onClick={onOpen}>
-            Rate App
+          {selectedLanguage === "en" ? "Rate App" : "Calificar App"}
           </motion.p>
         </motion.div>
       </div>

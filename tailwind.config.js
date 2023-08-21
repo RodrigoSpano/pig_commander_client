@@ -40,6 +40,10 @@ module.exports = {
         lowGray: "#9da4b0",
         mediumPink: "#DE78AE",
         medium2Pink: "#dc368d",
+        mediumGrayDarkMode: "#444444", 
+        strongGray: "#2c2c2c",
+        mediumPinkDark: "#e364a5",
+        lowGrayDark: "#797979",
       
         // light mode
         tremor: {
@@ -95,5 +99,9 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui({
+    themes: {
+      
+    }
+  })],
 };

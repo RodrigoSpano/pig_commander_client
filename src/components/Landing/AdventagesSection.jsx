@@ -69,7 +69,7 @@ const AdventagesSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className='text-gray-500 text-sm md:text-base mt-1'
+            className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
             The app should be easy to use and navigate, even for people unfamiliar with personal finance.
           </motion.p>
@@ -101,7 +101,7 @@ const AdventagesSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.6 }}
-            className='text-gray-500 text-sm md:text-base mt-1'
+            className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
             The application must allow users to personalize their experience to suit their individual needs and goals.
           </motion.p>
@@ -133,7 +133,7 @@ const AdventagesSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.6, duration: 0.6 }}
-            className='text-gray-500 text-sm md:text-base mt-1'
+            className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
             The app should provide users with personal finance information so they can learn and improve their financial skills.
           </motion.p>

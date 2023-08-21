@@ -10,7 +10,7 @@ const useTransactionDetail = () => {
   const dispatch = useDispatch();
   const [cookies] = useCookies();
 
-  const handleDetailSav = (transaction) => {
+  const handleDetailEs = (transaction) => {
     const findCategory = categories.find(
       (cat) => cat.id === transaction.category_id
     );
@@ -20,13 +20,13 @@ const useTransactionDetail = () => {
     Swal.fire({
       position: "center",
       title: `
-      <p>Category: ${findCategory.name.replace(/^\w/, (c) =>
+      <p>Categoría: ${findCategory.name.replace(/^\w/, (c) =>
         c.toUpperCase()
       )}</p>
-      <p>Method: ${findMethod.name.replace(/^\w/, (c) => c.toUpperCase())}</p>
-      <p>Name: ${transaction.name}</p>
-      <p>Amount: $${transaction.amount}</p>
-      <p>Date: ${transaction.createdAt.substring(0, 10)}</p>
+      <p>Método: ${findMethod.name.replace(/^\w/, (c) => c.toUpperCase())}</p>
+      <p>Nombre: ${transaction.name}</p>
+      <p>Monto: $${transaction.amount}</p>
+      <p>Fecha: ${transaction.createdAt.substring(0, 10)}</p>
       `,
       showconfirmButton: true,
       showCloseButton: true,
@@ -85,10 +85,9 @@ const useTransactionDetail = () => {
        }
       }
     });
-   
   };
 
-  return { handleDetailSav };
+  return {  handleDetailEs };
 };
 
 export default useTransactionDetail;
