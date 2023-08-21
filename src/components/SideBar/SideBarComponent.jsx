@@ -32,7 +32,6 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector((state) => state.user);
   const savings = useSelector((state) => state.savings.allSavings);
-  const allSavings = useSelector((state)=> state.inverions.allInversions)
   const dispatch = useDispatch();
   const [cookies, setCookies] = useCookies();
 
@@ -48,9 +47,8 @@ const NavBar = () => {
       if (!savings.length) {
         dispatch(getAllSavings(cookies.token));
       }
-      if(!allInversions.length){
-        dispatch(getAllInversions(cookies.token));
-      }
+       dispatch(getAllInversions(cookies.token));
+
     }
   }, [dispatch]);
 
