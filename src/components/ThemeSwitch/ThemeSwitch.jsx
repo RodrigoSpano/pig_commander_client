@@ -50,9 +50,9 @@ const ThemeSwitch = () => {
             onValueChange={handleChange}
             thumbIcon={({ isSelected, className }) =>
                 isSelected ? (
-                    <SunIcon className={className}/>
-                ) : (
                     <MoonIcon className={className} />
+                ) : (
+                    <SunIcon className={className}/>
                 )
             }
         >

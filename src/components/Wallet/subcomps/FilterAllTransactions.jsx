@@ -62,7 +62,7 @@ const FilterAllTransactions = ({ setOrders }) => {
   return (
     <div className="flex justify-around py-4 items-center">
       <select
-        className="block  py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
+        className="block  py-2 px-4 border border-[#E6E9EE] dark:bg-mediumGrayDarkMode rounded-lg shadow-sm outline-none"
         onChange={handleFilterByType}
         value={values.types}
       >
@@ -75,7 +75,7 @@ const FilterAllTransactions = ({ setOrders }) => {
       </select>
 
       <select
-        className="block py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
+        className="block py-2 px-4 border border-[#E6E9EE] dark:bg-mediumGrayDarkMode  rounded-lg shadow-sm outline-none"
         onChange={handleFilterByMethod}
         value={values.methods}
       >
@@ -93,7 +93,7 @@ const FilterAllTransactions = ({ setOrders }) => {
       </select>
 
       <select
-        className="block py-2 px-4 border-2 border-[#E6E9EE] rounded-lg shadow-sm outline-none"
+        className="block py-2 px-4 border border-[#E6E9EE] dark:bg-mediumGrayDarkMode  rounded-lg shadow-sm outline-none"
         onChange={handleFilterByCategory}
         value={values.categories}
       >

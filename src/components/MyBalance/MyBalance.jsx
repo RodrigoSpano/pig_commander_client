@@ -54,7 +54,7 @@ export default function WalletComponent() {
     <div>
       <div>
         <div className="bg-mediumPink h-7 rounded-t-lg "></div>
-        <h1 className="font-bold ml-5 mt-2.5 text-xl">My Balance</h1>
+        <h1 className="font-bold ml-5 mt-2.5 text-xl dark:text-mediumPinkDark">My Balance</h1>
         <div className="flex flex-row">
           <div className="text-regularPink text-7xl font-semibold mt-5 ml-5 ">
             <BalancesCard backup_transactions={allTransactions} />
@@ -68,7 +68,7 @@ export default function WalletComponent() {
       <hr className="my-2 mx-16 mt-6" />
       <div className="my-4">
         <div className="flex justify-around">
-          <h1 className="text-4xl font-bold text-boldPink">Transactions</h1>
+          <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">Transactions</h1>
           <SearchBarComponent handleSearch={handleSearch} />
         </div>
         <FilterAllTransactions setOrders={setOrders} />
