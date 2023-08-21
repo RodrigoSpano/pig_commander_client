@@ -56,19 +56,23 @@ const TransactionsComponentEs = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-mediumGrayDarkMode  rounded-md h-full flex flex-col justify-between box-border">
+    <div className="bg-white dark:bg-mediumGrayDarkMode rounded-md h-full w-full flex flex-col justify-between box-border">
       <div>
-        <section className="flex items-center justify-around py-4 ">
-          <h1 className="font-bold text-boldPink text-2xl xl:text-4xl lg:text-2xl md:text-xl sm:text-lg ">
-            Últimas Transacciones
-          </h1>
-          <SearchBarComponentEs handleSearch={handleSearch} />
-          <PermanentFilterEs />
+      <section className='flex flex-col py-4 px-4'>
+          <div className='flex flex-row items-center justify-between pb-2 mx-4'>
+            <h1 className='font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl'>Ultimas Transacciones</h1>
+            <PermanentFilter />
+          </div>
+
+          <hr className='mx-8 my-4 lg:mx-18' />
+
+          <div className='mx-4'>
+            <SearchBarComponent handleSearch={handleSearch} />
+            <PermanentFilter />
+          </div>
         </section>
 
-        <hr className="mx-16" />
-
-        <section className=" py-4">
+        <section className=" ">
           <TransactionsPropsContainerEs
             handleAlphabetically={handleAlphabetically}
             handleOrderByAmount={handleOrderByAmount}
