@@ -1,5 +1,5 @@
 "use client";
-import {  useState } from "react";
+import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useVisibility from "@/customHooks/useVisibility";
 import SearchBarComponent from "../SearchBar/SearchBarComponent";
@@ -13,14 +13,12 @@ import BalancesCard from "./BalancesCard";
 import ButtonCreateCategory from "./subComponent/ButtonCreateCategory";
 import DeleteCreatedCategory from "./subComponent/DeleteCreatedCategory";
 
-
 export default function WalletComponent() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { showPassword, togglePasswordVisibility } = useVisibility();
   const allTransactions = useSelector(
     (state) => state.transactions.transactions
   );
-
 
   const {
     nextHandler,
@@ -61,8 +59,8 @@ export default function WalletComponent() {
           </div>
         </div>
         <div className={"flex justify-end"}>
-        <ButtonCreateCategory />
-        <DeleteCreatedCategory/>
+          <ButtonCreateCategory />
+          <DeleteCreatedCategory />
         </div>
       </div>
       <hr className="my-2 mx-16 mt-6" />
