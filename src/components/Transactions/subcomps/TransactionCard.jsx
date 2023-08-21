@@ -17,7 +17,7 @@ const TransactionCard = ({ transaction, handleDetail }) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex items-center justify-between px-6 py-4 mx-16 my-2 bg-white  border dark:bg-mediumGrayDarkMode border-gray-200 rounded-lg cursor-pointer"
+      className="flex items-center justify-between px-6 py-4 mx-8 my-2 bg-white  border dark:bg-mediumGrayDarkMode border-gray-200 rounded-lg cursor-pointer"
       onClick={() => {
         handleDetail(transaction);
       }}

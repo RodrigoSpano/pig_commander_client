@@ -27,30 +27,27 @@ const StatsContainerEs = () => {
   }, [])
 
   return (
-    <div className="flex justify-between select-none">
+    <div className="flex select-none">
 
-      <div className='w-3/4'>
-        <section className='flex h-1/2'>
-          <div className='w-1/2 '>
-            {}
+      <div className=' flex justify-center items-stretch flex-col w-full lg:w-3/4 '>
+        <section className='mt-12 mb-2 h-full flex flex-col lg:flex-row md:mt-0'>
+          <div className='w-full lg:w-1/2'>
             <WelcomeCardEs user={user} />
           </div>
-          <div className='w-1/2'>
+          <div className='w-full lg:w-1/2'>
             <BalanceCardEs transactions={monthBackup} />
           </div>
         </section>
 
-        <section className='flex justify-between h-1/2 w-full '>
-          <MoneyCardEs title={'Gastos'} type={'expense'} array={monthBackup} />
-          <MoneyCardEs title={'Ingresos'} type={'income'} array={monthBackup} />
-          <MoneyCardEs title={'Ahorros'} type={'saving'} array={savings} />
+        <section className='h-full items-center flex flex-col lg:flex-row'>
+          <MoneyCardEs title={'Expenses'} type={'expense'} array={monthBackup} />
+          <MoneyCardEs title={'Incomes'} type={'income'} array={monthBackup} />
+          <MoneyCardEs title={'Savings'} type={'saving'} array={savings} />
         </section>
       </div>
 
-      <div className='w-1/4'>
-        <section className=''>
-          <UserCardEs user={user} />
-        </section>
+      <div className='hidden lg:w-1/4 lg:block'>
+        <UserCardEs user={user} />
       </div>
 
     </div>
