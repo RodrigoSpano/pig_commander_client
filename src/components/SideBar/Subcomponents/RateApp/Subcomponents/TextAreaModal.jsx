@@ -17,7 +17,7 @@ export default function TextAreaModal() {
         variant="faded"
         labelPlacement="outside"
         placeholder="Enter your Opinion..."
-        description="Enter a concise opinion of the Pig Commander!"
+        description="Enter a concise opinion of Pig Commander!"
         className="max-w-sm"
       />
     </motion.div>
