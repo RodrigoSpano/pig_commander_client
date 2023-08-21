@@ -28,7 +28,7 @@ const Dashboard = () => {
             <BiSolidDashboard className="text-2xl xl:text-3xl" />
           </motion.span>
           <motion.p className='font-semibold cursor-pointer text-base xl:text-lg '>
-            Dashboard
+          {selectedLanguage === "en" ? "Dashboard" : "Panel"}
           </motion.p>
         </motion.div>
       </Link>

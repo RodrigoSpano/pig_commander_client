@@ -1,12 +1,12 @@
 import React from 'react';
-import ProfileComponent from '../../Profile/ProfileComponent';
 import { updatePicture } from '@/redux/actions/userActions';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
+import ProfileComponentEs from '@/components/Profile/ProfileComponentEs';
 
-const UserCard = ({ user }) => {
+const UserCardEs = ({ user }) => {
   const [cookies, setCookie] = useCookies();
   const { image } = user;
   const dispatch = useDispatch();
@@ -57,10 +57,10 @@ const UserCard = ({ user }) => {
           {user.lastname.replace(/^\w/, (c) => c.toUpperCase())}
         </div>
         {/* UPTATE BUTTON */}
-        <ProfileComponent user={user} />
+        <ProfileComponentEs user={user} />
       </div>
     </motion.div>
   );
 };
 
-export default UserCard;
+export default UserCardEs;
