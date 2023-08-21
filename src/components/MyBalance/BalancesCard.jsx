@@ -32,7 +32,7 @@ const BalancesCard = ({ backup_transactions }) => {
         <div className="flex justify-between items-center">
         </div>
         <div className="flex items-center">
-          <span className="text-strongPink text-5xl font-Poppins font-bold text-right pr-5">
+          <span className="text-strongPink dark:text-white text-5xl font-Poppins font-bold text-right pr-5">
             {showPassword ? `$${total?.toLocaleString()}` : '$*****'}
           </span>
           <span

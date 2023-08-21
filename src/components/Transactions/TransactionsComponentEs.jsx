@@ -56,7 +56,7 @@ const TransactionsComponentEs = () => {
   };
 
   return (
-    <div className="bg-white rounded-md h-full flex flex-col justify-between box-border">
+    <div className="bg-white dark:bg-mediumGrayDarkMode  rounded-md h-full flex flex-col justify-between box-border">
       <div>
         <section className="flex items-center justify-around py-4 ">
           <h1 className="font-bold text-boldPink text-2xl xl:text-4xl lg:text-2xl md:text-xl sm:text-lg ">

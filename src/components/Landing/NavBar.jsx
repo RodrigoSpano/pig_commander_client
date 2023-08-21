@@ -12,7 +12,6 @@ import {
   HiOutlineUser
 } from "react-icons/hi";
 import { motion, AnimatePresence } from 'framer-motion';
-import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -109,9 +108,6 @@ const NavBar = () => {
               Register
             </motion.button>
           </Link>
-          <div className=''>
-            <ThemeSwitch/>
-          </div>
         </div>
       </nav>
     
@@ -190,9 +186,6 @@ const NavBar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        <div className='ml-2 pb-2'>
-            <ThemeSwitch/>
-        </div>
       </nav>
     </>
   );

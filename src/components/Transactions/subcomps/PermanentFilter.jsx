@@ -17,7 +17,7 @@ const PermanentFilter = () => {
 
   return (
     <Dropdown className=''>
-      <DropdownTrigger className='py-2'>
+      <DropdownTrigger className='py-2 dark:border dark:border-white'>
         <Button variant="bordered">Types <span className=''><HiChevronDown/></span></Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Filter Transactions">
