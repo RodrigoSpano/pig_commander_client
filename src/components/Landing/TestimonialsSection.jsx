@@ -27,14 +27,14 @@ const TestimonialsSection = () => {
 
         {/* TEXTOS */}
         <div className='text-center md:text-left'>
-          <h2 className='font-semibold text-2xl md:text-3xl'>The Best Financial Accounting</h2>
-          <h2 className='font-semibold text-2xl md:text-3xl'>App Ever</h2>
-          <p className='text-gray-500'>“I have been using this app for a few</p>
-          <p className='text-gray-500'>months now and I am very impressed. It is</p>
-          <p className='text-gray-500'>the best financial accounting app you ever</p>
-          <p className='text-gray-500'>used. It's easy to use, packed with features,</p>
-          <p className='text-gray-500'>and has helped me take control of my</p>
-          <p className='text-gray-500'>finances in a way I never could before.”</p>
+          <h2 className='font-semibold text-2xl md:text-3xl dark:text-mediumPinkDark'>The Best Financial Accounting</h2>
+          <h2 className='font-semibold text-2xl md:text-3xl dark:text-mediumPinkDark'>App Ever</h2>
+          <p className='text-gray-500 dark:text-white'>“I have been using this app for a few</p>
+          <p className='text-gray-500 dark:text-white'>months now and I am very impressed. It is</p>
+          <p className='text-gray-500 dark:text-white'>the best financial accounting app you ever</p>
+          <p className='text-gray-500 dark:text-white'>used. It's easy to use, packed with features,</p>
+          <p className='text-gray-500 dark:text-white'>and has helped me take control of my</p>
+          <p className='text-gray-500 dark:text-white'>finances in a way I never could before.”</p>
         </div>
       </div>
 
