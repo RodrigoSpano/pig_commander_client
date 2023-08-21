@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.0.22",
+    "@react-stately/data": "^3.10.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tremor/react": "^3.6.1",
     "axios": "^1.4.0",
     "framer-motion": "^10.15.2",
     "next": "13.4.12",
@@ -23,13 +25,14 @@
     "react-icons": "^4.10.1",
     "react-redux": "^8.1.2",
     "react-star-rating-input": "^8.0.1",
-    "sweetalert2": "^11.7.20"
+    "sweetalert2": "^11.7.20",
+    "tremor": "^0.0.1"
   },
   "devDependencies": {
     "autoprefixer": "10.4.14",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
-    "postcss": "8.4.27",
+    "postcss": "^8.4.27",
     "tailwindcss": "3.3.3"
   }
 }

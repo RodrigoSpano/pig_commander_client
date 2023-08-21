@@ -25,6 +25,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 import { setLanguage } from "@/redux/features/languageSlice";
+import { getAllInversions } from "@/redux/actions/inversionsActions";
 
 
 const NavBar = () => {
@@ -46,6 +47,8 @@ const NavBar = () => {
       if (!savings.length) {
         dispatch(getAllSavings(cookies.token));
       }
+       dispatch(getAllInversions(cookies.token));
+
     }
   }, [dispatch]);
 
