@@ -5,7 +5,7 @@ import useTransactionDetail from "@/customHooks/useTransactionDetail";
 
 const AllTransactionsComponent = ({allTransactions}) => {
 
-  const { handleDetail } = useTransactionDetail();
+  const { handleDetailEs } = useTransactionDetail();
 
   return (
     <div>
@@ -13,7 +13,7 @@ const AllTransactionsComponent = ({allTransactions}) => {
         ? allTransactions?.map((t, i) => (
             <TransactionCard
               transaction={t}
-              handleDetail={handleDetail}
+              handleDetail={handleDetailEs}
               key={i}
             />
           ))

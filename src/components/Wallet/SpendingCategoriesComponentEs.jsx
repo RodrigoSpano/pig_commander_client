@@ -16,7 +16,7 @@ import {
 //Scroll bar rosa
 import "./CustomScrollBar.css";
 
-export default function SpendingCategoriesComponent() {
+export default function SpendingCategoriesComponentEs() {
   const [selectedCategory, setCategory] = useState("select-none"); //Estado local de actualizacion del select en las categorias
   const [selectedYear, setSelect] = useState("select-none"); // Estado local de la actualizacion del select en los a;os
   const [filterResult, setFilterResult] = useState([]); //Filter result es el array resultado del filtrado multiple
@@ -36,6 +36,7 @@ export default function SpendingCategoriesComponent() {
       categories
     );
     setFilterResult(filteredTransactions);
+    console.log(selectedYear);
   }, [transactions, selectedCategory, selectedYear]);
 
   return (
@@ -48,7 +49,7 @@ export default function SpendingCategoriesComponent() {
       {/* select de las categorias */}
       <div className="flex flex-row h-[10%] justify-center gap-20 mt-2">
         <Tooltip
-          content="Click and filter for categories!"
+          content="¡Clickea y filtra por categorías!"
           placement={"right"}
           closeDelay={0}
         >
@@ -59,7 +60,7 @@ export default function SpendingCategoriesComponent() {
                   className={"border-[#de78aebf] text-md"}
                   variant="bordered"
                 >
-                  Spending by category
+                  Gastado por categoría
                 </Button>
               </DropdownTrigger>
 
@@ -69,7 +70,7 @@ export default function SpendingCategoriesComponent() {
                   className={"bg-[#de78ae] text-[white]"}
                   variant="solid"
                 >
-                  All Categories
+                  Todas las Categorías
                 </DropdownItem>
                 {categories.map((category) => (
                   <DropdownItem

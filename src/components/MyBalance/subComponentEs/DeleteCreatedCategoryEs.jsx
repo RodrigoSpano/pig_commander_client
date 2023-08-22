@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import useCreateCategory from "@/customHooks/useCreateCategory";
 import { useCookies } from "react-cookie";
 
-export default function DeleteCreatedCategory() {
+export default function DeleteCreatedCategoryEs() {
   const [cookies] = useCookies();
   const { token } = cookies;
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export default function DeleteCreatedCategory() {
           }}
           className="text-white h-10 w-40 font-bold rounded-2xl text-base cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
         >
-          Delete Category
+          Eliminar Categoría
         </Button>
       </div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -43,7 +43,7 @@ export default function DeleteCreatedCategory() {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Delete custom category!
+                ¡Eliminar categoría personalizada!
               </ModalHeader>
               <ModalBody>
                 <section
@@ -69,19 +69,19 @@ export default function DeleteCreatedCategory() {
                       >
                         <RiDeleteBin6Line /> {cat.name}
                       </motion.button>
-                    )): <div className={'h-[300px] flex items-center justify-center'}><h2 className={'text-center text-xl'}>There are no categories, create one!</h2></div> }
+                    )): <div className={'h-[300px] flex items-center justify-center'}><h2 className={'text-center text-xl'}>¡No hay categorías, crea una!</h2></div> }
                   </div>
                 </section>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onClick={onClose}>
-                  Close
+                  Cerrar
                 </Button>
                 <Button
                   className={`text-white h-10  font-bold rounded-2xl text-base cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink`}
                   onPress={onClose}
                 >
-                  Done
+                  Hecho
                 </Button>
               </ModalFooter>
             </>

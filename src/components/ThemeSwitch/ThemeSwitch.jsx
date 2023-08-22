@@ -39,7 +39,6 @@ const MoonIcon = (props) => (
 
 const ThemeSwitch = () => {
     const { theme, setTheme } = useTheme();
-    // const currentTheme = theme === 'system' ? systemTheme : theme;
 
     const handleChange = () => theme == "dark" ? setTheme('light') : setTheme("dark");
 

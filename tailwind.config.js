@@ -44,6 +44,8 @@ module.exports = {
         strongGray: "#2c2c2c",
         mediumPinkDark: "#e364a5",
         lowGrayDark: "#797979",
+        lightGrey: "#CDCDCD",
+        grayDark: "#27272A",
       
         // light mode
         tremor: {

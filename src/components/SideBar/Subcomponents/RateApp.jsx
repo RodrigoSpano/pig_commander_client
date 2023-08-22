@@ -30,8 +30,8 @@ export default function RateApp() {
   };
 
   return (
-    <>
-      <div className="hover:bg-pink-50 py-4 px-6 rounded-sm">
+    <> 
+      <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
         <motion.div
           className=" flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:text-regularPink text-boldGray hover:text-regularPink"
           variants={linkVariants}
@@ -39,14 +39,11 @@ export default function RateApp() {
           animate="animate"
           whileHover="hover"
         >
-          <motion.span className="mr-2">
-            <BiStar className="text-2xl xl:text-3xl" />
+          <motion.span className='mr-2 '>
+            <BiStar className='text-2xl xl:text-3xl' />
           </motion.span>
-          <motion.p
-            className="font-semibold cursor-pointer text-base xl:text-lg"
-            onClick={onOpen}
-          >
-            {selectedLanguage === "en" ? "Rate App" : "Calificar App"}
+          <motion.p className='font-semibold cursor-pointer text-base  xl:text-lg' onClick={onOpen}>
+          {selectedLanguage === "en" ? "Rate App" : "Calificar App"}
           </motion.p>
         </motion.div>
       </div>

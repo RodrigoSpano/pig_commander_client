@@ -30,7 +30,9 @@ const adminSlice = createSlice({
         (user) => user.id === action.payload
       );
       if (userIndex !== -1) {
-        state.tableUsers[userIndex].status = "banned";
+        const user = state.tableUsers[userIndex];
+        user.status = "banned";
+        user.deletedAt = new Date();
       }
     });
     builder.addCase(unbanUser.fulfilled, (state, action) => {
@@ -41,7 +43,9 @@ const adminSlice = createSlice({
         (user) => user.id === action.payload
       );
       if (userIndex !== -1) {
-        state.tableUsers[userIndex].status = "active";
+        const user = state.tableUsers[userIndex];
+        user.status = "active";
+        user.deletedAt = null;
       }
     });
     builder.addCase(getAllUsersCount.fulfilled, (state, action) => {
