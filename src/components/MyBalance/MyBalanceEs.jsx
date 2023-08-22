@@ -1,18 +1,17 @@
 "use client";
 import { useState } from "react";
-import SearchBarComponent from "../SearchBar/SearchBarComponent";
 import AllTransactionsComponent from "../Wallet/AllTransactionsComponent";
-import FilterAllTransactions from "../Wallet/subcomps/FilterAllTransactions";
-import { useDispatch, useSelector } from "react-redux";
-import AllTransactionsPropsContainer from "../Wallet/subcomps/AllTransactionsPropsContainer";
+import { useSelector } from "react-redux";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import usePagination from "@/customHooks/usePagination";
 import BalancesCard from "./BalancesCard";
-import ButtonCreateCategory from "./subComponent/ButtonCreateCategory";
-import DeleteCreatedCategory from "./subComponent/DeleteCreatedCategory";
+import ButtonCreateCategoryEs from "./subComponentEs/ButtonCreateCategoryEs";
+import SearchBarComponentEs from "../SearchBar/SearchBarComponentEs";
+import DeleteCreatedCategoryEs from "./subComponentEs/DeleteCreatedCategoryEs";
+import FilterAllTransactionsEs from "../Wallet/subcompsEs/FilterAllTransactionsEs";
+import AllTransactionsPropsContainerEs from "../Wallet/subcompsEs/AllTransactionsPropsContainerEs";
 
-export default function WalletComponent() {
-  const dispatch = useDispatch();
+export default function WalletComponentEs() {
   const allTransactions = useSelector(
     (state) => state.transactions.transactions
   );
@@ -49,27 +48,27 @@ export default function WalletComponent() {
     <div>
       <div>
         <div className="bg-mediumPink h-7 rounded-t-lg "></div>
-        <h1 className="font-bold ml-5 mt-2.5 text-xl dark:text-mediumPinkDark">My Balance</h1>
+        <h1 className="font-bold ml-5 mt-2.5 text-xl dark:text-mediumPinkDark">Mi Balance</h1>
         <div className="flex flex-row">
           <div className="text-regularPink text-7xl font-semibold mt-5 ml-5 ">
             <BalancesCard backup_transactions={allTransactions} />
           </div>
         </div>
         <div className={"flex justify-end"}>
-          <ButtonCreateCategory />
-          <DeleteCreatedCategory />
+          <ButtonCreateCategoryEs />
+          <DeleteCreatedCategoryEs />
         </div>
       </div>
       <hr className="my-2 mx-16 mt-6" />
       <div className="my-4">
         <div className="flex justify-around">
-          <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">Transactions</h1>
-          <SearchBarComponent handleSearch={handleSearch} />
+          <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">Transacciones</h1>
+          <SearchBarComponentEs handleSearch={handleSearch} />
         </div>
-        <FilterAllTransactions setOrders={setOrders} />
+        <FilterAllTransactionsEs setOrders={setOrders} />
       </div>
 
-      <AllTransactionsPropsContainer
+      <AllTransactionsPropsContainerEs
         handleAlphabetically={handleAlphabetically}
         handleOrderByAmount={handleOrderByAmount}
       />
