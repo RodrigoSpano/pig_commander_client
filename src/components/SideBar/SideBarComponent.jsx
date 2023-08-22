@@ -104,7 +104,7 @@ const NavBar = () => {
   return (
     <>
       {/* DESKTOP */}
-      <nav className="bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-64 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none">
+      <nav className="bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none">
         <div>
           {/* LOGO */}
           <div className="flex items-center justify-center mb-4 xl:mb-6">
@@ -189,10 +189,10 @@ const NavBar = () => {
           )}
         </AnimatePresence>
       </nav>
-      <div>
+      {/* <div>
         <button onClick={() => handleLanguageChange("en")}>English</button>
         <button onClick={() => handleLanguageChange("es")}>Español</button>
-      </div>
+      </div> */}
     </>
   );
 };

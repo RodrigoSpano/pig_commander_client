@@ -20,7 +20,7 @@ const UsersCards = () => {
     dispatch(getBasicUsers(cookies.token));
     dispatch(getBannedUsers(cookies.token));
     dispatch(getProUsers(cookies.token));
-  }, [dispatch]);
+  }, []);
 
   const cardStyles = "px-8 py-10 bg-white rounded-lg shadow-md text-center";
   const cardVariants = {
@@ -34,7 +34,7 @@ const UsersCards = () => {
 
   return (
     <motion.div
-      className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+      className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-4"
       variants={cardVariants}
       initial="initial"
       animate="animate"
@@ -70,6 +70,10 @@ const UsersCards = () => {
         variants={cardHoverVariants}
         whileHover="hover"
       >
+        <h2 className="flex justify-center font-semibold text-2xl text-neutral-800 mb-4 gap-1">
+          <span className="text-regularPink">Pro</span>
+          <span>Users</span>
+        </h2>
         <h1 className="font-bold text-5xl text-neutral-800">
           {admin.proUsers}
         </h1>

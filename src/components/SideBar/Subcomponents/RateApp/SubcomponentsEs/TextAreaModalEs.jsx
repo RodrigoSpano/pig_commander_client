@@ -2,7 +2,7 @@ import React from "react";
 import { Textarea } from "@nextui-org/react";
 import { motion } from "framer-motion";
 
-export default function TextAreaModal() {
+export default function TextAreaModalEs() {
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -10,14 +10,14 @@ export default function TextAreaModal() {
       transition={{ duration: 0.5 }}
     >
       <h3 className="text-xl font-semibold">
-        Your Opinion
+        Tu Opinión
       </h3>
 
       <Textarea
         variant="faded"
         labelPlacement="outside"
-        placeholder="Enter your Opinion..."
-        description="Enter a concise opinion of the Pig Commander!"
+        placeholder="Ingresa tu Opinión..."
+        description="¡Ingresa una opinion concisa de Pig Commander!"
         className="max-w-sm"
       />
     </motion.div>
