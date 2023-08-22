@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 import React, { useEffect, useState } from "react";
 import {
@@ -27,32 +28,23 @@ const ProfileComponent = () => {
       setIsLoading(false);
     }
   }, [user]);
+=======
+import React from 'react';
+import PersonalInformation from './Subcomponents/Personal Information/PersonalInformation';
+import ProfileImage from './Subcomponents/ProfileImage';
+import AppSettings from './Subcomponents/AppSettings';
+>>>>>>> 0d255d3a08a5bf78737c4cc8fa009a8bacf64322
 
+function ProfileComponent() {
   return (
-    <>
-      {isLoading ? (
-        <LoaderComponent />
-      ) : (
-        <>
-          <>
-            {user?.premium ? (
-              <motion.p
-                className="text-regularPink font-bold text-xl xl:text-2xl"
-                whileHover={{ scale: 1.05 }}
-              >
-                PRO
-              </motion.p>
-            ) : (
-              <Button
-                onPress={onOpen}
-                className="bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-              >
-                Become Premium
-              </Button>
-            )}
-          </>
+    <main className='m-6 select-none'>
+      <section className='mt-24 md:mt-0'>
+        <h1 className='font-bold text-regularPink text-3xl sm:text-2xl md:mb-6 md:text-4xl lg:text-5xl xl:text-6xl '>
+          Account Settings
+        </h1>
+      </section>
 
+<<<<<<< HEAD
           <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
             <ModalContent>
               {(onClose) => (
@@ -108,7 +100,20 @@ const ProfileComponent = () => {
         </>
       )}
     </>
+=======
+      <section className='flex flex-col space-y-4 sm:space-y-4'>
+        <div className='flex flex-col-reverse lg:flex-row space-y-4 sm:space-y-0 md:space-y-4 md:space-x-4 lg:space-y-0 xl:space-y-4'>
+          <PersonalInformation className='w-full lg:w-1/2 xl:w-2/3' />
+          <ProfileImage className='w-full lg:w-1/2 xl:w-1/3' />
+        </div>
+
+        <div className='w-full'>
+          <AppSettings />
+        </div>
+      </section>
+    </main>
+>>>>>>> 0d255d3a08a5bf78737c4cc8fa009a8bacf64322
   );
-};
+}
 
 export default ProfileComponent;

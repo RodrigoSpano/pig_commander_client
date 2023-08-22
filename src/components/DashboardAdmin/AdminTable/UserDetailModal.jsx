@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -9,9 +9,33 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { AiOutlineEye } from "react-icons/ai";
+import HeaderDetail from "./subComponents/HeaderDetail";
+import SectionDetail from "./subComponents/SectionDetail";
 
 const UserDetailModal = ({ user }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [totalIncomes, setTotalIncomes] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
+
+  const handleTotalIncomes = () => {
+    const totalIncomes = user.incomes.reduce((total, income) => {
+      return total + income.amount;
+    }, 0);
+
+    setTotalIncomes(totalIncomes);
+  };
+  const handleTotalExpenses = () => {
+    const totalExpenses = user.expenses.reduce((total, expense) => {
+      return total + expense.amount;
+    }, 0);
+
+    setTotalExpenses(totalExpenses);
+  };
+
+  useEffect(() => {
+    handleTotalIncomes();
+    handleTotalExpenses();
+  }, []);
   return (
     <>
       <Button onPress={onOpen}>
@@ -21,51 +45,18 @@ const UserDetailModal = ({ user }) => {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                User Detail
-              </ModalHeader>
+              <ModalHeader className="flex flex-col">User Detail</ModalHeader>
               <ModalBody>
-                <h3 className="text-xl font-semibold">
-                  {user.name} {user.lastname}
-                </h3>
-                <div className="mt-4">
-                  <h4 className="text-lg font-semibold">Expenses:</h4>
-                  <ul>
-                    {user.expenses.length > 0 ? (
-                      user.expenses.map((expense, i) => (
-                        <li key={i}>
-                          Name: {expense.name}, Amount: ${expense.amount}
-                        </li>
-                      ))
-                    ) : (
-                      <p>User has no expenses</p>
-                    )}
-                  </ul>
+                <div className={'flex flex-col items-center'}>
+                <h2 className="text-lg font-semibold">ID</h2>
+                <p>{user.id}</p>
                 </div>
-                <div className="mt-4">
-                  <h4 className="text-lg font-semibold">Incomes:</h4>
-                  <ul>
-                    {user.incomes.length > 0 ? (
-                      user.incomes.map((income, i) => (
-                        <li key={i}>
-                          Name: {income.name}, Amount: ${income.amount}
-                        </li>
-                      ))
-                    ) : (
-                      <p>User has no incomes</p>
-                    )}
-                  </ul>
-                </div>
-                <p className="mt-4">
-                  Acount created at {new Date(user.createdAt).toLocaleString()}
-                </p>
-                {user.deletedAt !== null ? (
-                  <p className="mt-4">
-                    Acount banned at {new Date(user.deletedAt).toLocaleString()}
-                  </p>
-                ) : (
-                  <p className="mt-4">This account has not been banned</p>
-                )}
+                <HeaderDetail user={user} />
+                <SectionDetail
+                  totalIncomes={totalIncomes}
+                  totalExpenses={totalExpenses}
+                  user={user}
+                />
               </ModalBody>
               <ModalFooter>
                 <Button
