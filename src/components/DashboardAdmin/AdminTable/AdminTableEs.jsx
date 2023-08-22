@@ -72,7 +72,7 @@ export default function AdminTableEs() {
             size="sm"
             variant="flat"
           >
-            {cellValue}
+            {cellValue === 'active' ? 'activo' : 'baneado'}
           </Chip>
         );
       case "plan":
@@ -83,7 +83,7 @@ export default function AdminTableEs() {
             size="sm"
             variant="flat"
           >
-            {cellValue}
+            {cellValue === true ? 'pro' : 'básico'}
           </Chip>
         );
       case "actions":
