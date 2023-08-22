@@ -31,21 +31,29 @@ const UserDetailModal = ({ user }) => {
                 <div className="mt-4">
                   <h4 className="text-lg font-semibold">Expenses:</h4>
                   <ul>
-                    {user.expenses.map((expense, i) => (
-                      <li key={i}>
-                        Name: {expense.name}, Amount: ${expense.amount}
-                      </li>
-                    ))}
+                    {user.expenses.length > 0 ? (
+                      user.expenses.map((expense, i) => (
+                        <li key={i}>
+                          Name: {expense.name}, Amount: ${expense.amount}
+                        </li>
+                      ))
+                    ) : (
+                      <p>User has no expenses</p>
+                    )}
                   </ul>
                 </div>
                 <div className="mt-4">
                   <h4 className="text-lg font-semibold">Incomes:</h4>
                   <ul>
-                    {user.incomes.map((income, i) => (
-                      <li key={i}>
-                        Name: {income.name}, Amount: ${income.amount}
-                      </li>
-                    ))}
+                    {user.incomes.length > 0 ? (
+                      user.incomes.map((income, i) => (
+                        <li key={i}>
+                          Name: {income.name}, Amount: ${income.amount}
+                        </li>
+                      ))
+                    ) : (
+                      <p>User has no incomes</p>
+                    )}
                   </ul>
                 </div>
                 <p className="mt-4">
@@ -68,9 +76,6 @@ const UserDetailModal = ({ user }) => {
                 >
                   Close
                 </Button>
-                {/* <Button color="primary" onPress={onClose}>
-                  Action
-                </Button> */}
               </ModalFooter>
             </>
           )}
