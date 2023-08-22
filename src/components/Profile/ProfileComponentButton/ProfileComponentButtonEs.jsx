@@ -12,9 +12,9 @@ import {
 import { becomePremiumHandler } from "./becomePremiumHandler";
 import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
-import LoaderComponent from "../Loader/LoaderComponent";
+import LoaderComponent from "../../Loader/LoaderComponent";
 
-const ProfileComponentEs = () => {
+const ProfileComponentButtonEs = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [cookies] = useCookies();
   const [isLoading, setIsLoading] = useState(true);
@@ -108,4 +108,4 @@ const ProfileComponentEs = () => {
 };
 
 
-export default ProfileComponentEs;
+export default ProfileComponentButtonEs;

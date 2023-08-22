@@ -23,8 +23,6 @@ import { IoMdSettings } from "react-icons/io";
 import { ImExit } from 'react-icons/im';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
-import { setLanguage } from "@/redux/features/languageSlice";
 import { getAllInversions } from "@/redux/actions/inversionsActions";
 
 
@@ -52,9 +50,6 @@ const NavBar = () => {
     }
   }, [dispatch]);
 
-  const handleLanguageChange = (language) => {
-    dispatch(setLanguage(language));
-  };
 
   const menuItems = [
     {
@@ -133,7 +128,6 @@ const NavBar = () => {
 
             <div className="space-y-1 xl:space-y-3">
               <LogOut />
-              <ThemeSwitch />
             </div>
           </section>
         </div>
@@ -189,10 +183,6 @@ const NavBar = () => {
           )}
         </AnimatePresence>
       </nav>
-      <div>
-        <button onClick={() => handleLanguageChange("en")}>English</button>
-        <button onClick={() => handleLanguageChange("es")}>Español</button>
-      </div>
     </>
   );
 };

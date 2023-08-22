@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
-import ProfileComponentEs from '@/components/Profile/ProfileComponentEs';
+import ProfileComponentEs from '../../Profile/ProfileComponentButton/ProfileComponentButtonEs';
 
 const UserCardEs = ({ user }) => {
   const [cookies, setCookie] = useCookies();

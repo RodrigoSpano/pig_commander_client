@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileComponent from '../../Profile/ProfileComponent';
+import ProfileComponentButton from '../../Profile/ProfileComponentButton/ProfileComponentButton';
 import { updatePicture } from '@/redux/actions/userActions';
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
@@ -57,7 +57,7 @@ const UserCard = ({ user }) => {
           {user.lastname.replace(/^\w/, (c) => c.toUpperCase())}
         </div>
         {/* UPTATE BUTTON */}
-        <ProfileComponent user={user} />
+        <ProfileComponentButton user={user} />
       </div>
     </motion.div>
   );
