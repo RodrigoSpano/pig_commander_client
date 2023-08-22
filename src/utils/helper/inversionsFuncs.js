@@ -100,9 +100,9 @@ export const postConversion = (values) => {
     data.finish_at = new Date(year, month, day + parseInt(values.dayPeriod));
   }
   data.earning = parseFloat(values.interest),
-  data.started_on = weldDates(data.started_on);
+    data.started_on = weldDates(data.started_on);
   data.finish_at = weldDates(data.finish_at);
-  
+
   return data;
 };
 
@@ -118,12 +118,11 @@ export const getEarnings = (initialDate, finalDate, interest, amount, taxes) => 
   const compoundAmount = amount * Math.pow(1 + interestRate, years);
 
   let earnings = 0;
-  if(parseInt(taxes) ) {
-     earnings = (compoundAmount - amount)*(1-taxes/100);
+  if (parseInt(taxes)) {
+    earnings = (compoundAmount - amount) * (1 - taxes / 100);
   } else {
-     earnings = compoundAmount - amount;
+    earnings = compoundAmount - amount;
   }
-
   return earnings.toFixed(2); // Devolver ganancias redondeadas a 2 decimales
 };
 
@@ -142,5 +141,5 @@ export const weldDates = (date) => {
 
 export const getDate = (date) => {
   let data = new Date(date);
-  return  data;
+  return data;
 }

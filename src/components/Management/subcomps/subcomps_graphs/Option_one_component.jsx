@@ -26,7 +26,6 @@ export default function Option_one_component() {
 
   const Charter = async () => {
     setLoading(true); 
-    console.log(isLoading)
       try {
     
         setEarningShowUp(
