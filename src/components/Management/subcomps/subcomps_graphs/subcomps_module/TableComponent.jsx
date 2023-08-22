@@ -35,7 +35,7 @@ export default function TableComponent({ setSelectedInversion }) {
           aria-label="Example static collection table"
         >
           <TableHeader>
-            <TableColumn>DELETE</TableColumn>
+            <TableColumn></TableColumn>
             <TableColumn>NAME</TableColumn>
             <TableColumn>STARTED</TableColumn>
             <TableColumn>FINISHED</TableColumn>

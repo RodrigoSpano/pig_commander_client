@@ -10,18 +10,6 @@ function useInvestmentForm() {
   const dispatch = useDispatch();
   const [cookies, setCookie] = useCookies();
 
-  const handleYesClick = () => {
-    handleButtonClick(false);
-    handleButtonClick2("Yes");
-    setDisableInput(false); // Habilitar el campo de impuestos
-  };
-
-  const handleNoClick = () => {
-    handleButtonClick(true);
-    handleButtonClick2("No");
-    setDisableInput(true); // Deshabilitar el campo de impuestos
-  };
-
   const handleButtonClick2 = (button) => {
     setSelectedButton(button);
   };
@@ -37,7 +25,6 @@ function useInvestmentForm() {
     dayPeriod: "",
     period: "days",
     interest: "",
-    taxes: "",
     earning: "", //guarda el interest en realidad, ya que no esta hecha la variable en la bd
   });
   //setea los valores del form a medida que cambian los componentes del form
@@ -65,7 +52,7 @@ function useInvestmentForm() {
     }
   };
 
-  return {handleYesClick, handleChange, handleNoClick, handleButtonClick, handleButtonClick2, values, handleSubmit, selectedButton, disableInput}
+  return {handleChange, handleButtonClick, handleButtonClick2, values, handleSubmit, selectedButton, disableInput}
 }
 
 export default useInvestmentForm
