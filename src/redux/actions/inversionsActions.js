@@ -4,10 +4,10 @@ import axios from "axios";
 //* CREATE THE INVERSION
 export const createInversion = createAsyncThunk(
   "inversion/create",
-  async ( payload) => {
+  async (payload) => {
     try {
-      const {token, ...datas} = payload;
-      const { data } = await axios.post("/inversions",  datas  , {
+      const { token, ...datas } = payload;
+      const { data } = await axios.post("/inversions", datas, {
         headers: { 'Authorization': token },
       });
       return data;
@@ -73,11 +73,11 @@ export const deleteInversion = createAsyncThunk(
   "inversion/delete",
   async (payload) => {
     try {
-      const {token, id} = payload;
-      const { data } = await axios.delete(`/inversions/${id}`, {
+      const { token, id } = payload;
+      await axios.delete(`/inversions/${id}`, {
         headers: { Authorization: token },
       });
-      return data;
+      return id;
     } catch (error) {
       if (error.response) {
         Swal.fire({

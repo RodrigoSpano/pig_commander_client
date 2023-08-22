@@ -12,15 +12,6 @@ const initialState = {
   backup_inversions: [],
 };
 
-// * Sort dates from newest to oldest
-const sortInversions = (state) => {
-  const sortedDateInversions = state.allInversions.sort(
-    (a, b) => Date.parse(a.started_on) - Date.parse(b.started_on)
-  );
-  state.allInversions = sortedDateInversions;
-  state.backup_inversions = sortedDateInversions;
-};
-
 export const inversionSlice = createSlice({
   name: "inversions",
   initialState,
@@ -32,13 +23,11 @@ export const inversionSlice = createSlice({
     builder.addCase(getAllInversions.fulfilled, (state, action) => {
       state.allInversions = action.payload;
       state.backup_inversions = action.payload;
-      sortInversions(state);
     });
     // ! ADD THE INVERSION CREATE IN THE STATES
     builder.addCase(createInversion.fulfilled, (state, action) => {
       state.allInversions.unshift(action.payload);
       state.backup_inversions.unshift(action.payload);
-      sortInversions(state);
     });
     // ! UPDATE ONE INVERSION
     builder.addCase(updateInversion.fulfilled, (state, action) => {
@@ -48,16 +37,14 @@ export const inversionSlice = createSlice({
       inversionUpdate.unshift(action.payload);
       state.allInversions = inversionUpdate;
       state.backup_inversions = inversionUpdate;
-      sortInversions(state);
     });
     // ! DELETE ONE INVERSION
-    builder.addCase(deleteInversion, (state, action) => {
+    builder.addCase(deleteInversion.fulfilled, (state, action) => {
       let inversionFilterDeleted = state.backup_inversions.filter(
-        (inversion) => inversion.id !== action.payload.id
+        (inversion) => inversion.id !== action.payload
       );
       state.allInversions = inversionFilterDeleted;
       state.backup_inversions = inversionFilterDeleted;
-      sortInversions(state);
     });
   },
 });
