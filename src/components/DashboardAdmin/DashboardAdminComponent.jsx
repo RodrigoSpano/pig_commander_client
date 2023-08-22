@@ -1,10 +1,15 @@
-import React from "react";
 import { motion } from "framer-motion";
 import AdminTable from "./AdminTable/AdminTable";
 import UsersCards from "./TotalUsersCards/UsersCards";
 import UserSection from "./User/UserSection";
+import { useSelector } from "react-redux";
+import UserSectionEs from "./User/UserSectionEs";
+import UsersCardsEs from "./TotalUsersCards/UsersCardsEs";
+import AdminTableEs from "./AdminTable/AdminTableEs";
 
 const DashboardAdminComponent = () => {
+  const selectedLanguage = useSelector((state) => state.language);
+
   const containerVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 0.6, delay: 0.2 } },
@@ -21,19 +26,25 @@ const DashboardAdminComponent = () => {
         <motion.h1
           className="font-bold text-strongPink text-4xl invisible sm:text-xl md:text-6xl md:visible"
           initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1, transition: { duration: 0.6, delay: 0.2 } }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.6, delay: 0.2 },
+          }}
         >
-          Admin Dashboard
+          {selectedLanguage === "en"
+            ? "Admin Dashboard"
+            : "Panel de Administrador"}
         </motion.h1>
-        <UserSection />
+        {selectedLanguage === "en" ? <UserSection /> : <UserSectionEs />}
       </section>
 
       <section className="my-8">
-        <UsersCards />
+        {selectedLanguage === "en" ? <UsersCards /> : <UsersCardsEs />}
       </section>
 
       <section>
-        <AdminTable />
+        {selectedLanguage === "en" ? <AdminTable /> : <AdminTableEs />}
       </section>
     </motion.div>
   );

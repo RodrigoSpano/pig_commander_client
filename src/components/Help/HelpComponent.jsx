@@ -124,43 +124,6 @@ export default function HelpComponent() {
       {isLoading ? (
         <LoaderComponent />
       ) : (
-<<<<<<< HEAD
-        <div className="container mx-auto mt-8">
-          <h1 className="text-3xl font-bold mb-4 text-pink-400">
-            Frequently Asked Questions
-          </h1>
-          <div className="space-y-4">
-            {faqData.map((item, index) => (
-              <div key={index} className="bg-white dark:bg-mediumGrayDarkMode p-4 rounded-lg shadow-md">
-                <button
-                  className="w-full flex justify-between items-center focus:outline-none"
-                  onClick={() => toggleAccordion(index)}
-                >
-                  <span className="text-xl font-semibold">{item.question}</span>
-                  <span className="text-gray-600 dark:text-lightGrey">
-                    <svg
-                      className={`w-6 h-6 transform transition-transform ${
-                        activeAccordion === index ? "rotate-180" : ""
-                      }`}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.29289 16.2929C8.68342 15.9024 9.31658 15.9024 9.70711 16.2929L12 18.5858L14.2929 16.2929C14.6834 15.9024 15.3166 15.9024 15.7071 16.2929C16.0976 16.6834 16.0976 17.3166 15.7071 17.7071L12.7071 20.7071C12.3166 21.0976 11.6834 21.0976 11.2929 20.7071L8.29289 17.7071C7.90237 17.3166 7.90237 16.6834 8.29289 16.2929Z"
-                        fill="currentColor"
-                      />
-                      <path
-                        d="M8.29289 7.70711C7.90237 7.31658 7.90237 6.68342 8.29289 6.29289C8.68342 5.90237 9.31658 5.90237 9.70711 6.29289L12 8.58579L14.2929 6.29289C14.6834 5.90237 15.3166 5.90237 15.7071 6.29289C16.0976 6.68342 16.0976 7.31658 15.7071 7.70711L12.7071 10.7071C12.3166 11.0976 11.6834 11.0976 11.2929 10.7071L8.29289 7.70711Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </span>
-                </button>
-                {activeAccordion === index && (
-                  <div className="mt-2">
-                    <p className="text-gray-600 dark:text-lightGrey">{item.answer}</p>
-=======
         <>
           {selectedLanguage === "en" ? (
             <div className="container mx-auto mt-8">
@@ -171,7 +134,7 @@ export default function HelpComponent() {
                 {faqData.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white p-4 rounded-lg shadow-md"
+                    className="bg-white p-4 dark:bg-mediumGrayDarkMode rounded-lg shadow-md"
                   >
                     <button
                       className="w-full flex justify-between items-center focus:outline-none"
@@ -180,7 +143,7 @@ export default function HelpComponent() {
                       <span className="text-xl font-semibold">
                         {item.question}
                       </span>
-                      <span className="text-gray-600">
+                      <span className="text-gray-600 dark:text-lightGrey">
                         <svg
                           className={`w-6 h-6 transform transition-transform ${
                             activeAccordion === index ? "rotate-180" : ""
@@ -202,7 +165,7 @@ export default function HelpComponent() {
                     </button>
                     {activeAccordion === index && (
                       <div className="mt-2">
-                        <p className="text-gray-600">{item.answer}</p>
+                        <p className="text-gray-600 dark:text-lightGrey">{item.answer}</p>
                       </div>
                     )}
                   </div>
@@ -218,7 +181,7 @@ export default function HelpComponent() {
                 {faqDataEs.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white p-4 rounded-lg shadow-md"
+                    className="bg-white dark:bg-mediumGrayDarkMode p-4 rounded-lg shadow-md"
                   >
                     <button
                       className="w-full flex justify-between items-center focus:outline-none"
@@ -252,7 +215,6 @@ export default function HelpComponent() {
                         <p className="text-gray-600">{item.answer}</p>
                       </div>
                     )}
->>>>>>> bf6fbaebeb4b4014485fbfde94a8168587139588
                   </div>
                 ))}
               </div>
