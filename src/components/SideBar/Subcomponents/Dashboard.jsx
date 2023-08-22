@@ -15,10 +15,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="hover:bg-pink-50 py-4 px-6 rounded-sm">
+    <div className="hover:bg-pink-50 dark:hover:bg-pink-900 py-4 px-6 rounded-sm">
       <Link href="/home/dashboard">
         <motion.div
-          className=" flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:text-regularPink text-boldGray hover:text-regularPink"
+          className=" flex items-center justify-start font-semibold cursor-pointer dark:text-white  dark:bg-opacity-25  dark:hover:text-regularPink text-boldGray hover:text-regularPink"
           variants={linkVariants}
           initial="initial"
           animate="animate"

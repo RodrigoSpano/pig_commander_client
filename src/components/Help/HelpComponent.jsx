@@ -134,7 +134,7 @@ export default function HelpComponent() {
                 {faqData.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white p-4 rounded-lg shadow-md"
+                    className="bg-white p-4 dark:bg-mediumGrayDarkMode rounded-lg shadow-md"
                   >
                     <button
                       className="w-full flex justify-between items-center focus:outline-none"
@@ -143,7 +143,7 @@ export default function HelpComponent() {
                       <span className="text-xl font-semibold">
                         {item.question}
                       </span>
-                      <span className="text-gray-600">
+                      <span className="text-gray-600 dark:text-lightGrey">
                         <svg
                           className={`w-6 h-6 transform transition-transform ${
                             activeAccordion === index ? "rotate-180" : ""
@@ -165,7 +165,7 @@ export default function HelpComponent() {
                     </button>
                     {activeAccordion === index && (
                       <div className="mt-2">
-                        <p className="text-gray-600">{item.answer}</p>
+                        <p className="text-gray-600 dark:text-lightGrey">{item.answer}</p>
                       </div>
                     )}
                   </div>
@@ -181,7 +181,7 @@ export default function HelpComponent() {
                 {faqDataEs.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-white p-4 rounded-lg shadow-md"
+                    className="bg-white dark:bg-mediumGrayDarkMode p-4 rounded-lg shadow-md"
                   >
                     <button
                       className="w-full flex justify-between items-center focus:outline-none"
@@ -190,7 +190,7 @@ export default function HelpComponent() {
                       <span className="text-xl font-semibold">
                         {item.question}
                       </span>
-                      <span className="text-gray-600">
+                      <span className="text-gray-600 dark:text-lightGrey">
                         <svg
                           className={`w-6 h-6 transform transition-transform ${
                             activeAccordion === index ? "rotate-180" : ""
@@ -212,7 +212,7 @@ export default function HelpComponent() {
                     </button>
                     {activeAccordion === index && (
                       <div className="mt-2">
-                        <p className="text-gray-600">{item.answer}</p>
+                        <p className="text-gray-600 dark:text-lightGrey">{item.answer}</p>
                       </div>
                     )}
                   </div>
