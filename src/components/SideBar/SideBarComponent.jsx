@@ -103,7 +103,7 @@ const NavBar = () => {
         <div>
           {/* LOGO */}
           <div className="flex items-center justify-center mb-4 xl:mb-6">
-            <Image src={Logo} alt="Logo" className="xl:w-14 lg:w-12" />
+            <Image src={Logo} alt="Logo" className=" md:w-8 lg:w-12 xl:w-14" />
             <p className="font-bold text-md xl:ml-4 lg:ml-2">Pig Commander</p>
           </div>
 
