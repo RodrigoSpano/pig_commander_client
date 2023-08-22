@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 import { IoBan } from "react-icons/io5";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { columns } from "./data";
+import { columns } from "./dataEs";
 import {
   banUser,
   getTableUsers,
@@ -22,6 +22,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import UserDetailModal from "./UserDetailModal";
+import LoaderComponent from "@/components/Loader/LoaderComponent";
 
 const statusColorMap = {
   active: "success",
@@ -33,7 +34,7 @@ const planColorMap = {
   false: "default",
 };
 
-export default function AdminTable() {
+export default function AdminTableEs() {
   const [cookies, setCookie] = useCookies();
   const dispatch = useDispatch();
   const users = useSelector((state) => state.admin.tableUsers);
@@ -71,7 +72,7 @@ export default function AdminTable() {
             size="sm"
             variant="flat"
           >
-            {cellValue}
+            {cellValue === 'active' ? 'activo' : 'baneado'}
           </Chip>
         );
       case "plan":
@@ -82,18 +83,18 @@ export default function AdminTable() {
             size="sm"
             variant="flat"
           >
-            {cellValue}
+            {cellValue === true ? 'pro' : 'básico'}
           </Chip>
         );
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip content="Details">
+            <Tooltip content="Detalles">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <UserDetailModal user={users} />
               </span>
             </Tooltip>
-            <Tooltip color="warning" content="Unban">
+            <Tooltip color="warning" content="Desbanear">
               <span
                 className="text-lg text-warning cursor-pointer active:opacity-50"
                 onClick={() => {
@@ -103,7 +104,7 @@ export default function AdminTable() {
                 <AiOutlineExclamationCircle />
               </span>
             </Tooltip>
-            <Tooltip color="danger" content="Ban">
+            <Tooltip color="danger" content="Banear">
               <span
                 className="text-lg text-danger cursor-pointer active:opacity-50"
                 onClick={() => {
@@ -123,7 +124,7 @@ export default function AdminTable() {
   return (
     <>
       {users === undefined ? (
-        <p>Loading...</p>
+        <LoaderComponent/>
       ) : (
         <Table aria-label="Admin dashboard">
           <TableHeader columns={columns}>
