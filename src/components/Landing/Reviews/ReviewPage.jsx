@@ -1,12 +1,12 @@
-'use client'
-import React from 'react';
-import NavBar from '../NavBar';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Tooltip, Button } from '@nextui-org/react';
-import { HiSparkles } from 'react-icons/hi2';
-import ReviewList from './ReviewList';
-import Footer from '../Footer';
+"use client";
+import React from "react";
+import NavBar from "../NavBar";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Tooltip, Button } from "@nextui-org/react";
+import { HiSparkles } from "react-icons/hi2";
+import ReviewList from "./ReviewList";
+import Footer from "../Footer";
 
 const ReviewPage = () => {
   const pageVariants = {
@@ -39,11 +39,8 @@ const ReviewPage = () => {
         <div className="my-10">
           <Tooltip content="Login required" className="">
             <Link href="/home/dashboard">
-              <motion.div
-                variants={buttonVariants}
-                whileHover="hover"
-              >
-                <Button className='bg-gradient-to-r from-regularPink to-boldPink text-white'>
+              <motion.div variants={buttonVariants} whileHover="hover">
+                <Button className="bg-gradient-to-r from-regularPink to-boldPink text-white">
                   <span>
                     <HiSparkles />
                   </span>

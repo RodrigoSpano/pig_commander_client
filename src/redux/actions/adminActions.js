@@ -1,18 +1,36 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {
+  failedBanned,
+  failedUnBanned,
+  succesBanned,
+  succesUnBanned,
+} from "@/customHooks/useAdmin";
 
 const banUser = createAsyncThunk("Ban User", async ({ token, id }) => {
-  const { data } = await axios.delete(`/admin/ban/${id}`, {
-    headers: { Authorization: token },
-  });
-  return data;
+  try {
+    const { data } = await axios.delete(`/admin/ban/${id}`, {
+      headers: { Authorization: token },
+    });
+    succesBanned();
+    return data;
+  } catch (error) {
+    failedBanned();
+    return { error: "User ban failed" };
+  }
 });
 
 const unbanUser = createAsyncThunk("unban User", async ({ token, id }) => {
-  const { data } = await axios.get(`/admin/unban/${id}`, {
-    headers: { Authorization: token },
-  });
-  return data;
+  try {
+    const { data } = await axios.get(`/admin/unban/${id}`, {
+      headers: { Authorization: token },
+    });
+    succesUnBanned();
+    return data;
+  } catch (error) {
+    failedUnBanned();
+    return { error: "User unban failed" };
+  }
 });
 
 const getAllUsersCount = createAsyncThunk("Total users", async (token) => {
