@@ -110,9 +110,5 @@ const ProfileComponentButtonEs = () => {
   );
 };
 
-<<<<<<< HEAD:src/components/Profile/ProfileComponentEs.jsx
-export default ProfileComponentEs;
-=======
 
 export default ProfileComponentButtonEs;
->>>>>>> 0d255d3a08a5bf78737c4cc8fa009a8bacf64322:src/components/Profile/ProfileComponentButton/ProfileComponentButtonEs.jsx
