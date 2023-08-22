@@ -67,7 +67,6 @@ const TransactionsComponentEs = () => {
 
           <div className='mx-4'>
             <SearchBarComponentEs handleSearch={handleSearch} />
-            {/* <PermanentFilterEs /> */}
           </div>
         </section>
 

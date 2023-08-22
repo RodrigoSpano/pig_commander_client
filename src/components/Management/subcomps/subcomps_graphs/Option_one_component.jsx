@@ -26,7 +26,6 @@ export default function Option_one_component() {
 
   const Charter = async () => {
     setLoading(true); 
-    console.log(isLoading)
       try {
     
         setEarningShowUp(
@@ -89,19 +88,18 @@ export default function Option_one_component() {
           />
         </Card>
       </div>
-      <div className="flex flex-row w-full max-h-20">
+      <div className="flex justify-center w-full max-h-20">
         <div className="w-1/3 flex justify-center content-center text-center">
           <Signs title={"Investment amount"} amount={amountShowUp} />
-        </div>
-        <div className="w-1/3 flex justify-center content-center text-center">
-          <Signs title={"Total Taxes"} amount={"Not found"} />
         </div>
         <div className="w-1/3 flex justify-center content-center text-center">
           <Signs title={"Total Profit"} amount={earningShowUp} />
         </div>
       </div>
 
-      <TableComponent setSelectedInversion={setSelectedInversion} />
+      {
+        !inversions.length ? null : <TableComponent setSelectedInversion={setSelectedInversion} />
+      }
     </div>
   );
 }

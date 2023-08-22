@@ -14,12 +14,12 @@ const useDetailInv = () => {
       Swal.fire({
         position: "center",
         title: `
-                  <p>Name:  ${selectedInversion.name}   </p>
-                  <p>Started on:${weldDates(getDate(selectedInversion.started_on))}  </p>
-                  <p>Finished on: ${weldDates(getDate(selectedInversion.finish_at))}  </p>
-                  <p>Invested:${selectedInversion.amount}  </p>
-                  <p>Interest: ${selectedInversion.earning}  </p>
-                  `,
+          <p>Name:  ${selectedInversion.name}   </p>
+          <p>Started on:${weldDates(getDate(selectedInversion.started_on))}  </p>
+          <p>Finished on: ${weldDates(getDate(selectedInversion.finish_at))}  </p>
+          <p>Invested:${selectedInversion.amount}  </p>
+          <p>Interest: ${selectedInversion.earning}  </p>
+          `,
         showConfirmButton: true,
         showCloseButton: true,
         confirmButtonText: "Delete",

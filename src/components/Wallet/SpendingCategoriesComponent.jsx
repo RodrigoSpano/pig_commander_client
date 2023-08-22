@@ -36,7 +36,6 @@ export default function SpendingCategoriesComponent() {
       categories
     );
     setFilterResult(filteredTransactions);
-    console.log(selectedYear);
   }, [transactions, selectedCategory, selectedYear]);
 
   return (

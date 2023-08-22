@@ -13,7 +13,6 @@ const BalancesCard = ({ backup_transactions }) => {
   const getBalance = () => {
     const expensesTotal = getExpensesTotalWallet( backup_transactions);
     const incomesTotal = getIncomesTotalWallet( backup_transactions);
-    console.log({expensesTotal, incomesTotal})
     if (expensesTotal > 0 && incomesTotal > 0) {
       setTotal(incomesTotal - expensesTotal);
     }

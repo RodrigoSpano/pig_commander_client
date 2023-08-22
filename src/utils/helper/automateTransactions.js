@@ -8,7 +8,6 @@ export const createAutomateTransaction = async (info, token) => {
     const { data } = await axios.post('/auto/transaction', info, {
       headers: { Authorization: token },
     });
-    console.log({ info, data });
     return data;
   } catch (error) {
     console.log({ error });
