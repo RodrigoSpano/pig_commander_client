@@ -87,9 +87,6 @@ const COLORS = chartData?.map((data) => data.color);
     currency: "USD",
   });
 
-  const formattedTotalExpensesWithoutDecimals =
-    formattedTotalExpenses?.split(".")[0];
-
   const chartDataSets = [
     {
       data: chartData?.map((data) => data.value),
@@ -115,7 +112,7 @@ const COLORS = chartData?.map((data) => data.color);
               Total Expenses
             </p>
             <p className="text-2xl font-bold text-[#374151] dark:text-white">
-               ${formattedTotalExpensesWithoutDecimals}
+               ${formattedTotalExpenses}
             </p>
           </div>
           <div className="flex justify-center lg:w-12">
