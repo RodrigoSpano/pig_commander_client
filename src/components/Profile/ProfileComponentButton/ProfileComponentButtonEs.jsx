@@ -13,6 +13,7 @@ import { becomePremiumHandler } from "./becomePremiumHandler";
 import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import LoaderComponent from "../../Loader/LoaderComponent";
+import {motion} from 'framer-motion'
 
 const ProfileComponentButtonEs = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -65,9 +66,12 @@ const ProfileComponentButtonEs = () => {
                         ¿Que es Pig Commander?
                       </h2>
                       <p className="text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nullam pulvinar risus non risus hendrerit venenatis.
-                        Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                        Nuestra billetera virtual te permite llevar un
+                        seguimiento minucioso de cada transacción, al mismo
+                        tiempo que te proporciona una visión integral de tus
+                        ahorros y ganancias. Una experiencia gratificante en
+                        lugar de un ejercicio aburrido, gracias a nuestra
+                        interfaz amigable y de fácil acceso.
                       </p>
                     </div>
                     <div>

@@ -13,6 +13,7 @@ import { becomePremiumHandler } from "./becomePremiumHandler";
 import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import LoaderComponent from "../../Loader/LoaderComponent";
+import {motion} from 'framer-motion'
 
 const ProfileComponent = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
