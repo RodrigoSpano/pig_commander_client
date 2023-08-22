@@ -15,7 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { setLanguage } from "@/redux/features/languageSlice";
 import { useDispatch } from "react-redux";
 
-const NavBar = () => {
+const NavBarEs = () => {
   const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -82,7 +82,7 @@ const NavBar = () => {
               whileTap={{ scale: [0.9, 1.1, 1] }}
               className="mr-10 font-semibold hover:text-regularPink cursor-pointer"
             >
-              Home
+              Casa
             </motion.p>
           </Link>
 
@@ -92,7 +92,7 @@ const NavBar = () => {
               whileTap={{ scale: [0.9, 1.1, 1] }}
               className="mr-10 font-semibold hover:text-regularPink cursor-pointer"
             >
-              About Us
+              Sobre nosotros
             </motion.p>
           </Link>
 
@@ -102,7 +102,7 @@ const NavBar = () => {
               whileTap={{ scale: [0.9, 1.1, 1] }}
               className="mr-10 font-semibold hover:text-regularPink cursor-pointer"
             >
-              Pricing
+              Precios
             </motion.p>
           </Link>
 
@@ -112,17 +112,17 @@ const NavBar = () => {
               whileTap={{ scale: [0.9, 1.1, 1] }}
               className="mr-10 font-semibold hover:text-regularPink cursor-pointer"
             >
-              Reviews
+              Reseñas
             </motion.p>
           </Link>
 
-          <Link href="/features">
+          <Link href="/reviews">
             <motion.p
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: [0.9, 1.1, 1] }}
               className="font-semibold hover:text-regularPink cursor-pointer"
             >
-              Features
+              Funcionalidades
             </motion.p>
           </Link>
         </div>
@@ -134,7 +134,7 @@ const NavBar = () => {
               whileHover={{ scale: 1.05 }}
               className="text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-3 mx-2"
             >
-              Log In
+              Iniciar Sesión
             </motion.button>
           </Link>
 
@@ -143,7 +143,7 @@ const NavBar = () => {
               whileHover={{ scale: 1.05 }}
               className="text-sm bg-gradient-to-r from-regularPink to-boldPink text-white rounded-2xl px-8 py-3"
             >
-              Register
+              Registrarse
             </motion.button>
           </Link>
         </div>
@@ -230,4 +230,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBarEs;
