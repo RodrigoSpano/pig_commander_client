@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { clearFilters } from "@/redux/features/transactionsSlice";
 
-const FilterAllTransactions = ({ setOrders }) => {
+const FilterAllTransactionsEs = ({ setOrders }) => {
   const [cookies, setCookies] = useCookies();
   const methods = useSelector((state) => state.others.methods);
   const categories = useSelector((state) => state.others.categories);
@@ -67,11 +67,11 @@ const FilterAllTransactions = ({ setOrders }) => {
         value={values.types}
       >
         <option disabled selected value="default">
-          Types
+          Tipos
         </option>
-        <option value="all">All Transactions</option>
-        <option value="expenses">Expenses</option>
-        <option value="incomes">Incomes</option>
+        <option value="all">Todas las Transacciones</option>
+        <option value="expenses">Gastos</option>
+        <option value="incomes">Ingresos</option>
       </select>
 
       <select
@@ -80,7 +80,7 @@ const FilterAllTransactions = ({ setOrders }) => {
         value={values.methods}
       >
         <option disabled selected value="default">
-          Methods
+          Métodos
         </option>
 
         {methods.length
@@ -98,7 +98,7 @@ const FilterAllTransactions = ({ setOrders }) => {
         value={values.categories}
       >
         <option disabled selected value="default">
-          Categories
+          Categoría
         </option>
 
         {categories.length
@@ -119,7 +119,7 @@ const FilterAllTransactions = ({ setOrders }) => {
           filterTransactions(method, category, type);
         }}
       >
-        Filter
+        Filtro
       </button>
       <button
         onClick={resetFilters}
@@ -129,10 +129,10 @@ const FilterAllTransactions = ({ setOrders }) => {
             : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
         } `}
       >
-        Reset
+        Restablecer
       </button>
     </div>
   );
 };
 
-export default FilterAllTransactions;
+export default FilterAllTransactionsEs;
