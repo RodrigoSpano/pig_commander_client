@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import {FaTrashCan} from 'react-icons/fa6'
 import { useSelector } from "react-redux";
 import {
   Table,
@@ -18,23 +19,11 @@ import useDetailInv from "@/customHooks/useDetailInv";
 
 export default function TableComponent({ setSelectedInversion }) {
   const inversions = useSelector((state) => state.inversions.allInversions);
-  const [selectedId, setSelectedId] = useState(0)
-  const [preSelectedId, setPreSelectedId] = useState("")
-  const [clickCount, setClickCount] = useState(0);
   const { handleDetailInv } = useDetailInv();
-
-  const handleDoubleClick = () => {
-    setPreSelectedId(selectedId);
-    if(preSelectedId === selectedId) {
-      setClickCount(clickCount + 1);
-      if (clickCount === 1) {
-        console.log('pop up')
-        handleDetailInv(selectedId) //pop up hook
-
-        setClickCount(0); 
-      }
-    }
-  };
+  
+  const deleteById = (id) => {
+    handleDetailInv(id) //pop up hook
+  }
 
   return (
     <div className="flex flex-col gap-3">
@@ -46,6 +35,7 @@ export default function TableComponent({ setSelectedInversion }) {
           aria-label="Example static collection table"
         >
           <TableHeader>
+            <TableColumn>DELETE</TableColumn>
             <TableColumn>NAME</TableColumn>
             <TableColumn>STARTED</TableColumn>
             <TableColumn>FINISHED</TableColumn>
@@ -58,12 +48,12 @@ export default function TableComponent({ setSelectedInversion }) {
                 <TableRow
                   key={element.id}
                   onClick={() => {
-                    console.log(index)
                     setSelectedInversion(index); //grafico
-                    setSelectedId(element.id) //pop up
-                    handleDoubleClick()
                   }}
                 >
+                  <TableCell onClick={() => {deleteById(element.id)}}>
+                    <FaTrashCan className="text-red-600 cursor-pointer text-center"/>
+                  </TableCell>
                   <TableCell>{element.name}</TableCell>
                   <TableCell>
                     {weldDates(getDate(element.started_on))}

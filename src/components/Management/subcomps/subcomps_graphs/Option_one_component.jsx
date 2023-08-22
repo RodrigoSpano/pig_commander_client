@@ -101,7 +101,9 @@ export default function Option_one_component() {
         </div>
       </div>
 
-      <TableComponent setSelectedInversion={setSelectedInversion} />
+      {
+        !inversions.length ? null : <TableComponent setSelectedInversion={setSelectedInversion} />
+      }
     </div>
   );
 }
