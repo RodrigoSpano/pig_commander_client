@@ -9,7 +9,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { AiOutlineEye } from "react-icons/ai";
-import HeaderDetail from "./subComponents/headerDetail";
+import HeaderDetail from "./subComponents/HeaderDetail";
 import SectionDetail from "./subComponents/SectionDetail";
 
 const UserDetailModal = ({ user }) => {
