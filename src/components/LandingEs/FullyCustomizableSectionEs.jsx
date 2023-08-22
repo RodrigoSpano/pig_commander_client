@@ -5,7 +5,7 @@ import Mockup3 from "../../utils/Images/Mockups/Mockup3.png";
 import { HiOutlineStar } from "react-icons/hi";
 import { motion } from "framer-motion";
 
-const FeaturesSection = () => {
+const FullyCustomizableSectionEs = () => {
   return (
     <div className="py-8 md:py-16 flex flex-wrap items-center justify-center md:justify-around select-none">
       {/* MOCKUP */}
@@ -32,7 +32,7 @@ const FeaturesSection = () => {
           className="flex flex-row items-center"
         >
           <HiOutlineStar className="text-4xl text-boldPink mr-3" />
-          <h1 className="font-bold text-3xl md:text-4xl">Fully Customizable</h1>
+          <h1 className="font-bold text-3xl md:text-4xl">Completamente Customizable</h1>
         </motion.div>
 
         <motion.div
@@ -42,19 +42,19 @@ const FeaturesSection = () => {
           className="pt-4"
         >
           <p className="text-gray-500 text-sm m-3 md:text-base dark:text-white">
-            Dark or Light Theme Your Way
+          Tema Oscuro o Claro a Tu Manera
           </p>
           <p className="text-gray-500 text-sm m-3 md:text-base dark:text-white ">
-            Discover a New Language
+          Descubre un Nuevo Idioma
           </p>
           <p className="text-gray-500 text-sm m-3 md:text-base dark:text-white">
-            Customization
+            Customización
           </p>
           <p className="text-gray-500 text-sm m-3 md:text-base dark:text-white">
-          Tailored User Experience
+          Experiencia de Usuario Personalizada
           </p>
           <p className="text-gray-500 text-sm m-3 md:text-base dark:text-white">
-          Adaptation to Your Preference
+          Adaptación a Tu Preferencia
           </p>
         </motion.div>
       </motion.div>
@@ -62,4 +62,4 @@ const FeaturesSection = () => {
   );
 };
 
-export default FeaturesSection;
+export default FullyCustomizableSectionEs;
