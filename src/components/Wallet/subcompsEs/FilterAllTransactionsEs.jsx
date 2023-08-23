@@ -123,7 +123,7 @@ const FilterAllTransactionsEs = ({ setOrders }) => {
       </button>
       <button
         onClick={resetFilters}
-        className={`text-white h-10 w-20 font-bold cursor-no-drop rounded-2xl  text-base ${
+        className={`text-white h-10 w-28 font-bold cursor-no-drop rounded-2xl  text-base ${
           !selectBoolean
             ? "bg-regularGray"
             : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
