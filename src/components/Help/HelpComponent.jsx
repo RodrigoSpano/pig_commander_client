@@ -27,9 +27,9 @@ export default function HelpComponent() {
         "It is not necessary to verify your identity to use pigCommander since we do not use sensitive data.",
     },
     {
-      question: "Can I link my bank account to the wallet?",
+      question: "Can I choose a different color theme?",
       answer:
-        "Yes, you can link your bank account to the wallet to deposit funds or withdraw money. Just make sure to provide the correct details and verify the account before making transactions.",
+        "Yes, you can select the DarkMode, from the profile settings.",
     },
     {
       question: "What security measures do you have in place?",
@@ -37,19 +37,19 @@ export default function HelpComponent() {
         "Our wallet uses high-level encryption to protect your personal and financial data. We also implement two-factor authentication (2FA) to ensure an additional layer of security on your transactions.",
     },
     {
-      question: "What types of cryptocurrencies can I store in the wallet?",
+      question: "What types of languages ​​does the app count?",
       answer:
-        "Our wallet supports a wide variety of popular cryptocurrencies, such as Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), Ripple (XRP), and many more. You can check the complete list of available cryptocurrencies on our platform.",
+        "You can choose in English or Spanish.",
     },
     {
-      question: "How can I deposit funds into my wallet?",
+      question: "How can I change my username?",
       answer:
-        "You can deposit funds into your wallet through bank transfers, credit or debit cards. You can also receive cryptocurrencies from other wallets or exchanges.",
+        "You can change your username from the profile settings."
     },
     {
       question: "Are there any fees for using the wallet?",
       answer:
-        "Basic usage of the wallet is free. However, some transactions may incur network fees or exchange commissions, depending on the operation and the involved cryptocurrency.",
+        "The basic use of the wallet is free. However, you can access the Premium where you will find more features.",
     },
     {
       question: "How can I protect my wallet from potential attacks or theft?",
@@ -76,9 +76,9 @@ export default function HelpComponent() {
         "No es necesario verificar tu identidad para usar Pig Commander, ya que no utilizamos datos sensibles.",
     },
     {
-      question: "¿Puedo vincular mi cuenta bancaria a la billetera?",
+      question: "¿Puedo elegir otro tema de colores?",
       answer:
-        "Sí, puedes vincular tu cuenta bancaria a la billetera para depositar fondos o retirar dinero. Asegúrate de proporcionar los detalles correctos y verificar la cuenta antes de realizar transacciones.",
+        "Sí, puedes seleccionar el DarkMode, desde la configuración del perfil.",
     },
     {
       question: "¿Qué medidas de seguridad tienen implementadas?",
@@ -86,19 +86,19 @@ export default function HelpComponent() {
         "Nuestra billetera utiliza encriptación de alto nivel para proteger tus datos personales y financieros. También implementamos autenticación de dos factores (2FA) para garantizar una capa adicional de seguridad en tus transacciones.",
     },
     {
-      question: "¿Qué tipos de criptomonedas puedo almacenar en la billetera?",
+      question: "¿Qué tipos de idiomas cuenta la aplicación?",
       answer:
-        "Nuestra billetera admite una amplia variedad de criptomonedas populares, como Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), Ripple (XRP) y muchas más. Puedes consultar la lista completa de criptomonedas disponibles en nuestra plataforma.",
+        "Se puede elegir en ingles o español.",
     },
     {
-      question: "¿Cómo puedo depositar fondos en mi billetera?",
+      question: "¿Cómo puedo cambiar mi nombre de usuario?",
       answer:
-        "Puedes depositar fondos en tu billetera a través de transferencias bancarias, tarjetas de crédito o débito. También puedes recibir criptomonedas de otras billeteras o exchanges.",
+        "Puedes cambiar tu nombre de usuario desde las configuraciones del perfil.",
     },
     {
       question: "¿Existen tarifas por usar la billetera?",
       answer:
-        "El uso básico de la billetera es gratuito. Sin embargo, algunas transacciones pueden incurrir en tarifas de red o comisiones de intercambio, dependiendo de la operación y la criptomoneda involucrada.",
+        "El uso básico de la billetera es gratuito. Sin embargo, puedes acceder al Premium donde encontrarás más funcionalidades.",
     },
     {
       question:
