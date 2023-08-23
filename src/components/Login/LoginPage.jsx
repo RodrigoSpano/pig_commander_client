@@ -11,6 +11,7 @@ import BackButton from "../CustomButtons/BackButton";
 import { HiEnvelope, HiMiniLockClosed } from "react-icons/hi2";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import ForgotPasswordModal from "./subcomps/ForgotPasswordModal";
 
 const LoginContainer = () => {
   const {
@@ -31,7 +32,7 @@ const LoginContainer = () => {
   const { showPassword, togglePasswordVisibility } = useVisibility();
 
   return (
-    <>
+    <div>
       {selectedLanguage === "en" ? (
         <form
           onSubmit={handleSubmit}
@@ -107,6 +108,7 @@ const LoginContainer = () => {
                   ? "This field is required"
                   : ""}
               </p>
+              <ForgotPasswordModal />
             </div>
 
             <motion.button
@@ -331,7 +333,7 @@ const LoginContainer = () => {
           <SideRight />
         </form>
       )}
-    </>
+    </div>
   );
 };
 
