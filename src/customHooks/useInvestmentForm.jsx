@@ -3,6 +3,7 @@ import { formInversionsControl, postConversion } from '@/utils/helper/inversions
 import React, { useState } from 'react'
 import { useCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function useInvestmentForm() {
   const [disableInput, setDisableInput] = useState(false);
@@ -27,6 +28,7 @@ function useInvestmentForm() {
     interest: "",
     earning: "", //guarda el interest en realidad, ya que no esta hecha la variable en la bd
   });
+  
   //setea los valores del form a medida que cambian los componentes del form
   const handleChange = (e) => {
     setValues({
@@ -41,13 +43,27 @@ function useInvestmentForm() {
     const formControl = formInversionsControl(values);
 
     if (!formControl.booleanMessage) {
-      alert(formControl.errorMessages);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: formControl.errorMessages,
+        confirmButtonColor: "#ED4998",
+      })
     } else {
       //postConversion setea los datos al formato requerido por la bd
       if (cookies.token) {
         const data = postConversion(values)
         const {token} = cookies;
         dispatch( createInversion({token, ...data}) );
+
+        setValues({
+          name: "",
+          amount: "",
+          dayPeriod: "",
+          period: "days",
+          interest: "",
+          earning: "",
+        });
       }
     }
   };

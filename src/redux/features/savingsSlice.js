@@ -51,9 +51,9 @@ export const savingSlice = createSlice({
       sortSavings(state)
     });
     // ! DELETE ONE SAVING
-    builder.addCase(deleteSaving, (state, action) => {
+    builder.addCase(deleteSaving.fulfilled, (state, action) => {
       let savingFilterDeleted = state.backup_savings.filter(
-        (saving) => saving.id !== action.payload.id
+        (saving) => saving.id !== action.payload
       );
       state.allSavings = savingFilterDeleted;
       state.backup_savings = savingFilterDeleted;
