@@ -24,7 +24,7 @@ export default function HeroSection() {
     <div>
       <div className="px-6 lg:px-8 select-none">
         <div className="mx-auto max-w-7xl py-16 sm:py-16 lg:py-16">
-          <div className="flex flex-col lg:flex-row items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-around">
             <motion.div
               variants={textVariants}
               initial="hidden"
@@ -72,9 +72,12 @@ export default function HeroSection() {
               variants={imageVariants}
               initial="hidden"
               animate="visible"
-              className="hidden xl:block mt-8 xl:mt-0 ml-12"
+              className="mt-8 xl:mt-0 ml-12"
             >
-              <Image src={HeroMockup} width={900} height={900} alt='Logo' />
+              <Image src={HeroMockup} width={400} className='hidden sm:hidden md:block lg:hidden xl:hidden' alt='MockUpHero' />
+              <Image src={HeroMockup} width={500} className='hidden sm:hidden md:hidden lg:block xl:hidden' alt='MockUpHero' />
+              <Image src={HeroMockup} width={700} className='hidden sm:hidden md:hidden lg:hidden xl:block' alt='MockUpHero' />
+
             </motion.div>
           </div>
         </div>

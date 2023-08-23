@@ -1,9 +1,8 @@
-// languageSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const languageSlice = createSlice({
   name: 'language',
-  initialState: 'en', // 'en' por defecto o el último idioma seleccionado desde el local storage
+  initialState: 'en',
   reducers: {
     setLanguage: (state, action) => {
       return action.payload;
