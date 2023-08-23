@@ -7,17 +7,17 @@ export default function InvestmentFormComponent() {
 
   return (
     <div>
-      <div className="mt-5 ml-2 text-3xl text-boldPink font-extrabold tracking-tight sm:text-xl">
+      <div className="mt-5 ml-2 text-3xl text-boldPink dark:text-mediumPinkDark font-extrabold tracking-tight sm:text-xl">
         Create New:
       </div>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full h-auto sm:gap-1 ">
           <div className="column-span-1">
-            <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
+            <div className="ml-2 mt-2 text-black dark:text-white text-opacity-50 text-lg font-normal">
               Name
             </div>
             <input
-              className=" ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-11/12 "
+              className=" ml-2 pl-2 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-11/12 "
               placeholder="Enter Name"
               name="name"
               id="name"

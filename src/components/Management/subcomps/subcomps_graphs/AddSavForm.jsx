@@ -32,7 +32,7 @@ export default function AddSavForm({ id, index }) {
     <form onSubmit={handleSubmit}>
       <div className="flex flex-row">
         <input
-          className=" flex border-1 ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-2/3 justify-center items-center"
+          className=" flex border-1 ml-2 pl-2  text-gray-500 dark:border-0 bg-black bg-opacity-10 rounded-sm h-12 w-2/3 justify-center items-center"
           title="Enter amount"
           value={amount}
           onChange={handleChange}
