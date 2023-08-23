@@ -24,7 +24,7 @@ function ForgotPasswordModal() {
 
   return (
     <div>
-      <button onClick={onOpen}className="text-regularPink font-medium text-sm cursor-pointer">Forgot your password ?</button>
+      <button type='button' onClick={onOpen}className="text-regularPink font-medium text-sm cursor-pointer">Forgot your password ?</button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false}>
       <ModalContent >
           {(onClose) => (
