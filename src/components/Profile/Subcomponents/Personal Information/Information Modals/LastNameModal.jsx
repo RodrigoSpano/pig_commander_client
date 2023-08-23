@@ -55,7 +55,7 @@ export default function LastNameModal() {
                 <input
                   type="text"
                   className="w-full border rounded p-2"
-                  placeholder="Edit Name"
+                  placeholder="Edit Last Name"
                   value={editedName}
                   onChange={handleNameChange}
                 />

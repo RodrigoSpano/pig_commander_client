@@ -10,23 +10,23 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { FaEdit } from "react-icons/fa";
-import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
 import { updateUser } from "@/redux/actions/userActions";
 
-export default function FirstNameModal() {
+export default function LastNameModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [editedName, setEditedName] = useState("");
 
-  const [cookies, setCookies] = useCookies();
   const dispatch = useDispatch();
+  const [cookies, setCookies] = useCookies();
 
   const handleNameChange = (event) => {
     setEditedName(event.target.value);
   };
 
   const handleSave = () => {
-    dispatch(updateUser({ token: cookies.token, name: editedName }));
+    dispatch(updateUser({ token: cookies.token, lastname: editedName }));
     onOpenChange(false);
     setEditedName("");
   };
@@ -48,14 +48,14 @@ export default function FirstNameModal() {
           {(onClose) => (
             <>
               <ModalHeader className="flex gap-1">
-                Change your
-                <span className="text-regularPink">Name</span>
+                Cambia tu
+                <span className="text-regularPink">Apellido</span>
               </ModalHeader>
               <ModalBody>
                 <input
                   type="text"
                   className="w-full border rounded p-2"
-                  placeholder="Edit Name"
+                  placeholder="Editar Apellido"
                   value={editedName}
                   onChange={handleNameChange}
                 />
@@ -67,13 +67,13 @@ export default function FirstNameModal() {
                   onPress={onClose}
                   className="text-regularPink bg-transparent mr-2"
                 >
-                  Cancel
+                  Cancelar
                 </Button>
                 <Button
                   className="bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300"
-                  onPress={() => handleSave()}
+                  onPress={handleSave}
                 >
-                  Save
+                 Guardar
                 </Button>
               </ModalFooter>
             </>
