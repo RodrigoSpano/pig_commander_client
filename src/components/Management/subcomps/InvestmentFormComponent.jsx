@@ -4,7 +4,7 @@ import useInvestmentForm from "@/customHooks/useInvestmentForm";
 
 export default function InvestmentFormComponent() {
 
-  const {handleChange,handleSubmit} = useInvestmentForm()
+  const {handleChange,handleSubmit, values} = useInvestmentForm()
 
   return (
     <div>
@@ -22,6 +22,7 @@ export default function InvestmentFormComponent() {
               placeholder="Enter Name"
               name="name"
               id="name"
+              value={values.name}
               onChange={handleChange}
               required
             ></input>
@@ -31,18 +32,21 @@ export default function InvestmentFormComponent() {
             title={"Starting Amount"}
             icon={"$"}
             id={"amount"}
+            values={values.amount}
             handleChange={handleChange}
           />
           <Inputs
             title={"Saving Period"}
             icon={""}
             id={"period"}
+            values={values.dayPeriod}
             handleChange={handleChange}
           />
           <Inputs
             title={"Cost Effectiveness"}
             icon={"%"}
             id={"interest"}
+            values={values.interest}
             handleChange={handleChange}
           />
 

@@ -28,6 +28,7 @@ function useInvestmentForm() {
     interest: "",
     earning: "", //guarda el interest en realidad, ya que no esta hecha la variable en la bd
   });
+  
   //setea los valores del form a medida que cambian los componentes del form
   const handleChange = (e) => {
     setValues({
@@ -54,6 +55,15 @@ function useInvestmentForm() {
         const data = postConversion(values)
         const {token} = cookies;
         dispatch( createInversion({token, ...data}) );
+
+        setValues({
+          name: "",
+          amount: "",
+          dayPeriod: "",
+          period: "days",
+          interest: "",
+          earning: "",
+        });
       }
     }
   };
