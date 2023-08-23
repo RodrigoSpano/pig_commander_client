@@ -1,8 +1,10 @@
-import React from "react";
-import ReviewPage from '../../components/Landing/Reviews/ReviewPage'
+'use client'
+import ReviewPage from "../../components/Landing/Reviews/ReviewPage";
+import { useSelector } from "react-redux";
+import ReviewPageEs from "@/components/LandingEs/Reviews/ReviewPageEs";
 
 export default function Review() {
-  return (
-    <ReviewPage />
-  );
+  const selectedLanguage = useSelector((state) => state.language);
+
+  return <>{selectedLanguage === "en" ? <ReviewPage /> : <ReviewPageEs />}</>;
 }
