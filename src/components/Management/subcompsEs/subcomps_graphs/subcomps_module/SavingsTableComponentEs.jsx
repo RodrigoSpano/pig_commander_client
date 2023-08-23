@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import {FaTrashCan} from 'react-icons/fa6'
+import { useSelector } from "react-redux";
 import {
   Table,
   TableHeader,
@@ -10,20 +10,24 @@ import {
   TableCell,
 } from "@nextui-org/react";
 import "../../../../Wallet/CustomScrollBar.css";
-import useDetailSaving from "@/customHooks/useDetailSaving";
+import {
+  getEarnings,
+  getDate,
+  weldDates,
+} from "@/utils/helper/inversionsFuncs";
+import useDetailInv from "@/customHooks/useDetailInv";
 
-export default function TableComponentEs({ setSelectedSaving }) {
-  const savings = useSelector((state) => state.savings.allSavings);
-  const { handleDetailSav } = useDetailSaving();
-
+export default function TableComponentEs({ setSelectedInversion }) {
+  const inversions = useSelector((state) => state.inversions.allInversions);
+  const { handleDetailInv } = useDetailInv();
+  
   const deleteById = (id) => {
-    handleDetailSav(id);//pop up hook
+    handleDetailInv(id) //pop up hook
   }
-
 
   return (
     <div className="flex flex-col gap-3">
-      <div className=" custom-scrollbar overflow-y-auto max-h-[230px] w-2/3 self-center">
+      <div className=" custom-scrollbar overflow-y-auto h-auto max-h-80">
         <Table
           color="danger"
           selectionMode="single"
@@ -31,24 +35,40 @@ export default function TableComponentEs({ setSelectedSaving }) {
           aria-label="Example static collection table"
         >
           <TableHeader>
-          <TableColumn></TableColumn>
+            <TableColumn></TableColumn>
             <TableColumn>NOMBRE</TableColumn>
-            <TableColumn>MONTO DE META</TableColumn>
+            <TableColumn>COMIENZO</TableColumn>
+            <TableColumn>FIN</TableColumn>
+            <TableColumn>INVERTIDO</TableColumn>
+            <TableColumn>OBTENIDO</TableColumn>
           </TableHeader>
           <TableBody>
-            {savings.map((element, index) => {
+            {inversions.map((element, index) => {
               return (
                 <TableRow
                   key={element.id}
                   onClick={() => {
-                    setSelectedSaving(index); //este es para el grafico
+                    setSelectedInversion(index); //grafico
                   }}
                 >
-                   <TableCell onClick={() => {deleteById(element.id)}}>
-                   <FaTrashCan className="text-red-600 cursor-pointer text-center"/>
-                   </TableCell>
+                  <TableCell onClick={() => {deleteById(element.id)}}>
+                    <FaTrashCan className="text-red-600 cursor-pointer text-center"/>
+                  </TableCell>
                   <TableCell>{element.name}</TableCell>
-                  <TableCell>{element.goal}</TableCell>
+                  <TableCell>
+                    {weldDates(getDate(element.started_on))}
+                  </TableCell>
+                  <TableCell>{weldDates(getDate(element.finish_at))}</TableCell>
+                  <TableCell>{element.amount}</TableCell>
+                  <TableCell>
+                    {getEarnings(
+                      getDate(element.started_on),
+                      getDate(element.finish_at),
+                      element.earning,
+                      element.amount,
+                      0
+                    )}
+                  </TableCell>
                 </TableRow>
               );
             })}

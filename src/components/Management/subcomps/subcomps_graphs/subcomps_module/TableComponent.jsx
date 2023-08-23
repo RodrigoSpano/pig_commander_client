@@ -37,8 +37,8 @@ export default function TableComponent({ setSelectedInversion }) {
           <TableHeader>
             <TableColumn></TableColumn>
             <TableColumn>NAME</TableColumn>
-            <TableColumn>STARTED</TableColumn>
-            <TableColumn>FINISHED</TableColumn>
+            <TableColumn>START</TableColumn>
+            <TableColumn>FINISH</TableColumn>
             <TableColumn>INVESTED</TableColumn>
             <TableColumn>EARNED</TableColumn>
           </TableHeader>
