@@ -4,7 +4,7 @@ import { Switch } from "@nextui-org/react";
 import { setLanguage } from '@/redux/features/languageSlice';
 import { RiEnglishInput } from "react-icons/ri";
 import { HiAcademicCap } from "react-icons/hi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const EnglishIcon = (props) => (
     <RiEnglishInput
@@ -47,5 +47,3 @@ function LanguageSwitch() {
 }
 
 export default LanguageSwitch;
-
-
