@@ -1,8 +1,10 @@
-import React from "react";
-import FeaturesPage from '../../components/Landing/Features/FeaturesPage'
+'use client'
+import FeaturesPage from "../../components/Landing/Features/FeaturesPage";
+import { useSelector } from "react-redux";
+import FeaturesPageEs from "@/components/LandingEs/FeaturesEs/FeaturesPageEs";
 
 export default function Features() {
-  return (
-    <FeaturesPage />
-  );
+  const selectedLanguage = useSelector((state) => state.language);
+
+  return <>{selectedLanguage === "en" ? <FeaturesPage /> : <FeaturesPageEs />}</>;
 }

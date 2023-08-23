@@ -2,13 +2,13 @@ import React from 'react'
 import Image from 'next/image';
 import AutomationofMonthlyExpenses from '../../../utils/Images/Features Images/AutomationofMonthlyExpenses.png';
 
-const Automation = () => {
+const AuthomatizationEs = () => {
     return (
         <>
             <div className='flex flex-col justify-center'>
-                <h2 className='text-regularPink text-3xl font-bold mb-4'>Automation of Monthly Expenses</h2>
+                <h2 className='text-regularPink text-3xl font-bold mb-4'>Automatización de los Gastos Mensaules</h2>
                 <p className='text-gray-600'>
-                    Say goodbye to the repetitive task of entering your monthly expenses manually. Pig Commander allows you to automate the recording of recurring expenses, such as salary, rent, subscriptions and more, so you never miss a financial commitment.
+                Di adiós a la tarea repetitiva de ingresar manualmente tus gastos mensuales. Pig Commander te permite automatizar el registro de gastos recurrentes, como salario, alquiler, suscripciones y más, para que nunca pierdas un compromiso financiero.
                 </p>
             </div>
             <div className='flex items-center justify-center'>
@@ -18,4 +18,4 @@ const Automation = () => {
     )
 }
 
-export default Automation
+export default AuthomatizationEs

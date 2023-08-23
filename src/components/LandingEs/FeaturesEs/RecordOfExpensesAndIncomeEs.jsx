@@ -3,7 +3,7 @@ import Image from 'next/image';
 import RecordofExpensesandIncome from '../../../utils/Images/Features Images/RecordofExpensesandIncome.png';
 import { motion } from 'framer-motion';
 
-const RecordOfExpensesAndIncome = () => {
+const RecordOfExpensesAndIncomeEs = () => {
   return (
     <>
       <motion.div
@@ -24,17 +24,17 @@ const RecordOfExpensesAndIncome = () => {
           whileHover={{ scale: 1.05, color: '#ff4081' }}
           className='text-regularPink text-3xl font-bold mb-4'
         >
-          Record of Expenses and Incomes
+          Record de Gastos y Ingresos
         </motion.h2>
         <motion.p
           whileHover={{ color: '#ff4081' }}
           className='text-gray-600'
         >
-          With Pig Commander, keeping detailed track of your financial transactions has never been easier. Record your expenses and income quickly and categorize them to get a clear view of your financial patterns.
+          Con Pig Commander, llevar un seguimiento detallado de tus transacciones financieras nunca ha sido tan fácil. Registra tus gastos e ingresos rápidamente y categorízalos para obtener una vista clara de tus patrones financieros.
         </motion.p>
       </motion.div>
     </>
   );
 };
 
-export default RecordOfExpensesAndIncome;
+export default RecordOfExpensesAndIncomeEs;

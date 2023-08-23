@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image';
 import Budget from '../../../utils/Images/Features Images/Budget.png';
 
-const Buget = () => {
+const BudgetComponent = () => {
     return (
         <>
             <div className='flex flex-col justify-center'>
@@ -18,4 +18,4 @@ const Buget = () => {
     )
 }
 
-export default Buget
+export default BudgetComponent
