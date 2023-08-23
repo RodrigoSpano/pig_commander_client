@@ -38,7 +38,7 @@ const UserDetailModal = ({ user }) => {
   }, []);
   return (
     <>
-      <Button onPress={onOpen}>
+      <Button onPress={onOpen} className={"h-8 min-w-10"}>
         <AiOutlineEye />
       </Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="2xl">
