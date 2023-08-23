@@ -11,9 +11,7 @@ import { BsPiggyBank } from "react-icons/bs"
 export default function CategoriesCard({
   name,
   amount,
-  type,
   category,
-  validation,
 }) {
   function iconDisplayer() {
     switch (category) {
@@ -40,15 +38,9 @@ export default function CategoriesCard({
 
       <div className="font-bold capitalize text-wrap w-24 text-">{name}</div>
       {/* Si es gasto va en rojo, si es ingreso va en verde */}
-      {validation ? (
-        <div className={type === "income" ? "text-green-700" : "text-red-700"}>
+        <div className="text-black">
           $ {amount.toLocaleString()}
         </div>
-      ) : (
-        <div className={amount > 0 ? "text-green-700" : "text-red-700"}>
-          $ {amount.toLocaleString()}
-        </div>
-      )}
     </div>
   );
 }
