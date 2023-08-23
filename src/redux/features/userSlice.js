@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserData, loginUser, updatePicture } from "../actions/userActions";
+import {
+  deleteUser,
+  getUserData,
+  loginUser,
+  updatePassword,
+  updatePicture,
+  updateUser,
+} from "../actions/userActions";
 
 const initialState = {
   name: "",
@@ -42,6 +49,20 @@ export const userSlice = createSlice({
       builder.addCase(updatePicture.fulfilled, (state, action) => {
         state.image = action.payload;
       });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      if (action.payload.name !== undefined) {
+        state.name = action.payload.name;
+      }
+      if (action.payload.lastname !== undefined) {
+        state.lastname = action.payload.lastname;
+      }
+    });
+    builder.addCase(updatePassword.fulfilled, (state, action) => {
+      state.password = action.payload;
+    });
+    builder.addCase(deleteUser.fulfilled, (state, action) => {
+      state = initialState;
+    });
   },
 });
 

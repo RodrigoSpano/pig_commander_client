@@ -1,11 +1,12 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 const { createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const getAllReviews = createAsyncThunk(
   "get all reviews",
   async (token) => {
     try {
-      const { data } = await axios.get("/reviews", {
+      const { data } = await axios.get("/getReview", {
         headers: { Authorization: token },
       });
       return data;
@@ -31,7 +32,10 @@ export const postReview = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      alert("An error occurred");
+      Swal.fire({
+        animation: true,
+        title: "You already have a review",
+      });
     }
   }
 );
