@@ -40,8 +40,10 @@ const MoonIcon = (props) => (
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
 
-  const handleChange = () =>
-    theme == "dark" ? setTheme("light") : setTheme("dark");
+
+  const handleChange = () => {
+    theme == "light" ? setTheme("light") : setTheme("dark");
+  }
 
   return (
     <Switch

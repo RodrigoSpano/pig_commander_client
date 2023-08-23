@@ -21,7 +21,10 @@ export default function RootLayout({ children }) {
         <title>PigCommander Finance App</title>
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+        >
           <NextUIProvider>
             <CookiesProvider>
               <ReduxProvider>

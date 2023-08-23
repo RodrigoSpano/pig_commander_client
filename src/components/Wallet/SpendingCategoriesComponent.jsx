@@ -13,22 +13,19 @@ import {
   Button,
   Tooltip,
 } from "@nextui-org/react";
-//Scroll bar rosa
-import "./CustomScrollBar.css";
+import "./CustomScrollBar.css"; // Estilo de la barra de desplazamiento
 
 export default function SpendingCategoriesComponent() {
-  const [selectedCategory, setCategory] = useState("select-none"); //Estado local de actualizacion del select en las categorias
-  const [selectedYear, setSelect] = useState("select-none"); // Estado local de la actualizacion del select en los a;os
-  const [filterResult, setFilterResult] = useState([]); //Filter result es el array resultado del filtrado multiple
+  const [selectedCategory, setCategory] = useState("select-none");
+  const [selectedYear, setSelect] = useState("select-none");
+  const [filterResult, setFilterResult] = useState([]);
 
-  //manejo de selectores
   const categories = useSelector((state) => state.others.categories);
   const transactions = useSelector(
     (state) => state.transactions.backup_transactions
   );
 
   useEffect(() => {
-    //logica de renderizacion del componente
     const filteredTransactions = multipleFilter(
       transactions,
       selectedCategory,
@@ -39,74 +36,70 @@ export default function SpendingCategoriesComponent() {
   }, [transactions, selectedCategory, selectedYear]);
 
   return (
-    <div className="h-[100%]">
-      {/* barra rosa */}
+    <div className="h-full">
+      {/* Barra rosa */}
       <div className="bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink">
         h
       </div>
 
-      {/* select de las categorias */}
-      <div className="flex flex-row h-[10%] justify-center gap-20 mt-2">
+      {/* Selector de categorías */}
+      <div className="flex flex-row h-[10%] justify-center gap-4 mt-2 p-4">
         <Tooltip
-          content="Click and filter for categories!"
+          content="Click to filter by categories!"
           placement={"right"}
           closeDelay={0}
         >
-          <div>
-            <Dropdown>
-              <DropdownTrigger>
-                <Button
-                  className={"border-[#de78aebf] text-md"}
-                  variant="bordered"
-                >
-                  Spending by category
-                </Button>
-              </DropdownTrigger>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button
+                className={"border-[#de78aebf] text-md"}
+                variant="bordered"
+              >
+                Spending by Category
+              </Button>
+            </DropdownTrigger>
 
-              <DropdownMenu aria-label="Static Actions">
+            <DropdownMenu aria-label="Static Actions">
+              <DropdownItem
+                onClick={() => setCategory("select-none")}
+                className={"bg-[#de78ae] text-[white]"}
+                variant="solid"
+              >
+                All Categories
+              </DropdownItem>
+              {categories.map((category) => (
                 <DropdownItem
-                  onClick={() => setCategory("select-none")}
-                  className={"bg-[#de78ae] text-[white]"}
-                  variant="solid"
+                  variant="bordered"
+                  onClick={() => setCategory(category.name)}
+                  key={category.name}
+                  value={category.name}
+                  className={"capitalize"}
                 >
-                  All Categories
+                  {category.name}
                 </DropdownItem>
-                {categories.map((category) => (
-                  <DropdownItem
-                    variant="bordered"
-                    onClick={() => setCategory(category.name)}
-                    key={category.name}
-                    value={category.name}
-                    className={"capitalize"}
-                  >
-                    {category.name}
-                  </DropdownItem>
-                ))}
-              </DropdownMenu>
-            </Dropdown>
-          </div>
+              ))}
+            </DropdownMenu>
+          </Dropdown>
         </Tooltip>
       </div>
 
-      {/* si se selecciona la primera opcion de categorias se muestran los totales por categorias */}
-      <div>
+      {/* Si se selecciona "All Categories", muestra totales por categorías */}
+      <div className="p-4">
         {typeof filterResult === "object" && !Array.isArray(filterResult) ? (
           <div className="flex flex-wrap custom-scrollbar overflow-y-auto max-h-[90%]">
-            {/* Este código filtra por cada objeto */}
             {Object.keys(filterResult).map((category) => (
               <CategoriesCard
                 key={category}
                 name={category}
                 category={category}
                 amount={filterResult[category].total}
-                s
                 type={filterResult[category].type}
                 validation={false}
               />
             ))}
           </div>
         ) : (
-          /* si se selecciona cualquier otra se muestran las transacciones por categoria y por a;o seleccionado */
+          /* Si se selecciona cualquier otra categoría, muestra las transacciones por categoría y año seleccionado */
           <div className="flex flex-wrap custom-scrollbar overflow-y-scroll max-h-[90%]">
             {filterResult !== undefined &&
               filterResult.map((element) => (
