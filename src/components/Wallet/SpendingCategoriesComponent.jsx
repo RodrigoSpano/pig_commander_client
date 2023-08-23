@@ -108,8 +108,6 @@ export default function SpendingCategoriesComponent() {
                     categories
                   )}
                   amount={element.amount}
-                  type={element.type}
-                  validation={true}
                 />
               ))}
           </div>
