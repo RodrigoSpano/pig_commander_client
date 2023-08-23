@@ -69,17 +69,16 @@ export default function Option_one_component() {
     <div>
       <div>
         {/* <Buttons_nav /> */}
-        <Card>
-          <Title className="justify-center flex text-lg font-semibold text-boldPink">
+        <Card className="rounded-t-2xl">
+          <Title className="justify-center flex text-lg font-semibold  text-boldPink">
             Money vs Dates
           </Title>
           <LineChart
-            className="mt-6 stroke-pink-400 "
+            className="mt-6 stroke-pink-400"
             data={chartDisplayer}
             index="day"
             startEndOnly={false}
             autoMinValue={true}
-            height="h-60"
             categories={["total", "amount"]}
             colors={["blue", "gray"]}
             valueFormatter={undefined}

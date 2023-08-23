@@ -66,7 +66,7 @@ export default function SavingFormComponent() {
       <div className="mt-5 ml-2 text-3xl sm:text-xl font-extrabold tracking-tight text-boldPink">
         Create New Goal:
       </div>
-      <div className="grid grid-cols-1 gap-2 w-full h-full">
+      <div className="grid grid-cols-1 gap-2 w-full h-auto">
         <form>
           <div className="col-span-1">
             <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">

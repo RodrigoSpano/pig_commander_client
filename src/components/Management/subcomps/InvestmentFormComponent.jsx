@@ -12,7 +12,7 @@ export default function InvestmentFormComponent() {
         Create New:
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full h-full sm:gap-1 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full h-auto sm:gap-1 ">
           <div className="column-span-1">
             <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
               Name

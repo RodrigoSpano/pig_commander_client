@@ -189,10 +189,10 @@ const NavBar = () => {
           )}
         </AnimatePresence>
       </nav>
-      <div>
+{/*       <div>
         <button onClick={() => handleLanguageChange("en")}>English</button>
         <button onClick={() => handleLanguageChange("es")}>Español</button>
-      </div>
+      </div> */}
     </>
   );
 };
