@@ -8,6 +8,7 @@ const initialState = {
   image: "",
   premium: false,
   logged: false,
+  createdAt: "",
 };
 
 export const userSlice = createSlice({
@@ -35,6 +36,7 @@ export const userSlice = createSlice({
         state.email = action.payload.user.email;
         state.image = action.payload.user.image;
         state.premium = action.payload.user.premium;
+        state.createdAt = action.payload.user.createdAt;
         state.logged = true;
       }),
       builder.addCase(updatePicture.fulfilled, (state, action) => {

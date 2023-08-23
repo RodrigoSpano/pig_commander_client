@@ -42,7 +42,14 @@ export default function FirstNameModal() {
                                 <input
                                     type="text"
                                     className="w-full border rounded p-2"
-                                    placeholder="Edit Name"
+                                    placeholder="Insert your current password"
+                                    value={editedName}
+                                    onChange={handleNameChange}
+                                />
+                                 <input
+                                    type="text"
+                                    className="w-full border rounded p-2"
+                                    placeholder="Insert your new password"
                                     value={editedName}
                                     onChange={handleNameChange}
                                 />

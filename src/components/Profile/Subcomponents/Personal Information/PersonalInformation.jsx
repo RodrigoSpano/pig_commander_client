@@ -1,31 +1,34 @@
+'use client';
 import React from 'react';
 import FirstName from './User Information/FirstName';
 import LastName from './User Information/LastName'
 import Email from './User Information/Email';
 import Password from './User Information/Password';
 import CreatedAt from './User Information/CreatedAt'
+import { useSelector } from 'react-redux';
+import DeleteAccount from './User Information/DeleteAccount';
 
-const userData = {
-  firstName: 'John',
-  lastName: 'Doe',
-  email: 'johndoe@example.com',
-  password: '********',
-  createdAt: 'August 15, 2023',
-};
 
 function PersonalInformation() {
+
+  const user = useSelector(state => state.user)
+
+  console.log(user);
+
   return (
-    <div className='bg-white w-full rounded-md shadow-md p-6'>
+    <div className='bg-white dark:bg-mediumGrayDarkMode w-full rounded-md shadow-md p-6'>
       <h1 className='text-xl lg:text-2xl font-bold text-regularPink mb-6'>
         Personal Information
       </h1>
 
       <div className='flex flex-col md:grid grid-cols-2 gap-6'>
-        <FirstName userData={userData} />
-        <LastName userData={userData} />
-        <Email userData={userData} />
-        <Password userData={userData}/>
-        <CreatedAt userData={userData}/>
+        <FirstName user={user} />
+        <LastName user={user} />
+        <Email user={user} />
+        <Password user={user}/>
+        <CreatedAt user={user}/>
+        <DeleteAccount/>
+        
       </div>
     </div>
   );
