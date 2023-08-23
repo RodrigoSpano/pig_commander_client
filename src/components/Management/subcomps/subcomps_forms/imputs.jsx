@@ -3,26 +3,26 @@ import React from "react";
 export default function inputs({ title, icon, id, handleChange, values }) {
   return (
     <div className="column-span-1">
-      <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
+      <div className="ml-2 mt-2 text-black dark:text-white text-opacity-50 text-lg font-normal">
         {title}
       </div>
       <div className="flex flex-row">
         {id === "period" ? (
           <input
-            className=" flex border-1 ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-8 justify-center items-center"
+            className=" flex border-1 ml-2 pl-2 dark:border-0 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-8 justify-center items-center"
             name="dayPeriod"
             onChange={handleChange}
             value={values}
             required
           ></input>
         ) : (
-          <div className=" flex border-1 ml-2 bg-black bg-opacity-10 rounded-sm h-12 text-lg w-8 font-extrabold justify-center items-center">
+          <div className=" flex border-1 ml-2 dark:border-0 bg-black bg-opacity-10 rounded-sm h-12 text-lg w-8 font-extrabold justify-center items-center">
             {icon}
           </div>
         )}
         {id === "period" ? (
           <select
-            className="border-1 ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-3/4"
+            className="border-1 ml-2 pl-2 dark:border-0 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-3/4"
             name="period"
   
             onChange={handleChange}
@@ -34,7 +34,7 @@ export default function inputs({ title, icon, id, handleChange, values }) {
           </select>
         ) : (
           <input
-            className="border-1 ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-3/4"
+            className="border-1 ml-2 pl-2 dark:border-0 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-3/4"
             placeholder="Enter Amount"
             id={`${id}`}
             name={`${id}`}

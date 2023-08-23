@@ -63,18 +63,18 @@ export default function SavingFormComponent() {
 
   return (
     <div>
-      <div className="mt-5 ml-2 text-3xl sm:text-xl font-extrabold tracking-tight text-boldPink">
+      <div className="mt-5 ml-2 text-3xl sm:text-xl font-extrabold tracking-tight dark:text-mediumPinkDark text-boldPink">
         Create New Goal:
       </div>
       <div className="grid grid-cols-1 gap-2 w-full h-auto">
         <form>
           <div className="col-span-1">
-            <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
+            <div className="ml-2 mt-2 text-black dark:text-white text-opacity-50 text-lg font-normal">
               Name
             </div>
 
             <input
-              className="ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 sm:w-2/5 w-full"
+              className="ml-2 pl-2 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 sm:w-2/5 w-full"
               placeholder="Enter Name"
               id="name"
               name="name"

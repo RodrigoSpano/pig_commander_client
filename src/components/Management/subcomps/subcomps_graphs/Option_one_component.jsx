@@ -67,16 +67,15 @@ export default function Option_one_component() {
 
   return (
     <div>
-      <div>
+      <div className="dark:border-0">
         {/* <Buttons_nav /> */}
-        <Card className="rounded-t-2xl">
-          <Title className="justify-center flex text-lg font-semibold  text-boldPink">
+        <Card className="rounded-t-2xl dark:bg-mediumGrayDarkMode dark:border-0">
+          <Title className="justify-center flex text-lg dark:border-0 font-semibold dark:bg-mediumGrayDarkMode dark:text-mediumPinkDark text-boldPink">
             Money vs Dates
           </Title>
           <LineChart
             className="mt-6 stroke-pink-400"
             data={chartDisplayer}
-            index="day"
             startEndOnly={false}
             autoMinValue={true}
             categories={["total", "amount"]}
@@ -88,7 +87,7 @@ export default function Option_one_component() {
         </Card>
       </div>
       <div className="flex justify-center w-full max-h-20">
-        <div className="w-1/3 flex justify-center content-center text-center">
+        <div className="w-1/3 flex justify-center content-center  text-center">
           <Signs title={"Investment Amount"} amount={amountShowUp} />
         </div>
         <div className="w-1/3 flex justify-center content-center text-center">

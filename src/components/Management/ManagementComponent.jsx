@@ -61,10 +61,10 @@ export default function ManagmentComponent() {
           <div className="flex lg:flex-row sm:flex-col gap-2.5 h-screen lg:w-full sm:w-auto">
 
             {/* nav component */}
-            <div className="flex flex-col lg:w-2/3 sm:w-auto gap-2.5 m-3">
+            <div className="flex flex-col lg:w-2/3 sm:w-auto  gap-2.5 m-3">
               <NavComponent form={form} />
               {/* graphic component */}
-              <div className=" shadow-lg rounded-2xl bg-white h-full ">
+              <div className=" shadow-lg rounded-2xl bg-white dark:border-0  dark:bg-mediumGrayDarkMode h-full ">
                 <GraphComponent option={selectOpt} />
               </div>
             </div>
@@ -73,8 +73,8 @@ export default function ManagmentComponent() {
               {/* select method component */}
               <SelectMethod handleButtonClick={handleButtonClick} />
 
-              <div className=" shadow-lg rounded-2xl bg-white flex flex-col p-3 object-center justify-center">
-                <h1 className="lg:text-4xl md:text-2xl sm:text-xl font-extrabold text-gray-900 ml-2 tracking-wide">
+              <div className=" shadow-lg rounded-2xl bg-white dark:bg-mediumGrayDarkMode flex flex-col p-3 object-center justify-center">
+                <h1 className="lg:text-4xl md:text-2xl sm:text-xl font-extrabold  text-gray-900 ml-2 dark:text-white tracking-wide">
                   {form}
                 </h1>
                 {componentRender()}

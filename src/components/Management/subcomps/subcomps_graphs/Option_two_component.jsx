@@ -35,16 +35,16 @@ const id =
           <Donut index={selectedSaving} />
         </div>
         <div className="cols-span-1">
-          <div className="m-3 text-2xl font-normal text-center  text-gray-500  bg-opacity-10 ">
+          <div className="m-3 text-2xl font-normal text-center  text-gray-500 dark:text-white  bg-opacity-10 ">
             Goal
           </div>
-          <div className="m-3 text-5xl font-bold text-center  text-boldPink">
+          <div className="m-3 text-5xl font-bold text-center  text-boldPink dark:text-mediumPinkDark">
             $ {goal}
           </div>
-          <div className="m-3 text-2xl font-normal text-center  text-gray-500  bg-opacity-10 ">
+          <div className="m-3 text-2xl font-normal text-center  text-gray-500 dark:text-white  bg-opacity-10 ">
             Current
           </div>
-          <div className="m-3 text-5xl font-bold text-center  text-boldPink">
+          <div className="m-3 text-5xl font-bold text-center  text-boldPink dark:text-mediumPinkDark">
             $ {amount}
           </div>
           <div className="m-3 mt-5 content-center text-xl">

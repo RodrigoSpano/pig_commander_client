@@ -134,7 +134,7 @@ const NavBar = () => {
       </nav>
 
       {/* MOBILE */}
-      <nav className="absolute w-screen h-min md:hidden bg-white shadow-lg">
+      <nav className="absolute w-screen h-min md:hidden bg-white dark:bg-mediumGrayDarkMode shadow-lg">
         <div className="flex justify-between items-center px-4 py-2">
           {/* LOGO */}
           <div className="flex items-center">
@@ -146,9 +146,9 @@ const NavBar = () => {
           <div className="block md:hidden">
             <button onClick={toggleMenu}>
               {isOpen ? (
-                <FiX className='w-6 h-6 text-gray-700 ' />
+                <FiX className='w-6 h-6 text-gray-700  dark:text-white' />
               ) : (
-                <FiMenu className="w-6 h-6 text-gray-700" />
+                <FiMenu className="w-6 h-6 text-gray-700 dark:text-white" />
               )}
             </button>
           </div>
@@ -162,7 +162,7 @@ const NavBar = () => {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
-              className="bg-white w-full mt-2 py-1 shadow-lg"
+              className="bg-white dark:bg-mediumGrayDarkMode w-full mt-2 py-1 shadow-lg"
             >
               {menuItems.map((item, index) => (
                 <motion.div
@@ -172,9 +172,9 @@ const NavBar = () => {
                   transition={{ delay: 0.1 + index * 0.1 }}
                 >
                   <Link href={item.path}>
-                    <div className="flex justify-start items-center px-4 py-2 hover:bg-gray-100">
+                    <div className="flex justify-start items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-grayHover">
                       {item.icon}
-                      <p className="ml-2 text-md text-gray-700">{item.text}</p>
+                      <p className="ml-2 text-md text-gray-700 dark:text-white">{item.text}</p>
                     </div>
                   </Link>
                 </motion.div>
