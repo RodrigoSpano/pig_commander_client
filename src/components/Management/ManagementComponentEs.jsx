@@ -1,29 +1,29 @@
 "use client";
 import { useEffect, useState } from "react";
-import InvestmentFormComponent from "./subcomps/InvestmentFormComponent";
-import SavingFormComponent from "./subcomps/SavingFormComponent";
 import GraphComponent from "./subcomps/GraphComponent";
 import AdviceComponent from "./AdviceComponent";
 import LoaderComponent from "../Loader/LoaderComponent";
 import { useSelector } from "react-redux";
 import NavComponent from "./subcomps/NavComponent";
-import SelectMethod from "./subcomps/SelectMethod";
+import InvestmentFormComponentEs from "./subcompsEs/subcomps_graphsEs/InvestmentFormComponentEs";
+import SavingFormComponentEs from "./subcompsEs/subcomps_graphsEs/SavingFormComponentEs";
+import SelectMethodEs from "./subcompsEs/subcomps_graphsEs/SelectMethodEs";
 
-export default function ManagmentComponent() {
-  const [form, setForm] = useState("Investment");
+export default function ManagmentComponentEs() {
+  const [form, setForm] = useState("Inversiones");
   const [isLoading, setIsLoading] = useState(true);
   const [selectOpt, setSelect] = useState("opt1");
   const user = useSelector((state) => state.user.logged);
 
   const handleButtonClick = (e) => {
-    switch (e.target.name) {
-      case "Investment": {
-        setForm("Investment");
+    switch (e.target. name) {
+      case "Inversiones": {
+        setForm("Inversiones");
         setSelect('opt1')
         break;
       }
-      case "Saving": {
-        setForm("Saving");
+      case "Ahorros": {
+        setForm("Ahorros");
         setSelect('opt2')
         break;
       }
@@ -35,11 +35,11 @@ export default function ManagmentComponent() {
 
   const componentRender = () => {
     switch (form) {
-      case "Investment": {
-        return <InvestmentFormComponent />;
+      case "Inversiones": {
+        return <InvestmentFormComponentEs />;
       }
-      case "Saving": {
-        return <SavingFormComponent />;
+      case "Ahorros": {
+        return <SavingFormComponentEs />;
       }
       default: {
         return null;
@@ -63,7 +63,7 @@ export default function ManagmentComponent() {
             {/* nav component */}
               <NavComponent form={form} />
             {/* select method component */}
-              <SelectMethod handleButtonClick={handleButtonClick} />
+              <SelectMethodEs handleButtonClick={handleButtonClick} />
             {/* graphic component */}
             <div className="row-span-6 col-span-2 shadow-lg rounded-2xl bg-white ml-5 mr-5 mb-5">
               <GraphComponent option={selectOpt} />
