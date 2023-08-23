@@ -3,7 +3,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDis
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-function ForgotPasswordModal() {
+function ForgotPasswordModalEs() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [email, setEmail] = useState('')
   const [notification, setNotification] = useState(false)
@@ -24,15 +24,15 @@ function ForgotPasswordModal() {
 
   return (
     <div>
-      <button onClick={onOpen}className="text-regularPink font-medium text-sm cursor-pointer">Forgot your password ?</button>
+      <button onClick={onOpen}className="text-regularPink font-medium text-sm cursor-pointer">¿Olvidaste tu contraseña?</button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false}>
       <ModalContent >
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Forgot your password?</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">¿Olvidaste tu contraseña?</ModalHeader>
               <ModalBody>
                 <div>
-                  <span>Write your email associated with your account</span>
+                  <span>write your email associated with your account</span>
                   {/* <input type='text' value={email} name='email' placeholder='percy@jackson.com' /> */}
                   <Input
                     isRequired
@@ -62,4 +62,4 @@ function ForgotPasswordModal() {
   )
 }
 
-export default ForgotPasswordModal
+export default ForgotPasswordModalEs
