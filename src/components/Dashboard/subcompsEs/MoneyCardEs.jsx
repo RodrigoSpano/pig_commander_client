@@ -31,7 +31,7 @@ const MoneyCardEs = ({ title, type, array }) => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-mediumGrayDarkMode dark:text-white rounded-2xl shadow-md p-4 mt-0 mr-0 mb-2 box-border w-full h-full hover:shadow-pink-200 hover:shadow-lg transition-shadow md:mt-2 md:mr-2 md:mb-2"
+      className="bg-white dark:bg-mediumGrayDarkMode dark:text-white rounded-2xl shadow-md p-4 mt-0 mr-0 mb-2 box-border w-full h-full hover:shadow-pink-200 dark:hover:shadow-red-400 hover:shadow-lg dark:shadow-xs transition-shadow md:mt-2 md:mr-2 md:mb-2"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
