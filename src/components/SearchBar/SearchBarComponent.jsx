@@ -1,9 +1,16 @@
-const SearchBarComponent = ({ handleSearch }) => {
-    return (
-        <form className="border-2 border-[#E6E9EE]  rounded-lg p-2">
-            <input type="search" placeholder="Search..." onChange={handleSearch} className="outline-none border-none dark:placeholder:text-white dark:bg-mediumGrayDarkMode" />
-        </form>
-    )
-}
+import React from "react";
 
-export default SearchBarComponent
+const SearchBarComponent = ({ handleSearch }) => {
+  return (
+    <form className="flex items-center bg-white dark:bg-mediumGrayDarkMode overflow-hidden border rounded-lg shadow-sm outline-none">
+      <input
+        type="search"
+        placeholder="Search..."
+        onChange={handleSearch}
+        className="flex-grow p-2 border-none outline-none dark:placeholder-text-white text-gray-800 dark:text-white bg-transparent"
+      />
+    </form>
+  );
+};
+
+export default SearchBarComponent;

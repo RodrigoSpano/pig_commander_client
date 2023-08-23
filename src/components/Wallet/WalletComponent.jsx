@@ -20,7 +20,7 @@ export default function WalletComponent() {
   const [isLoading, setIsLoading] = useState(true);
 
   const user = useSelector((state) => state.user.logged);
-  const selectedLanguage = useSelector((state) => state.language); // Obtén el idioma seleccionado del estado
+  const selectedLanguage = useSelector((state) => state.language);
 
   useEffect(() => {
     dispatch(filterCreatedCategory());
@@ -38,27 +38,33 @@ export default function WalletComponent() {
         <LoaderComponent />
       ) : (
         <>
-          <div className="grid auto-rows-auto gap-5 dark:bg-strongGray">
-            <div className="grid grid-cols-2 grid-rows-5 gap-2.5 bg-lightGray dark:bg-strongGray p-2.5 h-screen">
-              <div className="border dark:border-0 bg-white dark:bg-mediumGrayDarkMode rounded-lg shadow-xl m-2.5 col-span-1 row-span-5">
-                {selectedLanguage === "en" ? (
-                  <MyBalance />
-                ) : (
-                  <WalletComponentEs />
-                )}
-              </div>
-              <div className="col-span-1 border bg-white rounded-lg shadow-xl m-2.5 row-span-3 dark:bg-mediumGrayDarkMode dark:border-0">
-                {selectedLanguage === "en" ? <FormWallet /> : <FormWalletEs />}
-              </div>
-              <div className="col-span-1 border bg-white rounded-lg shadow-xl m-2.5 row-span-2 dark:bg-mediumGrayDarkMode dark:border-0 ">
-                {selectedLanguage === "en" ? (
-                  <SpendingCategoriesComponent />
-                ) : (
-                  <SpendingCategoriesComponentEs />
-                )}
-              </div>
+            <div className="flex flex-col mt-20 md:mt-0 sm:flex-row">
+
+              <section className="sm:w-1/2">
+                <div className="m-4 ">
+                  {selectedLanguage === "en" ? (
+                    <MyBalance />
+                  ) : (
+                    <WalletComponentEs />
+                  )}
+                </div>
+              </section>
+
+              <section className="sm:w-1/2">
+                <div className="col-span-1 bg-white rounded-lg shadow-xl m-2.5 row-span-3 dark:bg-mediumGrayDarkMode">
+                  {selectedLanguage === "en" ? <FormWallet /> : <FormWalletEs />}
+                </div>
+
+                <div className="col-span-1 bg-white rounded-lg shadow-xl m-2.5 row-span-2 dark:bg-mediumGrayDarkMode ">
+                  {selectedLanguage === "en" ? (
+                    <SpendingCategoriesComponent />
+                  ) : (
+                    <SpendingCategoriesComponentEs />
+                  )}
+                </div>
+              </section>
+
             </div>
-          </div>
         </>
       )}
     </>
