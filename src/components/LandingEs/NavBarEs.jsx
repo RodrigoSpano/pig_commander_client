@@ -120,7 +120,7 @@ const NavBarEs = () => {
             </motion.p>
           </Link>
 
-          <Link href="/reviews">
+          <Link href="/features">
             <motion.p
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: [0.9, 1.1, 1] }}

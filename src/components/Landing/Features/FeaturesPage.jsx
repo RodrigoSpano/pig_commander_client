@@ -5,11 +5,11 @@ import Footer from '../Footer';
 import RecordOfExpensesAndIncome from './RecordOfExpensesAndIncome';
 import CustomDashboard from './CustomDashboard';
 import SavingsandInvestment from './SavingsAndInvestment';
-import Automation from './Automation';
+import Authomatization from './Authomatization';
 import LimitPerMonth from './LimitPerMonth';
 import ProfessionalSubscription from './ProfessionalSubscription';
 import CustomThemes from './CustomThemes';
-import Buget from './Buget';
+import Budget from './Budget';
 import SavingGoals from './SavingGoals';
 import HelpSection from './HelpSection';
 import FinalcialNews from './FinalcialNews';
@@ -43,11 +43,11 @@ const FeaturesPage = () => {
                         <RecordOfExpensesAndIncome />
                         <SavingsandInvestment />
                         <CustomDashboard />
-                        <Automation />
+                        <Authomatization />
                         <LimitPerMonth />
                         <ProfessionalSubscription />
                         <CustomThemes />
-                        <Buget />
+                        <Budget />
                         <SavingGoals />
                         <HelpSection />
                         <FinalcialNews />
