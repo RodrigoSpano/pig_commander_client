@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -13,12 +13,30 @@ import { BiStar } from "react-icons/bi";
 import TextAreaModal from "./RateApp/Subcomponents/TextAreaModal";
 import RateStars from "./RateApp/Subcomponents/RateStars";
 import RateAppDescription from "./RateApp/Subcomponents/RateAppDescription";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TextAreaModalEs from "./RateApp/SubcomponentsEs/TextAreaModalEs";
 import RateAppDescriptionEs from "./RateApp/SubcomponentsEs/RateAppDescriptionEs";
 import RateStarsEs from "./RateApp/SubcomponentsEs/RateStarsEs";
+import { useCookies } from "react-cookie";
+import { postReview } from "@/redux/actions/reviewsAction";
 
 export default function RateApp() {
+  const [rating, setRating] = useState(0);
+  const [content, setContent] = useState("");
+  const [cookies, setCookies] = useCookies();
+  const dispatch = useDispatch();
+
+  const handleReviewChange = (newRating) => {
+    setRating(newRating);
+  };
+  const handleContentChange = (newContent) => {
+    setContent(newContent);
+  };
+
+  const handleSubmit = () => {
+    dispatch(postReview({ token: cookies.token, rating, content }));
+  };
+
   const selectedLanguage = useSelector((state) => state.language);
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -30,8 +48,8 @@ export default function RateApp() {
   };
 
   return (
-    <> 
-      <div className='hover:bg-pink-50 py-4 px-6 rounded-sm'>
+    <>
+      <div className="hover:bg-pink-50 py-4 px-6 rounded-sm">
         <motion.div
           className=" flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:text-regularPink text-boldGray hover:text-regularPink"
           variants={linkVariants}
@@ -39,11 +57,14 @@ export default function RateApp() {
           animate="animate"
           whileHover="hover"
         >
-          <motion.span className='mr-2 '>
-            <BiStar className='text-2xl xl:text-3xl' />
+          <motion.span className="mr-2 ">
+            <BiStar className="text-2xl xl:text-3xl" />
           </motion.span>
-          <motion.p className='font-semibold cursor-pointer text-base  xl:text-lg' onClick={onOpen}>
-          {selectedLanguage === "en" ? "Rate App" : "Calificar App"}
+          <motion.p
+            className="font-semibold cursor-pointer text-base  xl:text-lg"
+            onClick={onOpen}
+          >
+            {selectedLanguage === "en" ? "Rate App" : "Calificar App"}
           </motion.p>
         </motion.div>
       </div>
@@ -63,11 +84,15 @@ export default function RateApp() {
                 ) : (
                   <RateAppDescriptionEs />
                 )}
-                {selectedLanguage === "en" ? <RateStars /> : <RateStarsEs />}
                 {selectedLanguage === "en" ? (
-                  <TextAreaModal />
+                  <RateStars onReviewChange={handleReviewChange} />
                 ) : (
-                  <TextAreaModalEs />
+                  <RateStarsEs onReviewChange={handleReviewChange} />
+                )}
+                {selectedLanguage === "en" ? (
+                  <TextAreaModal onContentChange={handleContentChange} />
+                ) : (
+                  <TextAreaModalEs onContentChange={handleContentChange} />
                 )}
               </ModalBody>
               <ModalFooter>
@@ -79,7 +104,7 @@ export default function RateApp() {
                 </Button>
                 <Button
                   className="bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300"
-                  onPress={onClose}
+                  onPress={() => handleSubmit()}
                 >
                   {selectedLanguage === "en" ? "Send" : "Enviar"}
                 </Button>

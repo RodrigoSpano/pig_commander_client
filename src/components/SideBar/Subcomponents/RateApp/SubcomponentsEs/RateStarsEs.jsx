@@ -3,11 +3,12 @@ import { useState } from "react";
 import { HiStar } from "react-icons/hi";
 import { motion } from "framer-motion";
 
-const RateStarsEs = () => {
+const RateStarsEs = ({ onReviewChange }) => {
   const [rating, setRating] = useState(0);
 
   const handleRating = (selectedRating) => {
     setRating(selectedRating);
+    onReviewChange(selectedRating);
   };
 
   return (

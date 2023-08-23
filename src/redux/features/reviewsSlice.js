@@ -18,7 +18,7 @@ const reviewSlice = createSlice({
       state.allReviews = action.payload;
     });
     builder.addCase(postReview.fulfilled, (state, action) => {
-      state.allReviews.push(action.payload);
+      state.allReviews = action.payload;
     });
     builder.addCase(deleteReview.fulfilled, (state, action) => {
       state.allReviews = state.allReviews.filter(

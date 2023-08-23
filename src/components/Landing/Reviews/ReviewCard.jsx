@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import StarRating from "./StarRating";
 import { HiTrash } from "react-icons/hi";
-import { deleteReview } from "@/redux/actions/reviewsAction";
+import { deleteReview, getAllReviews } from "@/redux/actions/reviewsAction";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 const ReviewCard = ({ review }) => {
   const [cookies, setCookies] = useCookies();
   const dispatch = useDispatch();
+
   const { user, rating, content } = review;
   const cardVariants = {
     hover: { scale: 1.05, transition: { duration: 0.2 } },
