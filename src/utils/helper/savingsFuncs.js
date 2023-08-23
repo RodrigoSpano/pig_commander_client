@@ -23,32 +23,6 @@ export const formControlSavings = (values) => {
         controlObjet.booleanMessage = false;
         controlObjet.errorMessages = "The goal have to be greater than the start amount"
       }
-      if(parseFloat(values.goal)/parseFloat(values.amount) > 250) {
-        controlObjet.booleanMessage = false;
-        controlObjet.errorMessages = 'Set a smaller goal or a greater amount'
-      }
-
+    
       return controlObjet;
 }
-
-export const savingsUpToDate = (amount, dailySavings) => {
-  const startDate = new Date();
-  let currentSavings = 0;
-  let currentDate = new Date(startDate);
-  
-  const chartData = [];
-
-  while (currentSavings < amount) {
-    currentSavings += dailySavings;
-
-    chartData.push({
-      day: currentDate.toLocaleDateString(),
-      total: parseFloat(currentSavings.toFixed(2)),
-      amount: parseFloat(amount.toFixed(2)),
-    });
-
-    currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000); // Avanza un día
-  }
-
-  return chartData;
-};

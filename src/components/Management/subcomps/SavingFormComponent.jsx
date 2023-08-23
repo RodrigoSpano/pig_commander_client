@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import Inputs from "./subcomps_forms/imputs";
 import { weldDates } from "@/utils/helper/inversionsFuncs";
-import { postConversion, formControlSavings} from "@/utils/helper/savingsFuncs"
+import {
+  postConversion,
+  formControlSavings,
+} from "@/utils/helper/savingsFuncs";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { createSaving } from "@/redux/actions/savingsActions";
+import Swal from "sweetalert2";
 
 export default function SavingFormComponent() {
   const dispatch = useDispatch();
@@ -32,16 +36,27 @@ export default function SavingFormComponent() {
     const formControl = formControlSavings(values);
 
     if (!formControl.booleanMessage) {
-      alert(formControl.errorMessages);
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: formControl.errorMessages,
+        confirmButtonColor: "#ED4998",
+      });
     } else {
       if (cookies.token) {
         let data = {
           name: values.name,
           amount: parseFloat(values.amount),
           goal: parseFloat(values.goal),
-      }
+        };
         const { token } = cookies;
-        dispatch( createSaving({token, ...data}) );
+        dispatch(createSaving({ token, ...data }));
+
+        setValues({
+          name: "",
+          amount: "",
+          goal: "",
+        });
       }
     }
   };
@@ -51,7 +66,7 @@ export default function SavingFormComponent() {
       <div className="mt-5 ml-2 text-3xl sm:text-xl font-extrabold tracking-tight text-boldPink">
         Create New Goal:
       </div>
-      <div className="grid grid-cols-1 gap-2 w-full h-full">
+      <div className="grid grid-cols-1 gap-2 w-full h-auto">
         <form>
           <div className="col-span-1">
             <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
@@ -63,28 +78,31 @@ export default function SavingFormComponent() {
               placeholder="Enter Name"
               id="name"
               name="name"
+              value={values.name}
               onChange={handleChange}
               required
             ></input>
 
             <div className="w-5/12 sm:w-full">
               <Inputs
-                title={"Daily Savings"}
+                title={"Set a goal amount"}
                 icon={"$"}
-                id={"amount"}
+                id={"goal"}
+                values={values.goal} //prop
                 handleChange={handleChange}
               />
             </div>
 
             <div className="w-5/12 sm:w-full">
               <Inputs
-              title={"Goal Amount"}
+                title={"Set a starting amount"}
                 icon={"$"}
-                id={"goal"}
+                values={values.amount} //prop
+                id={"amount"}
                 handleChange={handleChange}
               />
             </div>
-            
+
             <button
               className="mt-4 text-lg bg-gradient-to-r from-regularPink to-boldPink text-white rounded-sm px-5 py-2 mx-2 font-extrabold tracking-widest"
               onClick={handleSubmit}

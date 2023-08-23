@@ -27,7 +27,7 @@ export default function TableComponent({ setSelectedInversion }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className=" custom-scrollbar overflow-y-auto max-h-[230px]">
+      <div className=" custom-scrollbar overflow-y-auto h-auto max-h-80">
         <Table
           color="danger"
           selectionMode="single"
