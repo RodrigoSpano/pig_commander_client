@@ -10,6 +10,7 @@ import {
   getDate,
   getEarnings,
 } from "@/utils/helper/inversionsFuncs";
+import TableComponentEs from "./subcomps_module/SavingsTableComponentEs";
 
 export default function Option_one_component() {
   const inversions = useSelector((state) => state.inversions.allInversions);
@@ -71,7 +72,7 @@ export default function Option_one_component() {
         {/* <Buttons_nav /> */}
         <Card className="rounded-t-2xl">
           <Title className="justify-center flex text-lg font-semibold  text-boldPink">
-            Money vs Dates
+            Dinero vs Fechas
           </Title>
           <LineChart
             className="mt-6 stroke-pink-400"
@@ -79,7 +80,7 @@ export default function Option_one_component() {
             index="day"
             startEndOnly={false}
             autoMinValue={true}
-            categories={["total", "amount"]}
+            categories={["total", "monto"]}
             colors={["blue", "gray"]}
             valueFormatter={undefined}
             showXAxis={true}
@@ -89,15 +90,15 @@ export default function Option_one_component() {
       </div>
       <div className="flex justify-center w-full max-h-20">
         <div className="w-1/3 flex justify-center content-center text-center">
-          <Signs title={"Investment Amount"} amount={amountShowUp} />
+          <Signs title={"Monto de Inversión"} amount={amountShowUp} />
         </div>
         <div className="w-1/3 flex justify-center content-center text-center">
-          <Signs title={"Total Profit"} amount={earningShowUp} />
+          <Signs title={"Beneficio Total"} amount={earningShowUp} />
         </div>
       </div>
 
       {
-        !inversions.length ? null : <TableComponent setSelectedInversion={setSelectedInversion} />
+        !inversions.length ? null : <TableComponentEs setSelectedInversion={setSelectedInversion} />
       }
     </div>
   );
