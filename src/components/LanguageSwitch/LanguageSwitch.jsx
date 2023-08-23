@@ -22,6 +22,7 @@ const SpanishIcon = (props) => (
 );
 
 function LanguageSwitch() {
+    const dispatch = useDispatch()
 
     const handleLanguageChange = (language) => {
         dispatch(setLanguage(language));
