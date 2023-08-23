@@ -1,4 +1,5 @@
 // import ReviewsComponent from '@/components/Reviews/ReviewsComponent';
+'use client'
 import ReviewPage from "@/components/Landing/Reviews/ReviewPage";
 import ReviewPageEs from "@/components/LandingEs/Reviews/ReviewPageEs";
 import React from "react";
