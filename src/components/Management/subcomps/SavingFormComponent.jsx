@@ -69,18 +69,18 @@ export default function SavingFormComponent() {
 
             <div className="w-5/12 sm:w-full">
               <Inputs
-                title={"Daily Savings"}
+                title={"Set a goal amount"}
                 icon={"$"}
-                id={"amount"}
+                id={"goal"}
                 handleChange={handleChange}
               />
             </div>
 
             <div className="w-5/12 sm:w-full">
               <Inputs
-              title={"Goal Amount"}
+              title={"Set a starting amount"}
                 icon={"$"}
-                id={"goal"}
+                id={"amount"}
                 handleChange={handleChange}
               />
             </div>

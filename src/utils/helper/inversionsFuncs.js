@@ -68,7 +68,7 @@ export const formInversionsControl = (values) => {
       "You should select a smaller amount of time for your inversion";
   }
 
-  if (values.interest > 15) {
+  if (values.interest > 50) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages = "Select a real interest";
   }
