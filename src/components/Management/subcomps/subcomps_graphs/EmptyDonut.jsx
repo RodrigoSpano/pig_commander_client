@@ -13,9 +13,6 @@ const EmptyDonut = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <p className="text-lg font-semibold">No Expenses Yet</p>
-      <div className="flex items-center justify-center h-[410px]">
         <Doughnut
           data={{
             datasets: [{ data: [1], backgroundColor: ["#d3d3d3"] }],
@@ -23,8 +20,6 @@ const EmptyDonut = () => {
           }}
           options={chartOptions}
         />
-      </div>
-    </div>
   );
 };
 

@@ -6,16 +6,18 @@ import { useSelector } from "react-redux";
 
 export default function Donut({ index }) {
   const savings = useSelector((state) => state.savings.allSavings);
-  const [empty, setEmpty] = useState(false);
+  const [empty, setEmpty] = useState(true);
   const [dinamicGoal, setDinamicGoal] = useState(0);
 
   Chart.register(ArcElement);
 
   useEffect(() => {
     if (index >= 0 && savings[index]) {
+      setEmpty(false)
       setDinamicGoal(savings[index].goal - savings[index].amount);
     } else {
       setDinamicGoal(0);
+      setEmpty(true)
     }
   }, [index, savings]);
   
