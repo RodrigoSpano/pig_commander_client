@@ -63,6 +63,11 @@ export default function Option_one_component() {
 
   useEffect(() => {
     Charter();
+    if(inversions.length === 0) {
+      setAmountShowUp("Loading")
+      setEarningShowUp("Loading")
+      setChartDisplayer()
+    }
   }, [selectedInversion, inversions]);
 
   return (
