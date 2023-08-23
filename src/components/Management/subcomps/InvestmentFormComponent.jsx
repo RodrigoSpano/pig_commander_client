@@ -3,7 +3,6 @@ import Inputs from "./subcomps_forms/imputs";
 import useInvestmentForm from "@/customHooks/useInvestmentForm";
 
 export default function InvestmentFormComponent() {
-  //manejan el boton de yes, no del componente
 
   const {handleChange,handleSubmit} = useInvestmentForm()
 

@@ -38,39 +38,31 @@ export const formInversionsControl = (values) => {
     booleanMessage: true,
   };
   const regex = /^[a-zA-Z\s]*$/; // Expresión regular para letras y espacios
-
-  if (values.name.length < 20) {
-    controlObjet.booleanMessage = false;
-    controlObjet.errorMessages =
-      "Inversion Name must be 20 characters long or less";
-  }
-  if (regex.test(values.name)) {
-    controlObjet.booleanMessage = true;
-  } else {
+ 
+  if (!regex.test(values.name)) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
       "Inversion Name should not have any special characters";
-  }
-
-  if (values.dayPeriod > 365 && values.period === "days") {
+  } else if (values.name.length > 10) {
+    console.log('entranding')
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
-      "You should select a bigger period and less quantity";
-  }
-  if (values.dayPeriod > 12 && values.period === "months") {
+      "Inversion Name must be 20 characters long or less";
+  } else if (values.dayPeriod > 365 && values.period === "days") {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
-      "You should select a bigger period and less quantity";
-  }
-  if (values.dayPeriod > 10 && values.period === "years") {
+      "You should select a bigger period or less quantity";
+  } else if (values.dayPeriod > 12 && values.period === "months") {
+    controlObjet.booleanMessage = false;
+    controlObjet.errorMessages =
+      "You should select a bigger period or less quantity";
+  } else if (values.dayPeriod > 10 && values.period === "years") {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
       "You should select a smaller amount of time for your inversion";
-  }
-
-  if (values.interest > 50) {
+  } else if (values.interest > 50) {
     controlObjet.booleanMessage = false;
-    controlObjet.errorMessages = "Select a real interest";
+    controlObjet.errorMessages = "Select a lower interest";
   }
 
   return controlObjet;

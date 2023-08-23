@@ -5,6 +5,7 @@ import { postConversion, formControlSavings} from "@/utils/helper/savingsFuncs"
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { createSaving } from "@/redux/actions/savingsActions";
+import Swal from "sweetalert2";
 
 export default function SavingFormComponent() {
   const dispatch = useDispatch();
@@ -32,7 +33,12 @@ export default function SavingFormComponent() {
     const formControl = formControlSavings(values);
 
     if (!formControl.booleanMessage) {
-      alert(formControl.errorMessages);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: formControl.errorMessages,
+        confirmButtonColor: "#ED4998",
+      })
     } else {
       if (cookies.token) {
         let data = {
