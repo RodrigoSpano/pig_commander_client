@@ -27,13 +27,13 @@ export default function DeleteCreatedCategory() {
 
   return (
     <>
-      <div className="flex justify-end mr-5">
+      <div className="flex ">
         <Button
           onPress={onOpen}
           onClick={() => {
             dispatch(filterCreatedCategory());
           }}
-          className="text-white h-10 w-40 font-bold rounded-2xl text-base cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
+          className="text-white p-2 font-bold rounded-lg text-base cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
         >
           Delete Category
         </Button>
