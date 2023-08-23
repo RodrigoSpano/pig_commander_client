@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewCard from "./ReviewCard";
-import { deleteReview, getAllReviews } from "@/redux/actions/reviewsAction";
+import { getAllReviews } from "@/redux/actions/reviewsAction";
 import { useCookies } from "react-cookie";
 
-const ReviewList = () => {
+const ReviewListEs = () => {
   const [visibleReviews, setVisibleReviews] = useState(6);
   const dispatch = useDispatch();
   const [cookies, setCookies] = useCookies();
@@ -26,7 +26,7 @@ const ReviewList = () => {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {reviews === undefined ? (
-        <p>No reviews yet...</p>
+        <p>Sin Reseñas aún...</p>
       ) : (
         reviews
           .slice(0, visibleReviews)
@@ -41,7 +41,7 @@ const ReviewList = () => {
             whileHover="hover"
             initial="initial"
           >
-            See More
+            Ver más
           </motion.button>
         </div>
       )}
@@ -49,4 +49,4 @@ const ReviewList = () => {
   );
 };
 
-export default ReviewList;
+export default ReviewListEs;
