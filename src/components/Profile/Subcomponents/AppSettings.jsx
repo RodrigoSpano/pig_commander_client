@@ -15,7 +15,7 @@ function AppSettings() {
       </section>
 
       <section>
-        <h1 className='text-gray-700 text-lg dark:text-white font-semibold'>Mode:</h1>
+        <h1 className='text-gray-700 text-lg dark:text-white font-semibold'>Theme:</h1>
         <ThemeSwitch />
       </section>
     </div>

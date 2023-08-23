@@ -1,9 +1,8 @@
-"use client";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SearchBarComponent from "../SearchBar/SearchBarComponent";
 import AllTransactionsComponent from "../Wallet/AllTransactionsComponent";
 import FilterAllTransactions from "../Wallet/subcomps/FilterAllTransactions";
-import { useDispatch, useSelector } from "react-redux";
 import AllTransactionsPropsContainer from "../Wallet/subcomps/AllTransactionsPropsContainer";
 import PaginationComponent from "../Pagination/PaginationComponent";
 import usePagination from "@/customHooks/usePagination";
@@ -13,9 +12,7 @@ import DeleteCreatedCategory from "./subComponent/DeleteCreatedCategory";
 
 export default function WalletComponent() {
   const dispatch = useDispatch();
-  const allTransactions = useSelector(
-    (state) => state.transactions.transactions
-  );
+  const allTransactions = useSelector((state) => state.transactions.transactions);
 
   const {
     nextHandler,
@@ -33,7 +30,7 @@ export default function WalletComponent() {
   const [orders, setOrders] = useState({
     alphabetically: false,
     byAmount: false,
-  }); //estado con el cual modifico los ordenamientos por nombre o monto
+  });
 
   const handleAlphabetically = () => {
     setOrders({ ...orders, alphabetically: !orders.alphabetically });
@@ -46,46 +43,65 @@ export default function WalletComponent() {
   };
 
   return (
-    <div>
-      <div>
-        <div className="bg-mediumPink h-7 rounded-t-lg "></div>
-        <h1 className="font-bold ml-5 mt-2.5 text-xl dark:text-mediumPinkDark">My Balance</h1>
-        <div className="flex flex-row">
-          <div className="text-regularPink text-7xl font-semibold mt-5 ml-5 ">
-            <BalancesCard backup_transactions={allTransactions} />
+    <>
+      <div className="bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink">
+        h
+      </div>
+      <div className="bg-white dark:bg-mediumGrayDarkMode rounded-lg shadow-xl p-4">
+        <div>
+
+          <div className="">
+            <h1 className="font-bold text-2xl dark:text-mediumPink my-2">
+              My Balance
+            </h1>
+            <div className="">
+              <div className="text-regularPink text-7xl font-semibold my-2">
+                <BalancesCard backup_transactions={allTransactions} />
+              </div>
+            </div>
+            <div className="flex justify-around">
+              <ButtonCreateCategory />
+              <DeleteCreatedCategory />
+            </div>
           </div>
         </div>
-        <div className={"flex justify-end"}>
-          <ButtonCreateCategory />
-          <DeleteCreatedCategory />
-        </div>
-      </div>
-      <hr className="my-2 mx-16 mt-6" />
-      <div className="my-4">
-        <div className="flex justify-around">
-          <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">Transactions</h1>
-          <SearchBarComponent handleSearch={handleSearch} />
-        </div>
-        <FilterAllTransactions setOrders={setOrders} />
-      </div>
 
-      <AllTransactionsPropsContainer
-        handleAlphabetically={handleAlphabetically}
-        handleOrderByAmount={handleOrderByAmount}
-      />
-      <AllTransactionsComponent allTransactions={transactions} />
-      {transactions?.length ? (
-        <div>
-          <PaginationComponent
-            count={count}
-            totalPages={totalPages}
-            nextHandler={nextHandler}
-            prevHandler={prevHandler}
-            lastPageHandler={lastPageHandler}
-            firstPageHandler={firstPageHandler}
-          />
+        <hr className="mx-16 my-6" />
+
+        <div className="">
+          <div className="flex flex-col space-y-4">
+            <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">
+              Transactions
+            </h1>
+            <SearchBarComponent handleSearch={handleSearch} />
+          </div>
+          <div>
+            <FilterAllTransactions setOrders={setOrders} />
+          </div>
         </div>
-      ) : null}
-    </div>
+
+        <hr className="mx-16 my-6" />
+
+        <div className="">
+          <AllTransactionsPropsContainer
+            handleAlphabetically={handleAlphabetically}
+            handleOrderByAmount={handleOrderByAmount}
+          />
+          <AllTransactionsComponent allTransactions={transactions} />
+          {transactions?.length ? (
+            <div>
+              <PaginationComponent
+                count={count}
+                totalPages={totalPages}
+                nextHandler={nextHandler}
+                prevHandler={prevHandler}
+                lastPageHandler={lastPageHandler}
+                firstPageHandler={firstPageHandler}
+              />
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </>
   );
 }

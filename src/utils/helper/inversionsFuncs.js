@@ -38,16 +38,25 @@ export const formInversionsControl = (values) => {
     booleanMessage: true,
   };
   const regex = /^[a-zA-Z\s]*$/; // Expresión regular para letras y espacios
- 
+  const expNum = /^[0-9]+(\.[0-9]*)?$/; //Solo permite float
+  const exp = /^[0-9]*$/; //Expresion solo numeros
+
   if (!regex.test(values.name)) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
       "Inversion Name should not have any special characters";
   } else if (values.name.length > 10) {
-    console.log('entranding')
+    console.log("entranding");
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
       "Inversion Name must be 20 characters long or less";
+  } else if (!expNum.test(values.amount)) {
+    controlObjet.booleanMessage = false;
+    controlObjet.errorMessages = "The amount cannot have letters or simbols";
+  } else if (!exp.text(values.dayPariod)) {
+    controlObjet.booleanMessage = false;
+    controlObjet.errorMessages =
+      "You cannot make a float day, has to be integer";
   } else if (values.dayPeriod > 365 && values.period === "days") {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
@@ -60,6 +69,10 @@ export const formInversionsControl = (values) => {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
       "You should select a smaller amount of time for your inversion";
+  } else if (!expNum.test(values.interest)) {
+    controlObjet.booleanMessage = false;
+    controlObjet.errorMessages =
+      "The interest cannot have letters or characters ";
   } else if (values.interest > 50) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages = "Select a lower interest";
@@ -91,15 +104,21 @@ export const postConversion = (values) => {
   } else if (values.period === "days") {
     data.finish_at = new Date(year, month, day + parseInt(values.dayPeriod));
   }
-  data.earning = parseFloat(values.interest),
-    data.started_on = weldDates(data.started_on);
+  (data.earning = parseFloat(values.interest)),
+    (data.started_on = weldDates(data.started_on));
   data.finish_at = weldDates(data.finish_at);
 
   return data;
 };
 
 //Obtener earning
-export const getEarnings = (initialDate, finalDate, interest, amount, taxes) => {
+export const getEarnings = (
+  initialDate,
+  finalDate,
+  interest,
+  amount,
+  taxes
+) => {
   const daysInYear = 365;
   const interestRate = interest / 100;
 
@@ -134,4 +153,4 @@ export const weldDates = (date) => {
 export const getDate = (date) => {
   let data = new Date(date);
   return data;
-}
+};

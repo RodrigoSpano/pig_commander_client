@@ -1,16 +1,17 @@
 'use client';
 import React from "react";
-import {FiAlertCircle} from "react-icons/fi"; 
+import { FiAlertCircle } from "react-icons/fi";
 import useFormWallet from "@/customHooks/useFormWallet";
 import { useSelector } from "react-redux";
-import {Switch} from "@nextui-org/react";
+import { Switch } from "@nextui-org/react";
 import ModalAutomatized from "./ModalAutomatized";
+import { Input, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 
 
-export default function FormWallet () {
+export default function FormWallet() {
 
-    const categories = useSelector((state)=> state.others.categories); 
-    const methods = useSelector((state)=> state.others.methods);
+    const categories = useSelector((state) => state.others.categories);
+    const methods = useSelector((state) => state.others.methods);
     const userPremium = useSelector((state) => state.user);
 
 
@@ -18,7 +19,7 @@ export default function FormWallet () {
         formWallet,
         inputInvalids,
         handleChange,
-        someFieldEmpty, 
+        someFieldEmpty,
         allowAmountErrorMessage,
         allowNameErrorMessage,
         focusedAmountInput,
@@ -28,27 +29,34 @@ export default function FormWallet () {
         automatized,
         setAutomatized,
         someFieldEmptyAutomatized,
-        handleAutoChange, 
+        handleAutoChange,
         automatizedForm,
         handleSubmitAutomatize
     } = useFormWallet();
 
     return (
-        <div className="flex flex-col items-center h-3 ">
-            <div className='bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink '>h</div>
-            <h1 className="text-xl font-bold mt-5 m-2.5 dark:text-mediumPinkDark">Transaction Form</h1>
-            <div className="flex flex-row mt-2 h">
-                <div className="flex flex-col mr-2.5">
-                    <p className="text-boldGray text-sm font-light dark:text-white">Name</p>
-                    <input className="bg-lightGray dark:text-black   placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none" autoComplete="off" type="text" name="name" value={formWallet.name} onChange={handleChange} onFocus={allowNameErrorMessage} placeholder="Enter name..." />
-                </div>
-                <div className="flex flex-col">
-                    <p className="text-boldGray text-sm font-light dark:text-white">Amount</p>
-                    <input className="bg-lightGray  dark:text-black placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none" autoComplete="off"  type="number" name="amount" value={formWallet.amount} onChange={handleChange} onFocus={allowAmountErrorMessage} placeholder="$"/>
-                </div>
+        <>
+            <div className="bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink">
+                h
             </div>
-            <p className="text-red-400 relative mt-2 text-xs">{(inputInvalids && (focusedNameInput || focusedAmountInput)) ? ("These fields are required") : (<span className=""></span>)}</p>
-            <div className="flex flex-row m-2.5 mt-5">
+
+            <div className="flex flex-col items-center p-4">
+
+                <h1 className="text-2xl font-bold my-4 dark:text-mediumPinkDark">Transaction Form</h1>
+
+                <div className="flex flex-row items-center">
+                    <Input autoComplete="off" type="text" name="name" label="Name" size="sm" value={formWallet.name} onChange={handleChange} onFocus={allowNameErrorMessage} className="mr-2" />
+
+                    <Input autoComplete="off" type="number" name="amount" label="Amount" size="sm" value={formWallet.amount} onChange={handleChange} onFocus={allowAmountErrorMessage} className="ml-2" />
+                </div>
+
+                <p className={`text-xs mt-2 ${inputInvalids && (focusedNameInput || focusedAmountInput) ? 'text-red-400' : 'text-transparent'}`}>
+                    {inputInvalids && (focusedNameInput || focusedAmountInput) ? 'These fields are required' : ''}
+                </p>
+
+
+                <div className="flex flex-row justify-center items-center">
+
                 <div className="flex flex-col mr-2.5 ">
                     <label className="text-boldGray text-sm font-light dark:text-white">Method:</label>
                     <select className="text-xs w-40 dark:text-black  bg-lightGray font-light rounded-lg p-1.5" name="method_id" id="selects" onChange={handleChange} value={formWallet.method_id}>
@@ -65,39 +73,41 @@ export default function FormWallet () {
                       )) : null}
                     </select>
                 </div>
-            </div>
+                </div>
 
-            <div className="flex flex-row mt-2">
-              <div className="mt-5 self-center mr-1.5"><FiAlertCircle/> </div>
-              <span className="text-boldGray text-sm font-light mt-5 dark:text-white">Automatized: Only premium members</span>
+                <div className="flex flex-row mt-2">
+                    <div className="mt-5 self-center mr-1.5"><FiAlertCircle /> </div>
+                    <span className="text-boldGray text-sm font-light mt-5 dark:text-white">Automatized: Only premium members</span>
+                </div>
+
+                <div className="flex flex-row mt-5">
+                    <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={!userPremium.premium} />
+                    <input className='bg-lightGray dark:text-black  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="auto_date" value={!automatizedForm.auto_date} disabled={!automatized} onChange={handleAutoChange} />
+                    <select defaultValue={'expense'} name='type' className="text-xs w-26 bg-lightGray dark:bg-white dark:text-black font-light rounded-lg p-1.5 ml-2" disabled={!automatized} onChange={handleAutoChange}>
+                        <option value="expense">Expense</option>
+                        <option value="income">Incomes</option>
+                    </select>
+                </div>
+
+                <div className="mt-5">
+                    {
+                        automatized
+                            ? (
+                                <div className="flex flex-col">
+                                    <button className={`text-white h-10 self-center w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmptyAutomatized ? "bg-regularGray" : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `} disabled={someFieldEmptyAutomatized} onClick={handleSubmitAutomatize} >Automatize</button>
+                                    <ModalAutomatized />
+                                </div>
+                            )
+                            : (
+                                <>
+                                    <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `} disabled={someFieldEmpty} onClick={handleSubmitIncome}>Add Income</button>
+                                    <button className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `} disabled={someFieldEmpty} onClick={handleSubmitExpense}>Add Expense</button>
+                                </>
+                            )
+                    }
+
+                </div>
             </div>
-           
-            <div className="flex flex-row mt-5">
-              <Switch defaultSelected size="sm" color="success" isSelected={automatized } onValueChange={setAutomatized} isDisabled={!userPremium.premium} />
-              <input className='bg-lightGray dark:text-black  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="auto_date" value={!automatizedForm.auto_date} disabled={!automatized} onChange={handleAutoChange}/>
-              <select defaultValue={'expense'} name='type' className="text-xs w-26 bg-lightGray dark:bg-white dark:text-black font-light rounded-lg p-1.5 ml-2" disabled={!automatized} onChange={handleAutoChange}>
-                <option value="expense">Expense</option>
-                <option value="income">Incomes</option>
-              </select>
-            </div>
-            <div className="mt-5">
-                {
-                    automatized 
-                        ? (
-                            <div className="flex flex-col">
-                               <button className={`text-white h-10 self-center w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmptyAutomatized ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmptyAutomatized} onClick={handleSubmitAutomatize} >Automatize</button>
-                                <ModalAutomatized/>
-                            </div>
-                        ) 
-                        : (
-                            <>
-                                <button className={`text-white h-10 w-32 font-bold cursor-no-drop mr-5 rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty} onClick={handleSubmitIncome}>Add Income</button>
-                                <button className={`text-white h-10 w-32 font-bold cursor-no-drop rounded-2xl mt-8 text-base ${someFieldEmpty ? "bg-regularGray" :  " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"} `}  disabled={someFieldEmpty} onClick={handleSubmitExpense}>Add Expense</button>
-                            </>
-                        )
-                }
-                
-            </div>
-        </div>
+        </>
     )
 }

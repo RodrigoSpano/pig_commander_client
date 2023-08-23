@@ -17,21 +17,28 @@ export default function RootLayout({ children }) {
   const path = usePathname();
   return (
     <html lang="en">
+      <head>
+        <title>PigCommander Finance App</title>
+      </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+        >
           <NextUIProvider>
             <CookiesProvider>
               <ReduxProvider>
                 <div className="flex dark:bg-strongGray ">
                   {path === "/login" ||
-                  path === "/signup" ||
-                  path === "/services/success" ||
-                  path === "/about" ||
-                  path === "/pricing" ||
-                  path === "/reviews" ||
-                  path === "/securitypolicy" ||
-                  path === "/features" ||
-                  path === "/" ? null : (
+                    path === "/signup" ||
+                    path === "/services/success" ||
+                    path === "/about" ||
+                    path === "/pricing" ||
+                    path === "/reviews" ||
+                    path === "/securitypolicy" ||
+                    path === "/features" ||
+                    path.startsWith('/recovery') ||
+                    path === "/" ? null : (
                     <SideBar />
                   )}
                   <div className="w-screen dark:bg-strongGray">{children}</div>

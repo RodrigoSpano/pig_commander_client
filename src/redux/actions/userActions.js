@@ -21,7 +21,9 @@ export const loginUser = createAsyncThunk("user/login", async (userData) => {
     if (error.response) {
       Swal.fire({
         icon: "error",
-        title: error.response.data.message.replace(/^\w/, (c) => c.toUpperCase()),
+        title: error.response.data.message.replace(/^\w/, (c) =>
+          c.toUpperCase()
+        ),
         showConfirmButton: false,
         timer: 1500,
       });
@@ -75,3 +77,55 @@ export const updatePicture = createAsyncThunk(
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  "Update user",
+  async ({ token, name, lastname }) => {
+    try {
+      const URL = `/profile/updateuser?${name ? `name=${name}` : ""}${
+        lastname ? `lastname=${lastname}` : ""
+      }`;
+      const { data } = await axios.put(URL, null, {
+        headers: { Authorization: token },
+      });
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
+export const updatePassword = createAsyncThunk(
+  "Update Password",
+  async ({ Passwords, token }) => {
+    try {
+      const { data } = await axios.put("/profile/updatepassword", Passwords, {
+        headers: { Authorization: token },
+      });
+      Swal.fire({
+        icon: "success",
+        title: "You have updated your password",
+        timer: 1500,
+      });
+      return data;
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.error,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  }
+);
+
+export const deleteUser = createAsyncThunk("Delete User", async (token) => {
+  try {
+    const { data } = await axios.delete("/profile", {
+      headers: { Authorization: token },
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+});
