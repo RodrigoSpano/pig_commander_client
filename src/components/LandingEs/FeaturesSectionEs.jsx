@@ -7,7 +7,7 @@ import { HiArrowUpRight } from "react-icons/hi2";
 import { HiFire } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 
-const FeaturesSection = () => {
+const FeaturesSectionEs = () => {
   return (
     <div className='pb-16 flex flex-col md:flex-row justify-around items-center select-none'>
       {/* MOCKUP */}
@@ -28,7 +28,7 @@ const FeaturesSection = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className='text-boldPink font-semibold text-lg'
         >
-          FEATURES
+          FUNCIONALIDADES
         </motion.h2>
         <motion.h1
           initial={{ opacity: 0 }}
@@ -52,7 +52,7 @@ const FeaturesSection = () => {
               whileTap={{ scale: 0.9 }}
               className='font-semibold text-lg ml-2'
             >
-              Authomatization
+              Automatización
             </motion.h3>
           </span>
           <motion.p
@@ -61,7 +61,7 @@ const FeaturesSection = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
-            Authomatize yours incomes and expenses
+            Automatiza tus ingresos y gastos
           </motion.p>
         </motion.div>
 
@@ -78,7 +78,7 @@ const FeaturesSection = () => {
               whileTap={{ scale: 0.9 }}
               className='font-semibold text-lg ml-2 dark:text-white'
             >
-              Better experience
+              Mejor experiencia
             </motion.h3>
           </span>
           <motion.p
@@ -87,7 +87,7 @@ const FeaturesSection = () => {
             transition={{ delay: 1.2, duration: 0.6 }}
             className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
-            Ad-free experience.
+            Experiencia sin anuncios.
           </motion.p>
         </motion.div>
 
@@ -104,7 +104,7 @@ const FeaturesSection = () => {
               whileTap={{ scale: 0.9 }}
               className='font-semibold text-lg ml-2'
             >
-              Exclusivity
+              Exclusividad
             </motion.h3>
           </span>
           <motion.p
@@ -113,7 +113,7 @@ const FeaturesSection = () => {
             transition={{ delay: 1.6, duration: 0.6 }}
             className='text-gray-500 text-sm md:text-base mt-1 dark:text-white'
           >
-            Exclusive access to advanced features.
+            Acceso exlucisvo a funcionalidades avanzadas.
           </motion.p>
 
           <motion.div
@@ -128,7 +128,7 @@ const FeaturesSection = () => {
                 whileHover={{ color: '#ff4a6e', scale: 1.05 }}
                 className='flex items-center text-lg text-center md:text-left text-boldPink hover:text-regularPink'
               >
-                See more Features
+                Ver más Funcionalidades
                 <span className='ml-2'>
                   <HiArrowUpRight />
                 </span>
@@ -140,4 +140,4 @@ const FeaturesSection = () => {
   );
 };
 
-export default FeaturesSection;
+export default FeaturesSectionEs;

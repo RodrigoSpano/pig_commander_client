@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
                   path === "/pricing" ||
                   path === "/reviews" ||
                   path === "/securitypolicy" ||
+                  path === "/features" ||
                   path === "/" ? null : (
                     <SideBar />
                   )}
