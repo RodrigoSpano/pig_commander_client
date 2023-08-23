@@ -19,12 +19,12 @@ export default function ManagmentComponent() {
     switch (e.target.name) {
       case "Investment": {
         setForm("Investment");
-        setSelect('opt1')
+        setSelect("opt1");
         break;
       }
       case "Saving": {
         setForm("Saving");
-        setSelect('opt2')
+        setSelect("opt2");
         break;
       }
       default: {
@@ -58,28 +58,33 @@ export default function ManagmentComponent() {
       {isLoading ? (
         <LoaderComponent />
       ) : (
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap h-screen">
+          <div className="flex lg:flex-row sm:flex-col gap-2.5 h-screen lg:w-full sm:w-auto">
+
             {/* nav component */}
+            <div className="flex flex-col lg:w-2/3 sm:w-auto gap-2.5 m-3">
               <NavComponent form={form} />
-            {/* select method component */}
+              {/* graphic component */}
+              <div className=" shadow-lg rounded-2xl bg-white h-full ">
+                <GraphComponent option={selectOpt} />
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:w-1/3 sm:w-auto h-full gap-2.5 mr-3">
+              {/* select method component */}
               <SelectMethod handleButtonClick={handleButtonClick} />
-            {/* graphic component */}
-            <div className="row-span-6 col-span-2 shadow-lg rounded-2xl bg-white ml-5 mr-5 mb-5">
-              <GraphComponent option={selectOpt} />
-            </div>
-            <div className="relative row-span-3 shadow-lg rounded-2xl bg-white mr-5 ml-5 mt-5 flex flex-col p-3 object-center justify-center">
-              <h1 className="text-6xl font-extrabold text-gray-900 ml-2 tracking-wide absolute top-4">
-                {form}
-              </h1>
-              <div>{componentRender()}</div>
-            </div>
-            {/* advice component */}
-            <div className="row-span-3 shadow-lg rounded-2xl bg-white m-5 border-1 flex flex-col justify-center items-center">
-              <AdviceComponent />
+
+              <div className=" shadow-lg rounded-2xl bg-white flex flex-col p-3 object-center justify-center">
+                <h1 className="lg:text-4xl md:text-2xl sm:text-xl font-extrabold text-gray-900 ml-2 tracking-wide">
+                  {form}
+                </h1>
+                {componentRender()}
+              </div>
+              {/* advice component */}
+              <div className="shadow-lg rounded-2xl bg-white flex flex-col justify-center items-center px-3 select-none h-full mb-3">
+                <AdviceComponent />
+              </div>
             </div>
           </div>
-        </div>
       )}
     </>
   );

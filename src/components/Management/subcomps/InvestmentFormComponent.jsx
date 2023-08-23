@@ -2,9 +2,8 @@ import Inputs from "./subcomps_forms/imputs";
 import useInvestmentForm from "@/customHooks/useInvestmentForm";
 
 export default function InvestmentFormComponent() {
-  //manejan el boton de yes, no del componente
 
-  const {handleChange,handleSubmit} = useInvestmentForm()
+  const {handleChange,handleSubmit, values} = useInvestmentForm()
 
   return (
     <div>
@@ -12,7 +11,7 @@ export default function InvestmentFormComponent() {
         Create New:
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full h-full sm:gap-1 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full h-auto sm:gap-1 ">
           <div className="column-span-1">
             <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
               Name
@@ -22,6 +21,7 @@ export default function InvestmentFormComponent() {
               placeholder="Enter Name"
               name="name"
               id="name"
+              value={values.name}
               onChange={handleChange}
               required
             ></input>
@@ -31,18 +31,21 @@ export default function InvestmentFormComponent() {
             title={"Starting Amount"}
             icon={"$"}
             id={"amount"}
+            values={values.amount}
             handleChange={handleChange}
           />
           <Inputs
             title={"Saving Period"}
             icon={""}
             id={"period"}
+            values={values.dayPeriod}
             handleChange={handleChange}
           />
           <Inputs
             title={"Cost Effectiveness"}
             icon={"%"}
             id={"interest"}
+            values={values.interest}
             handleChange={handleChange}
           />
 

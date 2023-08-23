@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function inputs({ title, icon, id, handleChange }) {
+export default function inputs({ title, icon, id, handleChange, values }) {
   return (
     <div className="column-span-1">
       <div className="ml-2 mt-2 text-black text-opacity-50 text-lg font-normal">
@@ -12,6 +12,7 @@ export default function inputs({ title, icon, id, handleChange }) {
             className=" flex border-1 ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-8 justify-center items-center"
             name="dayPeriod"
             onChange={handleChange}
+            value={values}
             required
           ></input>
         ) : (
@@ -23,6 +24,7 @@ export default function inputs({ title, icon, id, handleChange }) {
           <select
             className="border-1 ml-2 pl-2 text-gray-500 bg-black bg-opacity-10 rounded-sm h-12 w-3/4"
             name="period"
+  
             onChange={handleChange}
             required
           >
@@ -36,6 +38,7 @@ export default function inputs({ title, icon, id, handleChange }) {
             placeholder="Enter Amount"
             id={`${id}`}
             name={`${id}`}
+            value={values}
             onChange={handleChange}
             required
           ></input>

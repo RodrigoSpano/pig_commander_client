@@ -49,9 +49,10 @@ export const getAllSavings = createAsyncThunk(
 //* UPDATE SAVING
 export const updateSaving = createAsyncThunk(
   "saving/update",
-  async (id, newData, token) => {
+  async (payload) => {
     try {
-      const { data } = await axios.put(`/savings/${id}`, newData, {
+      const {token, id, amount } = payload;
+      const { data } = await axios.put(`/savings/${id}`, {amount:amount}, {
         headers: { 'Authorization': token },
       });
       return data;
@@ -74,10 +75,10 @@ export const deleteSaving = createAsyncThunk(
   async (payload) => {
     try {
       const {token, id} = payload;
-      const { data } = await axios.delete(`/savings/${id}`, {
+      await axios.delete(`/savings/${id}`, {
         headers: { 'Authorization': token },
       });
-      return data;
+      return id;
     } catch (error) {
       if (error.response) {
         Swal.fire({

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import {FaTrashCan} from 'react-icons/fa6'
 import {
   Table,
   TableHeader,
@@ -13,26 +14,16 @@ import useDetailSaving from "@/customHooks/useDetailSaving";
 
 export default function TableComponent({ setSelectedSaving }) {
   const savings = useSelector((state) => state.savings.allSavings);
-  const [selectedId, setSelectedId] = useState(0);
-  const [preSelectedId, setPreSelectedId] = useState("");
-  const [clickCount, setClickCount] = useState(0);
   const { handleDetailSav } = useDetailSaving();
 
-  const handleDoubleClick = () => {
-    setPreSelectedId(selectedId);
+  const deleteById = (id) => {
+    handleDetailSav(id);//pop up hook
+  }
 
-    if (selectedId === preSelectedId) {
-      setClickCount(clickCount + 1);
-      if (clickCount === 1) {
-        handleDetailSav(selectedId); //pop up hook
-        setClickCount(0);
-      }
-    }
-  };
 
   return (
     <div className="flex flex-col gap-3">
-      <div className=" custom-scrollbar overflow-y-auto max-h-[230px]">
+      <div className=" custom-scrollbar overflow-y-auto max-h-[230px] w-2/3 self-center">
         <Table
           color="danger"
           selectionMode="single"
@@ -40,8 +31,8 @@ export default function TableComponent({ setSelectedSaving }) {
           aria-label="Example static collection table"
         >
           <TableHeader>
+          <TableColumn></TableColumn>
             <TableColumn>NAME</TableColumn>
-            <TableColumn>DAILY SAVINGS</TableColumn>
             <TableColumn>GOAL AMOUNT</TableColumn>
           </TableHeader>
           <TableBody>
@@ -51,12 +42,12 @@ export default function TableComponent({ setSelectedSaving }) {
                   key={element.id}
                   onClick={() => {
                     setSelectedSaving(index); //este es para el grafico
-                    setSelectedId(element.id); //este es para el popup
-                    handleDoubleClick();
                   }}
                 >
+                   <TableCell onClick={() => {deleteById(element.id)}}>
+                   <FaTrashCan className="text-red-600 cursor-pointer text-center"/>
+                   </TableCell>
                   <TableCell>{element.name}</TableCell>
-                  <TableCell>{element.amount}</TableCell>
                   <TableCell>{element.goal}</TableCell>
                 </TableRow>
               );
