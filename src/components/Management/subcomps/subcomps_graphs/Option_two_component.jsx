@@ -10,7 +10,7 @@ export default function Option_two_component() {
   const savings = useSelector((state) => state.savings.allSavings);
 
   const setSelectedSaving = (data) => {
-    if ((savings.length === 0)) {
+    if (savings.length === 0) {
       setSelected(-1);
     } else {
       setSelected(data);
@@ -18,14 +18,21 @@ export default function Option_two_component() {
   };
 
   const titulo =
-  selectedSaving >= 0 && savings[selectedSaving] ? savings[selectedSaving].name : "Select a Saving";
-const goal =
-  selectedSaving >= 0 && savings[selectedSaving] ? parseFloat(savings[selectedSaving].goal) : 0.0;
-const amount =
-  selectedSaving >= 0 && savings[selectedSaving] ? parseFloat(savings[selectedSaving].amount) : 0.0;
-const id =
-  selectedSaving >= 0 && savings[selectedSaving] ? savings[selectedSaving].id : "Id";
-
+    selectedSaving >= 0 && savings[selectedSaving]
+      ? savings[selectedSaving].name
+      : "Select a Saving";
+  const goal =
+    selectedSaving >= 0 && savings[selectedSaving]
+      ? parseFloat(savings[selectedSaving].goal)
+      : 0.0;
+  const amount =
+    selectedSaving >= 0 && savings[selectedSaving]
+      ? parseFloat(savings[selectedSaving].amount)
+      : 0.0;
+  const id =
+    selectedSaving >= 0 && savings[selectedSaving]
+      ? savings[selectedSaving].id
+      : "Id";
 
   return (
     <div>
