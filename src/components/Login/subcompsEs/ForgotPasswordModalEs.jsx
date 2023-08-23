@@ -32,7 +32,7 @@ function ForgotPasswordModalEs() {
               <ModalHeader className="flex flex-col gap-1">¿Olvidaste tu contraseña?</ModalHeader>
               <ModalBody>
                 <div>
-                  <span>write your email associated with your account</span>
+                  <span>Escribe tu Email asociado a tu cuenta</span>
                   {/* <input type='text' value={email} name='email' placeholder='percy@jackson.com' /> */}
                   <Input
                     isRequired
@@ -43,15 +43,15 @@ function ForgotPasswordModalEs() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  {notification ? <span className='text-green-400 font-bold'>mail sent succesfully</span> : null}
+                  {notification ? <span className='text-green-400 font-bold'>Mail enviado</span> : null}
                 </div>
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" variant="light" onClick={handelSubmitForgotPassword}>
-                  Submit
+                  Enviar
                 </Button>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
               </ModalFooter>
             </>

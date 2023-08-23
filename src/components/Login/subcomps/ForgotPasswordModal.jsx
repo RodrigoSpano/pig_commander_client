@@ -32,7 +32,7 @@ function ForgotPasswordModal() {
               <ModalHeader className="flex flex-col gap-1">Forgot your password?</ModalHeader>
               <ModalBody>
                 <div>
-                  <span>Write your email associated with your account</span>
+                  <span>Write your Email associated with your account</span>
                   {/* <input type='text' value={email} name='email' placeholder='percy@jackson.com' /> */}
                   <Input
                     isRequired
@@ -43,7 +43,7 @@ function ForgotPasswordModal() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  {notification ? <span className='text-green-400 font-bold'>mail sent succesfully</span> : null}
+                  {notification ? <span className='text-green-400 font-bold'>Mail sent succesfully</span> : null}
                 </div>
               </ModalBody>
               <ModalFooter>
