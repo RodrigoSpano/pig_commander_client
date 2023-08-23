@@ -23,9 +23,11 @@ const SpanishIcon = (props) => (
 
 function LanguageSwitch() {
     const dispatch = useDispatch()
+    const currentLanguage = useSelector(state => state.language); 
 
-    const handleLanguageChange = (language) => {
-        dispatch(setLanguage(language));
+    const handleLanguageChange = () => {
+        const newLanguage = currentLanguage === 'en' ? 'es' : 'en';
+        dispatch(setLanguage(newLanguage));
     };
 
     return (
@@ -34,6 +36,7 @@ function LanguageSwitch() {
             size="lg"
             color="default"
             onValueChange={handleLanguageChange}
+            isSelected={currentLanguage === 'es'}
             thumbIcon={({ isSelected, className }) =>
                 isSelected ? (
                     <SpanishIcon className={className} />

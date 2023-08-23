@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import InvestmentFormComponent from "./subcomps/InvestmentFormComponent";
 import SavingFormComponent from "./subcomps/SavingFormComponent";
 import GraphComponent from "./subcomps/GraphComponent";
