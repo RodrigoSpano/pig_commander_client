@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Inputs from "./subcomps_forms/imputs";
 import { weldDates } from "@/utils/helper/inversionsFuncs";
-import { postConversion, formControlSavings} from "@/utils/helper/savingsFuncs"
+import {
+  postConversion,
+  formControlSavings,
+} from "@/utils/helper/savingsFuncs";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { createSaving } from "@/redux/actions/savingsActions";
@@ -34,20 +37,26 @@ export default function SavingFormComponent() {
 
     if (!formControl.booleanMessage) {
       Swal.fire({
-        icon: 'warning',
-        title: 'Oops...',
+        icon: "warning",
+        title: "Oops...",
         text: formControl.errorMessages,
         confirmButtonColor: "#ED4998",
-      })
+      });
     } else {
       if (cookies.token) {
         let data = {
           name: values.name,
           amount: parseFloat(values.amount),
           goal: parseFloat(values.goal),
-      }
+        };
         const { token } = cookies;
-        dispatch( createSaving({token, ...data}) );
+        dispatch(createSaving({ token, ...data }));
+
+        setValues({
+          name: "",
+          amount: "",
+          goal: "",
+        });
       }
     }
   };
@@ -69,6 +78,7 @@ export default function SavingFormComponent() {
               placeholder="Enter Name"
               id="name"
               name="name"
+              value={values.name}
               onChange={handleChange}
               required
             ></input>
@@ -78,19 +88,21 @@ export default function SavingFormComponent() {
                 title={"Set a goal amount"}
                 icon={"$"}
                 id={"goal"}
+                values={values.goal} //prop
                 handleChange={handleChange}
               />
             </div>
 
             <div className="w-5/12 sm:w-full">
               <Inputs
-              title={"Set a starting amount"}
+                title={"Set a starting amount"}
                 icon={"$"}
+                values={values.amount} //prop
                 id={"amount"}
                 handleChange={handleChange}
               />
             </div>
-            
+
             <button
               className="mt-4 text-lg bg-gradient-to-r from-regularPink to-boldPink text-white rounded-sm px-5 py-2 mx-2 font-extrabold tracking-widest"
               onClick={handleSubmit}

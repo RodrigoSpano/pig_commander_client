@@ -17,7 +17,6 @@ const EmptyDonut = () => {
       <p className="text-lg font-semibold">No Expenses Yet</p>
       <div className="flex items-center justify-center h-[410px]">
         <Doughnut
-          
           data={{
             datasets: [{ data: [1], backgroundColor: ["#d3d3d3"] }],
             labels: ["No Expenses"],
