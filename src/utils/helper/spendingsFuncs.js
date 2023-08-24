@@ -54,5 +54,5 @@ export const multipleFilter = (transactions, selectedCategory, categories) => {
 /* transactions viene con el id correspondiente a cada categoria, por lo tanto hay que relacionar estos dos arrays */
 export const ObtainNameByCategory = (id, categories) => {
   const category = categories.find((category) => category.id === id);
-  return category ? category.name : "Unknown Category";
+  return category ? category.name : "others";
 };
