@@ -30,6 +30,16 @@ export const postReview = createAsyncThunk(
           headers: { Authorization: token },
         }
       );
+      Swal.fire({
+        toast: true,
+        icon: "success",
+        title: "You have successfully reviewed",
+        animation: false,
+        position: "top-right",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+      });
       return data;
     } catch (error) {
       Swal.fire({
