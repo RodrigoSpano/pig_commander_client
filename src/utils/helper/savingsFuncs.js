@@ -8,7 +8,7 @@ export const formControlSavings = (values) => {
   const regex = /^[a-zA-Z\s]*$/; // Expresión regular para letras y espacios
   const expNum = /^[0-9]+(\.[0-9]*)?$/; //Solo permite float
 
-  if (values.name.length < 20) {
+  if (values.name.length < 5) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
       "Saving Name must be 20 characters long or less";
@@ -54,12 +54,12 @@ export const controlMaxAmount = (amount, prevAmount, goal) => {
     controlMessage: ""
   }
   const newAmount = amount + prevAmount;
-  if(newAmount >= goal) {
-    controlObjetDona.booleanMessage= true;
+  if (newAmount >= goal) {
+    controlObjetDona.booleanMessage = true;
     const dif = goal - prevAmount;
     controlObjetDona.sendedAmount = goal;
-    controlObjetDona.controlMessage = 
-    `Congrats for completing your goal! The amount sended was: $ ${dif}`
+    controlObjetDona.controlMessage =
+      `Congrats for completing your goal! The amount sended was: $ ${dif}`
   }
 
   return controlObjetDona;
