@@ -22,7 +22,7 @@ const ReviewPage = () => {
 
   return (
     <motion.div
-      className="bg-white"
+      className="bg-lightGray dark:bg-strongGray"
       initial="initial"
       animate="animate"
       exit="exit"
@@ -31,7 +31,7 @@ const ReviewPage = () => {
       <NavBar />
       <section className="flex flex-col justify-center items-center select-none mt-20">
         <section>
-          <h1 className="text-5xl md:text-7xl text-neutral-800 font-poppinsBold">
+          <h1 className="text-5xl md:text-7xl text-neutral-800 dark:text-white font-poppinsBold">
             User Reviews
           </h1>
         </section>
