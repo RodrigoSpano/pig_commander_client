@@ -65,7 +65,7 @@ const ProfessionalCard = () => {
         className='flex items-center justify-center'
       >
         <Link href='/login'>
-          <button className='bg-white py-3 px-16 rounded-sm hover:bg-gray-100 focus:outline-none'>
+          <button className='bg-white dark:text-mediumPinkDark text-strongPink font-bold py-3 px-16 rounded-sm hover:bg-gray-100 focus:outline-none'>
             Get started
           </button>
         </Link>

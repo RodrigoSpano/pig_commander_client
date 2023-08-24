@@ -27,8 +27,8 @@ const RecordOfExpensesAndIncomeEs = () => {
           Record de Gastos y Ingresos
         </motion.h2>
         <motion.p
-          whileHover={{ color: '#ff4081' }}
-          className='text-gray-600'
+          // whileHover={{ color: '#ff4081' }}
+          className='text-gray-700 dark:text-lightGrey'
         >
           Con Pig Commander, llevar un seguimiento detallado de tus transacciones financieras nunca ha sido tan fácil. Registra tus gastos e ingresos rápidamente y categorízalos para obtener una vista clara de tus patrones financieros.
         </motion.p>

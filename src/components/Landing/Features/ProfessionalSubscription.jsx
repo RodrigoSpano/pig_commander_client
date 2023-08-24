@@ -9,7 +9,7 @@ const ProfessionalSubscription = () => {
         <>
             <div className='flex flex-col justify-center'>
                 <h2 className='text-regularPink text-3xl font-bold mb-4'>Professional Subscription</h2>
-                <p className='text-gray-600'>
+                <p className='text-gray-600 dark:text-lightGrey'>
                     Explore the full potential of Pig Commander with our premium subscription. Get access to additional features and exclusive benefits to take your finances to the next level.
                 </p>
                 <Link href="/pricing">

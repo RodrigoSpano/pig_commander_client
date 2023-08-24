@@ -7,7 +7,7 @@ const BudgetComponent = () => {
         <>
             <div className='flex flex-col justify-center'>
                 <h2 className='text-regularPink text-3xl font-bold mb-4'>Budget</h2>
-                <p className='text-gray-600'>
+                <p className='text-gray-600 dark:text-lightGrey'>
                     Create and manage your budget effectively with the help of Pig Commander. Set realistic financial goals and keep your finances on track.
                 </p>
             </div>

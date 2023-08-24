@@ -30,7 +30,7 @@ function DeleteAccount() {
   return (
     <div className="flex items-center">
       <div className="flex flex-col">
-        <div className="text-gray-700 text-lg dark:text-red-500 cursor-pointer font-semibold">
+        <div className="text-lg text-red-500 cursor-pointer font-semibold">
           <button onClick={handleDeleteAccount}>Eliminar cuenta</button>
         </div>
       </div>

@@ -10,7 +10,7 @@ const FinalcialNewsEs = () => {
             </div>
             <div className='flex flex-col justify-center'>
                 <h2 className='text-regularPink text-3xl font-bold mb-4'>Noticias Financieras </h2>
-                <p className='text-gray-600'>
+                <p className='text-gray-700 dark:text-lightGrey'>
                 Mantente al tanto de las últimas noticias financieras y tendencias que pueden afectar tus decisiones financieras. Nuestra sección de noticias te mantendrá informado para que puedas tomar decisiones financieras inteligentes.
                 </p>
             </div>
