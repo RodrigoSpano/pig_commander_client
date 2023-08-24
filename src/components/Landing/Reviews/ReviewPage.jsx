@@ -22,7 +22,7 @@ const ReviewPage = () => {
 
   return (
     <motion.div
-      className="bg-lightGray dark:bg-strongGray"
+      className="bg-lightGray dark:bg-strongGray "
       initial="initial"
       animate="animate"
       exit="exit"
