@@ -10,7 +10,7 @@ function AppSettingsEs() {
       </h1>
 
       <section>
-        <h1 className='text-gray-700 dark:text-white text-lg font-semibold'>Languaje:</h1>
+        <h1 className='text-gray-700 dark:text-white text-lg font-semibold'>Idioma:</h1>
         <LanguageSwitch />
       </section>
 

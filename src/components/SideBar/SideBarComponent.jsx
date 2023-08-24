@@ -23,12 +23,14 @@ import { ImExit } from 'react-icons/im';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAllInversions } from "@/redux/actions/inversionsActions";
+import { setLanguage } from "@/redux/features/languageSlice";
 
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector((state) => state.user);
   const savings = useSelector((state) => state.savings.allSavings);
+  const languageState = useSelector((state) => state.language);
   const dispatch = useDispatch();
   const [cookies, setCookies] = useCookies();
 
@@ -45,7 +47,6 @@ const NavBar = () => {
         dispatch(getAllSavings(cookies.token));
       }
        dispatch(getAllInversions(cookies.token));
-
     }
   }, [dispatch]);
 
