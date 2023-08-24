@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import UserDetailModal from "./UserDetailModal";
 import { getAllReviews } from "@/redux/actions/reviewsAction";
+import LoaderComponent from "@/components/Loader/LoaderComponent";
 
 const statusColorMap = {
   active: "success",
@@ -127,7 +128,7 @@ export default function AdminTable() {
   return (
     <>
       {users === undefined ? (
-        <p>Loading...</p>
+        <LoaderComponent/>
       ) : (
         <Table aria-label="Admin dashboard">
           <TableHeader columns={columns}>

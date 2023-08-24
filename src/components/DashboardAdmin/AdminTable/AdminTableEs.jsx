@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import UserDetailModal from "./UserDetailModal";
 import LoaderComponent from "@/components/Loader/LoaderComponent";
+import UserDetailModalEs from "./UserDetailModalEs";
 
 const statusColorMap = {
   active: "success",
@@ -91,7 +92,7 @@ export default function AdminTableEs() {
           <div className="relative flex items-center gap-2">
             <Tooltip content="Detalles">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <UserDetailModal user={users} />
+                <UserDetailModalEs user={users} />
               </span>
             </Tooltip>
             <Tooltip color="warning" content="Desbanear">

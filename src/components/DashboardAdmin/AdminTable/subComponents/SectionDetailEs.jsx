@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteReview } from "@/redux/actions/reviewsAction";
 import { setReviews } from "@/redux/features/reviewsSlice";
 
-const SectionDetail = ({ totalIncomes, totalExpenses, user }) => {
+const SectionDetailEs = ({ totalIncomes, totalExpenses, user }) => {
   const [cookies, setCookies] = useCookies();
   const dispatch = useDispatch();
   const { review } = user;
@@ -66,10 +66,10 @@ const SectionDetail = ({ totalIncomes, totalExpenses, user }) => {
           <Tab key="reviews" title="Review">
             <Card>
               <CardBody className={"flex items-center  gap-2"}>
-                <h2 className="text-xl font-semibold">Reviews</h2>
+                <h2 className="text-xl font-semibold">Reseñas</h2>
                 {!oneReview[0] ? (
                   <span className="text-xl font-semibold">
-                    User has no review
+                    El usuario no tiene reseñas
                   </span>
                 ) : (
                   <>
@@ -91,21 +91,21 @@ const SectionDetail = ({ totalIncomes, totalExpenses, user }) => {
         }
       >
         <div className={"flex flex-col items-center"}>
-          <p className="text-lg text-[#12A150] ">Account created at</p>
+          <p className="text-lg text-[#12A150] ">Creación de cuenta</p>
           <p className={"text-lg font-semibold"}>
             {new Date(user.createdAt).toLocaleString()} HS
           </p>
         </div>
         {user.deletedAt !== null ? (
           <div className={"flex flex-col items-center"}>
-            <p className="text-lg text-[#f31260]">Account banned at</p>
+            <p className="text-lg text-[#f31260]">Baneo de cuenta</p>
             <p className={"text-lg font-semibold"}>
               {new Date(user.deletedAt).toLocaleString()} HS
             </p>
           </div>
         ) : (
           <p className="mt-4 font-semibold text-lowGray">
-            This account has not been banned
+            Esta cuenta no fue baneada
           </p>
         )}
       </div>
@@ -113,4 +113,4 @@ const SectionDetail = ({ totalIncomes, totalExpenses, user }) => {
   );
 };
 
-export default SectionDetail;
+export default SectionDetailEs;
