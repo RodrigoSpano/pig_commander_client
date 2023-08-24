@@ -11,7 +11,7 @@ export const formControlSavings = (values) => {
   if (values.name.length < 5) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
-      "Saving Name must be 20 characters long or less";
+      "Saving Name must be 5 characters long or less";
   } else if (!regex.test(values.name)) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
