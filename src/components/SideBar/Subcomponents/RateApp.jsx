@@ -19,6 +19,7 @@ import RateAppDescriptionEs from "./RateApp/SubcomponentsEs/RateAppDescriptionEs
 import RateStarsEs from "./RateApp/SubcomponentsEs/RateStarsEs";
 import { useCookies } from "react-cookie";
 import { postReview } from "@/redux/actions/reviewsAction";
+import Swal from "sweetalert2";
 
 export default function RateApp() {
   const [rating, setRating] = useState(0);
@@ -33,8 +34,23 @@ export default function RateApp() {
     setContent(newContent);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (onClose) => {
     dispatch(postReview({ token: cookies.token, rating, content }));
+    Swal.fire({
+      toast: true,
+      icon: "success",
+      title: "You have successfully reviewed",
+      animation: false,
+      position: "top-right",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+    onClose();
   };
 
   const selectedLanguage = useSelector((state) => state.language);
@@ -104,7 +120,7 @@ export default function RateApp() {
                 </Button>
                 <Button
                   className="bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300"
-                  onPress={() => handleSubmit()}
+                  onPress={() => handleSubmit(onClose)}
                 >
                   {selectedLanguage === "en" ? "Send" : "Enviar"}
                 </Button>
