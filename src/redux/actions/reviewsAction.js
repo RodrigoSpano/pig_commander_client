@@ -40,13 +40,16 @@ export const postReview = createAsyncThunk(
   }
 );
 
-export const deleteReview = createAsyncThunk("delete-review", async (token) => {
-  try {
-    const { data } = await axios.delete("/reviews", {
-      headers: { Authorization: token },
-    });
-    return data;
-  } catch (error) {
-    alert("An error occurred");
+export const deleteReview = createAsyncThunk(
+  "delete-review",
+  async ({ token, id }) => {
+    try {
+      const { data } = await axios.delete(`/reviews/${id}`, {
+        headers: { Authorization: token },
+      });
+      return data;
+    } catch (error) {
+      alert("An error occurred");
+    }
   }
-});
+);
