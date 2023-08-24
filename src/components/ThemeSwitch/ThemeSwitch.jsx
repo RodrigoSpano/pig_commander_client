@@ -39,7 +39,6 @@ const ThemeSwitch = () => {
 
 
   const handleChange = () => {
-    theme == "light" ? setTheme("light") : setTheme("dark");
     theme === "dark" ? setTheme("light") : setTheme("dark");
   }
 
