@@ -8,10 +8,10 @@ export const formControlSavings = (values) => {
   const regex = /^[a-zA-Z\s]*$/; // Expresión regular para letras y espacios
   const expNum = /^[0-9]+(\.[0-9]*)?$/; //Solo permite float
 
-  if (values.name.length < 5) {
+  if (values.name.length < 4) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
-      "Saving Name must be 5 characters long or less";
+      "Saving Name must be 4 characters long or less";
   } else if (!regex.test(values.name)) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
