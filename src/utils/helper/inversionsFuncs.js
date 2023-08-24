@@ -53,7 +53,7 @@ export const formInversionsControl = (values) => {
   } else if (!expNum.test(values.amount)) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages = "The amount cannot have letters or simbols";
-  } else if (!exp.text(values.dayPariod)) {
+  } else if (exp.test(values.dayPariod)) {
     controlObjet.booleanMessage = false;
     controlObjet.errorMessages =
       "You cannot make a float day, has to be integer";
