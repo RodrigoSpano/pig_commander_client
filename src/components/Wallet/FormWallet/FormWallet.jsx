@@ -58,16 +58,16 @@ export default function FormWallet() {
                 <div className="flex flex-row justify-center items-center">
 
                 <div className="flex flex-col mr-2.5 ">
-                    <label className="text-boldGray text-sm font-light dark:text-white">Method:</label>
-                    <select className="text-xs w-40 dark:text-black  bg-lightGray font-light rounded-lg p-1.5" name="method_id" id="selects" onChange={handleChange} value={formWallet.method_id}>
+                    <label className="text-boldGray text-lg font-light dark:text-white">Method:</label>
+                    <select className="text-md w-40 dark:text-black  bg-lightGray font-light rounded-lg p-1.5 h-12" name="method_id" id="selects" onChange={handleChange} value={formWallet.method_id}>
                       {methods.length ? methods.map((method)=> (
                         <option key={method.id} value={method.id}>{method.name}</option>
                       )) : null}
                     </select>
                 </div>
                 <div className="flex flex-col ">
-                    <label className="text-boldGray text-sm font-light dark:text-white">Categories:</label>
-                    <select className="text-xs w-40 dark:text-black  bg-lightGray font-light rounded-lg p-1.5" name="category_id" id="selects" value={formWallet.category_id} onChange={handleChange}>
+                    <label className="text-boldGray text-lg font-light dark:text-white">Categories:</label>
+                    <select className="text-md capitalize w-40 dark:text-black  bg-lightGray font-light rounded-lg p-1.5 h-12" name="category_id" id="selects" value={formWallet.category_id} onChange={handleChange}>
                     {categories.length ? categories.map((category)=> (
                         <option key={category.id} value={category.id}>{category.name}</option>
                       )) : null}
@@ -77,7 +77,7 @@ export default function FormWallet() {
 
                 <div className="flex flex-row mt-2">
                     <div className="mt-5 self-center mr-1.5"><FiAlertCircle /> </div>
-                    <span className="text-boldGray text-sm font-light mt-5 dark:text-white">Automatized: Only premium members</span>
+                    <span className="text-boldGray text-md font-light mt-5 dark:text-white">Automatized: Only premium members</span>
                 </div>
 
                 <div className="flex flex-row mt-5">
