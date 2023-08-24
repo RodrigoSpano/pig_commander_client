@@ -17,7 +17,7 @@ function LanguageSwitch() {
         <>
       <Select
         label="choose a language"
-        className="max-w-xs z-[100]"
+        className="max-w-xs "
         defaultValue={lang}
         onValueChange={handleLanguageChange}
         >

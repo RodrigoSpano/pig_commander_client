@@ -8,6 +8,7 @@ function AppSettingsEs() {
       <h1 className='text-xl lg:text-2xl font-bold text-regularPink'>
         Configuaración de la App
       </h1>
+      <div className='flex gap-10'>
 
       <section>
         <h1 className='text-gray-700 dark:text-white text-lg font-semibold'>Idioma:</h1>
@@ -18,6 +19,7 @@ function AppSettingsEs() {
         <h1 className='text-gray-700 text-lg dark:text-white font-semibold'>Tema:</h1>
         <ThemeSwitch />
       </section>
+      </div>
     </div>
   );
 }
