@@ -7,12 +7,17 @@ import {
 
 const initialState = {
   allReviews: [],
+  oneReview: [null],
 };
 
 const reviewSlice = createSlice({
   name: "reviews",
   initialState,
-  reducers: {},
+  reducers: {
+    setReviews: (state, action) => {
+      state.oneReview = state.allReviews.filter((r) => r.id === action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllReviews.fulfilled, (state, action) => {
       state.allReviews = action.payload;
@@ -22,12 +27,13 @@ const reviewSlice = createSlice({
     });
     builder.addCase(deleteReview.fulfilled, (state, action) => {
       state.allReviews = state.allReviews.filter(
-        (rev) => rev.id !== action.payload
+        (rev) => rev.id !== Number(action.payload)
       );
+      state.oneReview = [null];
     });
   },
 });
 
-export const { updateState } = reviewSlice.actions;
+export const { setReviews } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

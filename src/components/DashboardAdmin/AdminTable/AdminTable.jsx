@@ -22,6 +22,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import UserDetailModal from "./UserDetailModal";
+import { getAllReviews } from "@/redux/actions/reviewsAction";
 
 const statusColorMap = {
   active: "success",
@@ -39,6 +40,7 @@ export default function AdminTable() {
   const users = useSelector((state) => state.admin.tableUsers);
   useEffect(() => {
     dispatch(getTableUsers(cookies.token));
+    dispatch(getAllReviews(cookies.token));
   }, []);
   const renderCell = React.useCallback((users, columnKey) => {
     const cellValue = users[columnKey];
@@ -49,7 +51,9 @@ export default function AdminTable() {
           <User
             avatarProps={{ radius: "lg", src: users.image }}
             description={users.email}
-            name={`${users.name.replace(/^\w/, (c) => c.toUpperCase())} ${users.lastname.replace(/^\w/, (c) => c.toUpperCase())}`}
+            name={`${users.name.replace(/^\w/, (c) =>
+              c.toUpperCase()
+            )} ${users.lastname.replace(/^\w/, (c) => c.toUpperCase())}`}
           >
             {users.email}
           </User>

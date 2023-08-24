@@ -2,19 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import StarRating from "./StarRating";
-import { HiTrash } from "react-icons/hi";
-import { deleteReview } from "@/redux/actions/reviewsAction";
-import { useCookies } from "react-cookie";
-import { useDispatch } from "react-redux";
+
 const ReviewCard = ({ review }) => {
-  const [cookies, setCookies] = useCookies();
-  const dispatch = useDispatch();
   const { user, rating, content } = review;
   const cardVariants = {
     hover: { scale: 1.05, transition: { duration: 0.2 } },
-  };
-  const handleDelete = () => {
-    dispatch(deleteReview(cookies.token));
   };
   return (
     <motion.div
@@ -23,19 +15,30 @@ const ReviewCard = ({ review }) => {
       whileHover="hover"
     >
       <div className="flex items-center mb-3">
-        <HiTrash className="text-4xl" onClick={handleDelete} />
         <div className="mr-4">
-          <Image
-            src={user.image}
-            width={70}
-            height={70}
-            alt="UserImage"
-            className="rounded-full"
-          />
+          {user === null ? (
+            <Image
+              src={
+                "https://res.cloudinary.com/dcxaangkl/image/upload/v1692371023/profile_pics/dyfzdf21fnalvtgsp3gi.webp"
+              }
+              width={70}
+              height={70}
+              alt="UserImage"
+              className="rounded-full"
+            />
+          ) : (
+            <Image
+              src={user?.image}
+              width={70}
+              height={70}
+              alt="UserImage"
+              className="rounded-full"
+            />
+          )}
         </div>
         <div>
-          <h2 className="text-lg font-semibold">
-            {user.name} {user.lastname}
+          <h2 className="dark:text-black text-lg font-semibold">
+            {user === null ? "Anonymous" : `${user.name} ${user.lastname}`}
           </h2>
           <div className="mt-2">
             <StarRating stars={rating} />
