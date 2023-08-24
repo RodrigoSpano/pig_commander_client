@@ -20,13 +20,13 @@ const ProfileComponent = () => {
   const [cookies] = useCookies();
   const [isLoading, setIsLoading] = useState(true);
 
-  const user = useSelector((state) => state.user.logged);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (user) {
+    if (user.logged) {
       setIsLoading(false);
     }
-  }, [user]);
+  }, [user.logged]);
 
   return (
     <>
