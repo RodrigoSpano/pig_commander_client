@@ -38,7 +38,7 @@ export default function CategoriesCard({
 
       <div className="font-bold capitalize text-wrap w-24 text-">{name}</div>
       {/* Si es gasto va en rojo, si es ingreso va en verde */}
-        <div className="text-black">
+        <div className="text-black dark:text-lightGrey">
           $ {amount.toLocaleString()}
         </div>
     </div>

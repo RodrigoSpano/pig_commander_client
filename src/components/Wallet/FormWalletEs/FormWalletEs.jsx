@@ -55,9 +55,9 @@ export default function FormWalletEs () {
                 </p>
 
 
-                <div className="flex flex-row justify-center items-center">
+                <div className="flex flex-row sm:flex-col md:flex-row justify-center items-center">
 
-                <div className="flex flex-col mr-2.5 ">
+                <div className="flex flex-col mr-2">
                     <label className="text-boldGray text-lg font-light dark:text-white">Metodo:</label>
                     <select className="text-md w-40 dark:text-black  bg-lightGray font-light rounded-lg p-1.5 h-12" name="method_id" id="selects" onChange={handleChange} value={formWallet.method_id}>
                       {methods.length ? methods.map((method)=> (
@@ -65,7 +65,7 @@ export default function FormWalletEs () {
                       )) : null}
                     </select>
                 </div>
-                <div className="flex flex-col ">
+                <div className="flex flex-col ml-2">
                     <label className="text-boldGray text-lg font-light dark:text-white">Categoria:</label>
                     <select className="text-md capitalize w-40 dark:text-black  bg-lightGray font-light rounded-lg p-1.5 h-12" name="category_id" id="selects" value={formWallet.category_id} onChange={handleChange}>
                     {categories.length ? categories.map((category)=> (
@@ -80,7 +80,7 @@ export default function FormWalletEs () {
                     <span className="text-boldGray text-md font-light mt-5 dark:text-white">Automatizado: solo miembros premium</span>
                 </div>
 
-                <div className="flex flex-row mt-5">
+                <div className="flex flex-row sm:flex-col md:flex-row items-center justify-center mt-5">
                     <Switch defaultSelected size="sm" color="success" isSelected={automatized} onValueChange={setAutomatized} isDisabled={!userPremium.premium} />
                     <input className='bg-lightGray dark:text-black  placeholder-black font-light rounded-lg text-xs p-1.5 w-40 relative focus:outline-none active:outline-none' type="number" placeholder="Day of the month..." name="auto_date" value={!automatizedForm.auto_date} disabled={!automatized} onChange={handleAutoChange} />
                     <select defaultValue={'expense'} name='type' className="text-xs w-26 bg-lightGray dark:bg-white dark:text-black font-light rounded-lg p-1.5 ml-2" disabled={!automatized} onChange={handleAutoChange}>
