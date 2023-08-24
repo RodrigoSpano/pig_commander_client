@@ -6,13 +6,13 @@ const RateAppDescriptionEs = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white p-6 rounded-lg shadow-md text-center"
+      className="bg-white p-6 rounded-lg dark:bg-grayDark shadow-md text-center"
     >
-      <h2 className="text-xl font-semibold mb-2 text-gray-800">
+      <h2 className="text-xl font-semibold mb-2  text-gray-800 dark:text-white">
         Gracias por usar nuestra app!
       </h2>
 
-      <h3 className="text-md mb-4 text-gray-600">
+      <h3 className="text-md mb-4 text-gray-600 dark:text-lightGrey">
       Nos gustaría saber cómo podemos mejorar. Por favor, tómate un momento para contarnos qué opinas sobre la aplicación. Puedes calificarla del 1 al 5 y escribir una breve descripción de tu experiencia.
       </h3>
 
