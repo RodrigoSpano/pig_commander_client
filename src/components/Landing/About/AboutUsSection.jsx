@@ -31,7 +31,7 @@ const AboutUsSection = () => {
           About Pig Commander
         </motion.h1>
 
-        <motion.div variants={textVariants} className='text-gray-700 space-y-4'>
+        <motion.div variants={textVariants} className='text-gray-700 space-y-4 dark:text-lightGrey'>
           <p>
             Simplify the management of your financial resources with Pig Commander, an innovative financial application.
           </p>

@@ -47,7 +47,7 @@ function ForgotPasswordModal() {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" variant="light" onClick={handelSubmitForgotPassword}>
+                <Button  color="primary" variant="light" onClick={handelSubmitForgotPassword}>
                   Submit
                 </Button>
                 <Button color="danger" variant="light" onPress={onClose}>

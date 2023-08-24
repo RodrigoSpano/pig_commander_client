@@ -29,7 +29,7 @@ const FeaturesAboutSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className='text-gray-700 text-sm md:text-base md:text-justify mb-4'
+            className='text-gray-700 text-sm md:text-base md:text-justify mb-4 dark:text-lightGrey'
           >
             With Pig Commander, keeping detailed control of your finances has never been so simple. You will be able to
             record all your expenses and income quickly and categorize them to obtain a clear vision of your financial
@@ -55,7 +55,7 @@ const FeaturesAboutSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className='text-gray-700 text-sm md:text-base md:text-justify mb-4'
+            className='text-gray-700 text-sm md:text-base md:text-justify mb-4 dark:text-lightGrey'
           >
             Pig Commander is the best app for setting saving goals and tracking your progress over time.
             You can also visualize your investments and evaluate how they are working in real time.
@@ -81,7 +81,7 @@ const FeaturesAboutSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className='text-gray-700 text-sm md:text-base md:text-justify mb-4'
+            className='text-gray-700 text-sm md:text-base md:text-justify mb-4 dark:text-lightGrey'
           >
             Pig Commander's personalized control panel gives you a complete view of your finances,
             including your spending and saving habits. Interactive graphs show you this information

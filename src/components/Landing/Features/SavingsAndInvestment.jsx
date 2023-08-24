@@ -19,8 +19,8 @@ const SavingsAndInvestment = () => {
           Savings and Investment
         </motion.h2>
         <motion.p
-          whileHover={{ color: '#ff4081' }}
-          className='text-gray-600'
+          // whileHover={{ color: '#ff4081' }}
+          className='text-gray-700 dark:text-lightGrey'
         >
           Set savings goals and track your progress over time. With Pig Commander, you'll be able to visualize your investments and assess how they're performing to make informed decisions about your financial future.
         </motion.p>

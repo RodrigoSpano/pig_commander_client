@@ -10,7 +10,7 @@ const SavingGoalsEs = () => {
             </div>
             <div className='flex flex-col justify-center'>
                 <h2 className='text-regularPink text-3xl font-bold mb-4'>Metas de Ahorros</h2>
-                <p className='text-gray-600'>
+                <p className='text-gray-700 dark:text-lightGrey'>
                 Establece metas de ahorro alcanzables y realiza un seguimiento de tu progreso. Pig Commander te mantendrá motivado a medida que te acerques cada vez más a tus objetivos financieros.
                 </p>
             </div>

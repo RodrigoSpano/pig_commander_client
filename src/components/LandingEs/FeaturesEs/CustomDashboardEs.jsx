@@ -10,7 +10,7 @@ const CustomDashboardEs = () => {
             </div>
             <div className='flex flex-col justify-center'>
                 <h2 className='text-regularPink text-3xl font-bold mb-4'>Panel de Control Personalizado</h2>
-                <p className='text-gray-600'>
+                <p className='text-gray-700 dark:text-lightGrey'>
                 Accede a un panel de control personalizado que te brindará una vista completa de tus finanzas de un solo vistazo. Gráficos interactivos te proporcionarán una representación visual y comprensible de tus hábitos de gasto y ahorro.
                 </p>
             </div>

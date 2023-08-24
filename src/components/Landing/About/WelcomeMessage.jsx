@@ -23,7 +23,7 @@ const WelcomeMessage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
-        <h3 className='text-sm md:text-lg text-neutral-600'>
+        <h3 className='text-sm md:text-lg text-neutral-600 dark:text-lightGrey'>
           Pig Commander is the most secure finance app.
         </h3>
       </motion.div>

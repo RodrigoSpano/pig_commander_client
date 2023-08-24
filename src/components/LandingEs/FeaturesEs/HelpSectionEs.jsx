@@ -10,7 +10,7 @@ const HelpSectionEs = () => {
 
             <div className='flex flex-col justify-center'>
                 <h2 className='text-regularPink text-3xl font-bold mb-4'>Sección de Ayuda</h2>
-                <p className='text-gray-600'>
+                <p className='text-gray-700 dark:text-lightGrey'>
                 Encuentra respuestas a tus preguntas y obtén soporte en nuestra sección de ayuda y preguntas frecuentes. Estamos aquí para ayudarte en cada paso del camino.
                 </p>
             </div>

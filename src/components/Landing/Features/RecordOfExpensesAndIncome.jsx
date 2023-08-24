@@ -27,8 +27,8 @@ const RecordOfExpensesAndIncome = () => {
           Record of Expenses and Incomes
         </motion.h2>
         <motion.p
-          whileHover={{ color: '#ff4081' }}
-          className='text-gray-600'
+          // whileHover={{ color: '#ff4081' }}
+          className='text-gray-700 dark:text-lightGrey'
         >
           With Pig Commander, keeping detailed track of your financial transactions has never been easier. Record your expenses and income quickly and categorize them to get a clear view of your financial patterns.
         </motion.p>
