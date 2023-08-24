@@ -45,8 +45,8 @@ const DashboardComponent = () => {
                 <StatsContainerEs />
               )}
 
-          <div className="flex flex-col-reverse lg:flex-col dark:bg-strongGray">
-            <section className="mt-3 mb-4">
+          <div className="flex flex-col-reverse lg:flex-col dark:bg-mediumGrayDarkMode">
+            <section className="mt-3 mb-4 ">
               {selectedLanguage === "en" ? (
                 <MyJournalCard />
               ) : (

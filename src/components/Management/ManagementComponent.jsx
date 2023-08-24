@@ -80,7 +80,7 @@ export default function ManagmentComponent() {
                 {componentRender()}
               </div>
               {/* advice component */}
-              <div className="shadow-lg rounded-2xl bg-white flex flex-col justify-center items-center px-3 select-none h-full mb-3">
+              <div className="shadow-lg rounded-2xl bg-white dark:bg-mediumGrayDarkMode flex flex-col justify-center items-center px-3 select-none h-full mb-3">
                 <AdviceComponent />
               </div>
             </div>
