@@ -74,6 +74,12 @@ export default function () {
                 token,
             })
         ) , successExpense();
+        setFormWallet({
+            name: "",
+            amount: "",
+            method_id: 1,
+            category_id: 1,
+        })
     }, 
      [formWallet, cookies]);
 
@@ -112,6 +118,12 @@ export default function () {
                 token,
             }) 
         ), successIncome();
+        setFormWallet({
+            name: "",
+            amount: "",
+            method_id: 1,
+            category_id: 1,
+        })
     }, [formWallet, cookies]);
  
     var toastMixin = Swal.mixin({
