@@ -59,7 +59,7 @@ export default function WalletComponent() {
                 <BalancesCard backup_transactions={allTransactions} />
               </div>
             </div>
-            <div className="flex justify-end gap-2 mr-8">
+            <div className="flex flex-col gap-2 md:flex-row md:justify-end md:mr-8">
               <ButtonCreateCategory />
               <DeleteCreatedCategory />
             </div>
@@ -69,7 +69,7 @@ export default function WalletComponent() {
         <hr className="mx-16 my-6" />
 
         <div className="">
-          <div className="flex justify-around">
+          <div className="flex flex-col lg:flex-row justify-around">
             <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">
               Transactions
             </h1>

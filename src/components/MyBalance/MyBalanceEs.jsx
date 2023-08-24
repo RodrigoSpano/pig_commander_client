@@ -71,7 +71,7 @@ export default function WalletComponentEs() {
       <hr className="mx-16 my-6" />
 
       <div className="">
-        <div className="flex flex-col lg:flex-row justify-around">
+      <div className="flex flex-col lg:flex-row justify-around">
           <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">
             Transacciones
           </h1>
