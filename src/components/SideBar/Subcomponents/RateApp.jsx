@@ -49,9 +49,9 @@ export default function RateApp() {
 
   return (
     <>
-      <div className="hover:bg-pink-50 py-4 px-6 rounded-sm">
+      <div className="hover:bg-pink-50 dark:hover:bg-regularPink py-4 px-6 rounded-sm">
         <motion.div
-          className=" flex items-center justify-start font-semibold cursor-pointer dark:text-white dark:hover:text-regularPink text-boldGray hover:text-regularPink"
+          className=" flex items-center justify-start font-semibold cursor-pointer dark:text-white text-boldGray hover:text-regularPink"
           variants={linkVariants}
           initial="initial"
           animate="animate"

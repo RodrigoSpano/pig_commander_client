@@ -38,7 +38,7 @@ export default function WalletComponent() {
         <LoaderComponent />
       ) : (
         <>
-            <div className="flex flex-col mt-20 md:mt-0 sm:flex-row">
+            <div className="flex flex-col mt-20 md:mt-0 sm:flex-row select-none">
 
               <section className="sm:w-1/2">
                 <div className="m-4 ">

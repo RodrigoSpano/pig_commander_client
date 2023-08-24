@@ -61,8 +61,8 @@ const FilterAllTransactions = ({ setOrders }) => {
   };
 
   return (
-    <div className="flex justify-center items-center gap-2 mt-2">
-      <section className="flex gap-2 items-center ">
+    <div className="flex flex-col xl:flex-row justify-center items-center gap-2 mt-2">
+      <section className="flex flex-col lg:flex-row gap-2 items-center">
         <select
           className="w-36 p-2 border rounded-lg shadow-sm outline-none"
           onChange={handleFilterByType}
