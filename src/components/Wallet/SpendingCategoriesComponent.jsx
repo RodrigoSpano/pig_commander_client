@@ -17,8 +17,7 @@ import "./CustomScrollBar.css"; // Estilo de la barra de desplazamiento
 
 export default function SpendingCategoriesComponent() {
   const [selectedCategory, setCategory] = useState("select-none");
-  const [selectedYear, setSelect] = useState("select-none");
-  const [filterResult, setFilterResult] = useState([]);
+  const [filterResult, setFilterResult] = useState([]); //array filtrado
 
   const categories = useSelector((state) => state.others.categories);
   const transactions = useSelector(
@@ -29,11 +28,10 @@ export default function SpendingCategoriesComponent() {
     const filteredTransactions = multipleFilter(
       transactions,
       selectedCategory,
-      selectedYear,
       categories
     );
     setFilterResult(filteredTransactions);
-  }, [transactions, selectedCategory, selectedYear]);
+  }, [transactions, selectedCategory]);
 
   return (
     <div className="h-full">
@@ -92,9 +90,7 @@ export default function SpendingCategoriesComponent() {
                 key={category}
                 name={category}
                 category={category}
-                amount={filterResult[category].total}
-                type={filterResult[category].type}
-                validation={false}
+                amount={filterResult[category].expense}
               />
             ))}
           </div>
@@ -107,12 +103,11 @@ export default function SpendingCategoriesComponent() {
                   key={element.id}
                   name={element.name}
                   category={ObtainNameByCategory(
+                    //relaciona el id de la categoria con la transaccion (que incluye el id correspondiente a su categoria)
                     element.category_id,
                     categories
                   )}
                   amount={element.amount}
-                  type={element.type}
-                  validation={true}
                 />
               ))}
           </div>

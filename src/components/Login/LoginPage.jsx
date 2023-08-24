@@ -12,6 +12,7 @@ import { HiEnvelope, HiMiniLockClosed } from "react-icons/hi2";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import ForgotPasswordModal from "./subcomps/ForgotPasswordModal";
+import ForgotPasswordModalEs from "./subcompsEs/ForgotPasswordModalEs";
 
 const LoginContainer = () => {
   const {
@@ -258,6 +259,7 @@ const LoginContainer = () => {
                   ? "This field is required"
                   : ""}
               </p>
+              <ForgotPasswordModalEs/>
             </div>
 
             <motion.button

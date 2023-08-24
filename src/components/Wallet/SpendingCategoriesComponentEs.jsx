@@ -18,7 +18,6 @@ import "./CustomScrollBar.css";
 
 export default function SpendingCategoriesComponentEs() {
   const [selectedCategory, setCategory] = useState("select-none"); //Estado local de actualizacion del select en las categorias
-  const [selectedYear, setSelect] = useState("select-none"); // Estado local de la actualizacion del select en los a;os
   const [filterResult, setFilterResult] = useState([]); //Filter result es el array resultado del filtrado multiple
 
   //manejo de selectores
@@ -32,12 +31,10 @@ export default function SpendingCategoriesComponentEs() {
     const filteredTransactions = multipleFilter(
       transactions,
       selectedCategory,
-      selectedYear,
       categories
     );
     setFilterResult(filteredTransactions);
-    console.log(selectedYear);
-  }, [transactions, selectedCategory, selectedYear]);
+  }, [transactions, selectedCategory]);
 
   return (
     <div className="h-[100%]">
@@ -99,10 +96,7 @@ export default function SpendingCategoriesComponentEs() {
                 key={category}
                 name={category}
                 category={category}
-                amount={filterResult[category].total}
-                s
-                type={filterResult[category].type}
-                validation={false}
+                amount={filterResult[category].expense}
               />
             ))}
           </div>
@@ -119,8 +113,6 @@ export default function SpendingCategoriesComponentEs() {
                     categories
                   )}
                   amount={element.amount}
-                  type={element.type}
-                  validation={true}
                 />
               ))}
           </div>
