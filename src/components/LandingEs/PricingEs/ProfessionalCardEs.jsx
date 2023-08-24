@@ -22,10 +22,10 @@ const ProfessionalCardEs = () => {
 
         <div className="pb-4 leading-[1.5]">
           <p className="text-white">
-            La manera perfecta de comenzar y familiarizarse
+            Perfecto para familiarizarse
           </p>
           <p className="text-white">
-            con nuestras herramientas de la manera ideal.
+            con nuestras herramientas.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ const ProfessionalCardEs = () => {
         className="flex items-center justify-center"
       >
         <Link href="/login">
-          <button className="bg-white py-3 px-16 rounded-sm hover:bg-gray-100 focus:outline-none">
+        <button className='bg-white dark:text-mediumPinkDark text-strongPink font-bold py-3 px-16 rounded-sm hover:bg-gray-100 focus:outline-none'>
             Comenzar
           </button>
         </Link>

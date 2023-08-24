@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 module.exports = {
   content: [
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
@@ -40,14 +40,14 @@ module.exports = {
         lowGray: "#9da4b0",
         mediumPink: "#DE78AE",
         medium2Pink: "#dc368d",
-        mediumGrayDarkMode: "#444444", 
+        mediumGrayDarkMode: "#444444",
         strongGray: "#2c2c2c",
         mediumPinkDark: "#e364a5",
         lowGrayDark: "#797979",
         lightGrey: "#CDCDCD",
         grayDark: "#27272A",
         grayHover: "#606060",
-      
+
         // light mode
         tremor: {
           brand: {
@@ -104,7 +104,7 @@ module.exports = {
   darkMode: "class",
   plugins: [nextui({
     themes: {
-      
+
     }
   })],
 };

@@ -19,8 +19,8 @@ const SavingsAndInvestmentEs = () => {
           Ahorros e Inversiones
         </motion.h2>
         <motion.p
-          whileHover={{ color: '#ff4081' }}
-          className='text-gray-600'
+          // whileHover={{ color: '#ff4081' }}
+          className='text-gray-700 dark:text-lightGrey'
         >
           Establece metas de ahorro y sigue tu progreso con el tiempo. Con Pig Commander, podrás visualizar tus inversiones y evaluar cómo están funcionando para tomar decisiones informadas sobre tu futuro financiero.
         </motion.p>

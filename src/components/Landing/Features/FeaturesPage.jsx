@@ -31,10 +31,10 @@ const FeaturesPage = () => {
                         className='mb-8 text-center'
                     >
                         <h1 className='text-5xl font-bold'>Features</h1>
-                        <p className='text-gray-700 text-base py-3'>
+                        <p className='text-gray-700 dark:text-lightGrey text-base py-3'>
                             Discover all the features that make Pig Commander the most complete and versatile financial application on the market.
                         </p>
-                        <p className='text-gray-700 mb-16 text-base'>
+                        <p className='text-gray-700 dark:text-lightGrey mb-16 text-base'>
                             We have carefully designed each feature so that you can have full control over your financial resources and achieve your financial goals effectively. Here are the highlights:
                         </p>
                     </motion.div>
@@ -60,10 +60,10 @@ const FeaturesPage = () => {
                         transition={{ duration: 0.8 }}
                         className='flex-col items-center justify-center my-16'
                     >
-                        <p className='text-gray-700 text-base text-center'>
+                        <p className='text-gray-700 text-base text-center dark:text-lightGrey'>
                             At Pig Commander, we pride ourselves on offering you a wide range of features that will allow you to take control of your finances and achieve your financial goals.
                         </p>
-                        <p className='text-gray-700 text-base text-center'>
+                        <p className='text-gray-700 text-base text-center dark:text-lightGrey'>
                             Explore each of these features and start mastering your finances today!
                         </p>
                     </motion.div>

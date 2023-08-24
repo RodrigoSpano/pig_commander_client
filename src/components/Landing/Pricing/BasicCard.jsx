@@ -9,17 +9,17 @@ const BasicCard = () => {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
-      className='rounded-md p-6 border-solid border-black w-[90%] md:w-[350px] h-[480px] flex flex-col justify-between shadow-2xl select-none'
+      className='rounded-md p-6 border-solid border-black dark:bg-mediumGrayDarkMode w-[90%] md:w-[350px] h-[480px] flex flex-col justify-between shadow-2xl select-none'
     >
       <div>
-        <h3 className='pb-4 text-black text-2xl font-semibold'>Basic</h3>
+        <h3 className='pb-4 text-strongPink text-2xl dark:text-mediumPinkDark  font-semibold'>Basic</h3>
 
         <div className='flex justify-start items-end pb-2'>
           <motion.h1
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className='text-black text-4xl font-bold'
+            className='text-black text-4xl dark:text-white font-bold'
           >
             $14.99
           </motion.h1>
@@ -27,7 +27,7 @@ const BasicCard = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className='text-black font-semibold'
+            className='text-strongPink dark:text-white font-semibold'
           >
             / 3 month
           </motion.h4>
@@ -39,7 +39,7 @@ const BasicCard = () => {
           transition={{ delay: 0.4 }}
           className='pb-4 leading-[1.5]'
         >
-          <p className='text-black'>Ideal for getting started with our tools.</p>
+          <p className='text-black dark:text-white'>Ideal for getting started with our tools.</p>
         </motion.div>
 
         <hr className='pb-4' />
@@ -54,27 +54,27 @@ const BasicCard = () => {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 }}
-            className='flex items-center pb-2 text-black'
+            className='flex items-center pb-2 dark:text-white text-black'
           >
-            <HiOutlineCheck className='mr-3 text-3xl text-black' />
+            <HiOutlineCheck className='mr-3 text-3xl text-black dark:text-white' />
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           </motion.li>
           <motion.li
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7 }}
-            className='flex items-center pb-2 text-black'
+            className='flex items-center pb-2 dark:text-white text-black'
           >
-            <HiOutlineCheck className='mr-3 text-3xl text-black' />
+            <HiOutlineCheck className='mr-3 text-3xl text-black dark:text-white' />
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           </motion.li>
           <motion.li
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8 }}
-            className='flex items-center pb-2 text-black'
+            className='flex items-center pb-2 dark:text-white text-black'
           >
-            <HiOutlineCheck className='mr-3 text-3xl text-black' />
+            <HiOutlineCheck className='mr-3 text-3xl text-black dark:text-white' />
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           </motion.li>
         </motion.ul>
@@ -91,7 +91,7 @@ const BasicCard = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className='bg-black text-white py-3 px-16 rounded-sm hover:bg-zinc-900 focus:outline-none'
+            className='bg-gradient-to-r from-regularPink to-boldPink text-white font-bold py-3 px-16 rounded-sm hover:bg-zinc-900 focus:outline-none'
           >
             Get started
           </motion.button>

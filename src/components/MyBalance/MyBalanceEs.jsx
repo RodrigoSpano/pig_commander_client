@@ -45,46 +45,65 @@ export default function WalletComponentEs() {
   };
 
   return (
-    <div>
+    <>
+    <div className="bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink">
+      h
+    </div>
+    <div className="bg-white dark:bg-mediumGrayDarkMode rounded-lg shadow-xl p-4">
       <div>
-        <div className="bg-mediumPink h-7 rounded-t-lg "></div>
-        <h1 className="font-bold ml-5 mt-2.5 text-xl dark:text-mediumPinkDark">Mi Balance</h1>
-        <div className="flex flex-row">
-          <div className="text-regularPink text-7xl font-semibold mt-5 ml-5 ">
-            <BalancesCard backup_transactions={allTransactions} />
+
+        <div className="">
+          <h1 className="font-bold text-2xl dark:text-mediumPink my-2">
+            Mi Balance
+          </h1>
+          <div className="">
+            <div className="text-regularPink text-7xl font-semibold my-2">
+              <BalancesCard backup_transactions={allTransactions} />
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 md:flex-row md:justify-end md:mr-8">
+            <ButtonCreateCategoryEs />
+            <DeleteCreatedCategoryEs />
           </div>
         </div>
-        <div className={"flex justify-end"}>
-          <ButtonCreateCategoryEs />
-          <DeleteCreatedCategoryEs />
-        </div>
-      </div>
-      <hr className="my-2 mx-16 mt-6" />
-      <div className="my-4">
-        <div className="flex justify-around">
-          <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">Transacciones</h1>
-          <SearchBarComponentEs handleSearch={handleSearch} />
-        </div>
-        <FilterAllTransactionsEs setOrders={setOrders} />
       </div>
 
-      <AllTransactionsPropsContainerEs
-        handleAlphabetically={handleAlphabetically}
-        handleOrderByAmount={handleOrderByAmount}
-      />
-      <AllTransactionsComponent allTransactions={transactions} />
-      {transactions?.length ? (
-        <div>
-          <PaginationComponent
-            count={count}
-            totalPages={totalPages}
-            nextHandler={nextHandler}
-            prevHandler={prevHandler}
-            lastPageHandler={lastPageHandler}
-            firstPageHandler={firstPageHandler}
-          />
+      <hr className="mx-16 my-6" />
+
+      <div className="">
+        <div className="flex flex-col lg:flex-row justify-around">
+          <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">
+            Transacciones
+          </h1>
+          <SearchBarComponentEs handleSearch={handleSearch} />
         </div>
-      ) : null}
+        <div>
+          <FilterAllTransactionsEs setOrders={setOrders} />
+        </div>
+      </div>
+
+      <hr className="mx-16 my-6" />
+
+      <div className="">
+        <AllTransactionsPropsContainerEs
+          handleAlphabetically={handleAlphabetically}
+          handleOrderByAmount={handleOrderByAmount}
+        />
+        <AllTransactionsComponent allTransactions={transactions} />
+        {transactions?.length ? (
+          <div>
+            <PaginationComponent
+              count={count}
+              totalPages={totalPages}
+              nextHandler={nextHandler}
+              prevHandler={prevHandler}
+              lastPageHandler={lastPageHandler}
+              firstPageHandler={firstPageHandler}
+            />
+          </div>
+        ) : null}
+      </div>
     </div>
+  </>
   );
 }

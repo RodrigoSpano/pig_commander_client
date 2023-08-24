@@ -2,7 +2,6 @@
 import React from "react";
 import { useTheme } from "next-themes";
 import { Switch } from "@nextui-org/react";
-
 const SunIcon = (props) => (
   <svg
     aria-hidden="true"
@@ -19,7 +18,6 @@ const SunIcon = (props) => (
     </g>
   </svg>
 );
-
 const MoonIcon = (props) => (
   <svg
     aria-hidden="true"
@@ -36,13 +34,12 @@ const MoonIcon = (props) => (
     />
   </svg>
 );
-
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
 
 
   const handleChange = () => {
-    theme == "light" ? setTheme("light") : setTheme("dark");
+    theme === "dark" ? setTheme("light") : setTheme("dark");
   }
 
   return (
@@ -60,5 +57,4 @@ const ThemeSwitch = () => {
     ></Switch>
   );
 };
-
 export default ThemeSwitch;

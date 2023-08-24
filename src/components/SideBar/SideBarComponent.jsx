@@ -11,7 +11,6 @@ import Dashboard from "./Subcomponents/Dashboard";
 import Management from "./Subcomponents/Management";
 import Wallet from "./Subcomponents/Wallet";
 import Profile from "./Subcomponents/Profile";
-import Settings from "./Subcomponents/Settings";
 import Help from "./Subcomponents/Help";
 import LogOut from "./Subcomponents/LogOut";
 import RateApp from "./Subcomponents/RateApp";
@@ -24,12 +23,14 @@ import { ImExit } from 'react-icons/im';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAllInversions } from "@/redux/actions/inversionsActions";
+import { setLanguage } from "@/redux/features/languageSlice";
 
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector((state) => state.user);
   const savings = useSelector((state) => state.savings.allSavings);
+  const languageState = useSelector((state) => state.language);
   const dispatch = useDispatch();
   const [cookies, setCookies] = useCookies();
 
@@ -46,7 +47,6 @@ const NavBar = () => {
         dispatch(getAllSavings(cookies.token));
       }
        dispatch(getAllInversions(cookies.token));
-
     }
   }, [dispatch]);
 
@@ -75,11 +75,6 @@ const NavBar = () => {
       path: "/home/profile",
     },
     {
-      icon: <IoMdSettings className="mr-1 text-regularPink text-3xl" />,
-      text: "Settings",
-      path: "/home/settings",
-    },
-    {
       icon: <BiSolidHelpCircle className="mr-1 text-regularPink text-3xl" />,
       text: "Help",
       path: "/home/help",
@@ -99,7 +94,7 @@ const NavBar = () => {
   return (
     <>
       {/* DESKTOP */}
-      <nav className="bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none">
+      <nav className="bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none fixed">
         <div>
           {/* LOGO */}
           <div className="flex items-center justify-center mb-4 xl:mb-6">
@@ -119,7 +114,6 @@ const NavBar = () => {
             <hr />
 
             <div className="space-y-1 xl:space-y-3">
-              <Settings />
               <Help />
               <RateApp />
             </div>

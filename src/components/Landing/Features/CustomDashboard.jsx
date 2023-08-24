@@ -10,7 +10,7 @@ const CustomDashboard = () => {
             </div>
             <div className='flex flex-col justify-center'>
                 <h2 className='text-regularPink text-3xl font-bold mb-4'>Custom Dashboard</h2>
-                <p className='text-gray-600'>
+                <p className='text-gray-600 dark:text-lightGrey'>
                     Access a personalized control panel that will give you a complete view of your finances at a single glance. Interactive graphs will provide you with a visual and understandable representation of your spending and saving habits.
                 </p>
             </div>

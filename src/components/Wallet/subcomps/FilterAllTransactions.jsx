@@ -61,10 +61,10 @@ const FilterAllTransactions = ({ setOrders }) => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 mt-2">
-      <section className="flex flex-col items-center space-y-2">
+    <div className="flex flex-col xl:flex-row justify-center items-center gap-2 mt-2">
+      <section className="flex flex-col lg:flex-row gap-2 items-center">
         <select
-          className="w-64 p-2 border rounded-lg shadow-sm outline-none"
+          className="w-36 p-2 border rounded-lg shadow-sm outline-none"
           onChange={handleFilterByType}
           value={values.types}
         >
@@ -77,7 +77,7 @@ const FilterAllTransactions = ({ setOrders }) => {
         </select>
 
         <select
-          className="w-64 p-2 border rounded-lg shadow-sm outline-none"
+          className="w-36 p-2 border rounded-lg shadow-sm outline-none"
           onChange={handleFilterByMethod}
           value={values.methods}
         >
@@ -95,7 +95,7 @@ const FilterAllTransactions = ({ setOrders }) => {
         </select>
 
         <select
-          className="w-64 p-2 border rounded-lg shadow-sm outline-none"
+          className="w-36 p-2 border rounded-lg shadow-sm outline-none"
           onChange={handleFilterByCategory}
           value={values.categories}
         >

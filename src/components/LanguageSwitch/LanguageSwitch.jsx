@@ -1,51 +1,33 @@
 "use client"
 import React from 'react';
-import { Switch } from "@nextui-org/react";
 import { setLanguage } from '@/redux/features/languageSlice';
-import { RiEnglishInput } from "react-icons/ri";
-import { HiAcademicCap } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
+import { Select, SelectItem } from '@tremor/react';
 
-const EnglishIcon = (props) => (
-    <RiEnglishInput
-        {...props}
-    >
-    </RiEnglishInput>
-);
-
-const SpanishIcon = (props) => (
-    <HiAcademicCap
-
-        {...props}
-    >
-    </HiAcademicCap>
-);
 
 function LanguageSwitch() {
     const dispatch = useDispatch()
-    const currentLanguage = useSelector(state => state.language); 
+    const lang = useSelector(state => state.language)
 
-    const handleLanguageChange = () => {
-        const newLanguage = currentLanguage === 'en' ? 'es' : 'en';
-        dispatch(setLanguage(newLanguage));
+    const handleLanguageChange = (value) => {
+         dispatch(setLanguage(value))
     };
 
     return (
         <>
-            <Switch
-            size="lg"
-            color="default"
-            onValueChange={handleLanguageChange}
-            isSelected={currentLanguage === 'es'}
-            thumbIcon={({ isSelected, className }) =>
-                isSelected ? (
-                    <SpanishIcon className={className} />
-                ) : (
-                    <EnglishIcon className={className}/>
-                )
-            }
+      <Select
+        label="choose a language"
+        className="max-w-xs z-[100]"
+        defaultValue={lang}
+        onValueChange={handleLanguageChange}
         >
-        </Switch>
+          <SelectItem key={'es'} value={'es'}>  
+            Spanish
+          </SelectItem>
+          <SelectItem key={'en'} value={'en'}>
+            English
+          </SelectItem>
+      </Select>
         </>
     );
 }
