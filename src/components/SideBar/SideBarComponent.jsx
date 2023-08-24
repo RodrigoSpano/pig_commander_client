@@ -11,7 +11,6 @@ import Dashboard from "./Subcomponents/Dashboard";
 import Management from "./Subcomponents/Management";
 import Wallet from "./Subcomponents/Wallet";
 import Profile from "./Subcomponents/Profile";
-import Settings from "./Subcomponents/Settings";
 import Help from "./Subcomponents/Help";
 import LogOut from "./Subcomponents/LogOut";
 import RateApp from "./Subcomponents/RateApp";
@@ -75,11 +74,6 @@ const NavBar = () => {
       path: "/home/profile",
     },
     {
-      icon: <IoMdSettings className="mr-1 text-regularPink text-3xl" />,
-      text: "Settings",
-      path: "/home/settings",
-    },
-    {
       icon: <BiSolidHelpCircle className="mr-1 text-regularPink text-3xl" />,
       text: "Help",
       path: "/home/help",
@@ -119,7 +113,6 @@ const NavBar = () => {
             <hr />
 
             <div className="space-y-1 xl:space-y-3">
-              <Settings />
               <Help />
               <RateApp />
             </div>

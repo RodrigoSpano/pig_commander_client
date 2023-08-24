@@ -60,77 +60,84 @@ const FilterAllTransactionsEs = ({ setOrders }) => {
   };
 
   return (
-    <div className="flex justify-around py-4 items-center">
-      <select
-        className="block  py-2 px-4 border border-[#E6E9EE] dark:bg-mediumGrayDarkMode rounded-lg shadow-sm outline-none"
-        onChange={handleFilterByType}
-        value={values.types}
-      >
-        <option disabled selected value="default">
-          Tipos
-        </option>
-        <option value="all">Todas las Transacciones</option>
-        <option value="expenses">Gastos</option>
-        <option value="incomes">Ingresos</option>
-      </select>
+    <div className="flex flex-col xl:flex-row justify-center items-center gap-2 mt-2">
+      <section className="flex flex-col lg:flex-row gap-2 items-center ">
+        <select
+          className="w-36 p-2 border rounded-lg shadow-sm outline-none"
+          onChange={handleFilterByType}
+          value={values.types}
+        >
+          <option disabled value="default">
+            Tipos
+          </option>
+          <option value="all">Todas las transacciones</option>
+          <option value="expenses">Gastos</option>
+          <option value="incomes">Ingresos</option>
+        </select>
 
-      <select
-        className="block py-2 px-4 border border-[#E6E9EE] dark:bg-mediumGrayDarkMode  rounded-lg shadow-sm outline-none"
-        onChange={handleFilterByMethod}
-        value={values.methods}
-      >
-        <option disabled selected value="default">
-          Métodos
-        </option>
+        <select
+          className="w-36 p-2 border rounded-lg shadow-sm outline-none"
+          onChange={handleFilterByMethod}
+          value={values.methods}
+        >
+          <option disabled value="default">
+            Metodos
+          </option>
 
-        {methods.length
-          ? methods.map((method) => (
-              <option key={method.id} value={method.id}>
-                {method.name}
-              </option>
-            ))
-          : null}
-      </select>
+          {methods.length
+            ? methods.map((method) => (
+                <option key={method.id} value={method.id}>
+                  {method.name}
+                </option>
+              ))
+            : null}
+        </select>
 
-      <select
-        className="block py-2 px-4 border border-[#E6E9EE] dark:bg-mediumGrayDarkMode  rounded-lg shadow-sm outline-none"
-        onChange={handleFilterByCategory}
-        value={values.categories}
-      >
-        <option disabled selected value="default">
-          Categoría
-        </option>
+        <select
+          className="w-36 p-2 border rounded-lg shadow-sm outline-none"
+          onChange={handleFilterByCategory}
+          value={values.categories}
+        >
+          <option disabled value="default">
+            Categorias
+          </option>
 
-        {categories.length
-          ? categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name.replace(/^\w/, (c) => c.toUpperCase())}
-              </option>
-            ))
-          : null}
-      </select>
-      <button
-        className={`text-white h-10 w-20 font-bold cursor-no-drop rounded-2xl text-base ${
-          !selectBoolean
-            ? "bg-regularGray"
-            : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
-        } `}
-        onClick={() => {
-          filterTransactions(method, category, type);
-        }}
-      >
-        Filtro
-      </button>
-      <button
-        onClick={resetFilters}
-        className={`text-white h-10 w-20 font-bold cursor-no-drop rounded-2xl  text-base ${
-          !selectBoolean
-            ? "bg-regularGray"
-            : " cursor-pointer bg-gradient-to-r from-regularPink  to-boldPink"
-        } `}
-      >
-        Restablecer
-      </button>
+          {categories.length
+            ? categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name.replace(/^\w/, (c) => c.toUpperCase())}
+                </option>
+              ))
+            : null}
+        </select>
+      </section>
+
+      <div className="space-x-4">
+        <button
+          className={`px-4 py-2 font-bold rounded-lg text-white text-base ${
+            !selectBoolean
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-gradient-to-r from-regularPink to-boldPink hover:from-pink-500 hover:to-pink-700'
+          } `}
+          onClick={() => {
+            filterTransactions(method, category, type);
+          }}
+          disabled={!selectBoolean}
+        >
+          Filtrar
+        </button>
+        <button
+          onClick={resetFilters}
+          className={`px-4 py-2 font-bold rounded-lg text-white text-base ${
+            !selectBoolean
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-gradient-to-r from-regularPink to-boldPink hover:from-pink-500 hover:to-pink-700'
+          } `}
+          disabled={!selectBoolean}
+        >
+          Restablecer
+        </button>
+      </div>
     </div>
   );
 };
