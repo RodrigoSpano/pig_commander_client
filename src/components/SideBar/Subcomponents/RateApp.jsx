@@ -36,20 +36,7 @@ export default function RateApp() {
 
   const handleSubmit = (onClose) => {
     dispatch(postReview({ token: cookies.token, rating, content }));
-    Swal.fire({
-      toast: true,
-      icon: "success",
-      title: "You have successfully reviewed",
-      animation: false,
-      position: "top-right",
-      showConfirmButton: false,
-      timer: 1000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener("mouseenter", Swal.stopTimer);
-        toast.addEventListener("mouseleave", Swal.resumeTimer);
-      },
-    });
+
     onClose();
   };
 
