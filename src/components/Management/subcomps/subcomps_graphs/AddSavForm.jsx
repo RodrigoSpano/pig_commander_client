@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { controlMaxAmount, formControlDona } from "@/utils/helper/savingsFuncs";
 import Swal from "sweetalert2";
 
+
 export default function AddSavForm({ id, index }) {
   const dispatch = useDispatch();
   const [cookies, setCookie] = useCookies();
@@ -83,9 +84,9 @@ export default function AddSavForm({ id, index }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-center">
         <input
-          className={` ${disabledInputs ? 'cursor-not-allowed' : ''} flex border-1 ml-2 pl-2  text-gray-500 dark:border-0 bg-black bg-opacity-10 rounded-sm h-12 w-2/3 justify-center items-center`}
+          className={`w-36 ${disabledInputs ? 'cursor-not-allowed' : ''} flex border-1 ml-2 pl-2  text-gray-500 dark:border-0 bg-black bg-opacity-10 rounded-lg h-12 w-2/3 justify-center items-center text-sm`}
           title="Enter amount"
           value={amount}
           onChange={handleChange}
@@ -94,7 +95,7 @@ export default function AddSavForm({ id, index }) {
           required
         ></input>
         <button
-         className={`text-lg ${disabledInputs ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-regularPink to-boldPink'} text-white rounded-sm h-12 w-1/3 px-2 py-2 mx-1 font-extrabold tracking-widest`}
+         className={`text-sm w-36 font-extrabold ml-2 ${disabledInputs ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-pink-400 to-pink-600'} text-white  rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300 tracking-widest`}
           type="submit"
           disabled={disabledInputs}
         >

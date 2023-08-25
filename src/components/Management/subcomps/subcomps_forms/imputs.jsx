@@ -9,7 +9,7 @@ export default function inputs({ title, icon, id, handleChange, values }) {
       <div className="flex flex-row">
         {id === "period" ? (
           <input
-            className=" flex border-1 ml-2 pl-2 dark:border-0 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-8 justify-center items-center"
+            className=" flex border-1 ml-2 pl-2 dark:border-0 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-[50px] justify-center items-center"
             name="dayPeriod"
             onChange={handleChange}
             value={values}
@@ -22,7 +22,7 @@ export default function inputs({ title, icon, id, handleChange, values }) {
         )}
         {id === "period" ? (
           <select
-            className="border-1 ml-2 pl-2 dark:border-0 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-3/4"
+            className="border-1 ml-2 pl-2 dark:border-0 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 w-[177px]"
             name="period"
   
             onChange={handleChange}

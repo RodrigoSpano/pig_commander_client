@@ -1,31 +1,31 @@
-import React from 'react'
+import React from "react";
 
-function SelectMethod({handleButtonClick}) {
+function SelectMethod({ handleButtonClick }) {
   return (
-    <div className=" shadow-lg rounded-2xl bg-white  dark:bg-mediumGrayDarkMode flex justify-start items-center mt-3 pb-4 pt-4">
-    <div className="flex-column pl-4 pr-4 w-full">
-      <div className="lg:text-3xl sm:text-xl font-bold text-gray-900 dark:bg-mediumGrayDarkMode dark:text-white items-center text-left w-full mb-4 ">
-        Select Method:
-      </div>
-      <div className="flex flex-row w-full items-center justify-center">
-        <button
-          className="text-sm bg-gradient-to-r dark:bg-mediumGrayDarkMode from-regularPink to-boldPink dark:text-white  text-white rounded-sm px-5 py-2 mr-1 w-1/2 font-extrabold tracking-widest"
-          name="Investment"
-          onClick={handleButtonClick}
-        >
-          Investment
-        </button>
-        <button
-          className="text-sm bg-gradient-to-r from-regularPink to-boldPink dark:bg-mediumGrayDarkMode dark:text-white text-white rounded-sm px-5 py-2  w-1/2 font-extrabold tracking-widest"
-          name="Saving"
-          onClick={handleButtonClick}
-        >
-          Saving
-        </button>
+    <div className=" shadow-lg rounded-2xl bg-white  dark:bg-mediumGrayDarkMode flex justify-center items-center mt-3 pb-4 pt-4">
+      <div className="flex flex-col pl-4 pr-4 w-full justify-center items-center">
+        <div className="text-center lg:text-3xl sm:text-xl font-bold text-gray-900 dark:bg-mediumGrayDarkMode dark:text-white items-center w-full mb-4 ">
+          Select Method
+        </div>
+        <div className="flex flex-row w-full items-center justify-center gap-4">
+          <button
+            className="text-md  w-36 font-extrabold bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300 tracking-widest"
+            name="Investment"
+            onClick={handleButtonClick}
+          >
+            Investment
+          </button>
+          <button
+             className="text-md  w-36 font-extrabold bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300 tracking-widest"
+            name="Saving"
+            onClick={handleButtonClick}
+          >
+            Saving
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  )
+  );
 }
 
-export default SelectMethod
+export default SelectMethod;

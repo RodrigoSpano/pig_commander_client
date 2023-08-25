@@ -63,27 +63,35 @@ export default function SavingFormComponent() {
 
   return (
     <div>
-      <div className="mt-5 ml-2 text-3xl sm:text-xl font-extrabold tracking-tight dark:text-mediumPinkDark text-boldPink">
-        Create New Goal:
+      <div className="mt-2 mb-4 ml-2 text-3xl sm:text-xl font-extrabold tracking-tight dark:text-mediumPinkDark text-boldPink">
+        Create New Goal
       </div>
       <div className="grid grid-cols-1 gap-2 w-full h-auto">
         <form>
           <div className="col-span-1">
-            <div className="ml-2 mt-2 text-black dark:text-white text-opacity-50 text-lg font-normal">
+            <div className="text-center ml-2 mt-2 text-black dark:text-white text-opacity-50 text-lg font-normal">
               Name
             </div>
+            <div className="flex items-center justify-center">
+              <input
+                className="ml-2 pl-2 mb-4 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 sm:w-2/5 w-full"
+                placeholder="Enter Name"
+                id="name"
+                name="name"
+                value={values.name}
+                onChange={handleChange}
+                required
+              ></input>
+            </div>
 
-            <input
-              className="ml-2 pl-2 text-gray-500 dark:text-white bg-black bg-opacity-10 rounded-sm h-12 sm:w-2/5 w-full"
-              placeholder="Enter Name"
-              id="name"
-              name="name"
-              value={values.name}
-              onChange={handleChange}
-              required
-            ></input>
-
-            <div className="w-5/12 sm:w-full">
+            <div className="flex w-full mb-4">
+              <Inputs
+                title={"Set a starting amount"}
+                icon={"$"}
+                values={values.amount} //prop
+                id={"amount"}
+                handleChange={handleChange}
+              />
               <Inputs
                 title={"Set a goal amount"}
                 icon={"$"}
@@ -93,18 +101,8 @@ export default function SavingFormComponent() {
               />
             </div>
 
-            <div className="w-5/12 sm:w-full">
-              <Inputs
-                title={"Set a starting amount"}
-                icon={"$"}
-                values={values.amount} //prop
-                id={"amount"}
-                handleChange={handleChange}
-              />
-            </div>
-
             <button
-              className="mt-4 text-lg bg-gradient-to-r from-regularPink to-boldPink text-white rounded-sm px-5 py-2 mx-2 font-extrabold tracking-widest"
+             className="text-md mt-4 ml-2 w-36 font-extrabold bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300 tracking-widest"
               onClick={handleSubmit}
             >
               Submit
