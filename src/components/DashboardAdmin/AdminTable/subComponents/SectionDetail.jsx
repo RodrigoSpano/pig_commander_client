@@ -16,14 +16,14 @@ const SectionDetail = ({ totalIncomes, totalExpenses, user }) => {
   const oneReview = useSelector((state) => state.reviews.oneReview);
   const allReviews = useSelector((state) => state.reviews.allReviews);
 
-  const filterReviews = allReviews.filter(
-    (review) => review.user_id === user.id
-  );
-
-  useEffect(() => {
-    dispatch(setReviews(filterReviews[0]?.id));
-  }, []);
-
+  if (allReviews) {
+    const filterReviews = allReviews.filter(
+      (review) => review.user_id === user.id
+    );
+    useEffect(() => {
+      dispatch(setReviews(filterReviews[0].id));
+    }, []);
+  }
   const handleDelete = () => {
     dispatch(deleteReview({ token: cookies.token, id: review.id }));
   };

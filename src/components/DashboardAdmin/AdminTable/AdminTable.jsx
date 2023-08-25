@@ -23,6 +23,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import UserDetailModal from "./UserDetailModal";
 import { getAllReviews } from "@/redux/actions/reviewsAction";
+import Swal from "sweetalert2";
+import { failedBanned } from "@/customHooks/useAdmin";
 
 const statusColorMap = {
   active: "success",
@@ -42,6 +44,24 @@ export default function AdminTable() {
     dispatch(getTableUsers(cookies.token));
     dispatch(getAllReviews(cookies.token));
   }, []);
+
+  const handleUserBan = async (users) => {
+    const isUserBan = users.status === "banned";
+    if (isUserBan) {
+      return failedBanned();
+    }
+    const result = await Swal.fire({
+      title: "Are you sure you want to ban this user?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, ban",
+    });
+    if (result.isConfirmed) {
+      dispatch(banUser({ token: cookies.token, id: users.id }));
+    }
+  };
   const renderCell = React.useCallback((users, columnKey) => {
     const cellValue = users[columnKey];
 
@@ -110,9 +130,7 @@ export default function AdminTable() {
             <Tooltip color="danger" content="Ban">
               <span
                 className="text-lg text-danger cursor-pointer active:opacity-50"
-                onClick={() => {
-                  dispatch(banUser({ token: cookies.token, id: users.id }));
-                }}
+                onClick={() => handleUserBan(users)}
               >
                 <IoBan />
               </span>
