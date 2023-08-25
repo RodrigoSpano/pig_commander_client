@@ -39,7 +39,7 @@ export default function MyJournalCard() {
         My Journal
       </h2>
       {journal.length > 0 ? (
-        <div className="custom-scrollbar grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3  max-h-[36vh] min-h-[36vh] overflow-y-scroll ">
+        <div className="custom-scrollbar grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 max-h-[36vh] min-h-[36vh] overflow-y-scroll ">
           {journal.slice(0, visibleNewsCount).map((element, index) => (
             <motion.div
               key={index}
