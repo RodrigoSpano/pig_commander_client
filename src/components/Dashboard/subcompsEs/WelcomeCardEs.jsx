@@ -17,7 +17,7 @@ const WelcomeCard = ({ user }) => {
       variants={cardVariants}
       transition={{ duration: 0.5 }}
     >
-      <div className="break-all flex flex-col">
+      <div className="break-all flex flex-col gap-4">
         <h1 className="font-semibold text-xl md:text-2xl lg:text-3xl xl:text-5xl">
           Bienvenido de nuevo,
         </h1>
