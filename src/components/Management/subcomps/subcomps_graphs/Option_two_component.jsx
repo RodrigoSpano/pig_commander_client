@@ -36,30 +36,31 @@ export default function Option_two_component() {
 
   return (
     <div>
-      <div className="text-4xl font-bold m-5 text-center">{titulo}</div>
-      <div className="grid grid-cols-2">
-        <div className="h-[300px] col-span-1 m-3 ml-14 ">
+      <div className="text-center mt-8 text-boldPink dark:text-mediumPinkDark font-extrabold tracking-tight sm:text-3xl mb-2 capitalize">{titulo}</div>
+      <div className="grid grid-cols-2 border-[1px] border-dashed m-4">
+        <div className="h-[250px] col-span-1 m-3 ml-14 ">
           <Donut index={selectedSaving} />
         </div>
         <div className="cols-span-1">
           <div className="m-3 text-2xl font-normal text-center  text-gray-500 dark:text-white  bg-opacity-10 ">
             Goal
           </div>
-          <div className="m-3 text-5xl font-bold text-center  text-boldPink dark:text-mediumPinkDark">
-            $ {goal}
+          <div className="m-3 text-3xl font-bold text-center  text-boldPink dark:text-mediumPinkDark">
+            $ {goal.toLocaleString()}
           </div>
           <div className="m-3 text-2xl font-normal text-center  text-gray-500 dark:text-white  bg-opacity-10 ">
             Current
           </div>
-          <div className="m-3 text-5xl font-bold text-center  text-boldPink dark:text-mediumPinkDark">
-            $ {amount}
+          <div className="m-3 text-3xl font-bold text-center  text-boldPink dark:text-mediumPinkDark">
+            $ {amount.toLocaleString()}
           </div>
-          <div className="m-3 mt-5 content-center text-xl">
+          <div className=" mt-5 content-center text-xl">
             <AddSavForm id={id} index={selectedSaving} />
           </div>
         </div>
       </div>
-      <div className="text-3xl font-bold m-3 text-center">Last income</div>
+      <hr className="mt-2"></hr>
+      <div className="text-xl font-bold mt-4 text-center text-gray-600">Last income</div>
       <div>
         <SavingsTableComponent setSelectedSaving={setSelectedSaving} />
       </div>
