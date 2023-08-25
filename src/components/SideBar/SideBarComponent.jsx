@@ -19,12 +19,12 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import { IoWalletOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { IoMdSettings } from "react-icons/io";
-import { ImExit } from 'react-icons/im';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ImExit } from "react-icons/im";
+import { FiMenu, FiX } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 import { getAllInversions } from "@/redux/actions/inversionsActions";
 import { setLanguage } from "@/redux/features/languageSlice";
-
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +33,7 @@ const NavBar = () => {
   const languageState = useSelector((state) => state.language);
   const dispatch = useDispatch();
   const [cookies, setCookies] = useCookies();
+  const path = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -46,10 +47,9 @@ const NavBar = () => {
       if (!savings.length) {
         dispatch(getAllSavings(cookies.token));
       }
-       dispatch(getAllInversions(cookies.token));
+      dispatch(getAllInversions(cookies.token));
     }
   }, [dispatch]);
-
 
   const menuItems = [
     {
@@ -94,7 +94,11 @@ const NavBar = () => {
   return (
     <>
       {/* DESKTOP */}
-      <nav className="bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none">
+      <nav
+        className={`${
+          path === "/home/dashboard" ? "fixed" : ""
+         } bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none`}
+      >
         <div>
           {/* LOGO */}
           <div className="flex items-center justify-center mb-4 xl:mb-6">
@@ -140,7 +144,7 @@ const NavBar = () => {
           <div className="block md:hidden">
             <button onClick={toggleMenu}>
               {isOpen ? (
-                <FiX className='w-6 h-6 text-gray-700  dark:text-white' />
+                <FiX className="w-6 h-6 text-gray-700  dark:text-white" />
               ) : (
                 <FiMenu className="w-6 h-6 text-gray-700 dark:text-white" />
               )}
@@ -168,7 +172,9 @@ const NavBar = () => {
                   <Link href={item.path}>
                     <div className="flex justify-start items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-grayHover">
                       {item.icon}
-                      <p className="ml-2 text-md text-gray-700 dark:text-white">{item.text}</p>
+                      <p className="ml-2 text-md text-gray-700 dark:text-white">
+                        {item.text}
+                      </p>
                     </div>
                   </Link>
                 </motion.div>

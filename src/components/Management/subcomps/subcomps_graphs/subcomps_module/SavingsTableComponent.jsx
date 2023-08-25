@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import "../../../../Wallet/CustomScrollBar.css";
 import useDetailSaving from "@/customHooks/useDetailSaving";
+import {FaPiggyBank} from "react-icons/fa"
 
 export default function TableComponent({ setSelectedSaving }) {
   const savings = useSelector((state) => state.savings.allSavings);
@@ -23,7 +24,7 @@ export default function TableComponent({ setSelectedSaving }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className=" custom-scrollbar overflow-y-auto max-h-[230px] w-2/3 self-center">
+      <div className=" custom-scrollbar overflow-y-auto max-h-[400px] w-2/3 self-center p-2">
         <Table
           color="danger"
           selectionMode="single"
@@ -54,6 +55,7 @@ export default function TableComponent({ setSelectedSaving }) {
             })}
           </TableBody>
         </Table>
+        {savings.length <= 0 && <div className="flex flex-col gap-4 justify-center items-center h-64 "><p className="text-4xl text-gray-400"><FaPiggyBank/></p><h2 className="text-gray-400">No savings, create one</h2></div> }
       </div>
     </div>
   );
