@@ -12,7 +12,7 @@ const EmptyDonut = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <p className="text-lg font-semibold">No Expenses Yet</p>
+      <p className="text-lg font-semibold">No hay gastos</p>
       <div className="flex items-center justify-center h-[410px]">
         <Doughnut
           data={{

@@ -10,6 +10,8 @@ import TransactionCard from "./subcomps/TransactionCard";
 import TransactionsPropsContainer from "./subcomps/TransactionsPropsContainer";
 import PermanentFilter from "./subcomps/PermanentFilter";
 import { useCookies } from "react-cookie";
+import Link from "next/link";
+import { FaPiggyBank } from "react-icons/fa";
 
 const TransactionsComponent = () => {
   const dispatch = useDispatch();
@@ -57,19 +59,20 @@ const TransactionsComponent = () => {
   return (
     <div className="bg-white dark:bg-mediumGrayDarkMode rounded-md h-full w-full flex flex-col justify-between box-border">
       <div>
-        <section className='flex flex-col py-4 px-4'>
-          <div className='flex flex-row items-center justify-between pb-2 mx-4'>
-            <h1 className='font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl dark:text-mediumPinkDark'>Last Transactions</h1>
+        <section className="flex flex-col py-4 px-4">
+          <div className="flex flex-row items-center justify-between pb-2 mx-4">
+            <h1 className="font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl dark:text-mediumPinkDark">
+              Last Transactions
+            </h1>
             <PermanentFilter />
           </div>
 
-          <hr className='mx-8 my-4 lg:mx-18' />
+          <hr className="mx-8 my-4 lg:mx-18" />
 
-          <div className='mx-4'>
+          <div className="mx-4">
             <SearchBarComponent handleSearch={handleSearch} />
           </div>
         </section>
-
 
         <section className="">
           <TransactionsPropsContainer
@@ -77,15 +80,29 @@ const TransactionsComponent = () => {
             handleOrderByAmount={handleOrderByAmount}
           />
           <div>
-            {transactions?.length
-              ? transactions?.map((t, i) => (
+            {transactions?.length ? (
+              transactions?.map((t, i) => (
                 <TransactionCard
                   handleDetail={handleDetail}
                   transaction={t}
                   key={i}
                 />
               ))
-              : null}
+            ) : (
+              <div className="flex justify-center items-center h-64 flex-col gap-4">
+                <p className="text-4xl  text-gray-400">
+                  <FaPiggyBank />
+                </p>
+                <h2 className="text-lg text-gray-400">
+                  There are no income or expenses{" "}
+                </h2>
+                <Link href="/home/wallet">
+                  <button className="bg-gradient-to-r from-pink-400 to-pink-600 text-white p-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300">
+                    Create one
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </section>
       </div>

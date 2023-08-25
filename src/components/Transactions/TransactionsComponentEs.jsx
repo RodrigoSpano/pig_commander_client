@@ -10,6 +10,8 @@ import { useCookies } from "react-cookie";
 import SearchBarComponentEs from "../SearchBar/SearchBarComponentEs";
 import PermanentFilterEs from "./subcompsEs/PermanentFilterEs";
 import TransactionsPropsContainerEs from "./subcompsEs/TransactionsPropsContainer";
+import Link from 'next/link';
+import { FaPiggyBank} from "react-icons/fa"
 
 const TransactionsComponentEs = () => {
   const dispatch = useDispatch();
@@ -37,7 +39,7 @@ const TransactionsComponentEs = () => {
     handleAmountOrder,
   } = usePagination(transactionsState, 4);
 
-  const {handleDetailEs } = useTransactionDetail();
+  const { handleDetailEs } = useTransactionDetail();
 
   const [orders, setOrders] = useState({
     alphabetically: false,
@@ -57,15 +59,17 @@ const TransactionsComponentEs = () => {
   return (
     <div className="bg-white dark:bg-mediumGrayDarkMode rounded-md h-full w-full flex flex-col justify-between box-border">
       <div>
-      <section className='flex flex-col py-4 px-4'>
-          <div className='flex flex-row items-center justify-between pb-2 mx-4'>
-            <h1 className='font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl'>Últimas Transacciones</h1>
+        <section className="flex flex-col py-4 px-4">
+          <div className="flex flex-row items-center justify-between pb-2 mx-4">
+            <h1 className="font-bold text-boldPink text-xl md:text-xl lg:text-2xl xl:text-3xl">
+              Últimas Transacciones
+            </h1>
             <PermanentFilterEs />
           </div>
 
-          <hr className='mx-8 my-4 lg:mx-18' />
+          <hr className="mx-8 my-4 lg:mx-18" />
 
-          <div className='mx-4'>
+          <div className="mx-4">
             <SearchBarComponentEs handleSearch={handleSearch} />
           </div>
         </section>
@@ -100,7 +104,21 @@ const TransactionsComponentEs = () => {
               lastPageHandler={lastPageHandler}
               firstPageHandler={firstPageHandler}
             />
-          ) : null}
+          ) : (
+            <div className="flex justify-center items-center h-64 flex-col gap-4">
+              <p className="text-4xl  text-gray-400">
+                <FaPiggyBank />
+              </p>
+              <h2 className="text-lg text-gray-400">
+                No hay ingresos ni gastos{" "}
+              </h2>
+              <Link href="/home/wallet">
+                <button className="bg-gradient-to-r from-pink-400 to-pink-600 text-white p-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300">
+                  Ingresa uno
+                </button>
+              </Link>
+            </div>
+          )}
         </section>
       </div>
     </div>
