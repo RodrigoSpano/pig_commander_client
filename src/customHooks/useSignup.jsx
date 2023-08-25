@@ -44,8 +44,8 @@ export default function () {
                 email: userSignUp.email,
                 confirmPassword: userSignUp.confirmPassword, 
             };
-            const { data } = await axios.post('auth/signup', user)
             
+            const { data } = await axios.post('auth/signup', user)
             
             if (data?.success) {
                 Swal.fire({
@@ -59,7 +59,6 @@ export default function () {
                 throw Error('hubo un error al crear tu cuenta');
             };
         } catch (error) {
-            console.log(error)
             if (error.response) {
                 Swal.fire({
                     icon: 'error',
