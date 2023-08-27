@@ -34,7 +34,7 @@ const DashboardComponent = () => {
   }, [userLogged]);
 
   return (
-    <div className="m-6 dark:bg-strongGray ">
+    <div className="m-6 dark:bg-strongGray md:ml-[320px]">
       {isLoading ? (
         <LoaderComponent />
       ) : (

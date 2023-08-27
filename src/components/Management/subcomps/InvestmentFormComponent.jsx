@@ -7,8 +7,8 @@ export default function InvestmentFormComponent() {
 
   return (
     <div>
-      <div className="mt-5 ml-2 text-3xl text-boldPink dark:text-mediumPinkDark font-extrabold tracking-tight sm:text-xl">
-        Create New:
+      <div className="mt-2 mb-4 ml-2 text-3xl text-boldPink dark:text-mediumPinkDark font-extrabold tracking-tight sm:text-xl">
+        Create New
       </div>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full h-auto sm:gap-1 ">
@@ -40,6 +40,7 @@ export default function InvestmentFormComponent() {
             id={"period"}
             values={values.dayPeriod}
             handleChange={handleChange}
+            className="w-[100px]"
           />
           <Inputs
             title={"Cost Effectiveness"}
@@ -50,10 +51,10 @@ export default function InvestmentFormComponent() {
           />
 
           <button
-            className="capitalize mt-4 text-lg bg-gradient-to-r from-regularPink to-boldPink  hover:from-boldPink hover:to-regularPink text-white rounded-sm px-5 py-2 mx-2 font-extrabold tracking-widest"
+             className="text-md mt-8 ml-2 w-36 font-extrabold bg-gradient-to-r from-pink-400 to-pink-600 text-white py-2 rounded-md hover:from-pink-500 hover:to-pink-700 transition-all duration-300 tracking-widest"
             type="submit"
             value="Submit"
-          >submit</button>
+          >Submit</button>
         </div>
       </form>
     </div>
