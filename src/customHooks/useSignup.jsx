@@ -31,54 +31,52 @@ export default function () {
   const handlePasswordConfirmationChange = (e) =>
     setPasswordConfirmation(e.target.value);
 
-  useEffect(() => {
-    if (userSignUp.password && passwordConfirmation) {
-      setPasswordsMatch(userSignUp.password === passwordConfirmation);
-    }
-  }, [userSignUp.password, passwordConfirmation]);
-
-  const signupRequest = async () => {
-    try {
-      const user = {
-        name: userSignUp.name,
-        lastname: userSignUp.lastName,
-        password: userSignUp.password,
-        email: userSignUp.email,
-        confirmPassword: userSignUp.confirmPassword,
-      };
-      const { data } = await axios.post("/auth/signup", user);
-      if (data?.success) {
-        Swal.fire({
-          icon: "success",
-          title: "Account created successfully!",
-          showConfirmButton: false,
-          timer: 1000,
-        });
-        router.push("/login");
-      } else {
-        throw Error("hubo un error al crear tu cuenta");
-      }
-    } catch (error) {
-      if (error.response) {
-        Swal.fire({
-          icon: "error",
-          title: error.response.data.error.replace(/^\w/, (c) =>
-            c.toUpperCase()
-          ),
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: error.message,
-          text: "Try again later!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    }
-  };
+    useEffect(() => {
+      if (userSignUp.password && passwordConfirmation) {
+        setPasswordsMatch(userSignUp.password === passwordConfirmation);
+      } 
+    }, [userSignUp.password, passwordConfirmation])
+    
+    const signupRequest = async () => {
+        try {
+            const user = {
+                name: userSignUp.name,
+                lastname: userSignUp.lastName,
+                password: userSignUp.password,
+                email: userSignUp.email,
+                confirmPassword: userSignUp.confirmPassword, 
+            };
+            const { data } = await axios.post('/auth/signup', user)
+            if (data?.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Account created successfully!',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                router.push('/login')
+            } else {
+                throw Error('hubo un error al crear tu cuenta');
+            };
+        } catch (error) {
+            if (error.response) {
+                Swal.fire({
+                    icon: 'error',
+                    title: error.response.data.message.replace(/^\w/, (c) => c.toUpperCase()),
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: error.message,
+                    text: 'Try again later!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            };
+        };
+    };
 
   const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
     userSignUp.email
