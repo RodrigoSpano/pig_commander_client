@@ -167,7 +167,7 @@ export default function SignUpComponent() {
                     onFocus={allowConfirmPasswordErrorMessage}
                   />
                   <span
-                    className="password-toggle"
+                    className="password-toggle "
                     onClick={togglePasswordConfirmationVisibility}
                   >
                     {showPasswordConfirmation ? (

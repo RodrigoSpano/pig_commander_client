@@ -5,15 +5,15 @@ import useTransactionDetail from "@/customHooks/useTransactionDetail";
 
 const AllTransactionsComponent = ({allTransactions}) => {
 
-  const { handleDetailEs } = useTransactionDetail();
-
+  const { handleDetailEs,handleDetail } = useTransactionDetail();
+  const selectedLanguage = useSelector((state) => state.language);
   return (
     <div>
       {allTransactions?.length
         ? allTransactions?.map((t, i) => (
             <TransactionCard
               transaction={t}
-              handleDetail={handleDetailEs}
+              handleDetail={selectedLanguage === 'es' ? handleDetailEs : handleDetail}
               key={i}
             />
           ))
