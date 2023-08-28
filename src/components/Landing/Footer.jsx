@@ -68,7 +68,14 @@ const Footer = () => {
             CEO´s
           </h3>
           <div className="flex">
-            <BsGithub />
+            <a
+              href="https://github.com/MatiasCancina"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
             <a
               href="https://www.linkedin.com/in/matiascancina/"
               target="_blank"
@@ -80,9 +87,16 @@ const Footer = () => {
             Matías Cancina
           </div>
           <div className="flex">
-            <BsGithub />
             <a
-              href="https://www.linkedin.com/in/matiascancina/"
+              href="https://github.com/RodrigoSpano"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/rodrigospano/"
               target="_blank"
               rel="noopener noreferrer"
               className="pb-1 text-base mx-2"
@@ -92,9 +106,16 @@ const Footer = () => {
             Rodrigo Spano
           </div>
           <div className="flex">
-            <BsGithub />
             <a
-              href="https://www.linkedin.com/in/matiascancina/"
+              href="https://github.com/Vickyrdz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/victoriabelenrodriguez/"
               target="_blank"
               rel="noopener noreferrer"
               className="pb-1 text-base mx-2"
@@ -104,7 +125,14 @@ const Footer = () => {
             Victoria Rodriguez
           </div>
           <div className="flex">
-            <BsGithub />
+            <a
+              href="https://github.com/LihuelZerega"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
             <a
               href="https://www.linkedin.com/in/lihuelzerega/"
               target="_blank"
@@ -116,9 +144,16 @@ const Footer = () => {
             Lihuel Zerega
           </div>
           <div className="flex">
-            <BsGithub />
             <a
-              href="https://www.linkedin.com/in/matiascancina/"
+              href="https://github.com/lucasgrav"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lucasgastoncorrea/"
               target="_blank"
               rel="noopener noreferrer"
               className="pb-1 text-base mx-2"
@@ -128,9 +163,16 @@ const Footer = () => {
             Lucas Correa
           </div>
           <div className="flex">
-            <BsGithub />
             <a
-              href="https://www.linkedin.com/in/matiascancina/"
+              href="https://github.com/daviddcordoba"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/david-cordoba25/"
               target="_blank"
               rel="noopener noreferrer"
               className="pb-1 text-base mx-2"
@@ -140,9 +182,16 @@ const Footer = () => {
             David Córdoba
           </div>
           <div className="flex">
-            <BsGithub />
             <a
-              href="https://www.linkedin.com/in/matiascancina/"
+              href="https://github.com/laurenciopaez"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/laurencio-paez-727042155/"
               target="_blank"
               rel="noopener noreferrer"
               className="pb-1 text-base mx-2"
@@ -152,9 +201,16 @@ const Footer = () => {
             Laurencio Paez
           </div>
           <div className="flex">
-            <BsGithub />
             <a
-              href="https://www.linkedin.com/in/benjaminpadilla/"
+              href="https://github.com/benjapadilla1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 text-base"
+            >
+              <BsGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/benja-padilla/"
               target="_blank"
               rel="noopener noreferrer"
               className="pb-1 text-base mx-2"
