@@ -90,14 +90,16 @@ const NavBar = () => {
       path: "/login",
     },
   ];
-
+  if (user.email === "pigcommandersp@gmail.com") {
+    return;
+  }
   return (
     <>
       {/* DESKTOP */}
       <nav
         className={`${
           path === "/home/dashboard" ? "fixed" : ""
-         } bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none`}
+        } bg-white dark:bg-mediumGrayDarkMode hidden p-4 w-72 h-screen rounded-r-md shadow-lg box-border items-center justify-start md:flex flex-col select-none`}
       >
         <div>
           {/* LOGO */}

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import UserSectionEs from "./User/UserSectionEs";
 import UsersCardsEs from "./TotalUsersCards/UsersCardsEs";
 import AdminTableEs from "./AdminTable/AdminTableEs";
+import LogOutAdmin from "./LogoutAdmin";
 
 const DashboardAdminComponent = () => {
   const selectedLanguage = useSelector((state) => state.language);
@@ -36,8 +37,10 @@ const DashboardAdminComponent = () => {
             ? "Admin Dashboard"
             : "Panel de Administrador"}
         </motion.h1>
+
         {selectedLanguage === "en" ? <UserSection /> : <UserSectionEs />}
       </section>
+      <LogOutAdmin />
 
       <section className="my-8">
         {selectedLanguage === "en" ? <UsersCards /> : <UsersCardsEs />}
