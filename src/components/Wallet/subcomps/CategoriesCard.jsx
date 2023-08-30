@@ -6,13 +6,9 @@ import {
 } from "react-icons/pi";
 import { BiBus, BiHomeSmile } from "react-icons/bi";
 import { MdOutlineFastfood } from "react-icons/md";
-import { BsPiggyBank } from "react-icons/bs"
+import { BsPiggyBank } from "react-icons/bs";
 
-export default function CategoriesCard({
-  name,
-  amount,
-  category,
-}) {
+export default function CategoriesCard({ name, amount, category }) {
   function iconDisplayer() {
     switch (category) {
       case "education":
@@ -38,9 +34,9 @@ export default function CategoriesCard({
 
       <div className="font-bold capitalize text-wrap w-24 text-">{name}</div>
       {/* Si es gasto va en rojo, si es ingreso va en verde */}
-        <div className="text-black dark:text-lightGrey">
-          $ {amount.toLocaleString()}
-        </div>
+      <div className="text-black dark:text-lightGrey">
+        $ {amount.toLocaleString()}
+      </div>
     </div>
   );
 }
