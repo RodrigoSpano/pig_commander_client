@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from '@/utils/Images/logoFull.png';
+import Logo from '@/utils/Images/logoSide.png';
 import Image from 'next/image';
 import { motion } from "framer-motion";
 
@@ -22,7 +22,7 @@ export default function SignUpComponent () {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="text-white font-bold text-center text-5xl"
+                        className="text-white font-bold mb-5 text-center text-5xl"
                     >
                         Welcome to
                     </motion.h1>
