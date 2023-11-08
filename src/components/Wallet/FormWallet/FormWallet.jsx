@@ -68,6 +68,7 @@ export default function FormWallet() {
             name="amount"
             label="Amount"
             size="sm"
+            
             value={formWallet.amount}
             onChange={handleChange}
             onFocus={allowAmountErrorMessage}

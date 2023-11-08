@@ -55,7 +55,7 @@ export default function WalletComponent() {
                   {selectedLanguage === "en" ? <FormWallet /> : <FormWalletEs />}
                 </div>
 
-                <div className="col-span-1 bg-white rounded-lg shadow-xl m-2.5 row-span-2 dark:bg-mediumGrayDarkMode ">
+                <div className="col-span-1 bg-white rounded-lg h-[32.938rem] shadow-xl m-2.5 row-span-2 dark:bg-mediumGrayDarkMode ">
                   {selectedLanguage === "en" ? (
                     <SpendingCategoriesComponent />
                   ) : (

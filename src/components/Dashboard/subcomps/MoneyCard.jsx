@@ -42,7 +42,7 @@ const MoneyCard = ({ title, type, array }) => {
       >
         <p className="font-semibold text-[#2B2B2B] dark:text-mediumPinkDark text-lg xl:text-2xl lg:text-xl md:text-lg sm:text-base">{title}</p>
         <motion.span
-          className="font-semibold text-[#454545] text-base md:text-2xl lg:text-xl xl:text-2xl"
+          className="font-semibold text-[#454545] dark:text-white text-base md:text-2xl lg:text-xl xl:text-2xl"
           variants={eyeVariants}
           initial="visible"
           animate={showPassword ? 'visible' : 'hidden'}
