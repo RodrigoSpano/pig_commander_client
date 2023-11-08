@@ -9,8 +9,6 @@ import usePagination from "@/customHooks/usePagination";
 import BalancesCard from "./BalancesCard";
 import ButtonCreateCategory from "./subComponent/ButtonCreateCategory";
 import DeleteCreatedCategory from "./subComponent/DeleteCreatedCategory";
-import { FaPiggyBank } from "react-icons/fa";
-
 
 export default function WalletComponent() {
   const dispatch = useDispatch();
@@ -49,7 +47,7 @@ export default function WalletComponent() {
       <div className="bg-mediumPink w-full rounded-t-lg pb-1 text-mediumPink">
         h
       </div>
-      <div className="bg-white dark:bg-mediumGrayDarkMode rounded-lg shadow-xl p-4 h-[59.563rem]">
+      <div className="bg-white dark:bg-mediumGrayDarkMode rounded-lg shadow-xl p-4">
         <div>
 
           <div className="">
@@ -71,7 +69,7 @@ export default function WalletComponent() {
         <hr className="mx-16 my-6" />
 
         <div className="">
-          <div className="flex flex-col lg:flex-row justify-around mb-5">
+          <div className="flex flex-col lg:flex-row justify-around">
             <h1 className="text-4xl font-bold text-boldPink dark:text-mediumPinkDark">
               Transactions
             </h1>
@@ -101,15 +99,7 @@ export default function WalletComponent() {
                 firstPageHandler={firstPageHandler}
               />
             </div>
-          ) :  <div className="flex justify-center items-center h-[29rem] flex-col gap-4">
-          <p className="text-4xl  text-gray-400">
-            <FaPiggyBank />
-          </p>
-          <h2 className="text-lg text-gray-400">
-            There are no income or expenses{" "}
-          </h2>
-        
-        </div>}
+          ) : null}
         </div>
       </div>
     </>

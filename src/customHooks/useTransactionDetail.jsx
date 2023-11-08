@@ -25,7 +25,7 @@ const useTransactionDetail = () => {
     Swal.fire({
       position: "center",
       html: `
-      <div class= 'grid  grid-cols-4 grid-rows-5 gap-5 m-2 dark:bg-black'>
+      <div class= 'grid  grid-cols-4 grid-rows-5 gap-5 m-2'>
 
         <div class='col-span-4 p-4 rounded-lg border text-center m-2 border-red-700 '> 
           <h1 class='text-strongPink font-bold'>DETALLE DE ${
